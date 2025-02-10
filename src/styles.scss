@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+/*  Use a more-intuitive box-sizing model. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /* outline: 2px solid lime; <== to identify all sizes*/
+    /* background: hsl(0 100% 50% / 0.1 <== to identify Layering*/
+}
+
+/* Remove default margin & padding*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Typographic tweaks (Add accessible line-height)*/
+body {
+    line-height: 1.5;
+}
+
+/* Improve media defaults*/
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove built-in form typography styles (Überall Standard font nutzen)*/
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.contentLimit {
+    width: 100%;
+    min-width: 300px;
+    max-width: 1440px;
+}
+
+.d_none {
+    display: none;
+}
