@@ -1,0 +1,128 @@
+@import './../../../../styles.scss';
+
+.details-content {
+    width: 100%;
+    //height: 100%;
+    background-color: $clrBaseBright;
+    padding: 48px;
+
+    header {
+        .header-content {
+           @include setFlex($jc: flex-start, $gap: 20px); 
+           
+
+           h1 {
+              font-size: $fsH2;
+              color: $clrBaseDark;
+           }
+
+           .separator {
+            color: $clrHighlight4;
+            font-size: $fsH2;
+           }
+
+           .subtitle {
+            color: $clrBaseDark;
+            font-size: $fsH3;
+           }
+        }
+    }
+
+    .contact-info {
+        margin-top: 48px;
+
+        .contact-header {
+            
+            margin-bottom: 32px;
+            position: relative; 
+
+            .avatar-wrapper {
+                min-height: 120px;
+                position: relative;
+                
+            
+
+                .avatar {
+                    position: absolute;
+                    width: 90px;
+                    height: 90px;
+                    background-color: #FF7A00;
+                    border-radius: 50%;
+                    @include setFlex();
+                    color: white;
+                    font-size: $fsH3;
+                    border: 2px solid white; 
+                    top: 70px;
+                    left: 0;
+                }
+
+                h2 {
+                    color: $clrBaseDark; 
+                    padding-left: 104px;
+                    padding-top: 70px; 
+                }
+            }
+
+            .actions {
+                @include setFlex($gap: 0px); 
+
+                button {
+                    @include setFlex($gap: 8px); 
+                    background: none;
+                    border: none;
+                    color: $clrBaseDark;
+                    padding: 8px;
+
+                    img {
+                        width: 24px;
+                        height: 24px;
+                        transition: all 0.3s ease;
+                    }
+
+                    &:hover {
+                        color: $clrHighlight4;
+                        font-weight: 500;
+
+                        img {
+                            filter: invert(67%) sepia(72%) saturate(463%) hue-rotate(165deg) brightness(87%) contrast(90%);  
+                        }
+                    }
+                }
+            }
+        }
+
+        .contact-details {
+            margin-top: 32px;
+
+            h3 {
+                font-size: $fSDefault;
+                color: $clrBaseDark;
+                margin-bottom: 24px;
+                font-weight: 400;
+            }
+
+            .info-item {
+                @include setFlex($fd: column, $ai: flex-start, $gap: 8px);
+                margin-top: 40px;
+
+                label {
+                    display: block;
+                    margin-bottom: 8px;
+                    color: $clrBaseDark;
+                    font-size: $fSSec;
+                    font-weight: 600;
+                }
+
+                .email {
+                    color: $clrHighlight4;
+                    font-size: $fSSec;
+                }
+
+                .phone {
+                    color: $clrBaseDark;
+                    font-size: $fSSec;
+                }
+            }
+        }
+    }
+}
