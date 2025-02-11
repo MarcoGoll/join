@@ -1,3 +1,8 @@
+@import './styles/fonts';
+@import './styles/mixin';
+@import './styles/variables';
+@import './styles/base';
+
 /*  Use a more-intuitive box-sizing model. */
 *,
 *::before,
@@ -41,6 +46,8 @@ html {
     width: 100%;
     min-width: 300px;
     max-width: 1920px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .d_none {

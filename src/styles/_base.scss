@@ -1,0 +1,79 @@
+@import './variables';
+
+h1 {
+    font-size: $fsH1;
+    font-weight: $fwH1;
+}
+
+h2 {
+    font-size: $fsH2;
+    font-weight: $fwH2;
+}
+
+h3 {
+    font-size: $fsH3;
+    font-weight: $fwH3;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: $stdRadiusInteractive;
+    padding: $stdPaddingInteractive;
+    transition: $stdTransition;
+    font-family: inherit;
+    font-size: $fSDefaultInteractive;
+    font-weight: $fwDefaultInteractive;
+
+    &:hover,
+    :active {}
+
+    &:link {}
+
+    &:visited {}
+
+    &:disabled {
+        cursor: default;
+        color: $clrDisabled;
+        border: 1px solid $clrDisabled;
+
+        &:hover {
+            cursor: default;
+            color: $clrDisabled;
+            border: 1px solid $clrDisabled;
+        }
+    }
+}
+
+button {
+    cursor: pointer;
+    border-radius: $stdRadiusInteractive;
+    padding: $stdPaddingInteractive;
+    transition: $stdTransition;
+    font-family: inherit;
+    font-size: $fSDefaultInteractive;
+    font-weight: $fwDefaultInteractive;
+
+    &:hover {}
+
+    &:disabled {
+        cursor: default;
+        color: $clrDisabled;
+        border: 1px solid $clrDisabled;
+
+        &:hover {
+            cursor: default;
+            color: $clrDisabled;
+            border: 1px solid $clrDisabled;
+        }
+    }
+}
+
+input,
+textarea {
+    font-family: inherit;
+    font-size: $fSDefaultInteractive;
+    font-weight: $fwDefaultInteractive;
+    border-radius: $stdRadiusInteractive;
+    padding: $stdPaddingInteractive;
+}

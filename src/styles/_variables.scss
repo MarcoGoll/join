@@ -1,0 +1,58 @@
+// ########################################################### Standard's ###########################################################
+$stdRadiusInteractive: 100px;
+$stdPaddingInteractive: 12px 24px;
+$stdTransition: all 125ms ease-in-out;
+
+// ########################################################### Colors's ###########################################################
+$clrBaseBright: #f8f9fa;
+$clrBaseDark: #0e1013;
+$clrHighlight1: #f7c518;
+$clrHighlight2: #3355ff;
+$clrHighlight3: #f87a55;
+
+$clrContact0: green;
+$clrContact1: green;
+$clrContact2: green;
+$clrContact3: green;
+$clrContact4: green;
+$clrContact5: green;
+$clrContact6: green;
+$clrContact7: green;
+$clrContact8: green;
+$clrContact9: green;
+
+$clrErrorMessageText: #FF3A00;
+$clrDisabled: #7d7d7e;
+
+// ########################################################### Fontsizes & Fontweight's ###########################################################
+//Desktop
+//Font-size (fs)
+$fsH1: 64px;
+$fsH2: 32px;
+$fsH3: 24px;
+$fSDefault: 20px;
+$fSSec: 18px;
+$fSTer: 16px;
+$fSDefaultInteractive: 18px;
+//Font-weight (fw)
+$fwH1: 700;
+$fwH2: 700;
+$fwH3: 700;
+$fWDefault: 400;
+$fwDefaultInteractive: 500;
+
+//Mobile
+//Font-size (fs)
+$fsMobileH1: 48px;
+$fsMobileH2: 48px;
+$fsMobileH3: 20px;
+$fSMobileDefault: 18px;
+$fSMobileSec: 16px;
+$fSMobileTer: 14px;
+$fSMobileDefaultInteractive: 16px;
+//Font-weight (fw)
+$fwMobileH1: 700;
+$fwMobileH2: 700;
+$fwMobileH3: 700;
+$fWMobileDefault: 400;
+$fwMobileInteractive: 500;
