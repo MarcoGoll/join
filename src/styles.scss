@@ -27,7 +27,7 @@ body {
 img,
 svg {
     display: block;
-    max-width: 100%;
+    max-width: 90%;
 }
 
 /* Remove built-in form typography styles (Überall Standard font nutzen)*/
@@ -48,4 +48,8 @@ html {
     max-width: 1920px;
     padding-left: 8px;
     padding-right: 8px;
+}
+
+.d_none {
+    display: none;
 }
