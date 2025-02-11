@@ -1,5 +1,14 @@
-<div class="contactsLetter">
-    @for (contact of contactList; track $index) {
-    <app-list-contact [contact]="contact"></app-list-contact>
-    }
+<div class="contactlist">
+    <div class="btnNewContact">
+        <p>Add new contact</p>
+        <img src="" alt="Icon">
+    </div>
+    <div class="contactsLettersContainer">
+        <div class="contactsLetterContainer">
+            <p class="contactsLetter">A</p>
+            @for (contact of contactList; track $index) {
+            <app-list-contact [contact]="contact"></app-list-contact>
+            }
+        </div>
+    </div>
 </div>

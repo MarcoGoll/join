@@ -1,0 +1,27 @@
+@import './../../../../styles.scss';
+
+.contactlist {
+    @include setFlex($fd: column, $gap: 16px);
+    padding: 24px 32px;
+}
+
+.btnNewContact {
+    cursor: pointer;
+    @include setFlex($gap: 8px);
+    background-color: $clrHighlight1;
+    color: $clrBaseBright;
+    padding: $stdPaddingInteractive;
+}
+
+.contactsLettersContainer {
+    @include setFlex($fd: column, $gap: 16px);
+}
+
+.contactsLetterContainer {
+    @include setFlex($fd: column, $ai: flex-start, $gap: 16px);
+}
+
+.contactsLetter {
+    align-self: stretch;
+    border-bottom: 1px solid $clrBaseDark;
+}
