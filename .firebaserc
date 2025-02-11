@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "join-82c5c": {
+      "hosting": {
+        "join": [
+          "join-82c5c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "join-82c5c"
+  }
+}
