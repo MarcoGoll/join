@@ -224,7 +224,8 @@ export class ContactsService {
     return onSnapshot(q, (list) => {
       this.contacts = [];
       list.forEach(contact => {
-        this.contacts.push(this.setContactObject(contact.data(), contact.id))
+        this.contacts.push(this.setContactObject(contact.data(), contact.id));
+        console.log(this.contacts);
       });
     });
   }

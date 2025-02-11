@@ -1,3 +1,5 @@
-@for (contact of contactList; track $index) {
-<app-list-contact [contact]="contact"></app-list-contact>
-}
+<div class="contactsLetter">
+    @for (contact of contactList; track $index) {
+    <app-list-contact [contact]="contact"></app-list-contact>
+    }
+</div>
