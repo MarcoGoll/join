@@ -1,0 +1,13 @@
+<div class="listContactContainer">
+    <div class="listContactContainer__img">
+        @if (contact.img ==="") {
+        <p>{{contact.nameShortcut}}</p>
+        }@else {
+        <img src={{contact.img}} alt="">
+        }
+    </div>
+    <div class="listContactContainer__mainInfo">
+        <p class="contactName">{{contact.firstName + " " + contact.lastName}}</p>
+        <p class="contactEmail">{{contact.email}}</p>
+    </div>
+</div>
