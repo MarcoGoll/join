@@ -1,7 +1,7 @@
 @import './styles/fonts';
 @import './styles/mixin';
 @import './styles/variables';
-@import './styles/base';
+@import './styles/base'; 
 
 /*  Use a more-intuitive box-sizing model. */
 *,
@@ -16,11 +16,13 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: $font-family-base;
 }
 
 /* Typographic tweaks (Add accessible line-height)*/
 body {
     line-height: 1.5;
+    font-family: $font-family-base;
 }
 
 /* Improve media defaults*/

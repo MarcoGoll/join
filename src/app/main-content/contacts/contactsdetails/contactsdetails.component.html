@@ -1,1 +1,43 @@
-<p>contactsdetails works!</p>
+<section class="details-content">
+    <header>
+        <div class="header-content">
+            <h1>Contacts</h1>
+            <span class="separator">|</span>
+            <span class="subtitle">Better with a team</span>
+        </div>
+    </header>
+
+    <main class="contact-info" *ngIf="selectedContent">
+        <div class="contact-header">
+            <div class="avatar-wrapper">
+                <div class="avatar">AM</div>
+                <h2>Anton Mayer</h2>
+            </div>
+            <div class="actions">
+                <button class="edit">
+                    <img src="./../../../../assets/icones/Property 1=edit.svg" alt="edit">
+                    Edit
+                </button>
+                <button class="delete" alt="delete">
+                    <img src="./../../../../assets/icones/Property 1=delete.svg" alt="delete">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="contact-details">
+            <h3>Contact Information</h3>
+            <div class="info-item">
+                <label>Email</label>
+                <span class="email">antom&#64;gmail.com</span>
+            </div>
+            <div class="info-item">
+                <label>Phone</label>
+                <span class="phone">+49 1111 111 11 1</span>
+            </div>
+        </div>
+
+    </main>
+</section>
