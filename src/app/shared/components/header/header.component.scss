@@ -1,0 +1,41 @@
+@import url(./../../../../styles.scss);
+
+header{
+    position: absolute;
+    top: 0;
+    width: 80%;
+    height: 96px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    >p{
+    margin-left: 100px;
+    font-family: "Inter", serif;
+    font-size: 20px;
+    font-weight: 400;
+    }
+    >img{
+        width: 20px;
+    }
+    >div{
+        width: 110px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+
+.profil{
+    border: 3px solid black;
+    border-radius: 100px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >span{
+        color: #29ABE2;
+        font-weight: 700;
+    }
+}
