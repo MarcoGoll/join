@@ -1,1 +1,3 @@
-<p>contactslist works!</p>
+@for (contact of contactList; track $index) {
+<app-list-contact [contact]="contact"></app-list-contact>
+}
