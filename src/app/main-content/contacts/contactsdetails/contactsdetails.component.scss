@@ -1,29 +1,31 @@
 @import './../../../../styles.scss';
 
 .details-content {
+    height: calc(100vh - 120px);
+    margin-top: 120px;
     width: 100%;
     background-color: $clrBaseBright;
     padding: 48px;
 
     header {
         .header-content {
-           @include setFlex($jc: flex-start, $gap: 20px); 
-           
+            @include setFlex($jc: flex-start, $gap: 20px);
 
-           h1 {
-              font-size: $fsH2;
-              color: $clrBaseDark;
-           }
 
-           .separator {
-            color: $clrHighlight4;
-            font-size: $fsH2;
-           }
+            h1 {
+                font-size: $fsH2;
+                color: $clrBaseDark;
+            }
 
-           .subtitle {
-            color: $clrBaseDark;
-            font-size: $fsH3;
-           }
+            .separator {
+                color: $clrHighlight4;
+                font-size: $fsH2;
+            }
+
+            .subtitle {
+                color: $clrBaseDark;
+                font-size: $fsH3;
+            }
         }
     }
 
@@ -31,15 +33,15 @@
         margin-top: 48px;
 
         .contact-header {
-            
+
             margin-bottom: 32px;
-            position: relative; 
+            position: relative;
 
             .avatar-wrapper {
                 min-height: 120px;
                 position: relative;
-                
-            
+
+
 
                 .avatar {
                     position: absolute;
@@ -50,23 +52,23 @@
                     @include setFlex();
                     color: white;
                     font-size: $fsH3;
-                    border: 2px solid white; 
+                    border: 2px solid white;
                     top: 70px;
                     left: 0;
                 }
 
                 h2 {
-                    color: $clrBaseDark; 
+                    color: $clrBaseDark;
                     padding-left: 104px;
-                    padding-top: 70px; 
+                    padding-top: 70px;
                 }
             }
 
             .actions {
-                @include setFlex($gap: 0px); 
+                @include setFlex($gap: 0px);
 
                 button {
-                    @include setFlex($gap: 8px); 
+                    @include setFlex($gap: 8px);
                     background: none;
                     border: none;
                     color: $clrBaseDark;
@@ -83,7 +85,7 @@
                         font-weight: 500;
 
                         img {
-                            filter: invert(67%) sepia(72%) saturate(463%) hue-rotate(165deg) brightness(87%) contrast(90%);  
+                            filter: invert(67%) sepia(72%) saturate(463%) hue-rotate(165deg) brightness(87%) contrast(90%);
                         }
                     }
                 }
