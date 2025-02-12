@@ -236,7 +236,7 @@ export class ContactsService {
     return onSnapshot(q, (list) => {
       this.contacts = [];
       list.forEach(contact => {
-        this.contacts.push(this.setContactObject(contact.data(), contact.id));
+        this.contacts.push(this.setContactObjectWithExtraId(contact.data(), contact.id));
         console.log(this.contacts);
       });
     });
@@ -250,22 +250,32 @@ export class ContactsService {
     return doc(collection(this.firestore, colId), docId);
   }
 
-  async getAllDocRef(colId: string) {
+  async getAllContactsAsArray() {
     let copyAllContacts: Contact[] = [];
 
     const querySnapshot = await getDocs(this.getContactsRef());
     querySnapshot.forEach((doc) => {
-      // TODO: Use this and set attributes to an object return this object => this.getSingleDocRef('contacts', doc.id).id
-      //TODO: use returend object in push
-      copyAllContacts.push()
+      copyAllContacts.push(this.setContactObjectWithoutExtraId(doc.data()));
       console.log(doc.id, " => ", doc.data());
     });
     return copyAllContacts;
   }
 
-  setContactObject(obj: any, id: string): Contact {
+  setContactObjectWithExtraId(obj: any, id: string): Contact {
     return {
       id: id,
+      firstName: obj.firstName || '',
+      lastName: obj.lastName || '',
+      nameShortcut: obj.nameShortcut || '',
+      email: obj.email || '',
+      phone: obj.phone || '',
+      img: obj.img || ''
+    }
+  }
+
+  setContactObjectWithoutExtraId(obj: any): Contact {
+    return {
+      id: obj.id || '',
       firstName: obj.firstName || '',
       lastName: obj.lastName || '',
       nameShortcut: obj.nameShortcut || '',
@@ -342,13 +352,16 @@ export class ContactsService {
   // Reset DB
   // #####################################################
 
-  resetDatabase() {
+  async resetDatabase() {
     //DELETE ALL EXISTING DOCUMENTS
-    this.getAllDocRef('contacs');
+    let allContactsToDelete: Contact[] = await this.getAllContactsAsArray();
+    allContactsToDelete.forEach(contactToDelete => {
+      this.deleteContact(contactToDelete);
+    });
 
     //ADD DUMMYDATA
-    // this.DUMMYCONTACTS.forEach(dummyContact => {
-    //   this.addContact(dummyContact)
-    // });
+    this.DUMMYCONTACTS.forEach(dummyContact => {
+      this.addContact(dummyContact)
+    });
   }
 }
