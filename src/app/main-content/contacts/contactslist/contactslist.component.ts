@@ -23,18 +23,7 @@ export class ContactslistComponent {
     img: ""
   }
 
-  contactList: Contact[] = [];
-
-  constructor(private contactService: ContactsService) {
-    // TODO: initial leer, weil es ein bisschen dauert bis die contactListe die Daten aus der DB bekommt
-    this.contactList = contactService.contacts;
-    console.log("contactlist vor Timeout 1000: ", this.contactList);
-
-    //TODO:Notlösung mit Timeout => gibt es was besseres?
-    setTimeout(() => {
-      this.contactList = contactService.contacts;
-      console.log("contactlist nach Timeout 1000: ", this.contactList);
-    }, 1000)
+  constructor(public contactService: ContactsService) {
   }
 
   addContact(contact: Contact) {

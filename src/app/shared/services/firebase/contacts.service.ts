@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
-import { addDoc, collection, deleteDoc, doc, Firestore, limit, onSnapshot, query, updateDoc } from '@angular/fire/firestore';
+import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapshot, query, updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -212,6 +212,7 @@ export class ContactsService {
   firestore: Firestore = inject(Firestore);
 
   contacts: Contact[] = [];
+
   unsubContacts;
   currentlySelectedUser: Contact = {
     "firstName": "Lukas",
@@ -247,6 +248,19 @@ export class ContactsService {
 
   getSingleDocRef(colId: string, docId: string) {
     return doc(collection(this.firestore, colId), docId);
+  }
+
+  async getAllDocRef(colId: string) {
+    let copyAllContacts: Contact[] = [];
+
+    const querySnapshot = await getDocs(this.getContactsRef());
+    querySnapshot.forEach((doc) => {
+      // TODO: Use this and set attributes to an object return this object => this.getSingleDocRef('contacts', doc.id).id
+      //TODO: use returend object in push
+      copyAllContacts.push()
+      console.log(doc.id, " => ", doc.data());
+    });
+    return copyAllContacts;
   }
 
   setContactObject(obj: any, id: string): Contact {
@@ -330,11 +344,11 @@ export class ContactsService {
 
   resetDatabase() {
     //DELETE ALL EXISTING DOCUMENTS
-    //TODO: WIE? Erst danach function von ADD auskommentieren!
+    this.getAllDocRef('contacs');
 
     //ADD DUMMYDATA
-    // this.DUMMYCONTACTS.forEach(contact => {
-    //   this.addContact(contact)
+    // this.DUMMYCONTACTS.forEach(dummyContact => {
+    //   this.addContact(dummyContact)
     // });
   }
 }
