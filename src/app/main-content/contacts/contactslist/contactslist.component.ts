@@ -14,6 +14,15 @@ import { timeout } from 'rxjs';
 })
 export class ContactslistComponent {
 
+  testContact: Contact = {
+    firstName: "test_firstName",
+    lastName: "test_lastName",
+    nameShortcut: "TT",
+    email: "test@email.de",
+    phone: "123456789",
+    img: ""
+  }
+
   contactList: Contact[] = [];
 
   constructor(private contactService: ContactsService) {
@@ -26,5 +35,18 @@ export class ContactslistComponent {
       this.contactList = contactService.contacts;
       console.log("contactlist nach Timeout 1000: ", this.contactList);
     }, 1000)
+  }
+
+  addContact(contact: Contact) {
+    this.contactService.addContact(contact);
+  }
+
+  deleteContact(contact: Contact) {
+    console.log(contact);
+    this.contactService.deleteContact(contact);
+  }
+
+  resetDatabase() {
+    this.contactService.resetDatabase();
   }
 }

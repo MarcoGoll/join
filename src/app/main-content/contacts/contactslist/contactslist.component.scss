@@ -1,5 +1,23 @@
 @import './../../../../styles.scss';
 
+.testBtns {
+    @include setFlex($fd: column, $ai: flex-end, $gap: 8px);
+    width: 100%;
+}
+
+.controlBTN {
+    width: 100%;
+    border: 2px dotted whitesmoke;
+    font-size: 12px;
+    padding: 8px;
+    background-color: rgba(139, 0, 139, 0.5);
+    color: white;
+
+    &:hover {
+        background-color: darkgray;
+    }
+}
+
 .contactlist {
     @include setFlex($fd: column, $gap: 16px);
     padding: 24px 32px;

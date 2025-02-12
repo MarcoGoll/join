@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from '../../../../shared/interfaces/contact';
+import { ContactsService } from '../../../../shared/services/firebase/contacts.service';
 
 
 @Component({
@@ -19,4 +20,11 @@ export class ListContactComponent {
     phone: "",
     img: ""
   };
+
+  constructor(private contactService: ContactsService) {
+  }
+
+  setCurrentlySelectedContact(contact: Contact) {
+    this.contactService.setCurrentlySelectedContact(contact);
+  }
 }

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
-import { collection, doc, Firestore, limit, onSnapshot, query } from '@angular/fire/firestore';
+import { addDoc, collection, deleteDoc, doc, Firestore, limit, onSnapshot, query, updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -213,12 +213,23 @@ export class ContactsService {
 
   contacts: Contact[] = [];
   unsubContacts;
+  currentlySelectedUser: Contact = {
+    "firstName": "Lukas",
+    "lastName": "Schmidt",
+    "nameShortcut": "LS",
+    "email": "lukas.schmidt@gmail.de",
+    "phone": "+4915234567890",
+    "img": ""
+  };
 
 
   constructor() {
     this.unsubContacts = this.subContactsList();
   }
 
+  // ##################################################### 
+  // Connection
+  // #####################################################
   subContactsList() {
     const q = query(this.getContactsRef(), limit(100));
     return onSnapshot(q, (list) => {
@@ -252,5 +263,78 @@ export class ContactsService {
 
   ngonDestroy() {
     this.unsubContacts();
+  }
+
+  //#####################################################
+  //  CRUD
+  //  #####################################################
+  async addContact(contact: Contact) {
+    await addDoc(this.getContactsRef(), contact)
+      .catch((err) => {
+        console.error(err);
+      }).then((docRef) => {
+        contact.id = docRef?.id;
+        this.updateContact(contact);
+      })
+  }
+
+  async deleteContact(contact: Contact) {
+    let colId: string = 'contacts';
+    let docId: string | undefined = contact.id;
+
+    if (docId) {
+      await deleteDoc(this.getSingleDocRef(colId, docId))
+        .catch(
+          (err) => { console.log(err) }
+        ).then(
+        //TODO: tbd.
+      );
+    }
+  }
+
+  async updateContact(contact: Contact) {
+    if (contact.id) {
+      let docRef = this.getSingleDocRef('contacts', contact.id);
+      await updateDoc(docRef, this.getCleanJson(contact))  //Wir können hier nicht einfach note selbst nehmen da dies eine "starke typisierung ist" und wir ein "standard" brauchen? @Freddy was heißt das | 
+        //direkt note geht nicht, weil es eine ID haben könnte. Unsere Struktur in der Datenbank hat aber kein Feld ID. Die id gehört zum Dokument ist aber kein Feld. Wir müssen hier also ein JSON ohne ID erzeugen, daher getCleanJson()
+        .catch((err) => {
+          console.error(err);
+        }).then(() => {
+          console.log("Update hat geklappt: ", contact);
+        })
+    }
+  }
+
+  getCleanJson(contact: Contact): {} {
+    return {
+      id: contact.id,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      nameShortcut: contact.nameShortcut,
+      email: contact.email,
+      phone: contact.phone,
+      img: contact.img,
+    }
+  }
+  // ##################################################### 
+  // Current Selected User
+  // #####################################################
+  setCurrentlySelectedContact(contact: Contact) {
+    if (contact.id) this.currentlySelectedUser = contact;
+    console.log(this.currentlySelectedUser);
+  }
+
+  // ##################################################### 
+  // Reset DB
+  // #####################################################
+
+  resetDatabase() {
+    //DELETE ALL EXISTING DOCUMENTS
+    //TODO: WIE? Erst danach function von ADD auskommentieren!
+
+    //ADD DUMMYDATA
+    // this.DUMMYCONTACTS.forEach(contact => {
+    //   this.addContact(contact)
+    // });
   }
 }

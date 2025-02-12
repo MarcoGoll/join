@@ -1,4 +1,4 @@
-<div class="listContactContainer">
+<div class="listContactContainer" (click)="setCurrentlySelectedContact(contact)">
     <div class="listContactContainer__img">
         @if (contact.img ==="") {
         <p>{{contact.nameShortcut}}</p>
