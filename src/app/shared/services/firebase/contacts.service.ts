@@ -251,7 +251,7 @@ export class ContactsService {
   }
 
   async getAllContactsAsArray() {
-    let copyAllContacts: Contact[] = [];
+    let copyAllContacts: Contact[] = []; 
 
     const querySnapshot = await getDocs(this.getContactsRef());
     querySnapshot.forEach((doc) => {

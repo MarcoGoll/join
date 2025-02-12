@@ -1,4 +1,4 @@
-@import url(./../../../../styles.scss);
+@import './../../../../styles.scss';
 
 header{
     position: absolute;
@@ -13,7 +13,7 @@ header{
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
     >p{
     margin-left: 50px;
-    font-family: "Inter", serif;
+    font-family: "Inter", serif; 
     font-size: 20px;
     font-weight: 400;
     }
