@@ -11,7 +11,7 @@
     </div>
     <div class="contactsLettersContainer">
         <div class="contactsLetterContainer">
-            <p class="contactsLetter">A</p>
+            <p class="contactsLetter">ALL</p>
             @for (contact of contactService.contacts; track $index) {
             <app-list-contact [contact]="contact"></app-list-contact>
             <button class="controlBTN" (click)="deleteContact(contact)">delete User</button>

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
-import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapshot, query, updateDoc } from '@angular/fire/firestore';
+import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapshot, orderBy, query, updateDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -232,7 +232,7 @@ export class ContactsService {
   // Connection
   // #####################################################
   subContactsList() {
-    const q = query(this.getContactsRef(), limit(100));
+    const q = query(this.getContactsRef(), orderBy("firstName"));
     return onSnapshot(q, (list) => {
       this.contacts = [];
       list.forEach(contact => {
@@ -251,7 +251,7 @@ export class ContactsService {
   }
 
   async getAllContactsAsArray() {
-    let copyAllContacts: Contact[] = []; 
+    let copyAllContacts: Contact[] = [];
 
     const querySnapshot = await getDocs(this.getContactsRef());
     querySnapshot.forEach((doc) => {
