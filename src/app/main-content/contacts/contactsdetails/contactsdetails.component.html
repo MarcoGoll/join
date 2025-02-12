@@ -10,7 +10,7 @@
     <main class="contact-info" *ngIf="selectedContent">
         <div class="contact-headline">
             <div class="avatar-wrapper">
-                <div class="avatar">AM</div>
+                <div class="avatar">{{contactService.currentlySelectedContact.nameShortcut}}</div>
                 <h2>{{contactService.currentlySelectedContact.firstName}} {{contactService.currentlySelectedContact.lastName}}</h2>
             </div>
             <div class="actions">

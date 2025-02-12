@@ -35,6 +35,10 @@ export class ContactsdetailsComponent {
     usePhoneNumber(){
       this.contactService.currentlySelectedContact.phone
     }
+
+    useAvatar(){
+      this.contactService.currentlySelectedContact.nameShortcut
+    }
 }
 
 
