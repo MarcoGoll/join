@@ -16,7 +16,7 @@ h3 {
 }
 
 a {
-    cursor: pointer; 
+    cursor: pointer;
     text-decoration: none;
     border-radius: $stdRadiusInteractive;
     padding: $stdPaddingInteractive;
@@ -25,10 +25,11 @@ a {
     font-size: $fSDefaultInteractive;
     font-weight: $fwDefaultInteractive;
 
-    &:hover{
+    &:hover {
         cursor: pointer;
         color: #29ABE2;
     }
+
     &:active {}
 
     &:link {}
@@ -79,4 +80,8 @@ textarea {
     font-weight: $fwDefaultInteractive;
     border-radius: $stdRadiusInteractive;
     padding: $stdPaddingInteractive;
+}
+
+body {
+    //font-family: Inter;
 }
