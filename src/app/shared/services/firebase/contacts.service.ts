@@ -214,7 +214,7 @@ export class ContactsService {
   contacts: Contact[] = [];
 
   unsubContacts;
-  currentlySelectedUser: Contact = {
+  currentlySelectedContact: Contact = {
     "firstName": "Lukas",
     "lastName": "Schmidt",
     "nameShortcut": "LS",
@@ -344,8 +344,12 @@ export class ContactsService {
   // Current Selected User
   // #####################################################
   setCurrentlySelectedContact(contact: Contact) {
-    if (contact.id) this.currentlySelectedUser = contact;
-    console.log(this.currentlySelectedUser);
+    if (contact.id) this.currentlySelectedContact = contact;
+    console.log("set current user to: ", this.currentlySelectedContact);
+  }
+
+  getCurrentlySelectedContact() {
+    return this.currentlySelectedContact;
   }
 
   // ##################################################### 
