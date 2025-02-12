@@ -1,17 +1,17 @@
 <section class="details-content">
-    <header>
-        <div class="header-content">
+    <div class="headline">
+        <div class="headline-content">
             <h1>Contacts</h1>
             <span class="separator">|</span>
             <span class="subtitle">Better with a team</span>
         </div>
-    </header>
+    </div>
 
     <main class="contact-info" *ngIf="selectedContent">
-        <div class="contact-header">
+        <div class="contact-headline">
             <div class="avatar-wrapper">
                 <div class="avatar">AM</div>
-                <h2>Anton Mayer</h2>
+                <h2>{{contactService.currentlySelectedContact.firstName}} {{contactService.currentlySelectedContact.lastName}}</h2>
             </div>
             <div class="actions">
                 <button class="edit">
@@ -31,11 +31,11 @@
             <h3>Contact Information</h3>
             <div class="info-item">
                 <label>Email</label>
-                <span class="email">antom&#64;gmail.com</span>
+                <span class="email">{{contactService.currentlySelectedContact.email}}</span>
             </div>
             <div class="info-item">
                 <label>Phone</label>
-                <span class="phone">+49 1111 111 11 1</span>
+                <span class="phone">{{contactService.currentlySelectedContact.phone}}</span>
             </div>
         </div>
 
