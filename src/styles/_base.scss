@@ -25,7 +25,10 @@ a {
     font-size: $fSDefaultInteractive;
     font-weight: $fwDefaultInteractive;
 
-    &:hover,
+    &:hover{
+        cursor: pointer;
+        color: #29ABE2;
+    }
     &:active {}
 
     &:link {}

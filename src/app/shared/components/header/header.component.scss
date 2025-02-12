@@ -3,26 +3,34 @@
 header{
     position: absolute;
     top: 0;
-    width: 80%;
+    left: 27%;
+    width: 73%;
     height: 96px;
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
     >p{
-    margin-left: 100px;
+    margin-left: 50px;
     font-family: "Inter", serif;
     font-size: 20px;
     font-weight: 400;
     }
-    >img{
-        width: 20px;
-    }
     >div{
         width: 110px;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
+        padding-right: 8px;
+        >img{
+            transition: font-size 0.5s ease-in-out, color 0.5s ease-in-out;
+            width: 20px;
+            &:hover{
+                cursor: pointer;
+                width: 25px;
+            }
+        }
     }
 }
 
@@ -34,6 +42,9 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    &:hover{
+        cursor: pointer;
+    }
     >span{
         color: #29ABE2;
         font-weight: 700;
