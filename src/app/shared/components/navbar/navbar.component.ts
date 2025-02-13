@@ -11,5 +11,5 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-
+ 
 }

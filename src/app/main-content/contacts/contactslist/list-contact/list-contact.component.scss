@@ -7,8 +7,8 @@
     border-radius: $stdRadiusInteractive;
 
     &:hover {
-        color: $clrBaseBright;
-        background-color: $clrHighlight1;
+        background-color: $clrBackground;
+        color: $clrBaseDark;
     }
 }
 
@@ -20,8 +20,18 @@
     padding: 8px;
     background-color: lightcoral;
     border: 2px solid $clrBaseBright;
+    color: $clrBaseBright;
 }
 
 .contactEmail {
+<<<<<<< HEAD
+    color: $clrHighlight2; 
+=======
     color: $clrHighlight2;
+}
+
+.selected {
+    color: $clrBaseBright !important;
+    background-color: $clrHighlight1 !important;
+>>>>>>> 578b505e5ce7d939db537467bafef8cc5230607a
 }

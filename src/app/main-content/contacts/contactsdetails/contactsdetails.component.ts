@@ -38,7 +38,7 @@ export class ContactsdetailsComponent {
 
     useAvatar(){
       this.contactService.currentlySelectedContact.nameShortcut
-    }
+    } 
 }
 
 

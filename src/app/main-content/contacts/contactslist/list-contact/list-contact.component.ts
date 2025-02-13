@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from '../../../../shared/interfaces/contact';
 import { ContactsService } from '../../../../shared/services/firebase/contacts.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-list-contact',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './list-contact.component.html',
   styleUrl: './list-contact.component.scss'
 })
@@ -22,10 +23,10 @@ export class ListContactComponent {
     img: ""
   };
 
-  constructor(private contactService: ContactsService) {
+  constructor(public contactService: ContactsService) {
   }
 
   setCurrentlySelectedContact(contact: Contact) {
-    this.contactService.setCurrentlySelectedContact(contact);
+    this.contactService.setCurrentlySelectedContact(contact); 
   }
 }

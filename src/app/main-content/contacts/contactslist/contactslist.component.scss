@@ -33,11 +33,24 @@
 
 .btnNewContact {
     cursor: pointer;
-    @include setFlex($gap: 8px);
+    @include setFlex($ai: center, $gap: 16px);
     background-color: $clrHighlight1;
     color: $clrBaseBright;
     padding: $stdPaddingInteractive;
     border-radius: $stdRadiusInteractive;
+    font-size: 21px;
+    font-weight: 500;
+    transition: $stdTransition;
+
+    &:hover {
+        background-color: $clrHighlight2;
+        transform: scale(1.01);
+    }
+
+    img {
+        height: 32px;
+        width: 32px;
+    }
 }
 
 .contactsLettersContainer {
@@ -52,7 +65,7 @@
 
 }
 
-.contactsLetter {
+.contactsLetter { 
     align-self: stretch;
     padding: 17px 32px;
     border-bottom: 1px solid $clrSeparatingLines;
