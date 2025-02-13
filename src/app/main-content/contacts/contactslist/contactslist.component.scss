@@ -19,7 +19,7 @@
 }
 
 .contactlist {
-    @include setFlex($fd: column, $jc: flex-start, $gap: 16px);
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
     margin-top: 96px;
     padding: 0px 32px;
     height: calc(100vh - 120px);
@@ -37,6 +37,7 @@
     background-color: $clrHighlight1;
     color: $clrBaseBright;
     padding: $stdPaddingInteractive;
+    border-radius: $stdRadiusInteractive;
 }
 
 .contactsLettersContainer {
@@ -53,5 +54,6 @@
 
 .contactsLetter {
     align-self: stretch;
-    border-bottom: 1px solid $clrBaseDark;
+    padding: 17px 32px;
+    border-bottom: 1px solid $clrSeparatingLines;
 }
