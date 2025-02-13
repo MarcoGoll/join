@@ -8,6 +8,7 @@
 
     &:hover {
         background-color: $clrBackground;
+        color: $clrBaseDark;
     }
 }
 
@@ -24,4 +25,9 @@
 
 .contactEmail {
     color: $clrHighlight2;
+}
+
+.selected {
+    color: $clrBaseBright !important;
+    background-color: $clrHighlight1 !important;
 }

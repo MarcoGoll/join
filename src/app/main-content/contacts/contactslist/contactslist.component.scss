@@ -43,7 +43,7 @@
     transition: $stdTransition;
 
     &:hover {
-        background-color: $clrBackground;
+        background-color: $clrHighlight2;
         transform: scale(1.01);
     }
 
