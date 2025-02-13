@@ -243,14 +243,16 @@ export class ContactsService {
 
   unsubContacts;
   currentlySelectedContact: Contact = {
-    "firstName": "Lukas",
-    "lastName": "Schmidt",
-    "nameShortcut": "LS",
+    "firstName": "initialSelectedUser",
+    "lastName": "initialSelectedUser",
+    "nameShortcut": "II",
     "nameShortcutColorCode": 1,
-    "email": "lukas.schmidt@gmail.de",
+    "email": "initialSelectedUser@gmail.de",
     "phone": "+4915234567890",
     "img": ""
   };
+  isContactSelected: Boolean = false;
+
   nextColorCode = -1;
 
 
@@ -365,9 +367,10 @@ export class ContactsService {
       await deleteDoc(this.getSingleDocRef(colId, docId))
         .catch(
           (err) => { console.log(err) }
-        ).then(
-        //TODO: tbd.
-      );
+        ).then(() => {
+          this.isContactSelected = false;
+        }
+        );
     }
   }
 
@@ -399,8 +402,12 @@ export class ContactsService {
   // Current Selected User
   // #####################################################
   setCurrentlySelectedContact(contact: Contact) {
-    if (contact.id) this.currentlySelectedContact = contact;
-    console.log("set current user to: ", this.currentlySelectedContact);
+    if (contact.id) {
+      this.currentlySelectedContact = contact;
+      this.isContactSelected = true;
+    }
+
+
   }
 
   // ##################################################### 
