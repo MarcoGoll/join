@@ -26,6 +26,6 @@ export class ListContactComponent {
   }
 
   setCurrentlySelectedContact(contact: Contact) {
-    this.contactService.setCurrentlySelectedContact(contact);
+    this.contactService.setCurrentlySelectedContact(contact); 
   }
 }

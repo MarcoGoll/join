@@ -8,6 +8,8 @@ import { IfStmt } from '@angular/compiler';
 })
 export class ContactsService {
 
+  isContactSelected: boolean = false;
+
   DUMMYCONTACTS: Contact[] = [
     {
       "firstName": "Lukas",
@@ -27,7 +29,7 @@ export class ContactsService {
       "phone": "+4915112345678",
       "img": ""
     },
-    {
+    { 
       "firstName": "Ben",
       "lastName": "Schneider",
       "nameShortcut": "BS",
@@ -365,11 +367,12 @@ export class ContactsService {
       await deleteDoc(this.getSingleDocRef(colId, docId))
         .catch(
           (err) => { console.log(err) }
-        ).then(
-        //TODO: tbd.
+        ).then(() => {
+        this.isContactSelected = false; }
       );
     }
   }
+
 
   async updateContact(contact: Contact) {
     if (contact.id) {
@@ -400,6 +403,7 @@ export class ContactsService {
   // #####################################################
   setCurrentlySelectedContact(contact: Contact) {
     if (contact.id) this.currentlySelectedContact = contact;
+    this.isContactSelected = true;
     console.log("set current user to: ", this.currentlySelectedContact);
   }
 

@@ -1,5 +1,5 @@
 @import './../../../styles.scss';
 
 #contactsSection {
-    @include setFlex($jc: flex-start, $ai: flex-start);
+    @include setFlex($jc: flex-start, $ai: flex-start); 
 }
