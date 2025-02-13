@@ -2,9 +2,12 @@ import { Routes } from '@angular/router';
 import { MainContentComponent } from './main-content/main-content.component';
 import { LegalNoticeComponent } from './shared/components/navbar/legal-notice/legal-notice.component';
 import { PrivacyPolicyComponent } from './shared/components/navbar/privacy-policy/privacy-policy.component';
+import { ContactsComponent } from './main-content/contacts/contacts.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
-    { path: '', component: MainContentComponent },
+    { path: '', component: AppComponent },
     { path: 'legalNotice', component: LegalNoticeComponent },
     { path: 'privacyPolicy', component: PrivacyPolicyComponent },
+    { path: 'contact', component: ContactsComponent }
 ];  
