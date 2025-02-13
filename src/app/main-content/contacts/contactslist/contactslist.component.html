@@ -10,12 +10,14 @@
         </div>
     </div>
     <div class="contactsLettersContainer">
+        @for (letter of contactService.getAllLettersWhereContacsOccour(); track $index) {
+        <p class="contactsLetter">{{letter}}</p>
         <div class="contactsLetterContainer">
-            <p class="contactsLetter">ALL</p>
-            @for (contact of contactService.contacts; track $index) {
+            @for (contact of contactService.getAllContactsByLetter(letter); track $index) {
             <app-list-contact [contact]="contact"></app-list-contact>
             <button class="controlBTN" (click)="deleteContact(contact)">delete User</button>
             }
         </div>
+        }
     </div>
 </div>

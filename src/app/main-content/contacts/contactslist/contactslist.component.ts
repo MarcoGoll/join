@@ -3,12 +3,13 @@ import { Contact } from '../../../shared/interfaces/contact';
 import { ContactsService } from '../../../shared/services/firebase/contacts.service';
 import { ListContactComponent } from "./list-contact/list-contact.component";
 import { timeout } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-contactslist',
   standalone: true,
-  imports: [ListContactComponent],
+  imports: [ListContactComponent, CommonModule],
   templateUrl: './contactslist.component.html',
   styleUrl: './contactslist.component.scss'
 })

@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
 import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapshot, orderBy, query, updateDoc } from '@angular/fire/firestore';
+import { IfStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,11 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Anna",
+      "firstName": "Laura",
       "lastName": "Müller",
-      "nameShortcut": "AM",
+      "nameShortcut": "LM",
       "nameShortcutColorCode": 1,
-      "email": "anna.mueller@gmail.de",
+      "email": "laura.mueller@gmail.de",
       "phone": "+4915112345678",
       "img": ""
     },
@@ -36,11 +37,11 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Clara",
+      "firstName": "Benjamin",
       "lastName": "Fischer",
-      "nameShortcut": "CF",
+      "nameShortcut": "BF",
       "nameShortcutColorCode": 3,
-      "email": "clara.fischer@gmail.de",
+      "email": "benjamin.fischer@gmail.de",
       "phone": "+4915334567890",
       "img": ""
     },
@@ -54,11 +55,11 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Emily",
+      "firstName": "Daniel",
       "lastName": "Becker",
-      "nameShortcut": "EB",
+      "nameShortcut": "DB",
       "nameShortcutColorCode": 5,
-      "email": "emily.becker@gmail.de",
+      "email": "daniel.becker@gmail.de",
       "phone": "+4915556789012",
       "img": ""
     },
@@ -72,29 +73,29 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Greta",
+      "firstName": "Franziska",
       "lastName": "Schäfer",
-      "nameShortcut": "GS",
+      "nameShortcut": "FS",
       "nameShortcutColorCode": 7,
-      "email": "greta.schaefer@gmail.de",
+      "email": "franziska.schaefer@gmail.de",
       "phone": "+4915778901234",
       "img": ""
     },
     {
-      "firstName": "Hans",
+      "firstName": "Hanna",
       "lastName": "Koch",
       "nameShortcut": "HK",
       "nameShortcutColorCode": 8,
-      "email": "hans.koch@gmail.de",
+      "email": "hanna.koch@gmail.de",
       "phone": "+4915889012345",
       "img": ""
     },
     {
-      "firstName": "Isabel",
+      "firstName": "Hans",
       "lastName": "Bauer",
-      "nameShortcut": "IB",
+      "nameShortcut": "HB",
       "nameShortcutColorCode": 9,
-      "email": "isabel.bauer@gmail.de",
+      "email": "hans.bauer@gmail.de",
       "phone": "+4915990123456",
       "img": ""
     },
@@ -108,11 +109,11 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Kathrin",
+      "firstName": "Jana",
       "lastName": "Schröder",
-      "nameShortcut": "KS",
+      "nameShortcut": "JS",
       "nameShortcutColorCode": 11,
-      "email": "kathrin.schroeder@gmail.de",
+      "email": "jana.schroeder@gmail.de",
       "phone": "+4915212345678",
       "img": ""
     },
@@ -126,11 +127,11 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Marie",
+      "firstName": "Lara",
       "lastName": "Klein",
-      "nameShortcut": "MK",
+      "nameShortcut": "LK",
       "nameShortcutColorCode": 13,
-      "email": "marie.klein@gmail.de",
+      "email": "lara.klein@gmail.de",
       "phone": "+4915434567890",
       "img": ""
     },
@@ -144,11 +145,11 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Olivia",
+      "firstName": "Nina",
       "lastName": "Neumann",
-      "nameShortcut": "ON",
+      "nameShortcut": "NN",
       "nameShortcutColorCode": 0,
-      "email": "olivia.neumann@gmail.de",
+      "email": "nina.neumann@gmail.de",
       "phone": "+4915656789012",
       "img": ""
     },
@@ -162,11 +163,11 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Quentin",
+      "firstName": "Patrick",
       "lastName": "Hartmann",
-      "nameShortcut": "QH",
+      "nameShortcut": "PH",
       "nameShortcutColorCode": 2,
-      "email": "quentin.hartmann@gmail.de",
+      "email": "patrick.hartmann@gmail.de",
       "phone": "+4915878901234",
       "img": ""
     },
@@ -180,29 +181,29 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Simon",
+      "firstName": "Robert",
       "lastName": "Weber",
-      "nameShortcut": "SW",
+      "nameShortcut": "RW",
       "nameShortcutColorCode": 4,
-      "email": "simon.weber@gmail.de",
+      "email": "robert.weber@gmail.de",
       "phone": "+4915090123456",
       "img": ""
     },
     {
-      "firstName": "Theresa",
+      "firstName": "Thomas",
       "lastName": "Lange",
       "nameShortcut": "TL",
       "nameShortcutColorCode": 5,
-      "email": "theresa.lange@gmail.de",
+      "email": "thomas.lange@gmail.de",
       "phone": "+4915201234567",
       "img": ""
     },
     {
-      "firstName": "Ulf",
+      "firstName": "Tina",
       "lastName": "Schulz",
-      "nameShortcut": "US",
+      "nameShortcut": "TS",
       "nameShortcutColorCode": 6,
-      "email": "ulf.schulz@gmail.de",
+      "email": "tina.schulz@gmail.de",
       "phone": "+4915312345678",
       "img": ""
     },
@@ -216,11 +217,11 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Walter",
+      "firstName": "Vincent",
       "lastName": "Richter",
-      "nameShortcut": "WR",
+      "nameShortcut": "VR",
       "nameShortcutColorCode": 8,
-      "email": "walter.richter@gmail.de",
+      "email": "vincent.richter@gmail.de",
       "phone": "+4915534567890",
       "img": ""
     },
@@ -232,17 +233,9 @@ export class ContactsService {
       "email": "xenia.schuster@gmail.de",
       "phone": "+4915645678901",
       "img": ""
-    },
-    {
-      "firstName": "Yannik",
-      "lastName": "Brandt",
-      "nameShortcut": "YB",
-      "nameShortcutColorCode": 10,
-      "email": "yannik.brandt@gmail.de",
-      "phone": "+4915756789012",
-      "img": ""
     }
   ]
+
     ;
   firestore: Firestore = inject(Firestore);
 
@@ -286,7 +279,8 @@ export class ContactsService {
     return doc(collection(this.firestore, colId), docId);
   }
 
-  async getAllContactsAsArray() {
+  //TODO: kann das nicht auch einfach durch getAllContacts ersetzt werden?
+  async getAllContactsAsArray(): Promise<Contact[]> {
     let copyAllContacts: Contact[] = [];
 
     const querySnapshot = await getDocs(this.getContactsRef());
@@ -295,6 +289,29 @@ export class ContactsService {
       console.log(doc.id, " => ", doc.data());
     });
     return copyAllContacts;
+  }
+
+  getAllContacts() {
+    console.log('call getAllContacts: ', this.contacts);
+    return this.contacts;
+  }
+
+  getAllContactsByLetter(letter: string): Contact[] {
+    return this.contacts.filter(
+      (contact) => contact.firstName && contact.firstName[0].toLocaleUpperCase() === letter
+    )
+      .sort((a, b) => a.firstName.localeCompare(b.firstName));
+  }
+
+  getAllLettersWhereContacsOccour() {
+    let letters: string[] = [];
+
+    this.getAllContacts().forEach(contact => {
+      if (!letters.includes(contact.firstName[0].toLocaleUpperCase())) {
+        letters.push(contact.firstName[0].toUpperCase());
+      }
+    });
+    return letters;
   }
 
   setContactObjectWithExtraId(obj: any, id: string): Contact {
@@ -386,15 +403,11 @@ export class ContactsService {
     console.log("set current user to: ", this.currentlySelectedContact);
   }
 
-  getCurrentlySelectedContact() {
-    return this.currentlySelectedContact;
-  }
-
   // ##################################################### 
   // Contact color code
   // #####################################################
   setNextColorCodeTO(x: number) {
-
+    //TODO: tbd.
   }
 
   getNextColorCode() { }
