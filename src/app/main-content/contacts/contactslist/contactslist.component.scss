@@ -19,7 +19,7 @@
 }
 
 .contactlist {
-    @include setFlex($fd: column, $jc: flex-start, $gap: 16px);
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
     margin-top: 96px;
     padding: 0px 32px;
     height: calc(100vh - 120px);
@@ -33,10 +33,24 @@
 
 .btnNewContact {
     cursor: pointer;
-    @include setFlex($gap: 8px);
+    @include setFlex($ai: center, $gap: 16px);
     background-color: $clrHighlight1;
     color: $clrBaseBright;
     padding: $stdPaddingInteractive;
+    border-radius: $stdRadiusInteractive;
+    font-size: 21px;
+    font-weight: 500;
+    transition: $stdTransition;
+
+    &:hover {
+        background-color: $clrHighlight2;
+        transform: scale(1.01);
+    }
+
+    img {
+        height: 32px;
+        width: 32px;
+    }
 }
 
 .contactsLettersContainer {
@@ -53,5 +67,6 @@
 
 .contactsLetter { 
     align-self: stretch;
-    border-bottom: 1px solid $clrBaseDark;
+    padding: 17px 32px;
+    border-bottom: 1px solid $clrSeparatingLines;
 }

@@ -245,14 +245,15 @@ export class ContactsService {
 
   unsubContacts;
   currentlySelectedContact: Contact = {
-    "firstName": "Lukas",
-    "lastName": "Schmidt",
-    "nameShortcut": "LS",
+    "firstName": "initialSelectedUser",
+    "lastName": "initialSelectedUser",
+    "nameShortcut": "II",
     "nameShortcutColorCode": 1,
-    "email": "lukas.schmidt@gmail.de",
+    "email": "initialSelectedUser@gmail.de",
     "phone": "+4915234567890",
     "img": ""
   };
+
   nextColorCode = -1;
 
 
@@ -368,8 +369,9 @@ export class ContactsService {
         .catch(
           (err) => { console.log(err) }
         ).then(() => {
-        this.isContactSelected = false; }
-      );
+          this.isContactSelected = false;
+        }
+        );
     }
   }
 
@@ -402,9 +404,12 @@ export class ContactsService {
   // Current Selected User
   // #####################################################
   setCurrentlySelectedContact(contact: Contact) {
-    if (contact.id) this.currentlySelectedContact = contact;
-    this.isContactSelected = true;
-    console.log("set current user to: ", this.currentlySelectedContact);
+    if (contact.id) {
+      this.currentlySelectedContact = contact;
+      this.isContactSelected = true;
+    }
+
+
   }
 
   // ##################################################### 

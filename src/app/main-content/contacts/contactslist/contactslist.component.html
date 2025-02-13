@@ -6,7 +6,7 @@
         </div>
         <div class="btnNewContact">
             <p>Add new contact</p>
-            <img src="" alt="Icon">
+            <img src="./assets/icones/person_add.svg" alt="Add">
         </div>
     </div>
     <div class="contactsLettersContainer">
@@ -15,7 +15,6 @@
         <div class="contactsLetterContainer">
             @for (contact of contactService.getAllContactsByLetter(letter); track $index) {
             <app-list-contact [contact]="contact"></app-list-contact>
-            <button class="controlBTN" (click)="deleteContact(contact)">delete User</button>
             }
         </div>
         }

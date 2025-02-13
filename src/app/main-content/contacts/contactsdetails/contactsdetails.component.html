@@ -7,26 +7,25 @@
         </div>
     </div>
 
-    <main class="contact-info" *ngIf="selectedContent" [ngClass]="{'d-none': !contactService.isContactSelected}">
+    <div class="contact-info" *ngIf="selectedContent" [ngClass]="{'d-none': !contactService.isContactSelected}">
         <div class="contact-headline">
             <div class="avatar-wrapper">
                 <div class="avatar">{{contactService.currentlySelectedContact.nameShortcut}}</div>
-                <h2>{{contactService.currentlySelectedContact.firstName}} &nbsp;{{contactService.currentlySelectedContact.lastName}}</h2>
+                <h2>{{contactService.currentlySelectedContact.firstName}}
+                    &nbsp;{{contactService.currentlySelectedContact.lastName}}</h2>
             </div>
             <div class="actions">
                 <button class="edit">
-                    <img src="./../../../../assets/icones/Property 1=edit.svg" alt="edit">
+                    <img src="./assets/icones/Property 1=edit.svg" alt="edit">
                     Edit
                 </button>
-                <button class="delete" alt="delete">
-                    <img src="./../../../../assets/icones/Property 1=delete.svg" alt="delete">
+                <button class="delete" alt="delete"
+                    (click)="contactService.deleteContact(contactService.currentlySelectedContact)">
+                    <img src="./assets/icones/Property 1=delete.svg" alt="delete">
                     Delete
                 </button>
-
             </div>
-
         </div>
-
         <div class="contact-details">
             <h3>Contact Information</h3>
             <div class="info-item">
@@ -38,6 +37,5 @@
                 <span class="phone">{{contactService.currentlySelectedContact.phone}}</span>
             </div>
         </div>
-
-    </main>
+    </div>
 </section>

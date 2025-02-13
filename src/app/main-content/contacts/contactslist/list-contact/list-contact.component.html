@@ -1,4 +1,5 @@
-<div class="listContactContainer" (click)="setCurrentlySelectedContact(contact)">
+<div class="listContactContainer" (click)="setCurrentlySelectedContact(contact)"
+    [ngClass]="{'selected':contactService.isContactSelected && contactService.currentlySelectedContact.id === contact.id}">
     <div class="listContactContainer__img">
         @if (contact.img ==="") {
         <p>{{contact.nameShortcut}}</p>
