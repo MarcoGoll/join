@@ -3,6 +3,7 @@ export interface Contact {
     firstName: string;
     lastName: string;
     nameShortcut: string;
+    nameShortcutColorCode: number;
     email: string;
     phone: string;
     img: string;

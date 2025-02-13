@@ -16,6 +16,7 @@ export class ListContactComponent {
     firstName: "",
     lastName: "",
     nameShortcut: "",
+    nameShortcutColorCode: 0,
     email: "",
     phone: "",
     img: ""
