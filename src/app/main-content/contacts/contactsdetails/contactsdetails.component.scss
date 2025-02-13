@@ -11,12 +11,12 @@
     right: 0;
     bottom: 0;
 
-    
+
 
     .headline {
         .headline-content {
             @include setFlex($jc: flex-start, $gap: 20px);
-             margin-left: 40px;
+            margin-left: 40px;
 
             h1 {
                 font-size: $fsH4;

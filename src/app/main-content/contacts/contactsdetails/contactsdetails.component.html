@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <main class="contact-info" *ngIf="selectedContent">
+    <div class="contact-info" *ngIf="selectedContent">
         <div class="contact-headline">
             <div class="avatar-wrapper">
                 <div class="avatar">{{contactService.currentlySelectedContact.nameShortcut}}</div>
@@ -16,7 +16,7 @@
             </div>
             <div class="actions">
                 <button class="edit">
-                    <img src="./../../../../assets/icones/Property 1=edit.svg" alt="edit">
+                    <img src="./assets/icones/Property 1=edit.svg" alt="edit">
                     Edit
                 </button>
                 <button class="delete" alt="delete"
@@ -24,11 +24,8 @@
                     <img src="./assets/icones/Property 1=delete.svg" alt="delete">
                     Delete
                 </button>
-
             </div>
-
         </div>
-
         <div class="contact-details">
             <h3>Contact Information</h3>
             <div class="info-item">
@@ -40,6 +37,5 @@
                 <span class="phone">{{contactService.currentlySelectedContact.phone}}</span>
             </div>
         </div>
-
-    </main>
+    </div>
 </section>
