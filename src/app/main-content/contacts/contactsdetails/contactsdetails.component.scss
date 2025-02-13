@@ -1,17 +1,15 @@
 @import './../../../../styles.scss';
 
 .details-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    margin: 0;
-    width: calc(100% - 580px);
-    background-color: $clrBackground;
     padding: 32px;
-    margin: 0;
-    position: absolute;
     top: 100px;
     right: 0;
     bottom: 0;
-    padding-top: 80px;
 
     
 
@@ -26,7 +24,7 @@
             }
 
             .separator {
-                color: $clrbuttons;
+                color: $clrHighlight2;
                 font-size: $fsH2;
             }
 
@@ -97,7 +95,7 @@
                     }
 
                     &:hover {
-                        color: $clrbuttons;
+                        color: $clrHighlight2;
                         font-weight: 500;
 
                         img {
@@ -132,7 +130,7 @@
                 }
 
                 .email {
-                    color: $clrbuttons;
+                    color: $clrHighlight2;
                     font-size: $fSSec;
                 }
 
