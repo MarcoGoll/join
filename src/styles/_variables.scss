@@ -1,32 +1,34 @@
 // ########################################################### Standard's ###########################################################
-$stdRadiusInteractive: 100px;
-$stdPaddingInteractive: 12px 24px;
+$stdRadiusInteractive: 10px; // standard for BTN, Input ...
+$stdPaddingInteractive: 12px 24px; // standard for BTN, Input ...
 $stdTransition: all 125ms ease-in-out;
 
 // ########################################################### Colors's ###########################################################
-$clrBaseBright: #f8f9fa;
+$clrBaseBright: #ffffff;
 $clrBaseDark: #0e1013;
+$clrBody: #f6f7f8;
 $clrHighlight1: #2a3647;
+$clrHighlight2: #29abe2;
 $clrbuttons: #29abe2;
 $clrBackground: #f6f7f8;
 $clrHoverIcon: #a8a8a8;
 
 
 $clrContact0: #0038FF;
-$clrContact1:#FF7A00;
+$clrContact1: #FF7A00;
 $clrContact2: #FF5EB3;
 $clrContact3: #6E52FF;
-$clrContact4:#9327FF;
-$clrContact5:#00BEE8;
-$clrContact6:#1FD7C1;
-$clrContact7:#FF745E;
+$clrContact4: #9327FF;
+$clrContact5: #00BEE8;
+$clrContact6: #1FD7C1;
+$clrContact7: #FF745E;
 $clrContact8: #FFA35E;
-$clrContact9:#FC71FF;
-$clrContact10:#FFC701;
-$clrContact11:#C3FF2B;
-$clrContact12:#FFE62B;
-$clrContact13:#FF4646;
-$clrContact14:#FFBB2B;
+$clrContact9: #FC71FF;
+$clrContact10: #FFC701;
+$clrContact11: #C3FF2B;
+$clrContact12: #FFE62B;
+$clrContact13: #FF4646;
+$clrContact14: #FFBB2B;
 
 
 

@@ -20,9 +20,10 @@
 
 .contactlist {
     @include setFlex($fd: column, $jc: flex-start, $gap: 16px);
-    margin-top: 120px;
+    margin-top: 96px;
     padding: 0px 32px;
     height: calc(100vh - 120px);
+    background-color: $clrBaseBright;
 }
 
 .controlContainer {
@@ -39,14 +40,15 @@
 }
 
 .contactsLettersContainer {
-    @include setFlex($fd: column, $jc: flex-start, $gap: 16px);
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
     height: 80%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 }
 
 .contactsLetterContainer {
-    @include setFlex($fd: column, $jc: flex-start, $ai: flex-start, $gap: 16px);
-    overflow-y: scroll;
-    scrollbar-width: thin;
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
+
 }
 
 .contactsLetter {
