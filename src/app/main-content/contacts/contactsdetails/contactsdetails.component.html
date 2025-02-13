@@ -11,15 +11,17 @@
         <div class="contact-headline">
             <div class="avatar-wrapper">
                 <div class="avatar">{{contactService.currentlySelectedContact.nameShortcut}}</div>
-                <h2>{{contactService.currentlySelectedContact.firstName}} &nbsp;{{contactService.currentlySelectedContact.lastName}}</h2>
+                <h2>{{contactService.currentlySelectedContact.firstName}}
+                    &nbsp;{{contactService.currentlySelectedContact.lastName}}</h2>
             </div>
             <div class="actions">
                 <button class="edit">
                     <img src="./../../../../assets/icones/Property 1=edit.svg" alt="edit">
                     Edit
                 </button>
-                <button class="delete" alt="delete">
-                    <img src="./../../../../assets/icones/Property 1=delete.svg" alt="delete">
+                <button class="delete" alt="delete"
+                    (click)="contactService.deleteContact(contactService.currentlySelectedContact)">
+                    <img src="./assets/icones/Property 1=delete.svg" alt="delete">
                     Delete
                 </button>
 
