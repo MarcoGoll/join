@@ -1,6 +1,6 @@
 <div class="listContactContainer" (click)="setCurrentlySelectedContact(contact)"
     [ngClass]="{'selected':contactService.isContactSelected && contactService.currentlySelectedContact.id === contact.id}">
-    <div class="listContactContainer__img">
+    <div class="listContactContainer__img backgroundColor{{contact.nameShortcutColorCode}}">
         @if (contact.img ==="") {
         <p>{{contact.nameShortcut}}</p>
         }@else {
@@ -10,5 +10,5 @@
     <div class="listContactContainer__mainInfo">
         <p class="contactName">{{contact.firstName + " " + contact.lastName}}</p>
         <p class="contactEmail">{{contact.email}}</p>
-    </div> 
+    </div>
 </div>

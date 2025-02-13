@@ -32,8 +32,7 @@ export class ContactslistComponent {
     this.contactService.addContact(contact);
   }
 
-  deleteContact(contact: Contact) { 
-    console.log(contact);
+  deleteContact(contact: Contact) {
     this.contactService.deleteContact(contact);
   }
 
