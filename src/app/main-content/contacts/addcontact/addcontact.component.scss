@@ -1,0 +1,208 @@
+@import './../../../../styles.scss';
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+
+    &.show {
+        visibility: visible;
+        opacity: 1;
+
+        .modal-content {
+            transform: translateY(0);
+        }
+    }
+}
+
+.modal-content {
+    width: 1000px;
+    background: white;
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    border-radius: 30px;
+}
+
+.modal-header {
+    width: 40%;
+    padding: 40px;
+    background: $clrBaseDark;
+    border-radius: 30px 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+
+    .logo {
+        width: 64px;
+        height: 64px;
+    }
+
+    .title-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: white;
+        }
+
+        .blue-line {
+            width: 80px;
+            height: 3px;
+            background: $clrHighlight2;
+            border-radius: 2px;
+        }
+    }
+}
+
+.form-content {
+    width: 60%;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+}
+
+.avatar-container {
+    width: 120px;
+    height: 120px;
+    background: $clrBackground;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+
+    .person-icon {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+
+    .input-field {
+        width: 100%;
+        padding: 12px 45px 12px 20px;
+        border: 1px solid $clrSeparatingLines;
+        border-radius: 10px;
+        font-size: 16px;
+
+        &::placeholder {
+            color: $clrHoverIcon;
+        }
+
+        &:focus {
+            border-color: $clrHighlight2;
+            outline: none;
+        }
+    }
+
+    .input-icon {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.button-container {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .cancel-btn {
+        border: 1px solid $clrSeparatingLines;
+        background: white;
+        color: $clrBaseDark;
+
+        &:hover {
+            border-color: $clrBaseDark;
+            background: $clrBackground;
+        }
+    }
+
+    .create-btn {
+        background: $clrHighlight1;
+        color: white;
+        border: none;
+
+        &:hover {
+            background: $clrHighlight2;
+        }
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+
+    img {
+        width: 24px;
+        height: 24px;
+    }
+
+    &:hover {
+        background: $clrBackground;
+        border-radius: 50%;
+    }
+}

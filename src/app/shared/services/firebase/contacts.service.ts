@@ -11,7 +11,7 @@ export class ContactsService {
   isContactSelected: boolean = false;
 
   DUMMYCONTACTS: Contact[] = [
-    {
+    { 
       "firstName": "Lukas",
       "lastName": "Schmidt",
       "nameShortcut": "LS",

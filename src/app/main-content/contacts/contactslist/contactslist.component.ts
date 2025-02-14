@@ -25,7 +25,7 @@ export class ContactslistComponent {
     img: ""
   }
 
-  constructor(public contactService: ContactsService) {
+  constructor(public contactService: ContactsService) { 
   }
 
   addContact(contact: Contact) {
@@ -38,5 +38,12 @@ export class ContactslistComponent {
 
   resetDatabase() {
     this.contactService.resetDatabase();
+  }
+
+  showAddContact() {
+    const addContactModal = document.querySelector('app-addcontact') as any;
+    if (addContactModal) {
+      addContactModal.componentInstance.show();
+    }
   }
 }

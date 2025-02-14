@@ -21,12 +21,12 @@ export class ListContactComponent {
     email: "",
     phone: "",
     img: ""
-  };
+  }; 
 
   constructor(public contactService: ContactsService) {
   }
 
   setCurrentlySelectedContact(contact: Contact) {
-    this.contactService.setCurrentlySelectedContact(contact); 
+    this.contactService.setCurrentlySelectedContact(contact);  
   }
 }

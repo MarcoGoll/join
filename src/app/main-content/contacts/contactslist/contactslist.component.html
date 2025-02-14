@@ -4,7 +4,7 @@
             <button class="controlBTN" (click)="addContact(testContact)">add one Testuser</button>
             <button class="controlBTN" (click)="resetDatabase()">reset DB</button>
         </div>
-        <div class="btnNewContact">
+        <div class="btnNewContact" (click)="showAddContact()">
             <p>Add new contact</p>
             <img src="./assets/icones/person_add.svg" alt="Add">
         </div>
@@ -18,5 +18,5 @@
             }
         </div>
         }
-    </div> 
+    </div>  
 </div>
