@@ -1,12 +1,14 @@
 @import './../../../../styles.scss';
 
 .testBtns {
-    @include setFlex($fd: column, $ai: flex-end, $gap: 8px);
+    position: absolute;
+    bottom: 0;
+    @include setFlex($fd: row, $ai: flex-end, $gap: 8px);
     width: 100%;
 }
 
 .controlBTN {
-    width: 100%;
+
     border: 2px dotted whitesmoke;
     font-size: 12px;
     padding: 8px;
@@ -28,7 +30,7 @@
 }
 
 .controlContainer {
-    height: 20%;
+    height: 10%;
     padding: 17px 32px;
 }
 
@@ -57,7 +59,7 @@
 
 .contactsLettersContainer {
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
-    height: 80%;
+    height: 90%;
     overflow-y: scroll;
     scrollbar-width: thin;
 }
