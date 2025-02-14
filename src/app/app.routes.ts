@@ -6,5 +6,5 @@ import { PrivacyPolicyComponent } from './shared/components/navbar/privacy-polic
 export const routes: Routes = [
     { path: '', component: MainContentComponent },
     { path: 'legalNotice', component: LegalNoticeComponent },
-    { path: 'privacyPolicy', component: PrivacyPolicyComponent },
+    { path: 'privacyPolicy', component: PrivacyPolicyComponent }, 
 ];  

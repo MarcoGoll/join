@@ -14,7 +14,7 @@
 
 .listContactContainer__img {
     @include setFlex();
-    border-radius: 500px;
+    border-radius: 500px; 
     width: 50px;
     height: 50px;
     padding: 8px;
@@ -24,14 +24,10 @@
 }
 
 .contactEmail {
-<<<<<<< HEAD
-    color: $clrHighlight2; 
-=======
     color: $clrHighlight2;
 }
 
 .selected {
     color: $clrBaseBright !important;
     background-color: $clrHighlight1 !important;
->>>>>>> 578b505e5ce7d939db537467bafef8cc5230607a
 }

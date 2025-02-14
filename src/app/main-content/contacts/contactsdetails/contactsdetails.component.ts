@@ -29,7 +29,7 @@ export class ContactsdetailsComponent {
     }
 
     useLastName(){
-      this.contactService.currentlySelectedContact.lastName
+      this.contactService.currentlySelectedContact.lastName 
     }
 
     usePhoneNumber(){
