@@ -4,7 +4,7 @@
     @include setFlex($jc: flex-start, $gap: 8px);
     cursor: pointer;
     margin: 0px 32px;
-    padding: 17px 0px;
+    padding: 17px 32px;
     border-radius: $stdRadiusInteractive;
 
     &:hover {
@@ -15,7 +15,7 @@
 
 .listContactContainer__img {
     @include setFlex();
-    border-radius: 500px; 
+    border-radius: 500px;
     width: 50px;
     height: 50px;
     padding: 8px;
