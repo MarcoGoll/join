@@ -19,7 +19,7 @@ export class ContactslistComponent {
     firstName: "test_firstName",
     lastName: "test_lastName",
     nameShortcut: "TT",
-    nameShortcutColorCode: 0,
+    nameShortcutColorCode: 1,
     email: "test@email.de",
     phone: "123456789",
     img: ""
