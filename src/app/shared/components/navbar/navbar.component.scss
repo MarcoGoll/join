@@ -1,17 +1,17 @@
 @import url(./../../../../styles.scss);
 
 section {
-    position: absolute;
+    position: sticky;
+    top:0;
     left: 0;
     bottom: 0;
     background: #2A3647;
-    height: 100vh;
     width: 250px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 64px;
-
     >nav {
         padding-top: 128px;
         padding-bottom: 250px;
@@ -19,7 +19,6 @@ section {
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-
         >a {
             >div {
                 display: flex;
