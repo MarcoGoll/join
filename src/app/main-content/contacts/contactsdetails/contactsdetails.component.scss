@@ -8,6 +8,7 @@
     margin-top: 96px;
     height: calc(100vh - 96px);
     padding: 64px 32px;
+    overflow: hidden;
 
     .headline {
         .headline-content {
@@ -31,7 +32,8 @@
     }
 
     .contact-info {
-
+        transform: translateX(1300px);
+        animation: fadeIn 125ms forwards;
 
         .contact-headline {
 
@@ -133,5 +135,15 @@
                 }
             }
         }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: translateX(1300px);
+    }
+
+    100% {
+        transform: translateX(0px);
     }
 }

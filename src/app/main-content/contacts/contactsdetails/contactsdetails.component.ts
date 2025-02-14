@@ -14,31 +14,31 @@ export class ContactsdetailsComponent {
 
 
   selectedContent: any = true;
-  
+
 
   constructor(public contactService: ContactsService) {
 
-    }
+  }
 
-    useEmail(){
-      this.contactService.currentlySelectedContact.email
-    }
+  // useEmail(){
+  //   this.contactService.currentlySelectedContact.email
+  // }
 
-    useFirstName(){
-      this.contactService.currentlySelectedContact.firstName
-    }
+  // useFirstName(){
+  //   this.contactService.currentlySelectedContact.firstName
+  // }
 
-    useLastName(){
-      this.contactService.currentlySelectedContact.lastName
-    }
+  // useLastName(){
+  //   this.contactService.currentlySelectedContact.lastName
+  // }
 
-    usePhoneNumber(){
-      this.contactService.currentlySelectedContact.phone
-    }
+  // usePhoneNumber(){
+  //   this.contactService.currentlySelectedContact.phone
+  // }
 
-    useAvatar(){
-      this.contactService.currentlySelectedContact.nameShortcut
-    } 
+  // useAvatar(){
+  //   this.contactService.currentlySelectedContact.nameShortcut
+  // } 
 }
 
 

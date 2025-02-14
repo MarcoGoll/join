@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="contact-info" *ngIf="selectedContent" [ngClass]="{'d-none': !contactService.isContactSelected}">
+    <div class="contact-info" [ngClass]="{'d_none': !contactService.isContactSelected}">
         <div class="contact-headline">
             <div class="avatar-wrapper">
                 <div class="avatar backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
