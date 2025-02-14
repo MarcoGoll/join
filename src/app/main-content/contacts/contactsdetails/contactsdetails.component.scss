@@ -1,22 +1,18 @@
-@import './../../../../styles.scss'; 
+@import './../../../../styles.scss';
 
 .details-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 32px;
-    top: 100px;
-    right: 0;
-    bottom: 0; 
-
-
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+    padding: 64px 32px;
+    overflow: hidden;
 
     .headline {
         .headline-content {
             @include setFlex($jc: flex-start, $gap: 20px);
-            margin-left: 40px;
 
             h1 {
                 font-size: $fsH4;
@@ -36,8 +32,8 @@
     }
 
     .contact-info {
-
-        margin-left: 40px;
+        transform: translateX(1300px);
+        animation: fadeIn 125ms forwards;
 
         .contact-headline {
 
@@ -57,7 +53,6 @@
                     position: absolute;
                     width: 90px;
                     height: 90px;
-                    background-color: $clrContact1;
                     border-radius: 50%;
                     @include setFlex();
                     color: white;
@@ -140,5 +135,15 @@
                 }
             }
         }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: translateX(1300px);
+    }
+
+    100% {
+        transform: translateX(0px);
     }
 }

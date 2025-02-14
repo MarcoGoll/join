@@ -1,6 +1,9 @@
 @import url(./../../../../styles.scss);
 
-section{
+section {
+    position: absolute;
+    left: 0;
+    bottom: 0;
     background: #2A3647;
     height: 100vh;
     width: 250px;
@@ -8,46 +11,57 @@ section{
     flex-direction: column;
     align-items: center;
     padding-top: 64px;
-    >nav{
+
+    >nav {
         padding-top: 128px;
-        padding-bottom: 150px;
+        padding-bottom: 250px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        >div{
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            width: 250px;
-            padding-left: 70px;
-            &:hover{
-                cursor: pointer;
-                background-color: #2A3D59;
-            }
-            >img{
-                width: 20px;
-                height: 20px;
-            }
-            >p{
-                font-family: Inter;
-                font-weight: 400;
-                font-size: 16px;
-                color: #CDCDCD; 
-                margin: 16px;             ;
+
+        >a {
+            >div {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 250px;
+                padding-left: 70px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #2A3D59;
+                }
+
+                >img {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                >p {
+                    font-family: Inter;
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: #CDCDCD;
+                    margin: 16px;
+                    ;
+                }
             }
         }
     }
-    >div{
+
+    >div {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        >a{
+
+        >a {
             font-family: Inter;
             font-weight: 400;
             font-size: 16px;
             color: #A8A8A8;
-            &:hover{
+
+            &:hover {
                 color: #29ABE2;
                 font-size: 17px;
             }

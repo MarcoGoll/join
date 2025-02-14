@@ -15,7 +15,7 @@ export class ContactsService {
       "firstName": "Lukas",
       "lastName": "Schmidt",
       "nameShortcut": "LS",
-      "nameShortcutColorCode": 0,
+      "nameShortcutColorCode": 1,
       "email": "lukas.schmidt@gmail.de",
       "phone": "+4915234567890",
       "img": ""
@@ -24,16 +24,16 @@ export class ContactsService {
       "firstName": "Laura",
       "lastName": "Müller",
       "nameShortcut": "LM",
-      "nameShortcutColorCode": 1,
+      "nameShortcutColorCode": 2,
       "email": "laura.mueller@gmail.de",
       "phone": "+4915112345678",
       "img": ""
     },
-    { 
+    {
       "firstName": "Ben",
       "lastName": "Schneider",
       "nameShortcut": "BS",
-      "nameShortcutColorCode": 2,
+      "nameShortcutColorCode": 3,
       "email": "ben.schneider@gmail.de",
       "phone": "+4915223456789",
       "img": ""
@@ -42,7 +42,7 @@ export class ContactsService {
       "firstName": "Benjamin",
       "lastName": "Fischer",
       "nameShortcut": "BF",
-      "nameShortcutColorCode": 3,
+      "nameShortcutColorCode": 4,
       "email": "benjamin.fischer@gmail.de",
       "phone": "+4915334567890",
       "img": ""
@@ -51,7 +51,7 @@ export class ContactsService {
       "firstName": "David",
       "lastName": "Wagner",
       "nameShortcut": "DW",
-      "nameShortcutColorCode": 4,
+      "nameShortcutColorCode": 5,
       "email": "david.wagner@gmail.de",
       "phone": "+4915445678901",
       "img": ""
@@ -60,7 +60,7 @@ export class ContactsService {
       "firstName": "Daniel",
       "lastName": "Becker",
       "nameShortcut": "DB",
-      "nameShortcutColorCode": 5,
+      "nameShortcutColorCode": 6,
       "email": "daniel.becker@gmail.de",
       "phone": "+4915556789012",
       "img": ""
@@ -69,7 +69,7 @@ export class ContactsService {
       "firstName": "Felix",
       "lastName": "Hoffmann",
       "nameShortcut": "FH",
-      "nameShortcutColorCode": 6,
+      "nameShortcutColorCode": 7,
       "email": "felix.hoffmann@gmail.de",
       "phone": "+4915667890123",
       "img": ""
@@ -78,7 +78,7 @@ export class ContactsService {
       "firstName": "Franziska",
       "lastName": "Schäfer",
       "nameShortcut": "FS",
-      "nameShortcutColorCode": 7,
+      "nameShortcutColorCode": 8,
       "email": "franziska.schaefer@gmail.de",
       "phone": "+4915778901234",
       "img": ""
@@ -87,7 +87,7 @@ export class ContactsService {
       "firstName": "Hanna",
       "lastName": "Koch",
       "nameShortcut": "HK",
-      "nameShortcutColorCode": 8,
+      "nameShortcutColorCode": 9,
       "email": "hanna.koch@gmail.de",
       "phone": "+4915889012345",
       "img": ""
@@ -96,7 +96,7 @@ export class ContactsService {
       "firstName": "Hans",
       "lastName": "Bauer",
       "nameShortcut": "HB",
-      "nameShortcutColorCode": 9,
+      "nameShortcutColorCode": 10,
       "email": "hans.bauer@gmail.de",
       "phone": "+4915990123456",
       "img": ""
@@ -105,7 +105,7 @@ export class ContactsService {
       "firstName": "Jonas",
       "lastName": "Lehmann",
       "nameShortcut": "JL",
-      "nameShortcutColorCode": 10,
+      "nameShortcutColorCode": 11,
       "email": "jonas.lehmann@gmail.de",
       "phone": "+4915101234567",
       "img": ""
@@ -114,7 +114,7 @@ export class ContactsService {
       "firstName": "Jana",
       "lastName": "Schröder",
       "nameShortcut": "JS",
-      "nameShortcutColorCode": 11,
+      "nameShortcutColorCode": 12,
       "email": "jana.schroeder@gmail.de",
       "phone": "+4915212345678",
       "img": ""
@@ -123,7 +123,7 @@ export class ContactsService {
       "firstName": "Leon",
       "lastName": "Meier",
       "nameShortcut": "LM",
-      "nameShortcutColorCode": 12,
+      "nameShortcutColorCode": 13,
       "email": "leon.meier@gmail.de",
       "phone": "+4915323456789",
       "img": ""
@@ -132,7 +132,7 @@ export class ContactsService {
       "firstName": "Lara",
       "lastName": "Klein",
       "nameShortcut": "LK",
-      "nameShortcutColorCode": 13,
+      "nameShortcutColorCode": 14,
       "email": "lara.klein@gmail.de",
       "phone": "+4915434567890",
       "img": ""
@@ -141,7 +141,7 @@ export class ContactsService {
       "firstName": "Niklas",
       "lastName": "Wolf",
       "nameShortcut": "NW",
-      "nameShortcutColorCode": 14,
+      "nameShortcutColorCode": 15,
       "email": "niklas.wolf@gmail.de",
       "phone": "+4915545678901",
       "img": ""
@@ -150,7 +150,7 @@ export class ContactsService {
       "firstName": "Nina",
       "lastName": "Neumann",
       "nameShortcut": "NN",
-      "nameShortcutColorCode": 0,
+      "nameShortcutColorCode": 1,
       "email": "nina.neumann@gmail.de",
       "phone": "+4915656789012",
       "img": ""
@@ -159,7 +159,7 @@ export class ContactsService {
       "firstName": "Paul",
       "lastName": "Zimmermann",
       "nameShortcut": "PZ",
-      "nameShortcutColorCode": 1,
+      "nameShortcutColorCode": 2,
       "email": "paul.zimmermann@gmail.de",
       "phone": "+4915767890123",
       "img": ""
@@ -168,7 +168,7 @@ export class ContactsService {
       "firstName": "Patrick",
       "lastName": "Hartmann",
       "nameShortcut": "PH",
-      "nameShortcutColorCode": 2,
+      "nameShortcutColorCode": 3,
       "email": "patrick.hartmann@gmail.de",
       "phone": "+4915878901234",
       "img": ""
@@ -177,7 +177,7 @@ export class ContactsService {
       "firstName": "Rebecca",
       "lastName": "Krüger",
       "nameShortcut": "RK",
-      "nameShortcutColorCode": 3,
+      "nameShortcutColorCode": 4,
       "email": "rebecca.krueger@gmail.de",
       "phone": "+4915989012345",
       "img": ""
@@ -186,7 +186,7 @@ export class ContactsService {
       "firstName": "Robert",
       "lastName": "Weber",
       "nameShortcut": "RW",
-      "nameShortcutColorCode": 4,
+      "nameShortcutColorCode": 5,
       "email": "robert.weber@gmail.de",
       "phone": "+4915090123456",
       "img": ""
@@ -195,7 +195,7 @@ export class ContactsService {
       "firstName": "Thomas",
       "lastName": "Lange",
       "nameShortcut": "TL",
-      "nameShortcutColorCode": 5,
+      "nameShortcutColorCode": 6,
       "email": "thomas.lange@gmail.de",
       "phone": "+4915201234567",
       "img": ""
@@ -204,7 +204,7 @@ export class ContactsService {
       "firstName": "Tina",
       "lastName": "Schulz",
       "nameShortcut": "TS",
-      "nameShortcutColorCode": 6,
+      "nameShortcutColorCode": 7,
       "email": "tina.schulz@gmail.de",
       "phone": "+4915312345678",
       "img": ""
@@ -213,7 +213,7 @@ export class ContactsService {
       "firstName": "Vanessa",
       "lastName": "Bergmann",
       "nameShortcut": "VB",
-      "nameShortcutColorCode": 7,
+      "nameShortcutColorCode": 8,
       "email": "vanessa.bergmann@gmail.de",
       "phone": "+4915423456789",
       "img": ""
@@ -222,7 +222,7 @@ export class ContactsService {
       "firstName": "Vincent",
       "lastName": "Richter",
       "nameShortcut": "VR",
-      "nameShortcutColorCode": 8,
+      "nameShortcutColorCode": 9,
       "email": "vincent.richter@gmail.de",
       "phone": "+4915534567890",
       "img": ""
@@ -231,7 +231,7 @@ export class ContactsService {
       "firstName": "Xenia",
       "lastName": "Schuster",
       "nameShortcut": "XS",
-      "nameShortcutColorCode": 9,
+      "nameShortcutColorCode": 10,
       "email": "xenia.schuster@gmail.de",
       "phone": "+4915645678901",
       "img": ""
@@ -253,8 +253,7 @@ export class ContactsService {
     "phone": "+4915234567890",
     "img": ""
   };
-
-  nextColorCode = -1;
+  currentColorCode = 0;
 
 
   constructor() {
@@ -289,13 +288,11 @@ export class ContactsService {
     const querySnapshot = await getDocs(this.getContactsRef());
     querySnapshot.forEach((doc) => {
       copyAllContacts.push(this.setContactObjectWithoutExtraId(doc.data()));
-      console.log(doc.id, " => ", doc.data());
     });
     return copyAllContacts;
   }
 
   getAllContacts() {
-    console.log('call getAllContacts: ', this.contacts);
     return this.contacts;
   }
 
@@ -357,6 +354,10 @@ export class ContactsService {
       }).then((docRef) => {
         contact.id = docRef?.id;
         this.updateContact(contact);
+        this.currentColorCode++;
+        if (this.currentColorCode >= 16) {
+          this.currentColorCode = 1;
+        }
       })
   }
 
@@ -408,18 +409,23 @@ export class ContactsService {
       this.currentlySelectedContact = contact;
       this.isContactSelected = true;
     }
-
-
   }
 
   // ##################################################### 
-  // Contact color code
+  // Automated Data for addContact
   // #####################################################
-  setNextColorCodeTO(x: number) {
-    //TODO: tbd.
+  getNameShortcut(firstName: string, lastName: string) {
+    return firstName[0].toLocaleUpperCase() + lastName[0].toLocaleUpperCase();
   }
 
-  getNextColorCode() { }
+  getNextColorCode() {
+    if (this.currentColorCode === 15) {
+      return 1;
+    } else {
+      return this.currentColorCode + 1;
+    }
+
+  }
 
   // ##################################################### 
   // Reset DB

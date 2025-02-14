@@ -22,17 +22,22 @@ header {
     >div {
         width: 110px;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
         padding-right: 8px;
-
-        >img {
-            transition: $stdTransition;
-            width: 20px;
-
-            &:hover {
-                cursor: pointer;
-                width: 25px;
+        gap: 16px;
+        >div{
+            display: flex;
+            justify-content: center;
+            >img {
+                transition: $stdTransition;
+                width: 20px;
+                height: 20px;
+                &:hover {
+                    cursor: pointer;
+                    width: 25px;
+                    height: 25px;
+                }
             }
         }
     }

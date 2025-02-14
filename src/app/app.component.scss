@@ -1,0 +1,9 @@
+@import './../styles.scss';
+
+app-main-content {
+    @include setFlex();
+
+    app-contacts {
+        flex: 1;
+    }
+}

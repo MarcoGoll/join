@@ -13,6 +13,7 @@
     background-color: rgba(139, 0, 139, 0.5);
     color: white;
 
+
     &:hover {
         background-color: darkgray;
     }
@@ -21,13 +22,14 @@
 .contactlist {
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
     margin-top: 96px;
-    padding: 0px 32px;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 96px);
     background-color: $clrBaseBright;
+    filter: drop-shadow(4px 0px 4px rgba(0, 0, 0, 0.2));
 }
 
 .controlContainer {
     height: 20%;
+    padding: 17px 32px;
 }
 
 
@@ -65,8 +67,9 @@
 
 }
 
-.contactsLetter { 
+.contactsLetter {
     align-self: stretch;
-    padding: 17px 32px;
+    padding: 17px 16px;
+    margin: 0px 32px;
     border-bottom: 1px solid $clrSeparatingLines;
 }

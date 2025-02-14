@@ -1,4 +1,4 @@
-<section class="details-content"> 
+<section class="details-content">
     <div class="headline">
         <div class="headline-content">
             <h1>Contacts</h1>
@@ -7,12 +7,13 @@
         </div>
     </div>
 
-    <div class="contact-info" *ngIf="selectedContent" [ngClass]="{'d-none': !contactService.isContactSelected}">
+    <div class="contact-info" [ngClass]="{'d_none': !contactService.isContactSelected}">
         <div class="contact-headline">
             <div class="avatar-wrapper">
-                <div class="avatar">{{contactService.currentlySelectedContact.nameShortcut}}</div>
+                <div class="avatar backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
+                    {{contactService.currentlySelectedContact.nameShortcut}}</div>
                 <h2>{{contactService.currentlySelectedContact.firstName}}
-                    &nbsp;{{contactService.currentlySelectedContact.lastName}}</h2>
+                    {{contactService.currentlySelectedContact.lastName}}</h2>
             </div>
             <div class="actions">
                 <button class="edit">
