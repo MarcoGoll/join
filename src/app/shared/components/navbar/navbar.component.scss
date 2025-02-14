@@ -1,9 +1,10 @@
 @import url(./../../../../styles.scss);
 
 section {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    position: sticky;
+    top: 0;
+    // left: 0;
+    // bottom: 0;
     background: #2A3647;
     height: 100vh;
     width: 250px;

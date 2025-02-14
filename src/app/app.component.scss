@@ -7,3 +7,13 @@ app-main-content {
         flex: 1;
     }
 }
+
+.mainArea {
+    width: 100%;
+    @include setFlex();
+}
+
+.mainAreaContent {
+    position: relative;
+    @include setFlex($jc: flex-start, $ai: stretch);
+}

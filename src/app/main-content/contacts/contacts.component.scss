@@ -1,7 +1,6 @@
 @import './../../../styles.scss';
 
 #contactsSection {
-    margin-left: 250px;
     @include setFlex($jc: flex-start, $ai: flex-start, $gap: 32px);
 }
 
