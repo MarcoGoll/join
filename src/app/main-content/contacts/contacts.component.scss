@@ -3,5 +3,8 @@
 #contactsSection {
     margin-left: 250px;
     @include setFlex($jc: flex-start, $ai: flex-start, $gap: 32px);
+}
 
+app-contactsdetails {
+    flex: 1;
 }
