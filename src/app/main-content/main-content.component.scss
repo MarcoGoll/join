@@ -1,0 +1,6 @@
+@import './../../styles.scss';
+
+#contentContainer {
+    position: relative;
+    @include setFlex($jc: flex-start, $ai: flex-start);
+}
