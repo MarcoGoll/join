@@ -3,7 +3,8 @@
 .listContactContainer {
     @include setFlex($jc: flex-start, $gap: 8px);
     cursor: pointer;
-    padding: 17px 32px;
+    margin: 0px 32px;
+    padding: 17px 0px;
     border-radius: $stdRadiusInteractive;
 
     &:hover {
