@@ -17,7 +17,7 @@
         <p class="contactsLetter">{{letter}}</p>
         <div class="contactsLetterContainer">
             @for (contact of contactService.getAllContactsByLetter(letter); track $index) {
-            <app-list-contact [contact]="contact"></app-list-contact>
+            <app-list-contact [isMobileView]="isMobileView" [contact]="contact"></app-list-contact>
             }
         </div>
         }

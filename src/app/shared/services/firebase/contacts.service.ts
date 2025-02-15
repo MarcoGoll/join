@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { HostListener, inject, Injectable } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
 import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapshot, orderBy, query, updateDoc } from '@angular/fire/firestore';
 import { IfStmt } from '@angular/compiler';
@@ -9,6 +9,9 @@ import { IfStmt } from '@angular/compiler';
 export class ContactsService {
 
   isContactSelected: boolean = false;
+
+  isContactListViewed = true;
+  isContactDetailsViewed = false;
 
   DUMMYCONTACTS: Contact[] = [
     {
@@ -260,6 +263,7 @@ export class ContactsService {
     this.unsubContacts = this.subContactsList();
   }
 
+
   // ##################################################### 
   // Connection
   // #####################################################
@@ -431,5 +435,21 @@ export class ContactsService {
     this.DUMMYCONTACTS.forEach(dummyContact => {
       this.addContact(dummyContact)
     });
+  }
+
+  // ##################################################### 
+  // Mobile Views
+  // #####################################################
+  changeMobileContactView(isMobileView: boolean) {
+    if (isMobileView) {
+      if (this.isContactListViewed) {
+        this.isContactListViewed = false;
+        this.isContactDetailsViewed = true;
+      }
+      else {
+        this.isContactListViewed = true;
+        this.isContactDetailsViewed = false;
+      }
+    }
   }
 }

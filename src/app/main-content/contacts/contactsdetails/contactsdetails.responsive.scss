@@ -1,0 +1,10 @@
+@import './../../../../styles.scss';
+
+@media (max-width: 1023px) {
+    .backBtn {
+        display: block;
+        position: absolute;
+        top: 50px;
+        right: 32px;
+    }
+}

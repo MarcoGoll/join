@@ -1,4 +1,5 @@
-<div class="listContactContainer" (click)="setCurrentlySelectedContact(contact)"
+<div class="listContactContainer"
+    (click)="contactService.setCurrentlySelectedContact(contact); contactService.changeMobileContactView(isMobileView)"
     [ngClass]="{'selected':contactService.isContactSelected && contactService.currentlySelectedContact.id === contact.id}">
     <div class="listContactContainer__img backgroundColor{{contact.nameShortcutColorCode}}">
         @if (contact.img ==="") {

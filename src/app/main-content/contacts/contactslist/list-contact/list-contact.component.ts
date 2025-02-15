@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './list-contact.component.scss'
 })
 export class ListContactComponent {
+  @Input("isMobileView") isMobileView: boolean = false;
   @Input("contact") contact: Contact = {
     id: "",
     firstName: "",
@@ -21,12 +22,8 @@ export class ListContactComponent {
     email: "",
     phone: "",
     img: ""
-  }; 
+  };
 
   constructor(public contactService: ContactsService) {
-  }
-
-  setCurrentlySelectedContact(contact: Contact) {
-    this.contactService.setCurrentlySelectedContact(contact);  
   }
 }

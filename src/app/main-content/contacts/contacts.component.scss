@@ -1,7 +1,7 @@
 @import './../../../styles.scss';
 
 #contactsSection {
-    @include setFlex($jc: flex-start, $ai: flex-start, $gap: 32px);
+    @include setFlex($jc: flex-start, $ai: flex-start);
 }
 
 app-contactsdetails {

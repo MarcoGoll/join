@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Contact } from '../../../shared/interfaces/contact';
 import { ContactsService } from '../../../shared/services/firebase/contacts.service';
 import { ListContactComponent } from "./list-contact/list-contact.component";
@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./contactslist.component.scss', './contactslist.responsive.scss']
 })
 export class ContactslistComponent {
+  @Input("isMobileView") isMobileView: boolean = false;
 
   testContact: Contact = {
     firstName: "test_firstName",

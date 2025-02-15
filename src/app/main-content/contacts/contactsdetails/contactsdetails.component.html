@@ -1,9 +1,12 @@
 <section class="details-content">
+    <div class="backBtn" (click)="contactService.changeMobileContactView(isMobileView)">
+        <img src="./../../../../assets/icones/arrow-left-line.svg" alt="back">
+    </div>
     <div class="headline">
         <div class="headline-content">
             <h1>Contacts</h1>
             <span class="separator">|</span>
-            <span class="subtitle">Better with a team</span> 
+            <span class="subtitle">Better with a team</span>
         </div>
     </div>
 
@@ -21,7 +24,7 @@
                     Edit
                 </button>
                 <button class="delete" alt="delete"
-                    (click)="contactService.deleteContact(contactService.currentlySelectedContact)">
+                    (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView)">
                     <img src="./assets/icones/Property 1=delete.svg" alt="delete">
                     Delete
                 </button>

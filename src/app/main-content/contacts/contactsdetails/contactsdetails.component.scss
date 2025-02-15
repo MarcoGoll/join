@@ -1,6 +1,7 @@
 @import './../../../../styles.scss';
 
 .details-content {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -146,4 +147,9 @@
     100% {
         transform: translateX(0px);
     }
+}
+
+.backBtn {
+    cursor: pointer;
+    display: none;
 }
