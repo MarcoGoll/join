@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [ListContactComponent, CommonModule],
   templateUrl: './contactslist.component.html',
-  styleUrl: './contactslist.component.scss'
+  styleUrls: ['./contactslist.component.scss', './contactslist.responsive.scss']
 })
 export class ContactslistComponent {
 
@@ -25,7 +25,7 @@ export class ContactslistComponent {
     img: ""
   }
 
-  constructor(public contactService: ContactsService) { 
+  constructor(public contactService: ContactsService) {
   }
 
   addContact(contact: Contact) {

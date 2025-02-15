@@ -10,9 +10,8 @@ import { AddcontactComponent } from './addcontact/addcontact.component';
   standalone: true,
   imports: [ContactslistComponent, ContactsdetailsComponent, HeaderComponent, NavbarComponent, AddcontactComponent],
   templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.scss'
+  styleUrls: ['./contacts.component.scss', './contacts.responsive.scss']
 })
 export class ContactsComponent {
 
-}  
- 
+}

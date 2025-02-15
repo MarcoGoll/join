@@ -11,7 +11,7 @@ export class ContactsService {
   isContactSelected: boolean = false;
 
   DUMMYCONTACTS: Contact[] = [
-    { 
+    {
       "firstName": "Lukas",
       "lastName": "Schmidt",
       "nameShortcut": "LS",
@@ -281,17 +281,6 @@ export class ContactsService {
     return doc(collection(this.firestore, colId), docId);
   }
 
-  //TODO: kann das nicht auch einfach durch getAllContacts ersetzt werden?
-  async getAllContactsAsArray(): Promise<Contact[]> {
-    let copyAllContacts: Contact[] = [];
-
-    const querySnapshot = await getDocs(this.getContactsRef());
-    querySnapshot.forEach((doc) => {
-      copyAllContacts.push(this.setContactObjectWithoutExtraId(doc.data()));
-    });
-    return copyAllContacts;
-  }
-
   getAllContacts() {
     return this.contacts;
   }
@@ -433,7 +422,7 @@ export class ContactsService {
 
   async resetDatabase() {
     //DELETE ALL EXISTING DOCUMENTS
-    let allContactsToDelete: Contact[] = await this.getAllContactsAsArray();
+    let allContactsToDelete: Contact[] = this.getAllContacts();
     allContactsToDelete.forEach(contactToDelete => {
       this.deleteContact(contactToDelete);
     });
