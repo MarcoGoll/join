@@ -42,9 +42,10 @@ export class ContactslistComponent {
   }
 
   showAddContact() {
-    const addContactModal = document.querySelector('app-addcontact') as any;
-    if (addContactModal) {
-      addContactModal.componentInstance.show();
-    }
+    // const addContactModal = document.querySelector('app-addcontact') as any;
+    // if (addContactModal) {
+    //   addContactModal.componentInstance.show();
+    // }
+    this.contactService.isAddContactViewed = true;
   }
 }

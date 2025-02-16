@@ -12,6 +12,7 @@ export class ContactsService {
 
   isContactListViewed = true;
   isContactDetailsViewed = false;
+  isAddContactViewed = false;
 
   DUMMYCONTACTS: Contact[] = [
     {
@@ -304,7 +305,7 @@ export class ContactsService {
         letters.push(contact.firstName[0].toUpperCase());
       }
     });
-    return letters;
+    return letters.sort();
   }
 
   setContactObjectWithExtraId(obj: any, id: string): Contact {
