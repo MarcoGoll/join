@@ -92,7 +92,7 @@
 .form-fields {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 8px;
     flex-grow: 1;
 }
 
@@ -225,4 +225,14 @@
         background: $clrBackground;
         border-radius: 50%;
     }
+}
+
+.errorMessageContainer {
+    height: 30px;
+}
+
+.errorMessage {
+    color: $clrErrorMessageText;
+    padding-left: 8px;
+    font-size: 12px;
 }

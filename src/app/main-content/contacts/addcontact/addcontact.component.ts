@@ -22,8 +22,9 @@ export class AddcontactComponent implements OnInit {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required]
+      phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9 ]{7,15}$/)]]
     });
+
   }
 
   show() {
@@ -34,6 +35,7 @@ export class AddcontactComponent implements OnInit {
   close() {
     // this.isVisible = false;
     this.contactService.isAddContactViewed = false;
+    this.contactForm.reset()
   }
 
   closeModal(event: MouseEvent) {
@@ -62,6 +64,9 @@ export class AddcontactComponent implements OnInit {
       this.contactService.addContact(newContact);
       this.contactForm.reset();
       this.close();
+    } else {
+      this.contactForm.markAllAsTouched();
+      return;
     }
   }
 }
