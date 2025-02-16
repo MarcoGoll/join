@@ -2,8 +2,24 @@
     <div class="backBtn" (click)="contactService.changeMobileContactView(isMobileView)">
         <img src="./assets/icones/arrow-left-line.svg" alt="back">
     </div>
-    <div class="moreBtn mobileBtn">
+    <div class="moreBtn mobileBtn" (click)="toggleMoreControlOverview()">
         <img src="./assets/icones/more_vert.svg" alt="back">
+    </div>
+    <div class="moreControlOverview"
+        [ngClass]="{'fadeInControlMore':isMoreControlOverviewShown, 'fadeOutControlMore':!isMoreControlOverviewShown}"
+        (click)="toggleMoreControlOverview()">
+        <div class="moreControlContent">
+            <div class="moreControlBtn">
+                <img src="./assets/icones/edit.svg" alt="edit">
+                <p>Edit</p>
+            </div>
+            <div class="moreControlBtn">
+                <img src="./assets/icones/delete.svg" alt="delete">
+                <p
+                    (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView)">
+                    Delete</p>
+            </div>
+        </div>
     </div>
     <div class="headline">
         <div class="headline-content">
@@ -12,6 +28,7 @@
             <span class="subtitle">Better with a team</span>
         </div>
     </div>
+
 
     <div class="contact-info" [ngClass]="{'d_none': !contactService.isContactSelected}">
         <div class="contact-headline">
@@ -23,12 +40,12 @@
             </div>
             <div class="actions">
                 <button class="edit">
-                    <img src="./assets/icones/Property 1=edit.svg" alt="edit">
+                    <img src="./assets/icones/edit.svg" alt="edit">
                     Edit
                 </button>
                 <button class="delete" alt="delete"
                     (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView)">
-                    <img src="./assets/icones/Property 1=delete.svg" alt="delete">
+                    <img src="./assets/icones/delete.svg" alt="delete">
                     Delete
                 </button>
             </div>

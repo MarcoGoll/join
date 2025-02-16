@@ -153,3 +153,64 @@
 .backBtn {
     display: none;
 }
+
+.moreControlOverview {
+    position: absolute;
+    z-index: 99;
+    transform: translateX(120%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.moreControlContent {
+    position: absolute;
+    right: 8px;
+    bottom: 16px;
+
+    @include setFlex($fd: column, $ai: flex-start, $gap: 8px);
+    width: 116px;
+    height: 100px;
+
+    background-color: $clrBaseBright;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+}
+
+.fadeInControlMore {
+    animation: fadeInControlMore 500ms ease-in-out forwards;
+}
+
+.fadeOutControlMore {
+    animation: fadeOutControlMore 500ms ease-in-out forwards;
+}
+
+@keyframes fadeInControlMore {
+    0% {
+        transform: translateX(120%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fadeOutControlMore {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+
+.moreControlBtn {
+    cursor: pointer;
+    @include setFlex($gap: 8px);
+}

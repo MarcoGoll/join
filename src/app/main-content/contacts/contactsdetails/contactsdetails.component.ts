@@ -12,8 +12,13 @@ import { Contact } from '../../../shared/interfaces/contact';
 })
 export class ContactsdetailsComponent {
   @Input("isMobileView") isMobileView: boolean = false;
+  isMoreControlOverviewShown: boolean = false
 
   constructor(public contactService: ContactsService) {
+  }
+
+  toggleMoreControlOverview() {
+    this.isMoreControlOverviewShown = !this.isMoreControlOverviewShown;
   }
 
 }
