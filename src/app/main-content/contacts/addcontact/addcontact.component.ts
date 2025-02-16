@@ -11,7 +11,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 })
 export class AddcontactComponent implements OnInit {
 
-  isVisible = true;
+  isVisible = false;
   contactForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
