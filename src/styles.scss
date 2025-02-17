@@ -23,7 +23,14 @@
 body {
     line-height: 1.5;
     font-family: $font-family-base;
+    font-size: $fSDefault;
     background-color: $clrBackground;
+}
+
+@media (max-width: 1023px) {
+    body {
+        font-size: $fSMobileDefault;
+    }
 }
 
 /* Improve media defaults*/

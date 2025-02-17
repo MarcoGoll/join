@@ -21,10 +21,15 @@
     padding: 8px;
     border: 2px solid $clrBaseBright;
     color: $clrBaseBright;
+
+    p {
+        font-size: 12px;
+    }
 }
 
 .contactEmail {
     color: $clrHighlight2;
+    font-size: $fSTer;
 }
 
 .selected {

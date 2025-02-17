@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './list-contact.component.html',
-  styleUrl: './list-contact.component.scss'
+  styleUrls: ['./list-contact.component.scss', 'list-contact.resonsive.scss']
 })
 export class ListContactComponent {
   @Input("isMobileView") isMobileView: boolean = false;

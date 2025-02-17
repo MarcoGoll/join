@@ -1,0 +1,19 @@
+@import './../../../../../styles.scss';
+@media (max-width: 1023px) {}
+
+@media (max-width: 450px) {
+
+    .listContactContainer {
+        margin: 8px;
+        padding: 8px;
+    }
+
+    .contactName,
+    .contactEmail {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+}

@@ -6,10 +6,10 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, LegalNoticeComponent,PrivacyPolicyComponent],
+  imports: [RouterLink, LegalNoticeComponent, PrivacyPolicyComponent],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrls: ['./navbar.component.scss', './navbar.responsive.scss']
 })
 export class NavbarComponent {
- 
+
 }

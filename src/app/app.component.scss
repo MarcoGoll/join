@@ -13,6 +13,7 @@ app-main-content {
 .mainAreaContent {
     position: relative;
     @include setFlex($jc: flex-start, $ai: stretch);
+    min-height: 100vh;
 }
 
 .flex1 {

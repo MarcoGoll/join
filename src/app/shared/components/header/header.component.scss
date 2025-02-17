@@ -69,9 +69,6 @@ header {
     padding: 0;
 }
 
-@media (max-width: 1023px) {
-    header {
-        left: 0;
-    }
-
+.logoLink {
+    display: none;
 }

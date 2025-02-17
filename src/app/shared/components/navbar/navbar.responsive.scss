@@ -1,0 +1,72 @@
+@import './../../../../styles.scss';
+
+@media (max-width: 1023px) {
+    section {
+        position: absolute;
+        z-index: 1;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: auto;
+        min-height: 0;
+        padding: 0;
+
+        >div {
+            display: none;
+        }
+
+        >nav {
+            padding: 0;
+            flex-direction: row;
+            width: 100%;
+            padding: 8px 16px;
+            justify-content: space-evenly;
+            gap: 16px;
+
+            >a {
+                padding: 0;
+
+                >div {
+                    flex-direction: column;
+                    padding: 0;
+                    justify-content: center;
+                    width: auto;
+                    gap: 8px;
+
+                    >p {
+                        margin: 0;
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    .logoContainer {
+        display: none;
+    }
+}
+
+@media (max-width: 450px) {
+    section {
+        >nav {
+            >a {
+                >div {
+                    >img {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    >p {
+                        font-weight: 400;
+                        font-size: 14px;
+                        margin: 0px;
+                        ;
+                    }
+                }
+            }
+        }
+    }
+}
