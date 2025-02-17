@@ -1,8 +1,21 @@
 section{
-    margin-left: 250px;
     margin-top: 96px;
     padding: 48px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    >div{
+        >span{
+            margin-bottom: 24px;
+        }
+    }
 }
+
+h2{
+    margin-bottom: 36px;
+}
+
+h3{
+    margin-bottom: 24px;
+}
+

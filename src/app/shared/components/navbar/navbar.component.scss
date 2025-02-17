@@ -2,15 +2,9 @@
 
 section {
     position: sticky;
-<<<<<<< HEAD
-    top:0;
-    left: 0;
-    bottom: 0;
-=======
     top: 0;
     // left: 0;
     // bottom: 0;
->>>>>>> fd99e29e9992cbbe960ee659a0560df75e7fea2f
     background: #2A3647;
     width: 250px;
     min-height: 100vh;
@@ -20,7 +14,7 @@ section {
     padding-top: 64px;
     >nav {
         padding-top: 128px;
-        padding-bottom: 250px;
+        padding-bottom: 150px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -73,3 +67,11 @@ section {
         }
     }
 }
+
+// @media (max-width: 1023px){
+//     section{
+//         position: absolute;
+//         bottom: 0;
+//         width: 1000px;
+//     }
+// }
