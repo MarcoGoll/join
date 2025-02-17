@@ -1,0 +1,76 @@
+<div class="modal-overlay overlay" [class.show]="contactService.isEditContactViewed" (click)="closeModal($event)">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img src="./assets/img/join_logo.png" alt="Join Logo" class="logo">
+            <div class="title-container">
+                <h1>Add contact</h1>
+                <span class="subtitle">Tasks are better with a team!</span>
+                <div class="blue-line"></div>
+            </div>
+        </div>
+
+        <form id="myForm" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="form-content">
+            <div class="avatar-container">
+                <img src="./assets/icones/Group 13.svg" alt="Person Icon" class="person-icon">
+            </div>
+
+            <div class="form-fields">
+                <div class="inputanderror-container">
+                    <div class="input-container">
+                        <input #name="ngModel" [(ngModel)]="contactService.currentlySelectedContact.fullName"
+                            type="text" id="name" name="name" placeholder="Name" class="input-field" required>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!name.valid && name.touched) {
+                        <p class="errorMessage">Please enter a name</p>
+                        }
+                    </div>
+
+                    <div class="inputanderror-container">
+                        <div class="input-container">
+                            <input #email="ngModel" [(ngModel)]="contactService.currentlySelectedContact.email"
+                                id="email" name="email" type="email" placeholder="Email" class="input-field" required
+                                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+                            <img src="./assets/icones/mail (3).svg" alt="Email" class="input-icon">
+                        </div>
+                        <div class="errorMessageContainer">
+                            @if (!email.valid && email.touched) {
+                            <p class="errorMessage">Please enter a valid email</p>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="inputanderror-container">
+                        <div class="input-container">
+                            <input #phone="ngModel" [(ngModel)]="contactService.currentlySelectedContact.phone"
+                                id="phone" name="phone" type="phone" placeholder="Phone" class="input-field" required
+                                pattern="^(\+49|0)[1-9][0-9]{6,14}$">
+                            <img src="./assets/icones/call.svg" alt="Phone" class="input-icon">
+                        </div>
+                        <div class="errorMessageContainer">
+                            @if (!phone.valid && phone.touched) {
+                            <p class="errorMessage">Please enter a valid phone number</p>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button type="button" class="cancel-btn"
+                            (click)="close(); contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView)">
+                            Delete
+                            <img src="./assets/icones/close.svg" alt="Cancel">
+                        </button>
+                        <button type="submit" class="create-btn">
+                            Save
+                            <img src="./assets/icones/check.svg" alt="Create">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <button class="close-btn" (click)="close()">
+            <img src="./assets/icones/close.svg" alt="Close">
+        </button>
+    </div>
+</div>

@@ -63,6 +63,7 @@ export class AddcontactComponent implements OnInit {
       let newContact: Contact = {
         "firstName": firstName,
         "lastName": lastName,
+        "fullName": firstName + " " + lastName,
         "nameShortcut": this.contactService.getNameShortcut(firstName, lastName),
         "nameShortcutColorCode": this.contactService.getNextColorCode(),
         "email": this.contactForm.value.email,

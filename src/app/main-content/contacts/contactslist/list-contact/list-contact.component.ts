@@ -17,6 +17,7 @@ export class ListContactComponent {
     id: "",
     firstName: "",
     lastName: "",
+    fullName: "",
     nameShortcut: "",
     nameShortcutColorCode: 0,
     email: "",

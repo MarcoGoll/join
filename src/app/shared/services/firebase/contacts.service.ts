@@ -13,11 +13,13 @@ export class ContactsService {
   isContactListViewed = true;
   isContactDetailsViewed = false;
   isAddContactViewed = false;
+  isEditContactViewed = false;
 
   DUMMYCONTACTS: Contact[] = [
     {
       "firstName": "Lukas",
       "lastName": "Schmidt",
+      "fullName": "Lukas Schmidt",
       "nameShortcut": "LS",
       "nameShortcutColorCode": 1,
       "email": "lukas.schmidt@gmail.de",
@@ -25,222 +27,217 @@ export class ContactsService {
       "img": ""
     },
     {
-      "firstName": "Laura",
-      "lastName": "Müller",
-      "nameShortcut": "LM",
-      "nameShortcutColorCode": 2,
-      "email": "laura.mueller@gmail.de",
-      "phone": "+4915112345678",
-      "img": ""
-    },
-    {
-      "firstName": "Ben",
+      "firstName": "Lara",
       "lastName": "Schneider",
-      "nameShortcut": "BS",
-      "nameShortcutColorCode": 3,
-      "email": "ben.schneider@gmail.de",
-      "phone": "+4915223456789",
-      "img": ""
-    },
-    {
-      "firstName": "Benjamin",
-      "lastName": "Fischer",
-      "nameShortcut": "BF",
-      "nameShortcutColorCode": 4,
-      "email": "benjamin.fischer@gmail.de",
-      "phone": "+4915334567890",
-      "img": ""
-    },
-    {
-      "firstName": "David",
-      "lastName": "Wagner",
-      "nameShortcut": "DW",
-      "nameShortcutColorCode": 5,
-      "email": "david.wagner@gmail.de",
-      "phone": "+4915445678901",
-      "img": ""
-    },
-    {
-      "firstName": "Daniel",
-      "lastName": "Becker",
-      "nameShortcut": "DB",
-      "nameShortcutColorCode": 6,
-      "email": "daniel.becker@gmail.de",
-      "phone": "+4915556789012",
-      "img": ""
-    },
-    {
-      "firstName": "Felix",
-      "lastName": "Hoffmann",
-      "nameShortcut": "FH",
-      "nameShortcutColorCode": 7,
-      "email": "felix.hoffmann@gmail.de",
-      "phone": "+4915667890123",
-      "img": ""
-    },
-    {
-      "firstName": "Franziska",
-      "lastName": "Schäfer",
-      "nameShortcut": "FS",
-      "nameShortcutColorCode": 8,
-      "email": "franziska.schaefer@gmail.de",
-      "phone": "+4915778901234",
-      "img": ""
-    },
-    {
-      "firstName": "Hanna",
-      "lastName": "Koch",
-      "nameShortcut": "HK",
-      "nameShortcutColorCode": 9,
-      "email": "hanna.koch@gmail.de",
-      "phone": "+4915889012345",
-      "img": ""
-    },
-    {
-      "firstName": "Hans",
-      "lastName": "Bauer",
-      "nameShortcut": "HB",
-      "nameShortcutColorCode": 10,
-      "email": "hans.bauer@gmail.de",
-      "phone": "+4915990123456",
-      "img": ""
-    },
-    {
-      "firstName": "Jonas",
-      "lastName": "Lehmann",
-      "nameShortcut": "JL",
-      "nameShortcutColorCode": 11,
-      "email": "jonas.lehmann@gmail.de",
-      "phone": "+4915101234567",
-      "img": ""
-    },
-    {
-      "firstName": "Jana",
-      "lastName": "Schröder",
-      "nameShortcut": "JS",
-      "nameShortcutColorCode": 12,
-      "email": "jana.schroeder@gmail.de",
-      "phone": "+4915212345678",
+      "fullName": "Lara Schneider",
+      "nameShortcut": "LS",
+      "nameShortcutColorCode": 2,
+      "email": "lara.schneider@gmail.de",
+      "phone": "+4915234567891",
       "img": ""
     },
     {
       "firstName": "Leon",
-      "lastName": "Meier",
-      "nameShortcut": "LM",
-      "nameShortcutColorCode": 13,
-      "email": "leon.meier@gmail.de",
-      "phone": "+4915323456789",
-      "img": ""
-    },
-    {
-      "firstName": "Lara",
-      "lastName": "Klein",
-      "nameShortcut": "LK",
-      "nameShortcutColorCode": 14,
-      "email": "lara.klein@gmail.de",
-      "phone": "+4915434567890",
-      "img": ""
-    },
-    {
-      "firstName": "Niklas",
-      "lastName": "Wolf",
-      "nameShortcut": "NW",
-      "nameShortcutColorCode": 15,
-      "email": "niklas.wolf@gmail.de",
-      "phone": "+4915545678901",
-      "img": ""
-    },
-    {
-      "firstName": "Nina",
-      "lastName": "Neumann",
-      "nameShortcut": "NN",
-      "nameShortcutColorCode": 1,
-      "email": "nina.neumann@gmail.de",
-      "phone": "+4915656789012",
-      "img": ""
-    },
-    {
-      "firstName": "Paul",
-      "lastName": "Zimmermann",
-      "nameShortcut": "PZ",
-      "nameShortcutColorCode": 2,
-      "email": "paul.zimmermann@gmail.de",
-      "phone": "+4915767890123",
-      "img": ""
-    },
-    {
-      "firstName": "Patrick",
-      "lastName": "Hartmann",
-      "nameShortcut": "PH",
+      "lastName": "Schuster",
+      "fullName": "Leon Schuster",
+      "nameShortcut": "LS",
       "nameShortcutColorCode": 3,
-      "email": "patrick.hartmann@gmail.de",
-      "phone": "+4915878901234",
+      "email": "leon.schuster@gmail.de",
+      "phone": "+4915234567892",
       "img": ""
     },
     {
-      "firstName": "Rebecca",
-      "lastName": "Krüger",
-      "nameShortcut": "RK",
+      "firstName": "Laura",
+      "lastName": "Sommer",
+      "fullName": "Laura Sommer",
+      "nameShortcut": "LS",
       "nameShortcutColorCode": 4,
-      "email": "rebecca.krueger@gmail.de",
-      "phone": "+4915989012345",
+      "email": "laura.sommer@gmail.de",
+      "phone": "+4915234567893",
       "img": ""
     },
     {
-      "firstName": "Robert",
-      "lastName": "Weber",
-      "nameShortcut": "RW",
+      "firstName": "Max",
+      "lastName": "Müller",
+      "fullName": "Max Müller",
+      "nameShortcut": "MM",
       "nameShortcutColorCode": 5,
-      "email": "robert.weber@gmail.de",
-      "phone": "+4915090123456",
+      "email": "max.mueller@gmail.de",
+      "phone": "+4915234567894",
+      "img": ""
+    },
+    {
+      "firstName": "Mia",
+      "lastName": "Meier",
+      "fullName": "Mia Meier",
+      "nameShortcut": "MM",
+      "nameShortcutColorCode": 6,
+      "email": "mia.meier@gmail.de",
+      "phone": "+4915234567895",
+      "img": ""
+    },
+    {
+      "firstName": "Moritz",
+      "lastName": "Maier",
+      "fullName": "Moritz Maier",
+      "nameShortcut": "MM",
+      "nameShortcutColorCode": 7,
+      "email": "moritz.maier@gmail.de",
+      "phone": "+4915234567896",
+      "img": ""
+    },
+    {
+      "firstName": "Marie",
+      "lastName": "Mayer",
+      "fullName": "Marie Mayer",
+      "nameShortcut": "MM",
+      "nameShortcutColorCode": 8,
+      "email": "marie.mayer@gmail.de",
+      "phone": "+4915234567897",
+      "img": ""
+    },
+    {
+      "firstName": "Sebastian",
+      "lastName": "Schulz",
+      "fullName": "Sebastian Schulz",
+      "nameShortcut": "SS",
+      "nameShortcutColorCode": 9,
+      "email": "sebastian.schulz@gmail.de",
+      "phone": "+4915234567898",
+      "img": ""
+    },
+    {
+      "firstName": "Sarah",
+      "lastName": "Schwarz",
+      "fullName": "Sarah Schwarz",
+      "nameShortcut": "SS",
+      "nameShortcutColorCode": 10,
+      "email": "sarah.schwarz@gmail.de",
+      "phone": "+4915234567899",
+      "img": ""
+    },
+    {
+      "firstName": "Stefan",
+      "lastName": "Seidel",
+      "fullName": "Stefan Seidel",
+      "nameShortcut": "SS",
+      "nameShortcutColorCode": 11,
+      "email": "stefan.seidel@gmail.de",
+      "phone": "+4915234567800",
+      "img": ""
+    },
+    {
+      "firstName": "Sophie",
+      "lastName": "Schuster",
+      "fullName": "Sophie Schuster",
+      "nameShortcut": "SS",
+      "nameShortcutColorCode": 12,
+      "email": "sophie.schuster@gmail.de",
+      "phone": "+4915234567801",
+      "img": ""
+    },
+    {
+      "firstName": "Daniel",
+      "lastName": "Dreyer",
+      "fullName": "Daniel Dreyer",
+      "nameShortcut": "DD",
+      "nameShortcutColorCode": 13,
+      "email": "daniel.dreyer@gmail.de",
+      "phone": "+4915234567802",
+      "img": ""
+    },
+    {
+      "firstName": "David",
+      "lastName": "Döring",
+      "fullName": "David Döring",
+      "nameShortcut": "DD",
+      "nameShortcutColorCode": 14,
+      "email": "david.doering@gmail.de",
+      "phone": "+4915234567803",
+      "img": ""
+    },
+    {
+      "firstName": "Diana",
+      "lastName": "Degenhardt",
+      "fullName": "Diana Degenhardt",
+      "nameShortcut": "DD",
+      "nameShortcutColorCode": 15,
+      "email": "diana.degenhardt@gmail.de",
+      "phone": "+4915234567804",
+      "img": ""
+    },
+    {
+      "firstName": "Dennis",
+      "lastName": "Dahlmann",
+      "fullName": "Dennis Dahlmann",
+      "nameShortcut": "DD",
+      "nameShortcutColorCode": 1,
+      "email": "dennis.dahlmann@gmail.de",
+      "phone": "+4915234567805",
+      "img": ""
+    },
+    {
+      "firstName": "Tobias",
+      "lastName": "Thiele",
+      "fullName": "Tobias Thiele",
+      "nameShortcut": "TT",
+      "nameShortcutColorCode": 2,
+      "email": "tobias.thiele@gmail.de",
+      "phone": "+4915234567806",
       "img": ""
     },
     {
       "firstName": "Thomas",
-      "lastName": "Lange",
-      "nameShortcut": "TL",
+      "lastName": "Timmermann",
+      "fullName": "Thomas Timmermann",
+      "nameShortcut": "TT",
+      "nameShortcutColorCode": 3,
+      "email": "thomas.timmermann@gmail.de",
+      "phone": "+4915234567807",
+      "img": ""
+    },
+    {
+      "firstName": "Tanja",
+      "lastName": "Teschner",
+      "fullName": "Tanja Teschner",
+      "nameShortcut": "TT",
+      "nameShortcutColorCode": 4,
+      "email": "tanja.teschner@gmail.de",
+      "phone": "+4915234567808",
+      "img": ""
+    },
+    {
+      "firstName": "Tim",
+      "lastName": "Teichert",
+      "fullName": "Tim Teichert",
+      "nameShortcut": "TT",
+      "nameShortcutColorCode": 5,
+      "email": "tim.teichert@gmail.de",
+      "phone": "+4915234567809",
+      "img": ""
+    },
+    {
+      "firstName": "Julia",
+      "lastName": "Jäger",
+      "fullName": "Julia Jäger",
+      "nameShortcut": "JJ",
       "nameShortcutColorCode": 6,
-      "email": "thomas.lange@gmail.de",
-      "phone": "+4915201234567",
+      "email": "julia.jaeger@gmail.de",
+      "phone": "+4915234567810",
       "img": ""
     },
     {
-      "firstName": "Tina",
-      "lastName": "Schulz",
-      "nameShortcut": "TS",
+      "firstName": "Johannes",
+      "lastName": "Jung",
+      "fullName": "Johannes Jung",
+      "nameShortcut": "JJ",
       "nameShortcutColorCode": 7,
-      "email": "tina.schulz@gmail.de",
-      "phone": "+4915312345678",
-      "img": ""
-    },
-    {
-      "firstName": "Vanessa",
-      "lastName": "Bergmann",
-      "nameShortcut": "VB",
-      "nameShortcutColorCode": 8,
-      "email": "vanessa.bergmann@gmail.de",
-      "phone": "+4915423456789",
-      "img": ""
-    },
-    {
-      "firstName": "Vincent",
-      "lastName": "Richter",
-      "nameShortcut": "VR",
-      "nameShortcutColorCode": 9,
-      "email": "vincent.richter@gmail.de",
-      "phone": "+4915534567890",
-      "img": ""
-    },
-    {
-      "firstName": "Xenia",
-      "lastName": "Schuster",
-      "nameShortcut": "XS",
-      "nameShortcutColorCode": 10,
-      "email": "xenia.schuster@gmail.de",
-      "phone": "+4915645678901",
+      "email": "johannes.jung@gmail.de",
+      "phone": "+4915234567811",
       "img": ""
     }
   ]
+
 
     ;
   firestore: Firestore = inject(Firestore);
@@ -249,14 +246,16 @@ export class ContactsService {
 
   unsubContacts;
   currentlySelectedContact: Contact = {
-    "firstName": "initialSelectedUser",
-    "lastName": "initialSelectedUser",
+    "firstName": "i_firstName",
+    "lastName": "i_lastName",
+    "fullName": "i_fullName",
     "nameShortcut": "II",
     "nameShortcutColorCode": 1,
     "email": "initialSelectedUser@gmail.de",
     "phone": "+4915234567890",
     "img": ""
   };
+
   currentColorCode = 0;
 
 
@@ -313,6 +312,7 @@ export class ContactsService {
       id: id,
       firstName: obj.firstName || '',
       lastName: obj.lastName || '',
+      fullName: obj.fullName || '',
       nameShortcut: obj.nameShortcut || '',
       nameShortcutColorCode: obj.nameShortcutColorCode || '',
       email: obj.email || '',
@@ -326,6 +326,7 @@ export class ContactsService {
       id: obj.id || '',
       firstName: obj.firstName || '',
       lastName: obj.lastName || '',
+      fullName: obj.fullName || '',
       nameShortcut: obj.nameShortcut || '',
       nameShortcutColorCode: obj.nameShortcutColorCode || '',
       email: obj.email || '',
@@ -374,6 +375,8 @@ export class ContactsService {
   async updateContact(contact: Contact) {
     if (contact.id) {
       let docRef = this.getSingleDocRef('contacts', contact.id);
+      console.log("Ich bin der Contact:", contact)
+      console.log("Ich bin die Ref: ", docRef);
       await updateDoc(docRef, this.getCleanJson(contact))  //Wir können hier nicht einfach note selbst nehmen da dies eine "starke typisierung ist" und wir ein "standard" brauchen? @Freddy was heißt das | 
         //direkt note geht nicht, weil es eine ID haben könnte. Unsere Struktur in der Datenbank hat aber kein Feld ID. Die id gehört zum Dokument ist aber kein Feld. Wir müssen hier also ein JSON ohne ID erzeugen, daher getCleanJson()
         .catch((err) => {
@@ -422,8 +425,12 @@ export class ContactsService {
     } else {
       return this.currentColorCode + 1;
     }
-
   }
+
+  getfullNameOfCurrentlySelectedContact() {
+    return this.currentlySelectedContact.firstName + " " + this.currentlySelectedContact.lastName;
+  }
+
 
   // ##################################################### 
   // Reset DB

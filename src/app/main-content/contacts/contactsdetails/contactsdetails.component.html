@@ -9,7 +9,7 @@
         [ngClass]="{'fadeInControlMore':isMoreControlOverviewShown, 'fadeOutControlMore':!isMoreControlOverviewShown && !isInitialLoad}"
         (click)="setInitialValues()">
         <div class="moreControlContent">
-            <div class="moreControlBtn">
+            <div class="moreControlBtn" (click)="showEditContact()">
                 <img src="./assets/icones/edit.svg" alt="edit">
                 <p>Edit</p>
             </div>
@@ -36,11 +36,10 @@
             <div class="avatar-wrapper">
                 <div class="avatar backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
                     {{contactService.currentlySelectedContact.nameShortcut}}</div>
-                <h2>{{contactService.currentlySelectedContact.firstName}}
-                    {{contactService.currentlySelectedContact.lastName}}</h2>
+                <h2>{{contactService.currentlySelectedContact.fullName}}</h2>
             </div>
             <div class="actions">
-                <button class="edit">
+                <button class="edit" (click)="showEditContact()">
                     <img src="./assets/icones/edit.svg" alt="edit">
                     Edit
                 </button>

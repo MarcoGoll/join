@@ -19,6 +19,7 @@ export class ContactslistComponent {
   testContact: Contact = {
     firstName: "test_firstName",
     lastName: "test_lastName",
+    fullName: "test_fullName",
     nameShortcut: "TT",
     nameShortcutColorCode: 1,
     email: "test@email.de",
@@ -42,10 +43,8 @@ export class ContactslistComponent {
   }
 
   showAddContact() {
-    // const addContactModal = document.querySelector('app-addcontact') as any;
-    // if (addContactModal) {
-    //   addContactModal.componentInstance.show();
-    // }
     this.contactService.isAddContactViewed = true;
   }
+
+
 }

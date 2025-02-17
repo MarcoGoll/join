@@ -4,6 +4,7 @@ import { ContactsdetailsComponent } from './contactsdetails/contactsdetails.comp
 import { AddcontactComponent } from './addcontact/addcontact.component';
 import { CommonModule } from '@angular/common';
 import { ContactsService } from '../../shared/services/firebase/contacts.service';
+import { EditcontactComponent } from "./editcontact/editcontact.component";
 
 @Component({
   selector: 'app-contacts',
@@ -12,7 +13,9 @@ import { ContactsService } from '../../shared/services/firebase/contacts.service
     ContactslistComponent,
     ContactsdetailsComponent,
     AddcontactComponent,
-    CommonModule],
+    CommonModule,
+    EditcontactComponent
+  ],
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss', './contacts.responsive.scss']
 })
