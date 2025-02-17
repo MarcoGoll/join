@@ -13,11 +13,7 @@ import { Contact } from '../../../shared/interfaces/contact';
 })
 export class AddcontactComponent implements OnInit {
 
-<<<<<<< HEAD
-  isVisible = true;
-=======
   // isVisible = false;
->>>>>>> ff73bc584feb6999252a14090827f105d971d492
   contactForm!: FormGroup;
 
   constructor(private fb: FormBuilder, public contactService: ContactsService) { }
