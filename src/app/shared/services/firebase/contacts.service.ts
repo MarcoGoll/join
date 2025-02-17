@@ -450,6 +450,7 @@ export class ContactsService {
       else {
         this.isContactListViewed = true;
         this.isContactDetailsViewed = false;
+        this.isContactSelected = false;
       }
     }
   }
