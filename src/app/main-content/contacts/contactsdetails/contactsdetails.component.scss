@@ -1,6 +1,7 @@
 @import './../../../../styles.scss';
 
 .details-content {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -10,26 +11,6 @@
     padding: 64px 32px;
     overflow: hidden;
 
-    .headline {
-        .headline-content {
-            @include setFlex($jc: flex-start, $gap: 20px);
-
-            h1 {
-                font-size: $fsH4;
-                color: $clrBaseDark;
-            }
-
-            .separator {
-                color: $clrHighlight2;
-                font-size: $fsH2;
-            }
-
-            .subtitle {
-                color: $clrBaseDark;
-                font-size: $fsH3;
-            }
-        }
-    }
 
     .contact-info {
         transform: translateX(1300px);
@@ -46,8 +27,6 @@
             .avatar-wrapper {
                 min-height: 120px;
                 position: relative;
-
-
 
                 .avatar {
                     position: absolute;
@@ -67,6 +46,7 @@
                     padding-left: 120px;
                     padding-top: 70px;
                     font-weight: 500;
+                    white-space: nowrap;
                 }
             }
 
@@ -138,6 +118,32 @@
     }
 }
 
+.headline-content {
+    @include setFlex($jc: flex-start, $gap: 16px);
+
+    h1 {
+        font-size: $fsH4;
+        color: $clrBaseDark;
+    }
+
+    .subtitle {
+        color: $clrBaseDark;
+        font-size: $fsH3;
+    }
+}
+
+.separatorVertical {
+    color: $clrHighlight2;
+    font-size: $fsH2;
+}
+
+.separatorHorizontal {
+    display: none;
+    width: 90px;
+    border-top: 2px solid $clrHighlight2 ;
+
+}
+
 @keyframes fadeIn {
     0% {
         transform: translateX(1300px);
@@ -146,4 +152,70 @@
     100% {
         transform: translateX(0px);
     }
+}
+
+.moreBtn,
+.backBtn {
+    display: none;
+}
+
+.moreControlOverview {
+    position: absolute;
+    z-index: 99;
+    transform: translateX(120%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.moreControlContent {
+    position: absolute;
+    right: 8px;
+    bottom: 16px;
+
+    @include setFlex($fd: column, $ai: flex-start, $gap: 8px);
+    width: 116px;
+    height: 100px;
+
+    background-color: $clrBaseBright;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 10px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+}
+
+.fadeInControlMore {
+    animation: fadeInControlMore 500ms ease-in-out forwards;
+}
+
+.fadeOutControlMore {
+    animation: fadeOutControlMore 500ms ease-in-out forwards;
+}
+
+@keyframes fadeInControlMore {
+    0% {
+        transform: translateX(120%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fadeOutControlMore {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+
+.moreControlBtn {
+    cursor: pointer;
+    @include setFlex($gap: 8px);
 }

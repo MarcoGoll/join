@@ -1,4 +1,7 @@
 <div class="contactlist">
+    <div class="btnNewContactMobile mobileBtn" (click)="showAddContact()">
+        <img src="./assets/icones/person_add.svg" alt="Add">
+    </div>
     <div class="controlContainer">
         <div class="testBtns">
             <button class="controlBTN" (click)="addContact(testContact)">add one Testuser</button>
@@ -14,9 +17,9 @@
         <p class="contactsLetter">{{letter}}</p>
         <div class="contactsLetterContainer">
             @for (contact of contactService.getAllContactsByLetter(letter); track $index) {
-            <app-list-contact [contact]="contact"></app-list-contact>
+            <app-list-contact [isMobileView]="isMobileView" [contact]="contact"></app-list-contact>
             }
         </div>
         }
-    </div>  
+    </div>
 </div>

@@ -1,0 +1,30 @@
+@import './../../../../styles.scss';
+
+@media (min-width: 1024px) {
+
+    // TODO: Grenzen im Team besprechen
+    .btnNewContactMobile {
+        display: none;
+    }
+}
+
+@media (max-width: 1023px) {
+
+    // TODO: Grenzen im Team besprechen
+    .btnNewContact {
+        display: none;
+    }
+
+    .contactsLettersContainer {
+        height: 100%;
+    }
+
+    .controlContainer {
+        height: 0px;
+        padding: 0;
+    }
+
+    .contactlist {
+        gap: 0;
+    }
+}

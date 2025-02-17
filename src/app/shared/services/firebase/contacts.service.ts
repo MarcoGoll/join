@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { HostListener, inject, Injectable } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
 import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapshot, orderBy, query, updateDoc } from '@angular/fire/firestore';
 import { IfStmt } from '@angular/compiler';
@@ -10,8 +10,12 @@ export class ContactsService {
 
   isContactSelected: boolean = false;
 
+  isContactListViewed = true;
+  isContactDetailsViewed = false;
+  isAddContactViewed = false;
+
   DUMMYCONTACTS: Contact[] = [
-    { 
+    {
       "firstName": "Lukas",
       "lastName": "Schmidt",
       "nameShortcut": "LS",
@@ -260,6 +264,7 @@ export class ContactsService {
     this.unsubContacts = this.subContactsList();
   }
 
+
   // ##################################################### 
   // Connection
   // #####################################################
@@ -281,17 +286,6 @@ export class ContactsService {
     return doc(collection(this.firestore, colId), docId);
   }
 
-  //TODO: kann das nicht auch einfach durch getAllContacts ersetzt werden?
-  async getAllContactsAsArray(): Promise<Contact[]> {
-    let copyAllContacts: Contact[] = [];
-
-    const querySnapshot = await getDocs(this.getContactsRef());
-    querySnapshot.forEach((doc) => {
-      copyAllContacts.push(this.setContactObjectWithoutExtraId(doc.data()));
-    });
-    return copyAllContacts;
-  }
-
   getAllContacts() {
     return this.contacts;
   }
@@ -311,7 +305,7 @@ export class ContactsService {
         letters.push(contact.firstName[0].toUpperCase());
       }
     });
-    return letters;
+    return letters.sort();
   }
 
   setContactObjectWithExtraId(obj: any, id: string): Contact {
@@ -415,7 +409,11 @@ export class ContactsService {
   // Automated Data for addContact
   // #####################################################
   getNameShortcut(firstName: string, lastName: string) {
-    return firstName[0].toLocaleUpperCase() + lastName[0].toLocaleUpperCase();
+    if (lastName == "") {
+      return firstName[0].toLocaleUpperCase();
+    } else {
+      return firstName[0].toLocaleUpperCase() + lastName[0].toLocaleUpperCase();
+    }
   }
 
   getNextColorCode() {
@@ -433,7 +431,7 @@ export class ContactsService {
 
   async resetDatabase() {
     //DELETE ALL EXISTING DOCUMENTS
-    let allContactsToDelete: Contact[] = await this.getAllContactsAsArray();
+    let allContactsToDelete: Contact[] = this.getAllContacts();
     allContactsToDelete.forEach(contactToDelete => {
       this.deleteContact(contactToDelete);
     });
@@ -442,5 +440,22 @@ export class ContactsService {
     this.DUMMYCONTACTS.forEach(dummyContact => {
       this.addContact(dummyContact)
     });
+  }
+
+  // ##################################################### 
+  // Mobile Views
+  // #####################################################
+  changeMobileContactView(isMobileView: boolean) {
+    if (isMobileView) {
+      if (this.isContactListViewed) {
+        this.isContactListViewed = false;
+        this.isContactDetailsViewed = true;
+      }
+      else {
+        this.isContactListViewed = true;
+        this.isContactDetailsViewed = false;
+        this.isContactSelected = false;
+      }
+    }
   }
 }

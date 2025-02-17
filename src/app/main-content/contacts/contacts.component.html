@@ -1,5 +1,7 @@
 <section id="contactsSection">
-    <app-contactslist></app-contactslist>
-    <app-contactsdetails></app-contactsdetails>
+    <app-contactslist [isMobileView]="isMobileView"
+        [ngClass]="{'d_none': isMobileView && !contactService.isContactListViewed}"></app-contactslist>
+    <app-contactsdetails [isMobileView]="isMobileView"
+        [ngClass]="{'d_none': isMobileView && !contactService.isContactDetailsViewed}"></app-contactsdetails>
     <app-addcontact></app-addcontact>
-</section>   
+</section>

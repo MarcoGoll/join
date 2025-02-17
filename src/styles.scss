@@ -42,7 +42,7 @@ select {
 }
 
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
 }
 
 .contentLimit {
@@ -53,6 +53,13 @@ html {
 
 .d_none {
     display: none !important;
+}
+
+.mobileBtn {
+    cursor: pointer;
+    border-radius: 500px;
+    background-color: $clrHighlight1;
+    padding: 12px
 }
 
 .backgroundColor1 {

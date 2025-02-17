@@ -3,9 +3,6 @@
 app-main-content {
     @include setFlex();
 
-    app-contacts {
-        flex: 1;
-    }
 }
 
 .mainArea {
@@ -16,4 +13,8 @@ app-main-content {
 .mainAreaContent {
     position: relative;
     @include setFlex($jc: flex-start, $ai: stretch);
+}
+
+.flex1 {
+    flex: 1;
 }
