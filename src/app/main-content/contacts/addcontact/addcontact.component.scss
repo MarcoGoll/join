@@ -226,3 +226,135 @@
         border-radius: 50%;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .modal-overlay {
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .modal-content {
+        width: 100%;
+        height: auto;
+        max-width: 380px;
+        flex-direction: column;
+        border-radius: 20px;
+        margin: 0;
+    }
+
+    .modal-header {
+        width: 100%;
+        padding: 25px 20px;
+        border-radius: 20px 20px 0 0;
+        align-items: flex-start;
+        min-height: 280px;
+        gap: 8px;
+
+        .logo {
+            display: none;
+        }
+
+        .title-container {
+            gap: 8px;
+
+            h1 {
+                font-size: 32px;
+                line-height: 1.2;
+                margin-bottom: 4px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .blue-line {
+                margin-top: 4px;
+            }
+        }
+    }
+
+    .form-content {
+        width: 100%;
+        padding: 0 px 40px;
+        margin-top: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .avatar-container {
+        margin: -100px 0 24px 0;
+        width: 120px;
+        height: 120px;
+        background: #F5F5F5;
+
+        .person-icon {
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+    .form-fields {
+        width: 100%;
+        gap: 16px;
+        max-width: none;
+    }
+
+    .input-container {
+        max-width: 100%;
+
+        .input-field {
+            padding: 8px 40px 8px 16px;
+            height: 40px;
+        }
+
+        .input-icon {
+            right: 12px;
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+    }
+
+    .button-container {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center; 
+
+        .cancel-btn {
+            display: none;
+        }
+
+        .create-btn {
+            width: auto;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 10px;
+            background: $clrBaseDark;
+
+            &:hover {
+                background: $clrBaseDark;
+            }
+        }
+
+        
+    }
+
+    .close-btn {
+        top: 24px;
+        right: 24px;
+        padding: 4px;
+
+        &:hover {
+            background: none;      
+        }
+
+        img {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+            filter: brightness(0) invert(1);
+        }
+    }
+}
