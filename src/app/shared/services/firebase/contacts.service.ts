@@ -12,6 +12,7 @@ export class ContactsService {
 
   isContactListViewed = true;
   isContactDetailsViewed = false;
+  isAddContactViewed = false;
 
   DUMMYCONTACTS: Contact[] = [
     {
@@ -304,7 +305,7 @@ export class ContactsService {
         letters.push(contact.firstName[0].toUpperCase());
       }
     });
-    return letters;
+    return letters.sort();
   }
 
   setContactObjectWithExtraId(obj: any, id: string): Contact {
@@ -408,7 +409,11 @@ export class ContactsService {
   // Automated Data for addContact
   // #####################################################
   getNameShortcut(firstName: string, lastName: string) {
-    return firstName[0].toLocaleUpperCase() + lastName[0].toLocaleUpperCase();
+    if (lastName == "") {
+      return firstName[0].toLocaleUpperCase();
+    } else {
+      return firstName[0].toLocaleUpperCase() + lastName[0].toLocaleUpperCase();
+    }
   }
 
   getNextColorCode() {
@@ -449,6 +454,7 @@ export class ContactsService {
       else {
         this.isContactListViewed = true;
         this.isContactDetailsViewed = false;
+        this.isContactSelected = false;
       }
     }
   }
