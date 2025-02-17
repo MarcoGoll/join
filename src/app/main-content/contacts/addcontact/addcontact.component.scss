@@ -228,7 +228,6 @@
     }
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 768px) {
     .modal-overlay {
         align-items: flex-start;
@@ -322,7 +321,7 @@
         margin-top: 20px;
         margin-bottom: 30px;
         display: flex;
-        justify-content: center; 
+        justify-content: center;
 
         .cancel-btn {
             display: none;
@@ -340,7 +339,7 @@
             }
         }
 
-        
+
     }
 
     .close-btn {
@@ -349,7 +348,7 @@
         padding: 4px;
 
         &:hover {
-            background: none;      
+            background: none;
         }
 
         img {
@@ -358,7 +357,11 @@
             opacity: 0.7;
             filter: brightness(0) invert(1);
         }
-=======
+
+
+    }
+}
+
 .errorMessageContainer {
     height: 30px;
 }
@@ -367,15 +370,4 @@
     color: $clrErrorMessageText;
     padding-left: 8px;
     font-size: 12px;
-}
-
-@keyframes fadeIn {
-    0% {
-        transform: translateX(120%);
-    }
-
-    100% {
-        transform: translateX(0%);
->>>>>>> ff73bc584feb6999252a14090827f105d971d492
-    }
 }
