@@ -172,7 +172,7 @@
 .moreControlContent {
     position: absolute;
     right: 8px;
-    bottom: 16px;
+    bottom: 80px;
 
     @include setFlex($fd: column, $ai: flex-start, $gap: 8px);
     width: 116px;

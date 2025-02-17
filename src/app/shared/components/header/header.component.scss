@@ -14,7 +14,7 @@ header {
 
     >p {
         margin-left: 50px;
-        font-family: "Inter", serif; 
+        font-family: "Inter", serif;
         font-size: 20px;
         font-weight: 400;
     }
@@ -26,13 +26,16 @@ header {
         align-items: center;
         padding-right: 8px;
         gap: 16px;
-        >div{
+
+        >div {
             display: flex;
             justify-content: center;
+
             >img {
                 transition: $stdTransition;
                 width: 20px;
                 height: 20px;
+
                 &:hover {
                     cursor: pointer;
                     width: 25px;
@@ -60,4 +63,15 @@ header {
         color: #29ABE2;
         font-weight: 700;
     }
+}
+
+.infoLink {
+    padding: 0;
+}
+
+@media (max-width: 1023px) {
+    header {
+        left: 0;
+    }
+
 }

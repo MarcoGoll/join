@@ -7,7 +7,7 @@ app-main-content {
 
 .mainArea {
     width: 100%;
-    @include setFlex();
+    @include setFlex($jc: flex-start);
 }
 
 .mainAreaContent {
