@@ -9,5 +9,5 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./header.component.scss', './header.responsive.scss']
 })
 export class HeaderComponent {
-
+  navVisible = false;
 } 

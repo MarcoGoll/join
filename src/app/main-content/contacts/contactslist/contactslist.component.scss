@@ -81,3 +81,13 @@
     right: 16px;
     bottom: 80px;
 }
+
+.contactlist::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px; /* Abrundung des Tracks */
+}
+
+.contactlist::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px; /* Abrundung des Scrollbalkens */
+}

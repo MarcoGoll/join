@@ -72,3 +72,33 @@ header {
 .logoLink {
     display: none;
 }
+
+.profil-btn-dropdown{
+    position: absolute;
+    top: 96px;
+    right: 24px;
+    display: none;
+    background-color: $clrHighlight1;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.profil-btn-dropdown.visible {
+    display: block;
+}
+
+.dropdown-menu{
+    display: flex;
+    flex-direction: column;
+    >a{
+        color: #CDCDCD;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+        border-radius: 0;
+        margin: 8px;
+        &:hover{
+            background-color:#2A3D59;
+        }
+    }
+}
