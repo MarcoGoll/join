@@ -1,10 +1,17 @@
 @import './../../../../styles.scss';
 
+
 @media (min-width: 1024px) {
 
     // TODO: Grenzen im Team besprechen
     .btnNewContactMobile {
         display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .contactlist {
+        height: calc(100vh - 96px - 68px);
     }
 }
 

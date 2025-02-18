@@ -1,5 +1,12 @@
 @import './../../../../styles.scss';
 
+@media (max-width: 1200px) {
+    .details-content {
+        height: calc(100vh - 96px - 68px);
+    }
+}
+
+
 @media (max-width: 1400px) {
     .contact-maininfo {
         .contact-actions {
@@ -27,12 +34,14 @@
         position: absolute;
         top: 50px;
         right: 32px;
+        z-index: 1;
     }
 
     .moreBtn {
         position: absolute;
         bottom: 80px;
         right: 32px;
+        z-index: 1;
     }
 
     .headline-content {

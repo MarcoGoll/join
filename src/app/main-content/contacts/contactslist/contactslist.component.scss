@@ -64,7 +64,7 @@
     scrollbar-width: thin;
 }
 
-.contactsLettersContainer::-webkit-scrollbar{
+.contactsLettersContainer::-webkit-scrollbar {
     background: red;
     border-radius: 10px;
 }
@@ -72,7 +72,7 @@
 .contactsLettersContainer::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
-} 
+}
 
 .contactsLetterContainer {
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
@@ -89,15 +89,17 @@
 .btnNewContactMobile {
     position: absolute;
     right: 16px;
-    bottom: 80px;
+    bottom: 16px;
 }
 
 .contactlist::-webkit-scrollbar-track {
     background: #f1f1f1;
-    border-radius: 10px; /* Abrundung des Tracks */
+    border-radius: 10px;
+    /* Abrundung des Tracks */
 }
 
 .contactlist::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 10px; /* Abrundung des Scrollbalkens */
+    border-radius: 10px;
+    /* Abrundung des Scrollbalkens */
 }

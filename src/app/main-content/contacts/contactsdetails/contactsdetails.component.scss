@@ -11,6 +11,8 @@
     height: calc(100vh - 96px);
     padding: 64px 32px;
     overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 
 
     .contact-info {

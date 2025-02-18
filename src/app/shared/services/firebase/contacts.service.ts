@@ -386,15 +386,11 @@ export class ContactsService {
   async updateContact(contact: Contact) {
     if (contact.id) {
       let docRef = this.getSingleDocRef('contacts', contact.id);
-      console.log("Ich bin der Contact der geupdatet wird:", contact)
-      console.log("Ich bin die Ref: ", docRef);
       await updateDoc(docRef, this.getCleanJson(contact))  //Wir können hier nicht einfach note selbst nehmen da dies eine "starke typisierung ist" und wir ein "standard" brauchen? @Freddy was heißt das | 
         //direkt note geht nicht, weil es eine ID haben könnte. Unsere Struktur in der Datenbank hat aber kein Feld ID. Die id gehört zum Dokument ist aber kein Feld. Wir müssen hier also ein JSON ohne ID erzeugen, daher getCleanJson()
         .catch((err) => {
           console.error(err);
         }).then(() => {
-          console.log("Update hat geklappt: ", contact);
-          console.log("Hier sind alle aktuellen Kontakte nach dem Update:", this.contacts)
         })
     }
   }

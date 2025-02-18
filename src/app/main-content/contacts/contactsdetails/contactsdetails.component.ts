@@ -27,8 +27,6 @@ export class ContactsdetailsComponent {
   setInitialValues() {
     this.isInitialLoad = true;
     this.isMoreControlOverviewShown = false;
-    console.log("isInitialLoad was set to: ", this.isInitialLoad);
-    console.log("isMoreControlOverviewShown has value: ", this.isMoreControlOverviewShown);
   }
 
   showEditContact() {

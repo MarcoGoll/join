@@ -46,8 +46,6 @@ export class AddcontactComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
-      // we can send the Form Information from here to Server :)
       let nameArray: string[] = this.contactForm.value.name.split(" ");
       let firstName: string = "";
       let lastName: string = "";

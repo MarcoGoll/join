@@ -48,8 +48,6 @@ export class EditcontactComponent {
         newFirstName = ngForm.value.name;
       }
 
-      console.log("onSubmit Fullname: ", ngForm.value.name);
-
       let updatedContact: Contact = {
         "id": this.contactService.currentContactToBeUpdated.id,
         "firstName": newFirstName,
@@ -61,7 +59,6 @@ export class EditcontactComponent {
         "phone": ngForm.value.phone,
         "img": ""
       }
-      console.log("onSubmit updatedContact: ", updatedContact);
       this.contactService.updateContact(updatedContact);
       this.contactService.setCurrentContacts(updatedContact);
       this.close();
