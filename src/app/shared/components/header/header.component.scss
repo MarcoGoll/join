@@ -73,33 +73,43 @@ header {
     display: none;
 }
 
-.profil-btn-dropdown{
+.profil-btn-dropdown {
     position: absolute;
-    top: 96px;
-    right: 24px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
     display: none;
-    z-index: 222;
-    background-color: $clrHighlight1;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
 }
 
 .profil-btn-dropdown.visible {
     display: block;
 }
 
-.dropdown-menu{
+.dropdown-menu {
+    position: absolute;
+    top: 96px;
+    right: 24px;
+    background-color: $clrHighlight1;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     display: flex;
     flex-direction: column;
-    >a{
+
+    >a {
         color: #CDCDCD;
         text-decoration: none;
         font-weight: 400;
         font-size: 16px;
         border-radius: 0;
         margin: 8px;
-        &:hover{
-            background-color:#2A3D59;
+
+        &:hover {
+            background-color: #2A3D59;
         }
     }
+}
+
+.dropdown-menu-help {
+    display: none;
 }

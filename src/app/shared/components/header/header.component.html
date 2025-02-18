@@ -15,11 +15,12 @@
             <span>SM</span>
         </div>
     </div>
-    <nav class="profil-btn-dropdown" [class.visible]="navVisible">
+    <nav class="profil-btn-dropdown" [class.visible]="navVisible" (click)="navVisible = !navVisible">
         <div class="dropdown-menu">
-        <a routerLink="legalNotice">Legal Notice</a>
-        <a routerLink="privacyPolicy">Privacy Policy</a>
-        <a routerLink="contact">Log out</a>
+            <a class="dropdown-menu-help" routerLink="info">Help</a>
+            <a routerLink="legalNotice">Legal Notice</a>
+            <a routerLink="privacyPolicy">Privacy Policy</a>
+            <a routerLink="contact">Log out</a>
         </div>
     </nav>
 </header>
