@@ -64,6 +64,16 @@
     scrollbar-width: thin;
 }
 
+.contactsLettersContainer::-webkit-scrollbar{
+    background: red;
+    border-radius: 10px;
+}
+
+.contactsLettersContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+} 
+
 .contactsLetterContainer {
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
 
