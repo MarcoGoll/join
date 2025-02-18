@@ -32,22 +32,24 @@
 
 
     <div class="contact-info" [ngClass]="{'d_none': !contactService.isContactSelected}">
-        <div class="contact-headline">
-            <div class="avatar-wrapper">
-                <div class="avatar backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
-                    {{contactService.currentlySelectedContact.nameShortcut}}</div>
-                <h2>{{contactService.currentlySelectedContact.fullName}}</h2>
+        <div class="contact-maininfo">
+            <div
+                class="avatar-wrapper backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
+                <p class="avatar-text"> {{contactService.currentlySelectedContact.nameShortcut}}</p>
             </div>
-            <div class="actions">
-                <button class="edit" (click)="showEditContact()">
-                    <img src="./assets/icones/edit.svg" alt="edit">
-                    Edit
-                </button>
-                <button class="delete" alt="delete"
-                    (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView); setInitialValues()">
-                    <img src="./assets/icones/delete.svg" alt="delete">
-                    Delete
-                </button>
+            <div class="contact-actions">
+                <h2>{{contactService.currentlySelectedContact.fullName}}</h2>
+                <div class="actions">
+                    <button class="edit" (click)="showEditContact()">
+                        <img src="./assets/icones/edit.svg" alt="edit">
+                        Edit
+                    </button>
+                    <button class="delete" alt="delete"
+                        (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView); setInitialValues()">
+                        <img src="./assets/icones/delete.svg" alt="delete">
+                        Delete
+                    </button>
+                </div>
             </div>
         </div>
         <div class="contact-details">

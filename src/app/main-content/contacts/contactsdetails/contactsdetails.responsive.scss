@@ -31,4 +31,14 @@
     .separatorHorizontal {
         display: block;
     }
+
+    .headline-content {
+        h1 {
+            font-size: $fsMobileH1;
+        }
+
+        .subtitle {
+            font-size: $fsMobileH3;
+        }
+    }
 }

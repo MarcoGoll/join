@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    gap: 32px;
     margin-top: 96px;
     height: calc(100vh - 96px);
     padding: 64px 32px;
@@ -13,75 +14,13 @@
 
 
     .contact-info {
+        @include setFlex($fd: column, $ai: flex-start);
+        width: 100%;
         transform: translateX(1300px);
         animation: fadeIn 125ms forwards;
 
-        .contact-headline {
-
-            margin-bottom: 32px;
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-
-            .avatar-wrapper {
-                min-height: 120px;
-                position: relative;
-
-                .avatar {
-                    position: absolute;
-                    width: 90px;
-                    height: 90px;
-                    border-radius: 50%;
-                    @include setFlex();
-                    color: white;
-                    font-size: $fsH3;
-                    border: 2px solid white;
-                    top: 70px;
-                    left: 0;
-                }
-
-                h2 {
-                    color: $clrBaseDark;
-                    padding-left: 120px;
-                    padding-top: 70px;
-                    font-weight: 500;
-                    white-space: nowrap;
-                }
-            }
-
-            .actions {
-                @include setFlex($gap: 0px);
-                position: absolute;
-                left: 110px;
-                top: 120px;
-
-                button {
-                    @include setFlex($gap: 8px);
-                    background: none;
-                    border: none;
-                    color: $clrBaseDark;
-                    padding: 8px;
-
-                    img {
-                        width: 24px;
-                        height: 24px;
-                        transition: all 0.3s ease;
-                    }
-
-                    &:hover {
-                        color: $clrHighlight2;
-                        font-weight: 500;
-
-                        img {
-                            filter: invert(67%) sepia(72%) saturate(463%) hue-rotate(165deg) brightness(87%) contrast(90%);
-                        }
-                    }
-                }
-            }
-        }
-
         .contact-details {
+            width: 100%;
             margin-top: 32px;
 
             h3 {
@@ -122,7 +61,7 @@
     @include setFlex($jc: flex-start, $gap: 16px);
 
     h1 {
-        font-size: $fsH4;
+        font-size: $fsH1;
         color: $clrBaseDark;
     }
 
@@ -141,6 +80,62 @@
     display: none;
     width: 90px;
     border-top: 2px solid $clrHighlight2 ;
+
+}
+
+.contact-maininfo {
+    width: 100%;
+    @include setFlex($jc: flex-start, $ai: center, $gap: 54px);
+
+    .avatar-wrapper {
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        @include setFlex();
+        border: 3px solid white;
+
+        .avatar-text {
+            color: white;
+            font-size: 47px;
+            font-weight: 500;
+        }
+    }
+
+    .contact-actions {
+        h2 {
+            font-weight: 500;
+            max-width: 500px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .actions {
+            @include setFlex($jc: flex-start, $gap: 18px);
+
+            button {
+                @include setFlex($gap: 8px);
+                background: none;
+                border: none;
+                padding: 0;
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                    transition: all 0.3s ease;
+                }
+
+                &:hover {
+                    color: $clrHighlight2;
+                    font-weight: 500;
+
+                    img {
+                        filter: invert(67%) sepia(72%) saturate(463%) hue-rotate(165deg) brightness(87%) contrast(90%);
+                    }
+                }
+            }
+        }
+    }
 
 }
 
