@@ -20,7 +20,7 @@ export class AddcontactComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern("^[a-zA-Z]{3,}.*$")]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9 ]{7,15}$/)]]
     });

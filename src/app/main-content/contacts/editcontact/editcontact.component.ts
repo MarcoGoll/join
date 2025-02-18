@@ -38,22 +38,32 @@ export class EditcontactComponent {
 
   onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid) {
-
-      let updatedContact: Contact = {
-        "id": this.contactService.currentlySelectedContact.id,
-        "firstName": this.contactService.currentlySelectedContact.firstName,
-        "lastName": this.contactService.currentlySelectedContact.lastName,
-        "fullName": this.contactService.currentlySelectedContact.fullName,
-        "nameShortcut": this.contactService.getNameShortcut(this.contactService.currentlySelectedContact.firstName, this.contactService.currentlySelectedContact.lastName),
-        "nameShortcutColorCode": this.contactService.getNextColorCode(),
-        "email": this.contactService.currentlySelectedContact.email,
-        "phone": this.contactService.currentlySelectedContact.phone,
-        "img": ""
+      let newFirstName: string = "";
+      let newLastName: string = "";
+      let newNameAsArray: string[] = ngForm.value.name.split(" ");
+      if (newNameAsArray.length == 2) {
+        newFirstName = newNameAsArray[0];
+        newLastName = newNameAsArray[1];
+      } else {
+        newFirstName = ngForm.value.name;
       }
 
+      console.log("onSubmit Fullname: ", ngForm.value.name);
 
-
+      let updatedContact: Contact = {
+        "id": this.contactService.currentContactToBeUpdated.id,
+        "firstName": newFirstName,
+        "lastName": newLastName,
+        "fullName": ngForm.value.name,
+        "nameShortcut": this.contactService.getNameShortcut(newFirstName, newLastName),
+        "nameShortcutColorCode": this.contactService.currentContactToBeUpdated.nameShortcutColorCode,
+        "email": ngForm.value.email,
+        "phone": ngForm.value.phone,
+        "img": ""
+      }
+      console.log("onSubmit updatedContact: ", updatedContact);
       this.contactService.updateContact(updatedContact);
+      this.contactService.setCurrentContacts(updatedContact);
       this.close();
     }
   }

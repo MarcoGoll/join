@@ -251,7 +251,18 @@ export class ContactsService {
     "fullName": "i_fullName",
     "nameShortcut": "II",
     "nameShortcutColorCode": 1,
-    "email": "initialSelectedUser@gmail.de",
+    "email": "initialSelectedContact@gmail.de",
+    "phone": "+4915234567890",
+    "img": ""
+  };
+
+  currentContactToBeUpdated: Contact = {
+    "firstName": "u_firstName",
+    "lastName": "u_lastName",
+    "fullName": "u_fullName",
+    "nameShortcut": "UU",
+    "nameShortcutColorCode": 1,
+    "email": "updateContact@gmail.de",
     "phone": "+4915234567890",
     "img": ""
   };
@@ -375,7 +386,7 @@ export class ContactsService {
   async updateContact(contact: Contact) {
     if (contact.id) {
       let docRef = this.getSingleDocRef('contacts', contact.id);
-      console.log("Ich bin der Contact:", contact)
+      console.log("Ich bin der Contact der geupdatet wird:", contact)
       console.log("Ich bin die Ref: ", docRef);
       await updateDoc(docRef, this.getCleanJson(contact))  //Wir können hier nicht einfach note selbst nehmen da dies eine "starke typisierung ist" und wir ein "standard" brauchen? @Freddy was heißt das | 
         //direkt note geht nicht, weil es eine ID haben könnte. Unsere Struktur in der Datenbank hat aber kein Feld ID. Die id gehört zum Dokument ist aber kein Feld. Wir müssen hier also ein JSON ohne ID erzeugen, daher getCleanJson()
@@ -383,6 +394,7 @@ export class ContactsService {
           console.error(err);
         }).then(() => {
           console.log("Update hat geklappt: ", contact);
+          console.log("Hier sind alle aktuellen Kontakte nach dem Update:", this.contacts)
         })
     }
   }
@@ -392,6 +404,7 @@ export class ContactsService {
       id: contact.id,
       firstName: contact.firstName,
       lastName: contact.lastName,
+      fullName: contact.fullName,
       nameShortcut: contact.nameShortcut,
       email: contact.email,
       phone: contact.phone,
@@ -401,9 +414,10 @@ export class ContactsService {
   // ##################################################### 
   // Current Selected User
   // #####################################################
-  setCurrentlySelectedContact(contact: Contact) {
+  setCurrentContacts(contact: Contact) {
     if (contact.id) {
-      this.currentlySelectedContact = contact;
+      this.currentlySelectedContact = { ...contact };
+      this.currentContactToBeUpdated = { ...contact };
       this.isContactSelected = true;
     }
   }
@@ -426,11 +440,6 @@ export class ContactsService {
       return this.currentColorCode + 1;
     }
   }
-
-  getfullNameOfCurrentlySelectedContact() {
-    return this.currentlySelectedContact.firstName + " " + this.currentlySelectedContact.lastName;
-  }
-
 
   // ##################################################### 
   // Reset DB

@@ -16,8 +16,9 @@
             <div class="form-fields">
                 <div class="inputanderror-container">
                     <div class="input-container">
-                        <input #name="ngModel" [(ngModel)]="contactService.currentlySelectedContact.fullName"
-                            type="text" id="name" name="name" placeholder="Name" class="input-field" required>
+                        <input #name="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.fullName"
+                            type="text" id="name" name="name" placeholder="Name" class="input-field" required
+                            pattern="[a-zA-Z]{3,}.*">
                     </div>
                     <div class="errorMessageContainer">
                         @if (!name.valid && name.touched) {
@@ -27,7 +28,7 @@
 
                     <div class="inputanderror-container">
                         <div class="input-container">
-                            <input #email="ngModel" [(ngModel)]="contactService.currentlySelectedContact.email"
+                            <input #email="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.email"
                                 id="email" name="email" type="email" placeholder="Email" class="input-field" required
                                 pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
                             <img src="./assets/icones/mail (3).svg" alt="Email" class="input-icon">
@@ -41,9 +42,9 @@
 
                     <div class="inputanderror-container">
                         <div class="input-container">
-                            <input #phone="ngModel" [(ngModel)]="contactService.currentlySelectedContact.phone"
+                            <input #phone="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.phone"
                                 id="phone" name="phone" type="phone" placeholder="Phone" class="input-field" required
-                                pattern="^(\+49|0)[1-9][0-9]{6,14}$">
+                                pattern="^\+?[0-9 ]{7,15}$">
                             <img src="./assets/icones/call.svg" alt="Phone" class="input-icon">
                         </div>
                         <div class="errorMessageContainer">
@@ -55,7 +56,7 @@
 
                     <div class="button-container">
                         <button type="button" class="cancel-btn"
-                            (click)="close(); contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView)">
+                            (click)="close(); contactService.deleteContact(contactService.currentContactToBeUpdated); contactService.changeMobileContactView(isMobileView)">
                             Delete
                             <img src="./assets/icones/close.svg" alt="Cancel">
                         </button>
