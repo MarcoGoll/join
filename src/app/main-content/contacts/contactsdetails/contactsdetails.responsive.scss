@@ -1,6 +1,21 @@
 @import './../../../../styles.scss';
 
+@media (max-width: 1400px) {
+    .contact-maininfo {
+        .contact-actions {
+            .contact-name {
+                max-width: 300px;
+            }
+        }
+    }
+}
+
 @media (max-width: 1023px) {
+
+    .details-content {
+        padding: 24px 8px;
+    }
+
 
     .moreBtn,
     .backBtn {
@@ -39,6 +54,59 @@
 
         .subtitle {
             font-size: $fsMobileH3;
+        }
+    }
+
+    .contact-maininfo {
+        gap: 20px;
+
+        .avatar-wrapper {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            @include setFlex();
+            border: 3px solid white;
+
+            .avatar-text {
+                color: white;
+                font-size: 27px;
+                font-weight: 400;
+            }
+        }
+
+        .contact-actions {
+            .contact-name {
+                font-size: 36px;
+                font-weight: 700;
+                //white-space: normal;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .actions {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-maininfo {
+        .contact-actions {
+            .contact-name {
+                max-width: 280px;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .contact-maininfo {
+        .contact-actions {
+            .contact-name {
+                max-width: 195px;
+                white-space: normal;
+            }
         }
     }
 }

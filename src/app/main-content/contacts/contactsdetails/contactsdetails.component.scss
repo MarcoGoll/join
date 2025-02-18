@@ -14,43 +14,36 @@
 
 
     .contact-info {
-        @include setFlex($fd: column, $ai: flex-start);
+        @include setFlex($fd: column, $ai: flex-start, $gap: 21px);
         width: 100%;
         transform: translateX(1300px);
         animation: fadeIn 125ms forwards;
 
         .contact-details {
             width: 100%;
-            margin-top: 32px;
+            @include setFlex($fd: column, $ai: stretch, $gap: 21px);
 
-            h3 {
-                font-size: $fSDefault;
-                color: $clrBaseDark;
-                margin-bottom: 24px;
+            .contact-information-text {
+                font-size: 20px;
                 font-weight: 400;
-                padding-top: 40px;
+                padding: 20px 0px;
             }
 
             .info-item {
                 @include setFlex($fd: column, $ai: flex-start, $gap: 8px);
-                margin-top: 50px;
 
                 label {
-                    display: block;
-                    margin-bottom: 8px;
-                    color: $clrBaseDark;
-                    font-size: $fSSec;
-                    font-weight: 600;
+                    font-size: $fSTer;
+                    font-weight: 700;
                 }
 
                 .email {
                     color: $clrHighlight2;
-                    font-size: $fSSec;
+                    font-size: $fSTer;
                 }
 
                 .phone {
-                    color: $clrBaseDark;
-                    font-size: $fSSec;
+                    font-size: $fSTer;
                 }
             }
         }
@@ -102,9 +95,10 @@
     }
 
     .contact-actions {
-        h2 {
+        .contact-name {
+            font-size: 47px;
             font-weight: 500;
-            max-width: 500px;
+            max-width: 800px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -118,6 +112,7 @@
                 background: none;
                 border: none;
                 padding: 0;
+                font-size: 16px;
 
                 img {
                     width: 24px;

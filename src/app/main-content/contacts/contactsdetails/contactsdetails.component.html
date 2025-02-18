@@ -38,7 +38,8 @@
                 <p class="avatar-text"> {{contactService.currentlySelectedContact.nameShortcut}}</p>
             </div>
             <div class="contact-actions">
-                <h2>{{contactService.currentlySelectedContact.fullName}}</h2>
+                <p class="contact-name">{{contactService.currentlySelectedContact.firstName}}
+                    {{contactService.currentlySelectedContact.lastName}}</p>
                 <div class="actions">
                     <button class="edit" (click)="showEditContact()">
                         <img src="./assets/icones/edit.svg" alt="edit">
@@ -53,7 +54,7 @@
             </div>
         </div>
         <div class="contact-details">
-            <h3>Contact Information</h3>
+            <p class="contact-information-text">Contact Information</p>
             <div class="info-item">
                 <label>Email</label>
                 <span class="email">{{contactService.currentlySelectedContact.email}}</span>
