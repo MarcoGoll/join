@@ -8,7 +8,10 @@
     gap: 32px;
     margin-top: 96px;
     height: calc(100vh - 96px);
-    padding: 64px 32px;
+    padding-top: 64px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 0;
     overflow: hidden;
 }
 
@@ -23,6 +26,7 @@
         width: 100%;
         transform: translateX(1300px);
         animation: fadeIn 125ms forwards;
+        margin-top: 16px;
 
         .contact-details {
             width: 100%;

@@ -20,7 +20,10 @@
 @media (max-width: 1023px) {
 
     .section-details-content {
-        padding: 24px 8px;
+        padding-top: 0px;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 0px;
     }
 
 
@@ -88,7 +91,6 @@
             .contact-name {
                 font-size: 36px;
                 font-weight: 700;
-                //white-space: normal;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
