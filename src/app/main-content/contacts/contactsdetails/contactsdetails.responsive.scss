@@ -1,7 +1,7 @@
 @import './../../../../styles.scss';
 
 @media (max-width: 1200px) {
-    .details-content {
+    .section-details-content {
         height: calc(100vh - 96px - 68px);
     }
 }
@@ -19,7 +19,7 @@
 
 @media (max-width: 1023px) {
 
-    .details-content {
+    .section-details-content {
         padding: 24px 8px;
     }
 
@@ -33,14 +33,14 @@
     .backBtn {
         position: absolute;
         top: 50px;
-        right: 32px;
+        right: 24px;
         z-index: 1;
     }
 
     .moreBtn {
         position: absolute;
-        bottom: 80px;
-        right: 32px;
+        bottom: 16px;
+        right: 16px;
         z-index: 1;
     }
 

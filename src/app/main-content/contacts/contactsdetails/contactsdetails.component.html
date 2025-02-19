@@ -1,4 +1,4 @@
-<section class="details-content">
+<section class="section-details-content">
     <div class="backBtn" (click)="contactService.changeMobileContactView(isMobileView); setInitialValues()">
         <img src="./assets/icones/arrow-left-line.svg" alt="back">
     </div>
@@ -21,47 +21,49 @@
             </div>
         </div>
     </div>
-    <div class="headline">
-        <div class="headline-content">
-            <h1>Contacts</h1>
-            <span class="separatorVertical">|</span>
-            <span class="subtitle">Better with a team</span>
-            <div class="separatorHorizontal"></div>
-        </div>
-    </div>
-
-
-    <div class="contact-info" [ngClass]="{'d_none': !contactService.isContactSelected}">
-        <div class="contact-maininfo">
-            <div
-                class="avatar-wrapper backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
-                <p class="avatar-text"> {{contactService.currentlySelectedContact.nameShortcut}}</p>
+    <div class="details-content">
+        <div class="headline">
+            <div class="headline-content">
+                <h1>Contacts</h1>
+                <span class="separatorVertical">|</span>
+                <span class="subtitle">Better with a team</span>
+                <div class="separatorHorizontal"></div>
             </div>
-            <div class="contact-actions">
-                <p class="contact-name">{{contactService.currentlySelectedContact.firstName}}
-                    {{contactService.currentlySelectedContact.lastName}}</p>
-                <div class="actions">
-                    <button class="edit" (click)="showEditContact()">
-                        <img src="./assets/icones/edit.svg" alt="edit">
-                        Edit
-                    </button>
-                    <button class="delete" alt="delete"
-                        (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView); setInitialValues()">
-                        <img src="./assets/icones/delete.svg" alt="delete">
-                        Delete
-                    </button>
+        </div>
+
+
+        <div class="contact-info" [ngClass]="{'d_none': !contactService.isContactSelected}">
+            <div class="contact-maininfo">
+                <div
+                    class="avatar-wrapper backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
+                    <p class="avatar-text"> {{contactService.currentlySelectedContact.nameShortcut}}</p>
+                </div>
+                <div class="contact-actions">
+                    <p class="contact-name">{{contactService.currentlySelectedContact.firstName}}
+                        {{contactService.currentlySelectedContact.lastName}}</p>
+                    <div class="actions">
+                        <button class="edit" (click)="showEditContact()">
+                            <img src="./assets/icones/edit.svg" alt="edit">
+                            Edit
+                        </button>
+                        <button class="delete" alt="delete"
+                            (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView); setInitialValues()">
+                            <img src="./assets/icones/delete.svg" alt="delete">
+                            Delete
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="contact-details">
-            <p class="contact-information-text">Contact Information</p>
-            <div class="info-item">
-                <label>Email</label>
-                <span class="email">{{contactService.currentlySelectedContact.email}}</span>
-            </div>
-            <div class="info-item">
-                <label>Phone</label>
-                <span class="phone">{{contactService.currentlySelectedContact.phone}}</span>
+            <div class="contact-details">
+                <p class="contact-information-text">Contact Information</p>
+                <div class="info-item">
+                    <label>Email</label>
+                    <span class="email">{{contactService.currentlySelectedContact.email}}</span>
+                </div>
+                <div class="info-item">
+                    <label>Phone</label>
+                    <span class="phone">{{contactService.currentlySelectedContact.phone}}</span>
+                </div>
             </div>
         </div>
     </div>

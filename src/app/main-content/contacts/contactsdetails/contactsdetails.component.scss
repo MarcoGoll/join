@@ -1,16 +1,19 @@
 @import './../../../../styles.scss';
 
-.details-content {
+.section-details-content {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
     gap: 32px;
     margin-top: 96px;
     height: calc(100vh - 96px);
     padding: 64px 32px;
     overflow: hidden;
+}
+
+.details-content {
+
     overflow-y: scroll;
     scrollbar-width: thin;
 
@@ -163,8 +166,8 @@
 
 .moreControlContent {
     position: absolute;
-    right: 8px;
-    bottom: 80px;
+    right: 16px;
+    bottom: 16px;
 
     @include setFlex($fd: column, $ai: flex-start, $gap: 8px);
     width: 116px;
