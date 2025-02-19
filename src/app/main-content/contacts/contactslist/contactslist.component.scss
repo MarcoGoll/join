@@ -60,7 +60,7 @@
 .contactsLettersContainer {
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
     height: 90%;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-width: thin;
 }
 

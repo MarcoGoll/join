@@ -9,7 +9,7 @@ import { Contact } from '../../../shared/interfaces/contact';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './addcontact.component.html',
-  styleUrl: './addcontact.component.scss'
+  styleUrls: ['./addcontact.component.scss', 'addcontact.responsive.scss']
 })
 export class AddcontactComponent implements OnInit {
 

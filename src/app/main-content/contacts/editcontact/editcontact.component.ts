@@ -9,7 +9,7 @@ import { Contact } from '../../../shared/interfaces/contact';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './editcontact.component.html',
-  styleUrl: './editcontact.component.scss'
+  styleUrls: ['./editcontact.component.scss', './editcontact.responsive.scss']
 })
 export class EditcontactComponent {
 

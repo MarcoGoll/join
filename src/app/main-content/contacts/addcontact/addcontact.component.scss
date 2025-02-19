@@ -1,12 +1,13 @@
 @import './../../../../styles.scss';
 
 .modal-overlay {
-    position: fixed;
-    top: 96px;
+    position: absolute;
+    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     padding: 8px;
-    height: calc(100vh - 96px);
+    height: 100vh;
     background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
@@ -84,7 +85,7 @@
 
 .form-content {
     width: 60%;
-    padding: 40px 50px;
+    padding: 40px 16px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -93,17 +94,10 @@
     position: relative;
 }
 
-@media screen and (max-width: 450px) {
-    .form-content {
-        padding: 40px 16px;
-    }
-
-}
 
 .form-fields {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     flex-grow: 1;
 }
 
@@ -113,7 +107,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 90px;
+    margin-top: 56px;
 
     .person-icon {
         width: 100%;
@@ -232,182 +226,6 @@
     &:hover {
         background: $clrBackground;
         border-radius: 50%;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    .button-container {
-        button {
-            font-size: 14px;
-        }
-    }
-}
-
-
-@media screen and (max-width: 960px) {
-    .modal-overlay {
-        align-items: flex-start;
-        padding: 20px;
-        left: 0;
-        top: 80px; 
-        height: calc(100vh - 80px - 60px);
-    }
-
-    .modal-content {
-        width: 100%;
-        height: auto;
-        max-width: 380px;
-        flex-direction: column;
-        border-radius: 20px;
-        margin: 10px auto;
-    }
-
-    .modal-header {
-        width: 100%;
-        padding: 25px 20px;
-        border-radius: 20px 20px 0 0;
-        align-items: flex-start;
-        min-height: 280px;
-        gap: 8px;
-
-        .logo {
-            display: none;
-        }
-
-        .title-container {
-            gap: 8px;
-
-            h1 {
-                font-size: 32px;
-                line-height: 1.2;
-                margin-bottom: 4px;
-            }
-
-            .subtitle {
-                font-size: 16px;
-            }
-
-            .blue-line {
-                margin-top: 4px;
-            }
-        }
-    }
-
-    .form-content {
-        width: 100%;
-        padding: 0 px 40px;
-        margin-top: 0;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .avatar-container {
-        margin: -100px 0 24px 0;
-        width: 120px;
-        height: 120px;
-        background: #F5F5F5;
-
-        .person-icon {
-            width: 120px;
-            height: 120px;
-        }
-    }
-
-    .form-fields {
-        width: 100%;
-        gap: 16px;
-        max-width: none;
-    }
-
-    .input-container {
-        max-width: 100%;
-
-        .input-field {
-            padding: 8px 40px 8px 16px;
-            height: 40px;
-        }
-
-        .input-icon {
-            right: 12px;
-            width: 20px;
-            height: 20px;
-            opacity: 0.7;
-        }
-    }
-
-    .button-container {
-        width: 100%;
-        margin-top: 20px;
-        margin-bottom: 30px;
-        display: flex;
-        justify-content: center;
-
-        .cancel-btn {
-            display: none;
-        }
-
-        .create-btn {
-            width: auto;
-            justify-content: center;
-            padding: 10px 18px;
-            border-radius: 10px;
-            background: $clrBaseDark;
-
-            &:hover {
-                background: $clrBaseDark;
-            }
-        }
-
-
-    }
-
-    .close-btn {
-        top: 24px;
-        right: 24px;
-        padding: 4px;
-
-        &:hover {
-            background: none;
-        }
-
-        img {
-            width: 16px;
-            height: 16px;
-            opacity: 0.7;
-            filter: brightness(0) invert(1);
-        }
-
-
-    }
-}
-
-@media screen and (max-width: 380px) {
-    .modal-overlay {
-        padding: 5px;
-    }
-
-    .modal-content {
-        width: 95%; 
-        max-height: calc(100vh - 180px);
-        overflow-y: auto;
-    }
-
-    .form-content {
-        padding: 20px 10px;
-    }
-
-    .modal-header {
-        padding: 20px 15px;
-        min-height: 200px;
-    }
-
-    .input-container {
-        margin-bottom: 10px;
-    }
-
-    .button-container {
-        margin-top: 15px;
-        margin-bottom: 20px;
     }
 }
 
