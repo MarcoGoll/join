@@ -17,19 +17,20 @@
         }
 
         >nav {
-            padding: 0;
             flex-direction: row;
             width: 100%;
-            padding: 8px 16px;
+            padding: 0px;
             justify-content: space-evenly;
             gap: 16px;
 
             >a {
                 padding: 0;
+                border-radius: 8px;
+                width: 120px;
 
                 >div {
                     flex-direction: column;
-                    padding: 0;
+                    padding: 8px 8px;
                     justify-content: center;
                     width: auto;
                     gap: 8px;
@@ -41,7 +42,6 @@
                 }
             }
         }
-
     }
 
     .logoContainer {
@@ -53,7 +53,11 @@
     section {
         >nav {
             >a {
+                width: 75px;
+
                 >div {
+                    padding: 8px 4px;
+
                     >img {
                         width: 20px;
                         height: 20px;
@@ -61,9 +65,8 @@
 
                     >p {
                         font-weight: 400;
-                        font-size: 14px;
+                        font-size: 12px;
                         margin: 0px;
-                        ;
                     }
                 }
             }
