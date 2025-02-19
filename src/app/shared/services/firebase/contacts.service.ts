@@ -9,11 +9,10 @@ import { IfStmt } from '@angular/compiler';
 export class ContactsService {
 
   isContactSelected: boolean = false;
-
-  isContactListViewed = true;
-  isContactDetailsViewed = false;
-  isAddContactViewed = false;
-  isEditContactViewed = false;
+  isContactListViewed: boolean = true;
+  isContactDetailsViewed: boolean = false;
+  isAddContactViewed: boolean = false;
+  isEditContactViewed: boolean = false;
 
   DUMMYCONTACTS: Contact[] = [
     {
@@ -236,10 +235,8 @@ export class ContactsService {
       "phone": "+4915234567811",
       "img": ""
     }
-  ]
+  ];
 
-
-    ;
   firestore: Firestore = inject(Firestore);
 
   contacts: Contact[] = [];

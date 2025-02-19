@@ -28,6 +28,7 @@
         animation: fadeIn 125ms forwards;
         margin-top: 16px;
 
+
         .contact-details {
             width: 100%;
             @include setFlex($fd: column, $ai: stretch, $gap: 21px);
