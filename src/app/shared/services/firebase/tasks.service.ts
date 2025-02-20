@@ -275,7 +275,6 @@ export class TasksService {
       list.forEach(task => {
         let myTask = this.setTaskObjectWithExtraId(task.data(), task.id)
         this.tasksAll.push(myTask);
-        console.log("current added task daten: ", myTask);
         switch (myTask.status) {
           case "toDo":
             this.tasksToDo.push(myTask);
@@ -293,11 +292,6 @@ export class TasksService {
             console.error("Status of ", task, " is not known");
         }
       });
-      console.log("Alle aktuellen Tasks: ", this.tasksAll);
-      console.log("Alle aktuellen Tasks ToDo: ", this.tasksToDo);
-      console.log("Alle aktuellen Tasks inProgress: ", this.tasksInProgress);
-      console.log("Alle aktuellen Tasks Await: ", this.tasksAwaitFeedback);
-      console.log("Alle aktuellen Tasks Done: ", this.tasksDone);
     });
   }
 

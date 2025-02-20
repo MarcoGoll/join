@@ -6,7 +6,7 @@ import { TasksService } from '../../shared/services/firebase/tasks.service';
   standalone: true,
   imports: [],
   templateUrl: './add-task.component.html',
-  styleUrl: './add-task.component.scss'
+  styleUrls: ['./add-task.component.scss', './add-task.responsive.scss']
 })
 export class AddTaskComponent {
 

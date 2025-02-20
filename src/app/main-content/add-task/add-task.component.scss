@@ -1,7 +1,63 @@
 @import './../../../styles.scss';
 
 #addTaskSection {
-    @include setFlex();
+    @include setFlex($jc: flex-start, $ai: flex-start);
     height: 100%;
     width: 100%;
 }
+
+.addTaskSectionContent {
+    position: relative;
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+    flex: 1;
+
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 8px);
+}
+
+// ##############################################################################################################
+// Absolute Elements
+// ##############################################################################################################
+.controlBTN {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    border: 2px dotted whitesmoke;
+    font-size: 12px;
+    padding: 8px;
+    background-color: rgba(139, 0, 139, 0.5);
+    color: white;
+
+
+    &:hover {
+        background-color: darkgray;
+    }
+}
+
+.btnWithIcon {
+    @include setFlex();
+    width: 200px;
+}
+
+// ##############################################################################################################
+// addTaskHeadContainer
+// ##############################################################################################################
+.addTaskHeadContainer {}
+
+
+
+
+// ##############################################################################################################
+// addTaskForm
+// ##############################################################################################################
+.addTaskForm {}
+
+
+
+
+// ##############################################################################################################
+// addTaskAsteriskText
+// ##############################################################################################################
+.addTaskAsteriskText {}
