@@ -266,15 +266,24 @@ export class ContactsService {
 
   currentColorCode = 0;
 
-
+  /**
+    * Initializes the class instance and subscribes to the contacts list.
+    * The subscription is stored in `unsubContacts` to allow later unsubscription.
+    */
   constructor() {
     this.unsubContacts = this.subContactsList();
   }
 
 
-  // ##################################################### 
-  // Connection
-  // #####################################################
+  // ##########################################################################################################
+  // DB-Connection
+  // ##########################################################################################################
+  /**
+  * Subscribes to the contacts list from the database, ordering by first name.
+  * Updates the `contacts` array with the fetched data.
+  *
+  * @returns {Function} Unsubscribe function to stop listening for updates.
+  */
   subContactsList() {
     const q = query(this.getContactsRef(), orderBy("firstName"));
     return onSnapshot(q, (list) => {
@@ -285,18 +294,42 @@ export class ContactsService {
     });
   }
 
+  /**
+   * Retrieves a reference to the "contacts" collection in Firestore.
+   *
+   * @returns {CollectionReference} Reference to the "contacts" collection.
+   */
   getContactsRef() {
     return collection(this.firestore, "contacts");
   }
 
+  /**
+   * Retrieves a reference to a single document within a specified Firestore collection.
+   *
+   * @param {string} colId - The ID of the Firestore collection.
+   * @param {string} docId - The ID of the document within the collection.
+   * @returns {DocumentReference} Reference to the specified Firestore document.
+   */
   getSingleDocRef(colId: string, docId: string) {
     return doc(collection(this.firestore, colId), docId);
   }
 
+  /**
+  * Retrieves the list of all contacts.
+  *
+  * @returns {Array} An array containing all contacts.
+  */
   getAllContacts() {
     return this.contacts;
   }
 
+  /**
+ * Retrieves all contacts whose first name starts with a specified letter.
+ * The results are sorted alphabetically by first name.
+ *
+ * @param {string} letter - The uppercase letter to filter contacts by.
+ * @returns {Contact[]} An array of contacts that match the given letter.
+ */
   getAllContactsByLetter(letter: string): Contact[] {
     return this.contacts.filter(
       (contact) => contact.firstName && contact.firstName[0].toLocaleUpperCase() === letter
@@ -304,6 +337,12 @@ export class ContactsService {
       .sort((a, b) => a.firstName.localeCompare(b.firstName));
   }
 
+  /**
+ * Retrieves a sorted list of unique uppercase letters that represent 
+ * the first letter of the first names of all contacts.
+ *
+ * @returns {string[]} An array of unique uppercase letters where contacts exist.
+ */
   getAllLettersWhereContacsOccour() {
     let letters: string[] = [];
 
@@ -315,6 +354,13 @@ export class ContactsService {
     return letters.sort();
   }
 
+  /**
+ * Creates a Contact object from the given data, ensuring all fields have default values. With an specific ID.
+ *
+ * @param {any} obj - The source object containing contact details.
+ * @param {string} id - The unique identifier for the contact.
+ * @returns {Contact} A contact object with the provided ID and default values for missing properties.
+ */
   setContactObjectWithExtraId(obj: any, id: string): Contact {
     return {
       id: id,
@@ -329,6 +375,12 @@ export class ContactsService {
     }
   }
 
+  /**
+ * Creates a Contact object from the given data, ensuring all fields have default values. Without an specific ID.
+ *
+ * @param {any} obj - The source object containing contact details.
+ * @returns {Contact} A contact object with default values for missing properties.
+ */
   setContactObjectWithoutExtraId(obj: any): Contact {
     return {
       id: obj.id || '',
@@ -343,13 +395,24 @@ export class ContactsService {
     }
   }
 
+  /**
+ * Lifecycle hook that is called when the component is destroyed.
+ * Unsubscribes from the contacts list to prevent memory leaks.
+ */
   ngonDestroy() {
     this.unsubContacts();
   }
 
-  //#####################################################
-  //  CRUD
-  //  #####################################################
+  // ##########################################################################################################
+  // CRUD
+  // ##########################################################################################################
+  /**
+  * Adds a new contact to the Firestore database.
+  * After successfully adding the contact, it updates the contact and cycles the color code.
+  *
+  * @param {Contact} contact - The contact object to be added to the database.
+  * @returns {Promise<void>} A promise that resolves when the contact has been added and processed.
+  */
   async addContact(contact: Contact) {
     await addDoc(this.getContactsRef(), contact)
       .catch((err) => {
@@ -364,6 +427,12 @@ export class ContactsService {
       })
   }
 
+  /**
+  * Deletes a contact from the Firestore database.t.
+  *
+  * @param {Contact} contact - The contact object to be deleted.
+  * @returns {Promise<void>} A promise that resolves once the contact has been deleted and the selection state is updated.
+  */
   async deleteContact(contact: Contact) {
     let colId: string = 'contacts';
     let docId: string | undefined = contact.id;
@@ -379,12 +448,21 @@ export class ContactsService {
     }
   }
 
-
+  /**
+   * Updates an existing contact in the Firestore database based.
+   * The contact object is cleaned to exclude the ID field before updating.
+   * 
+   * @param {Contact} contact - The contact object to be updated in the database.
+   * @returns {Promise<void>} A promise that resolves once the contact has been updated.
+   * 
+   * @remarks 
+   * This method uses `getCleanJson()` to remove the ID from the contact object before updating,
+   * as the Firestore document ID is not part of the document fields but belongs to the document itself.
+   */
   async updateContact(contact: Contact) {
     if (contact.id) {
       let docRef = this.getSingleDocRef('contacts', contact.id);
-      await updateDoc(docRef, this.getCleanJson(contact))  //Wir können hier nicht einfach note selbst nehmen da dies eine "starke typisierung ist" und wir ein "standard" brauchen? @Freddy was heißt das | 
-        //direkt note geht nicht, weil es eine ID haben könnte. Unsere Struktur in der Datenbank hat aber kein Feld ID. Die id gehört zum Dokument ist aber kein Feld. Wir müssen hier also ein JSON ohne ID erzeugen, daher getCleanJson()
+      await updateDoc(docRef, this.getCleanJson(contact))
         .catch((err) => {
           console.error(err);
         }).then(() => {
@@ -392,6 +470,13 @@ export class ContactsService {
     }
   }
 
+  /**
+ * Creates a clean JSON representation of a contact object, 
+ * preserving only its relevant fields.
+ * 
+ * @param {Contact} contact - The contact object to be cleaned.
+ * @returns {Object} A new object containing the contact data without extra properties.
+ */
   getCleanJson(contact: Contact): {} {
     return {
       id: contact.id,
@@ -404,9 +489,15 @@ export class ContactsService {
       img: contact.img,
     }
   }
-  // ##################################################### 
-  // Current Selected User
-  // #####################################################
+
+  // ########################################################################################################## 
+  // Current Contacts
+  // ##########################################################################################################
+  /**
+ * Sets the currently selected contact and prepares it for updates.
+ *
+ * @param {Contact} contact - The contact object to set as the current contact.
+ */
   setCurrentContacts(contact: Contact) {
     if (contact.id) {
       this.currentlySelectedContact = { ...contact };
@@ -415,9 +506,16 @@ export class ContactsService {
     }
   }
 
-  // ##################################################### 
+  // ########################################################################################################## 
   // Automated Data for addContact
-  // #####################################################
+  // ##########################################################################################################
+  /**
+   * Generates a name shortcut from the given first and last name.
+   *
+   * @param {string} firstName - The first name of the contact.
+   * @param {string} lastName - The last name of the contact.
+   * @returns {string} The generated name shortcut in uppercase.
+   */
   getNameShortcut(firstName: string, lastName: string) {
     if (lastName == "") {
       return firstName[0].toLocaleUpperCase();
@@ -426,6 +524,12 @@ export class ContactsService {
     }
   }
 
+  /**
+   * Returns the next color code in a cyclic sequence from 1 to 15.
+   * If the current color code is 15, it resets to 1.
+   *
+   * @returns {number} The next color code in the sequence.
+   */
   getNextColorCode() {
     if (this.currentColorCode === 15) {
       return 1;
@@ -434,10 +538,15 @@ export class ContactsService {
     }
   }
 
-  // ##################################################### 
+  // ########################################################################################################## 
   // Reset DB
-  // #####################################################
-
+  // ##########################################################################################################
+  /**
+   * Resets the Firestore database by deleting all existing contacts 
+   * and replacing them with predefined dummy contacts.
+   * 
+   * @returns {Promise<void>} A promise that resolves once the reset is complete.
+   */
   async resetDatabase() {
     //DELETE ALL EXISTING DOCUMENTS
     let allContactsToDelete: Contact[] = this.getAllContacts();
@@ -451,9 +560,14 @@ export class ContactsService {
     });
   }
 
-  // ##################################################### 
+  // ########################################################################################################## 
   // Mobile Views
-  // #####################################################
+  // ##########################################################################################################
+  /**
+  * Toggles the mobile contact view between the contact list and contact details.
+  * 
+  * @param {boolean} isMobileView - Indicates whether the application is in mobile view.
+  */
   changeMobileContactView(isMobileView: boolean) {
     if (isMobileView) {
       if (this.isContactListViewed) {
