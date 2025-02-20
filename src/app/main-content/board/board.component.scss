@@ -1,0 +1,18 @@
+@import "./../../../styles.scss";
+
+
+section{
+    height: 100vh;
+    background-color: grey;
+    margin-top: 96px;
+    padding: 36px;
+}
+
+.title-container{
+    @include setFlex($jc: space-between);
+}
+
+.input-task-container{
+    @include setFlex();
+    gap: 36px;
+}

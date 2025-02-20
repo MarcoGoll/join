@@ -4,11 +4,13 @@ import { LegalNoticeComponent } from './shared/components/navbar/legal-notice/le
 import { PrivacyPolicyComponent } from './shared/components/navbar/privacy-policy/privacy-policy.component';
 import { ContactsComponent } from './main-content/contacts/contacts.component';
 import { InfoComponent } from './shared/components/header/info/info.component';
+import { BoardComponent } from './main-content/board/board.component';
 
 export const routes: Routes = [
     { path: '', component: MainContentComponent },
     { path: 'legalNotice', component: LegalNoticeComponent },
     { path: 'privacyPolicy', component: PrivacyPolicyComponent },
     { path: 'contact', component: ContactsComponent },
+    { path: 'board', component: BoardComponent },
     { path: 'info', component: InfoComponent }
 ];  
