@@ -22,7 +22,7 @@ export class EditcontactComponent {
 
   show() {
     // this.isVisible = true;
-    this.contactService.isAddContactViewed = true;
+    this.contactService.isAddContactViewed = true; 
   }
 
   close() {
