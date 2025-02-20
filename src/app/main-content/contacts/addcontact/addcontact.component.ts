@@ -7,7 +7,7 @@ import { Contact } from '../../../shared/interfaces/contact';
 @Component({
   selector: 'app-addcontact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule], 
   templateUrl: './addcontact.component.html',
   styleUrls: ['./addcontact.component.scss', 'addcontact.responsive.scss']
 })
