@@ -1,0 +1,63 @@
+<div class="modal-overlay overlay" [class.show]="isVisible" (click)="closeModal($event)">
+    <div class="modal-content">
+        <div class="task-tag">User Story</div>
+        
+        <h1 class="task-title">Kochwelt Page & Recipe Recommender</h1>
+        
+        <p class="task-description">Build start page with recipe recommendation.</p>
+
+        <div class="info-row">
+            <span class="label">Due date:</span>
+            <span class="value">10/05/2023</span>
+        </div>
+
+        <div class="info-row">
+            <span class="label">Priority:</span>
+            <div class="priority-badge medium">
+                Medium
+                <span class="priority-icon">=</span> 
+            </div>
+        </div>
+
+        <div class="info-row">
+            <span class="label">Assigned To:</span>
+            <div class="assigned-users">
+                <!--<div class="user-avatar turquoise">EM</div>
+                <div class="user-avatar purple">MB</div>
+                <div class="user-avatar blue">AM</div>-->
+                <div class="user-name">Emmanuel Mauer</div>
+                <div class="user-name">Marcel Bauer</div>
+                <div class="user-name">Anton Mayer</div>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <span class="label">Subtasks</span>
+            <div class="subtasks">
+                <div class="subtask">
+                    <input type="checkbox" checked id="subtask1">
+                    <label for="subtask1">Implement Recipe Recommendation</label>
+                </div>
+                <div class="subtask">
+                    <input type="checkbox" id="subtask2">
+                    <label for="subtask2">Start Page Layout</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="action-btn delete">
+                <img src="./assets/icones/delete.svg" alt="Delete">
+                Delete
+            </button>
+            <button class="action-btn edit">
+                <img src="./assets/icones/edit.svg" alt="Edit">
+                Edit
+            </button>
+        </div>
+
+        <button class="close-btn" (click)="close()">
+            <img src="./assets/icones/close.svg" alt="Close">
+        </button>
+    </div>
+</div>

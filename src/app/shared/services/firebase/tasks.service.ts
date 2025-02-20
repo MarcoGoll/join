@@ -225,7 +225,7 @@ export class TasksService {
   tasksAll: Task[] = [];
   tasksToDo: Task[] = [];
   tasksInProgress: Task[] = [];
-  tasksAwaitFeedback: Task[] = [];
+  tasksAwaitFeedback: Task[] = []; 
   tasksDone: Task[] = [];
   unsubTasks;
 

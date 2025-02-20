@@ -1,0 +1,174 @@
+@import './../../../../styles.scss';
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out; 
+    z-index: 1000;
+
+    &.show {
+        visibility: visible;
+        opacity: 1;
+
+        .modal-content {
+            transform: translateY(0);
+        }
+    }
+}
+
+.modal-content {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.task-tag {
+    display: inline-block;
+    background: $clrContact1;
+    color: white;
+    padding: 4px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.task-title {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: $clrBaseDark;
+}
+
+.task-description {
+    color: $clrBaseDark;
+    margin-bottom: 32px;
+}
+
+.info-row {
+    margin-bottom: 24px;
+
+    .label {
+        display: block;
+        color: $clrHighlight1;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+}
+
+.priority-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    
+    font-size: 14px;
+
+    &.medium {
+        color: $clrBaseDark;
+    }
+
+    .priority-icon {
+        font-weight: $fwH1;
+        color: $clrContact2;
+        transform: scaleX(2)
+    }
+}
+
+.assigned-users {
+    //display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px 8px;
+    align-items: center;
+
+    .user-name {
+        font-size: 14px;
+    }
+}
+
+.subtasks {
+    .subtask {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+
+        }
+
+        label {
+            font-size: 14px;
+            cursor: pointer;
+        }
+    }
+}
+
+.modal-actions {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+
+    .action-btn {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 8px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: $clrBaseDark;
+        font-size: $fsH4;
+
+        img {
+            width: 16px;
+            height: 16px;
+            transition: all 0.3s ease;
+        }
+
+        &:hover {
+            color: $clrHighlight2;
+            font-weight: 500;
+
+            img {
+                filter: invert(67%) sepia(72%) saturate(463%) hue-rotate(165deg) brightness(87%) contrast(90%);
+            }
+        }
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover {
+        background: $clrBackground;
+        border-radius: 50%;
+    }
+}

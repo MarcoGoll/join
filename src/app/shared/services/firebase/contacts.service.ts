@@ -14,7 +14,7 @@ export class ContactsService {
   isAddContactViewed: boolean = false;
   isEditContactViewed: boolean = false;
 
-  DUMMYCONTACTS: Contact[] = [
+  DUMMYCONTACTS: Contact[] = [ 
     {
       "firstName": "Lukas",
       "lastName": "Schmidt",
