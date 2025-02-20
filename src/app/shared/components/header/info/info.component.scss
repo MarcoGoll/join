@@ -23,8 +23,10 @@ h3{
 }
 
 .list{
-    @include setFlex($jc:flex-start);
+    @include setFlex($jc:flex-start, $ai:flex-start);
     gap: 24px;
+    margin-bottom: 36px;
+    margin-top: 24px;
     >p{
         font-size: 27px;
         font-weight: 700;
@@ -47,9 +49,6 @@ span{
 .size27{
     font-size: 27px;
     font-weight: 700;
-}
-
-.how-to-use{
 }
 
 .margin-l{
