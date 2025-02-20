@@ -1,22 +1,35 @@
 <section id="addTaskSection">
     <div class="addTaskSectionContent">
-        <div class="primaryBtn btnWithIcon createBTN">
-            <p>Create Task</p>
-            <img src="" alt="">
+        <div class="addTaskControlBtns">
+            <div class="secundaryBtnTall btnWithIcon clearBTN">
+                <p>Clear</p>
+                <img src="" alt="">
+            </div>
+            <div class="primaryBtnTall btnWithIcon createBTN">
+                <p>Create Task</p>
+                <img src="" alt="">
+            </div>
         </div>
-        <div class="secundaryBtn btnWithIcon clearBTN">
-            <p>Clear</p>
-            <img src="" alt="">
-        </div>
-        <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button>
-        <button class="controlBTN" (click)="taskService.resetDatabase()"></button>
-        <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button>
         <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button>
         <div class="addTaskHeadContainer">
             <H1>Add Task</H1>
         </div>
         <form class="addTaskForm">Hier alle Eingabefelder (Hier soll Scrollen gehen)
-            <div class="formFieldGroup1">Hier Eingabefelder Gruppe 1</div>
+            <div class="formFieldGroup1">
+                <div class="inputAndErrorContainer">
+                    <label for="title">Title <span>*</span></label>
+                    <div class="inputContainer">
+                        <input #title="ngModel" [(ngModel)]="newTask.title" id="title" name="title" type="text"
+                            placeholder="Enter a title" class="input-field" required>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!title.valid && title.touched) {
+                        <p class="errorMessage">Please enter a title</p>
+                        }
+                    </div>
+                </div>
+
+            </div>
             <div class="formSeperator">Hier Trennlinie</div>
             <div class="formFieldGroup2">Hier Eingabefelder Gruppe 2</div>
         </form>

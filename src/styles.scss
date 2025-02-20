@@ -118,22 +118,25 @@ html {
     font-size: 21px;
     font-weight: 700;
     color: $clrBaseBright;
+    border: 2px solid $clrHighlight1;
     background-color: $clrHighlight1;
     transition: all 100ms ease-in-out;
 
     &:hover {
         background-color: $clrHighlight2;
+        border: 2px solid $clrHighlight2;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
     }
 
     &:active {
         background-color: $clrHighlight1Darker;
+        border: 2px solid $clrHighlight1Darker;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
     }
 }
 
 .secundaryBtnTall {
-    padding: 16px;
+    padding: 12px 16px;
     border-radius: 10px;
     font-size: 20px;
     font-weight: 400;
@@ -212,5 +215,5 @@ html {
 }
 
 .backgroundColor15 {
-    background-color: $clrContact15; 
+    background-color: $clrContact15;
 }

@@ -36,9 +36,16 @@
     }
 }
 
+.addTaskControlBtns {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    @include setFlex($gap: 16px);
+}
+
 .btnWithIcon {
+    align-self: center;
     @include setFlex();
-    width: 200px;
 }
 
 // ##############################################################################################################
@@ -52,7 +59,19 @@
 // ##############################################################################################################
 // addTaskForm
 // ##############################################################################################################
-.addTaskForm {}
+.addTaskForm {
+    overflow-y: auto;
+}
+
+.errorMessageContainer {
+    height: 30px;
+}
+
+.errorMessage {
+    color: $clrErrorMessageText;
+    padding-left: 8px;
+    font-size: 12px;
+}
 
 
 
