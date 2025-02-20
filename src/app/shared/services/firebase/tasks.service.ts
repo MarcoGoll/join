@@ -7,25 +7,234 @@ import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapsh
 })
 export class TasksService {
 
-  DUMMYTASKS: Task[] = [{
-    "title": "Create JSDoc",
-    "description": "Create a JSDoc description for each method",
-    "assignedTo": [],
-    "dueDate": "22/05/2025",
-    "prio": 'Urgent',
-    "category": 'Technical Task',
-    "subTasks": ['Component Contactdetails', 'Component Contactlist']
-  }];
+  DUMMYTASKS: Task[] = [
+    {
+      "title": "Refactor API Calls",
+      "description": "Optimize API calls to reduce load time",
+      "assignedTo": [],
+      "status": "done",
+      "dueDate": "2025-06-10",
+      "prio": "Urgent",
+      "category": "Technical Task",
+      "subTasks": ["Refactor fetchUserData", "Refactor fetchOrders", "Optimize caching"]
+    },
+    {
+      "title": "Implement Dark Mode",
+      "description": "Add a dark mode toggle for the application",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-06-15",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": []
+    },
+    {
+      "title": "Fix Login Bug",
+      "description": "Users cannot log in under certain conditions",
+      "assignedTo": [],
+      "status": "awaitFeedback",
+      "dueDate": "2025-05-30",
+      "prio": "Urgent",
+      "category": "Technical Task",
+      "subTasks": ["Investigate error logs"]
+    },
+    {
+      "title": "Update Documentation",
+      "description": "Ensure all API endpoints are documented",
+      "assignedTo": [],
+      "status": "done",
+      "dueDate": "2025-04-20",
+      "prio": "Low",
+      "category": "Technical Task",
+      "subTasks": ["Review current documentation", "Add missing endpoints", "Standardize format"]
+    },
+    {
+      "title": "Improve Mobile Responsiveness",
+      "description": "Fix layout issues on mobile devices",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-07-01",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": ["Test on iOS", "Test on Android", "Fix flex/grid issues", "Improve touch interactions"]
+    },
+    {
+      "title": "Redesign Dashboard",
+      "description": "Enhance UI for better usability",
+      "assignedTo": [],
+      "status": "inProgress",
+      "dueDate": "2025-06-20",
+      "prio": "Urgent",
+      "category": "User Story",
+      "subTasks": ["Gather user feedback", "Update UI components", "Improve contrast", "Adjust font sizes"]
+    },
+    {
+      "title": "Migrate Database",
+      "description": "Move from MySQL to PostgreSQL",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-08-01",
+      "prio": "Urgent",
+      "category": "Technical Task",
+      "subTasks": ["Export MySQL data", "Import into PostgreSQL", "Update ORM models", "Test migrations"]
+    },
+    {
+      "title": "Optimize Images",
+      "description": "Reduce image sizes without losing quality",
+      "assignedTo": [],
+      "status": "done",
+      "dueDate": "2025-06-05",
+      "prio": "Medium",
+      "category": "Technical Task",
+      "subTasks": []
+    },
+    {
+      "title": "Enhance Search Functionality",
+      "description": "Implement autocomplete and filters",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-06-25",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": ["Add autocomplete", "Implement search filters", "Optimize search speed", "Support fuzzy search"]
+    },
+    {
+      "title": "Set Up CI/CD",
+      "description": "Automate testing and deployment process",
+      "assignedTo": [],
+      "status": "inProgress",
+      "dueDate": "2025-06-12",
+      "prio": "Urgent",
+      "category": "Technical Task",
+      "subTasks": ["Configure GitHub Actions", "Add automated tests", "Deploy staging environment", "Setup rollback strategy"]
+    },
+    {
+      "title": "Implement Role-Based Access Control",
+      "description": "Restrict actions based on user roles",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-06-30",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": ["Define roles", "Implement permission checks"]
+    },
+    {
+      "title": "Fix UI Bugs",
+      "description": "Resolve minor UI inconsistencies",
+      "assignedTo": [],
+      "status": "done",
+      "dueDate": "2025-06-08",
+      "prio": "Low",
+      "category": "Technical Task",
+      "subTasks": []
+    },
+    {
+      "title": "Improve Performance",
+      "description": "Optimize app speed and responsiveness",
+      "assignedTo": [],
+      "status": "inProgress",
+      "dueDate": "2025-07-10",
+      "prio": "Urgent",
+      "category": "Technical Task",
+      "subTasks": ["Minimize JS bundle size", "Optimize database queries"]
+    },
+    {
+      "title": "Develop User Profile Page",
+      "description": "Create a customizable user profile section",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-07-05",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": ["Add profile picture upload"]
+    },
+    {
+      "title": "Security Audit",
+      "description": "Review system security vulnerabilities",
+      "assignedTo": [],
+      "status": "done",
+      "dueDate": "2025-05-15",
+      "prio": "Urgent",
+      "category": "Technical Task",
+      "subTasks": ["Run penetration test", "Fix identified issues", "Review access controls"]
+    },
+    {
+      "title": "Email Notifications",
+      "description": "Implement automated email alerts",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-06-18",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": []
+    },
+    {
+      "title": "User Feedback System",
+      "description": "Collect and display user feedback",
+      "assignedTo": [],
+      "status": "inProgress",
+      "dueDate": "2025-07-15",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": ["Create feedback form", "Display user reviews", "Analyze feedback"]
+    },
+    {
+      "title": "Test Automation",
+      "description": "Increase test coverage with automated tests",
+      "assignedTo": [],
+      "status": "awaitFeedback",
+      "dueDate": "2025-06-28",
+      "prio": "Urgent",
+      "category": "Technical Task",
+      "subTasks": []
+    },
+    {
+      "title": "Accessibility Improvements",
+      "description": "Make the app more accessible for all users",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-07-20",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": ["Add ARIA attributes", "Improve keyboard navigation", "Increase contrast"]
+    },
+    {
+      "title": "Analytics Dashboard",
+      "description": "Create a dashboard for tracking user activity",
+      "assignedTo": [],
+      "status": "inProgress",
+      "dueDate": "2025-07-10",
+      "prio": "Medium",
+      "category": "User Story",
+      "subTasks": ["Set up tracking events"]
+    },
+    {
+      "title": "Migrate Frontend to React 18",
+      "description": "Upgrade frontend framework to latest version",
+      "assignedTo": [],
+      "status": "toDo",
+      "dueDate": "2025-08-05",
+      "prio": "Urgent",
+      "category": "Technical Task",
+      "subTasks": ["Update dependencies", "Test all components", "Fix deprecated methods"]
+    }
+  ]
+    ;
 
   firestore: Firestore = inject(Firestore);
-  tasks: Task[] = [];
+  tasksAll: Task[] = [];
+  tasksToDo: Task[] = [];
+  tasksInProgress: Task[] = [];
+  tasksAwaitFeedback: Task[] = [];
+  tasksDone: Task[] = [];
   unsubTasks;
 
   currentlySelectedTask: Task = {
     "title": "Create JSDoc",
     "description": "Create a JSDoc description for each method",
     "assignedTo": [],
-    "dueDate": "22/05/2025",
+    "status": "toDo",
+    "dueDate": "2025-05-22",
     "prio": 'Urgent',
     "category": 'Technical Task',
     "subTasks": ['Component Contactdetails', 'Component Contactlist']
@@ -35,7 +244,8 @@ export class TasksService {
     "title": "Create JSDoc",
     "description": "Create a JSDoc description for each method",
     "assignedTo": [],
-    "dueDate": "22/05/2025",
+    "status": "toDo",
+    "dueDate": "2025-05-22",
     "prio": 'Urgent',
     "category": 'Technical Task',
     "subTasks": ['Component Contactdetails', 'Component Contactlist']
@@ -61,11 +271,33 @@ export class TasksService {
   subTasksList() {
     const q = query(this.getTasksRef(), orderBy("title"));
     return onSnapshot(q, (list) => {
-      this.tasks = [];
+      this.tasksAll = [];
       list.forEach(task => {
-        this.tasks.push(this.setTaskObjectWithExtraId(task.data(), task.id));
+        let myTask = this.setTaskObjectWithExtraId(task.data(), task.id)
+        this.tasksAll.push(myTask);
+        console.log("current added task daten: ", myTask);
+        switch (myTask.status) {
+          case "toDo":
+            this.tasksToDo.push(myTask);
+            break;
+          case "inProgress":
+            this.tasksInProgress.push(myTask);
+            break;
+          case "awaitFeedback":
+            this.tasksAwaitFeedback.push(myTask);
+            break;
+          case "done":
+            this.tasksDone.push(myTask);
+            break;
+          default:
+            console.error("Status of ", task, " is not known");
+        }
       });
-      console.log("Alle aktuellen Tasks: ", this.tasks);
+      console.log("Alle aktuellen Tasks: ", this.tasksAll);
+      console.log("Alle aktuellen Tasks ToDo: ", this.tasksToDo);
+      console.log("Alle aktuellen Tasks inProgress: ", this.tasksInProgress);
+      console.log("Alle aktuellen Tasks Await: ", this.tasksAwaitFeedback);
+      console.log("Alle aktuellen Tasks Done: ", this.tasksDone);
     });
   }
 
@@ -95,7 +327,7 @@ export class TasksService {
   * @returns {Array} An array containing all tasks.
   */
   getAllTasks() {
-    return this.tasks;
+    return this.tasksAll;
   }
 
   /**
@@ -111,6 +343,7 @@ export class TasksService {
       title: obj.title || '',
       description: obj.description || '',
       assignedTo: obj.assignedTo || [],
+      status: obj.status || '',
       dueDate: obj.dueDate || '',
       prio: obj.prio || '',
       category: obj.category || [],
