@@ -3,7 +3,7 @@
 
 section{
     height: 100vh;
-    background-color: grey;
+    background-color: $clrBackground;
     margin-top: 96px;
     padding: 36px;
 }
@@ -66,6 +66,7 @@ section{
     margin-bottom: 8px;
     >h2{
         font-size: 20px;
+        color: #42526E;
     }
 }
 
