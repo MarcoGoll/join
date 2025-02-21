@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { BoardoverlayComponent } from './boardoverlay/boardoverlay.component';
-=======
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -10,16 +8,11 @@ import {
   CdkDrag,
   CdkDropList,
 } from '@angular/cdk/drag-drop';
->>>>>>> 19058eeaefcc4bcae79de20f1921d50aaf2147a3
 
 @Component({
   selector: 'app-board',
   standalone: true,
-<<<<<<< HEAD
-  imports: [CommonModule, BoardoverlayComponent],
-=======
-  imports: [CdkDropList, CdkDrag],
->>>>>>> 19058eeaefcc4bcae79de20f1921d50aaf2147a3
+  imports: [CommonModule, BoardoverlayComponent, CdkDropList, CdkDrag],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
 })

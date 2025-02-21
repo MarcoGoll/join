@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, LegalNoticeComponent, PrivacyPolicyComponent, CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss', './navbar.responsive.scss']
 })

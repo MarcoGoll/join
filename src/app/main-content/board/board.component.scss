@@ -13,7 +13,7 @@ section{
 }
 
 .input-task-container{
-    @include setFlex(); 
+    @include setFlex();
     gap: 36px;
 }
 
@@ -56,8 +56,6 @@ section{
     }
 }
 
-<<<<<<< HEAD
-=======
 .task-board{
     margin-top: 100px;
     @include setFlex($ai: flex-start);
@@ -131,4 +129,3 @@ section{
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
   
->>>>>>> 19058eeaefcc4bcae79de20f1921d50aaf2147a3
