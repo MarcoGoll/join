@@ -70,6 +70,10 @@
     @include setFlex($ai: flex-start, $gap: 32px);
 }
 
+.inputAndErrorContainer {
+    @include setFlex($fd: column, $ai: stretch, $gap: 8px)
+}
+
 .errorMessageContainer {
     height: 30px;
 }
@@ -88,6 +92,51 @@
 
 .prioSelection {
     @include setFlex($jc: space-between, $gap: 8px);
+}
+
+.prioChoice {
+    cursor: pointer;
+    @include setFlex($gap: 8px);
+    padding: 10px 18px;
+    background-color: $clrBaseBright;
+    border-radius: 10px;
+
+    svg {
+        width: 20px;
+    }
+}
+
+.hoverShadow {
+    &:hover {
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    }
+}
+
+.clrBackgroundUrgent {
+    background-color: $clrPrioUrgend;
+    color: $clrBaseBright;
+}
+
+.clrBackgroundMedium {
+    background-color: $clrPrioMedium;
+    color: $clrBaseBright;
+}
+
+.clrBackgroundLow {
+    background-color: $clrPrioLow;
+    color: $clrBaseBright;
+}
+
+.clrFillUrgent {
+    fill: $clrPrioUrgend;
+}
+
+.clrFillMedium {
+    fill: $clrPrioMedium;
+}
+
+.clrFillLow {
+    fill: $clrPrioLow;
 }
 
 .formFieldGroup1,
