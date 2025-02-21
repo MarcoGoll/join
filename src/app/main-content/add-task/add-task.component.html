@@ -1,3 +1,118 @@
 <section id="addTaskSection">
-    <button (click)="taskService.resetDatabase()">reset Tasks DB</button>
+    <div class="addTaskSectionContent">
+        <div class="addTaskControlBtns">
+            <div class="secundaryBtnTall btnWithIcon clearBTN">
+                <p>Clear</p>
+                <img src="" alt="">
+            </div>
+            <div class="primaryBtnTall btnWithIcon createBTN">
+                <p>Create Task</p>
+                <img src="" alt="">
+            </div>
+        </div>
+        <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button>
+        <div class="addTaskHeadContainer">
+            <H1>Add Task</H1>
+        </div>
+        <form class="addTaskForm">
+            <div class="formFieldGroup1">
+                <div class="inputAndErrorContainer">
+                    <label for="title">Title<span class="clrRed">*</span></label>
+                    <div class="inputContainer">
+                        <input #title="ngModel" [(ngModel)]="newTask.title" id="title" name="title" type="text"
+                            placeholder="Enter a title" class="input-field" required>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!title.valid && title.touched) {
+                        <p class="errorMessage">Please enter a title</p>
+                        }
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <label for="description">Description</label>
+                    <div class="inputContainer">
+                        <textarea #description="ngModel" [(ngModel)]="newTask.description" id="description"
+                            name="description" type="text" placeholder="Enter a Description"
+                            class="input-field"></textarea>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!description.valid && description.touched) {
+                        <p class="errorMessage">Please enter a valid description</p>
+                        }
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <label for="description">Assigned to</label>
+                    <div class="inputContainer">
+                        <input id="assignedTo" name="assignedTo" type="text" placeholder="Enter a title"
+                            class="input-field" value="Select contacts to assign">
+                        <img src="" alt="">
+                    </div>
+                    <div class="errorMessageContainer">
+                    </div>
+                </div>
+            </div>
+            <div class="formSeperator"></div>
+            <div class="formFieldGroup2">
+                <div class="inputAndErrorContainer">
+                    <label for="duDate">Due date<span class="clrRed">*</span></label>
+                    <div class="inputContainer">
+                        <input #duDate="ngModel" [(ngModel)]="newTask.dueDate" id="duDate" name="duDate" type="date"
+                            placeholder="dd/mm/yyyy" class="input-field" required>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!duDate.valid && duDate.touched) {
+                        <p class="errorMessage">Please enter a date</p>
+                        }
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <p>Prio</p>
+                    <div class="prioSelection">
+                        <div class="prioChoice">
+                            <p>Urgent</p>
+                            <img src="" alt="">
+                        </div>
+                        <div class="prioChoice">
+                            <p>Medium</p>
+                            <img src="" alt="">
+                        </div>
+                        <div class="prioChoice">
+                            <p>Low</p>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                    <div class="errorMessageContainer">
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <label for="category">Category<span class="clrRed">*</span></label>
+                    <div class="inputContainer">
+                        <select #category="ngModel" [(ngModel)]="newTask.category" id="category" name="category"
+                            class="input-field" required>
+                            <option value="" selected>Select task category</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!category.valid && category.touched) {
+                        <p class="errorMessage">Please enter a title</p>
+                        }
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <label for="subTask">Subtask</label>
+                    <div class="inputContainer">
+                        <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks"
+                            class="input-field">
+                    </div>
+                    <div class="errorMessageContainer">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <div class="addTaskAsteriskText"><span class="clrRed">*</span>This field is required</div>
+    </div>
 </section>

@@ -1,0 +1,7 @@
+@import './../../../styles.scss';
+
+@media (max-width: 1200px) {
+    .addTaskSectionContent {
+        height: calc(100vh - 96px - 68px);
+    }
+}

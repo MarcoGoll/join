@@ -1,7 +1,114 @@
 @import './../../../styles.scss';
 
 #addTaskSection {
-    @include setFlex();
+    @include setFlex($jc: flex-start, $ai: flex-start);
     height: 100%;
     width: 100%;
 }
+
+.addTaskSectionContent {
+    position: relative;
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+    flex: 1;
+    padding-top: 64px;
+    padding-left: 64px;
+
+    @include setFlex($fd: column, $jc: flex-start, $ai: flex-start, $gap: 8px);
+}
+
+.clrRed {
+    color: $clrErrorMessageText;
+}
+
+// ##############################################################################################################
+// Absolute Elements
+// ##############################################################################################################
+.controlBTN {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    border: 2px dotted whitesmoke;
+    font-size: 12px;
+    padding: 8px;
+    background-color: rgba(139, 0, 139, 0.5);
+    color: white;
+
+
+    &:hover {
+        background-color: darkgray;
+    }
+}
+
+.addTaskControlBtns {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    @include setFlex($gap: 16px);
+}
+
+.btnWithIcon {
+    align-self: center;
+    @include setFlex();
+}
+
+// ##############################################################################################################
+// addTaskHeadContainer
+// ##############################################################################################################
+.addTaskHeadContainer {}
+
+
+
+
+// ##############################################################################################################
+// addTaskForm
+// ##############################################################################################################
+.addTaskForm {
+    overflow-y: auto;
+    @include setFlex($ai: flex-start, $gap: 32px);
+}
+
+.errorMessageContainer {
+    height: 30px;
+}
+
+.errorMessage {
+    color: $clrErrorMessageText;
+    padding-left: 8px;
+    font-size: 12px;
+}
+
+.formSeperator {
+    border: 1px solid $clrSeparatingLines;
+    height: 100%;
+    width: 1px;
+}
+
+.prioSelection {
+    @include setFlex($jc: space-between, $gap: 8px);
+}
+
+.formFieldGroup1,
+.formFieldGroup2 {
+    width: 440px;
+}
+
+.input-field {
+    width: 100%;
+}
+
+textarea {
+    min-height: 60px;
+    max-height: 200px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+
+
+// ##############################################################################################################
+// addTaskAsteriskText
+// ##############################################################################################################
+.addTaskAsteriskText {}
