@@ -18,6 +18,10 @@ export class BoardComponent {
 
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
+  inProgress = ['Get the document', 'Write project report', 'Fix login issue', 'Prepare presentation'];
+
+  awaitingFeedback = ['responsive', 'Review design mockup', 'Client approval on proposal', 'Code review from team'];
+
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   drop(event: CdkDragDrop<string[]>) {

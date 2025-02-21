@@ -16,7 +16,7 @@
           cdkDropList
           #todoList="cdkDropList"
           [cdkDropListData]="todo"
-          [cdkDropListConnectedTo]="[doneList]"
+          [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
           @for (item of todo; track item) {
@@ -26,13 +26,42 @@
       </div>
       
       <div class="example-container">
+        <h2>In progress</h2>
+    
+        <div cdkDropList #inProgressList="cdkDropList" 
+            [cdkDropListData]="inProgress" 
+            [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            @for (item of inProgress; track item) {
+            <div class="example-box" cdkDrag>{{item}}</div>
+            }
+        </div>
+    </div>
+
+      <div class="example-container">
+        <h2>Awaiting Feedback</h2>
+      
+        <div
+          cdkDropList
+          #awaitingFeedbackList="cdkDropList"
+          [cdkDropListData]="awaitingFeedback"
+          [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          @for (item of awaitingFeedback; track item) {
+            <div class="example-box" cdkDrag>{{item}}</div>
+          }
+        </div>
+      </div>
+
+      <div class="example-container">
         <h2>Done</h2>
       
         <div
           cdkDropList
           #doneList="cdkDropList"
           [cdkDropListData]="done"
-          [cdkDropListConnectedTo]="[todoList]"
+          [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
           @for (item of done; track item) {
@@ -40,5 +69,6 @@
           }
         </div>
       </div>
+
       
 </section>
