@@ -1,6 +1,6 @@
 // ########################################################### Standard's ###########################################################
 $stdRadiusInteractive: 10px; // standard for BTN, Input ...
-$stdPaddingInteractive: 12px 24px; // standard for BTN, Input ...
+$stdPaddingInteractive: 12px 21px; // standard for BTN, Input ...
 $stdTransition: all 125ms ease-in-out;
 
 // ########################################################### Colors's ###########################################################
@@ -31,7 +31,9 @@ $clrContact13: #FFE62B;
 $clrContact14: #FF4646;
 $clrContact15: #FFBB2B;
 
-
+$clrPrioUrgend: #ff3d00;
+$clrPrioMedium: #ffa800;
+$clrPrioLow: #7ae229;
 
 $clrErrorMessageText: #FF3A00;
 $clrDisabled: #7d7d7e;
@@ -48,13 +50,13 @@ $fsH5: 42px;
 $fSDefault: 20px;
 $fSSec: 18px;
 $fSTer: 16px;
-$fSDefaultInteractive: 18px; 
+$fSDefaultInteractive: 20px;
 //Font-weight (fw)
 $fwH1: 700;
 $fwH2: 700;
 $fwH3: 700;
 $fWDefault: 400;
-$fwDefaultInteractive: 500;
+$fwDefaultInteractive: 400;
 
 //Mobile
 //Font-size (fs)
