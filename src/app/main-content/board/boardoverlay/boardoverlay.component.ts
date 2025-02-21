@@ -1,6 +1,7 @@
 
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TasksService } from '../../../shared/services/firebase/tasks.service';
 
 @Component({
   selector: 'app-boardoverlay',
@@ -10,6 +11,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./boardoverlay.component.scss', './boardoverlay.responsive.scss']
 })
 export class BoardoverlayComponent {
+
+  taskService = inject(TasksService);
+
   isVisible = true;
 
   show() {
@@ -17,7 +21,7 @@ export class BoardoverlayComponent {
   }
 
   close() {
-    this.isVisible = false; 
+    this.isVisible = false;
   }
 
   closeModal(event: MouseEvent) {

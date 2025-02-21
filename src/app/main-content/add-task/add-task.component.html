@@ -70,7 +70,7 @@
                     <p>Prio</p>
                     <div class="prioSelection">
                         <div class="prioChoice"
-                            [ngClass]="{'clrBackgroundUrgent':currentPrioSelection==='urgent', 'hoverShadow':!(currentPrioSelection==='urgent')}"
+                            [ngClass]="{'clrBackgroundUrgent':currentPrioSelection==='urgent', 'shadow':!(currentPrioSelection==='urgent')}"
                             (click)="setPrio('urgent')">
                             <p>Urgent</p>
                             <svg width="21" height="15" viewBox="0 0 21 15" fill="none"
@@ -84,7 +84,7 @@
                             </svg>
                         </div>
                         <div class="prioChoice"
-                            [ngClass]="{'clrBackgroundMedium':currentPrioSelection==='medium', 'hoverShadow':!(currentPrioSelection==='medium')}"
+                            [ngClass]="{'clrBackgroundMedium':currentPrioSelection==='medium', 'shadow':!(currentPrioSelection==='medium')}"
                             (click)="setPrio('medium')">
                             <p>Medium</p>
                             <svg width="21" height="8" viewBox="0 0 21 8" fill="none"
@@ -99,7 +99,7 @@
 
                         </div>
                         <div class="prioChoice"
-                            [ngClass]="{'clrBackgroundLow':currentPrioSelection==='low', 'hoverShadow':!(currentPrioSelection==='low')}"
+                            [ngClass]="{'clrBackgroundLow':currentPrioSelection==='low', 'shadow':!(currentPrioSelection==='low')}"
                             (click)="setPrio('low')">
                             <p>Low</p>
                             <svg width="21" height="15" viewBox="0 0 21 15" fill="none"

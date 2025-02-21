@@ -225,7 +225,7 @@ export class TasksService {
   tasksAll: Task[] = [];
   tasksToDo: Task[] = [];
   tasksInProgress: Task[] = [];
-  tasksAwaitFeedback: Task[] = []; 
+  tasksAwaitFeedback: Task[] = [];
   tasksDone: Task[] = [];
   unsubTasks;
 
@@ -450,6 +450,7 @@ export class TasksService {
     if (task.id) {
       this.currentlySelectedTask = { ...task };
       this.currentTaskToBeUpdated = { ...task };
+      console.log(this.currentlySelectedTask);
     }
   }
 

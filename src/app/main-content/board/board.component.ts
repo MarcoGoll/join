@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BoardoverlayComponent } from './boardoverlay/boardoverlay.component';
 import {
   CdkDragDrop,
@@ -8,15 +8,19 @@ import {
   CdkDrag,
   CdkDropList,
 } from '@angular/cdk/drag-drop';
+import { TasksService } from '../../shared/services/firebase/tasks.service';
+import { SingleCardComponent } from './single-card/single-card.component';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, BoardoverlayComponent, CdkDropList, CdkDrag],
+  imports: [CommonModule, BoardoverlayComponent, CdkDropList, CdkDrag, SingleCardComponent],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
 })
-export class BoardComponent { 
+export class BoardComponent {
+
+  taskService = inject(TasksService);
 
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
@@ -35,6 +39,7 @@ export class BoardComponent {
         event.container.data,
         event.previousIndex,
         event.currentIndex,
+        //TODO: find a solution ?! irgendwie so ==> this.taskService.updateTask(this.taskService.currentlySelectedTask);
       );
     }
   }

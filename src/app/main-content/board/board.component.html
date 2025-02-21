@@ -16,29 +16,25 @@
                 <h2>To do</h2>
                 <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
             </div>
-        
-            <div
-            cdkDropList
-            #todoList="cdkDropList"
-            [cdkDropListData]="todo"
-            [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            @for (item of todo; track item) {
-                <div class="example-box" cdkDrag>{{item}}</div>
-            }
+
+            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                @for (task of taskService.tasksToDo; track task) {
+                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)"><app-single-card
+                        [task]="task"></app-single-card></div>
+                }
             </div>
         </div>
-        
+
         <div class="example-container">
             <div class="column-title">
                 <h2>In progress</h2>
                 <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
             </div>
-            <div cdkDropList #inProgressList="cdkDropList" 
-                [cdkDropListData]="inProgress" 
-                [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]"
-                class="example-list" (cdkDropListDropped)="drop($event)">
+            <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+                [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
+                (cdkDropListDropped)="drop($event)">
                 @for (item of inProgress; track item) {
                 <div class="example-box" cdkDrag>{{item}}</div>
                 }
@@ -50,16 +46,12 @@
                 <h2>Awaiting feedback</h2>
                 <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
             </div>
-            <div
-            cdkDropList
-            #awaitingFeedbackList="cdkDropList"
-            [cdkDropListData]="awaitingFeedback"
-            [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            @for (item of awaitingFeedback; track item) {
+            <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="awaitingFeedback"
+                [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                @for (item of awaitingFeedback; track item) {
                 <div class="example-box" cdkDrag>{{item}}</div>
-            }
+                }
             </div>
         </div>
 
@@ -68,21 +60,16 @@
                 <h2>Done</h2>
                 <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
             </div>
-            <div
-            cdkDropList
-            #doneList="cdkDropList"
-            [cdkDropListData]="done"
-            [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            @for (item of done; track item) {
+            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+                [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                @for (item of done; track item) {
                 <div class="example-box" cdkDrag>{{item}}</div>
-            }
+                }
             </div>
         </div>
     </div>
 
-      
+
 </section>
 <app-boardoverlay></app-boardoverlay>
-

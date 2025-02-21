@@ -79,5 +79,16 @@ textarea {
     font-size: $fSDefaultInteractive;
     font-weight: $fwDefaultInteractive;
     border-radius: $stdRadiusInteractive;
-    padding: $stdPaddingInteractive; 
-} 
+    padding: $stdPaddingInteractive;
+    border: 1px solid $clrBaseGray;
+
+    &:active,
+    &:focus-visible {
+        border: 1px solid $clrHoverIcon;
+        outline: none;
+    }
+
+    &:not(:placeholder-shown) {
+        border: 1px solid $clrHighlight2;
+    }
+}

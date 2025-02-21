@@ -1,9 +1,11 @@
 <div class="modal-overlay overlay" [class.show]="isVisible" (click)="closeModal($event)">
     <div class="modal-content">
-        <div class="task-tag">User Story</div>
-        
+        <div class="task-tag"
+            [ngClass]="{'y':taskService.currentlySelectedTask.category == 'Technical Task', 'z':taskService.currentlySelectedTask.category == 'User Story' }">
+            {{taskService.currentlySelectedTask.category}}</div>
+
         <h1 class="task-title">Kochwelt Page & Recipe Recommender</h1>
-        
+
         <p class="task-description">Build start page with recipe recommendation.</p>
 
         <div class="info-row">
@@ -14,8 +16,17 @@
         <div class="info-row">
             <span class="label">Priority:</span>
             <div class="priority-badge medium">
-                Medium
-                <span class="priority-icon">=</span> 
+                {{taskService.currentlySelectedTask.prio}}
+                @if(taskService.currentlySelectedTask.prio == 'Urgent'){
+                <!-- hier logo für urgent einfügen -->
+                }
+                @if(taskService.currentlySelectedTask.prio == 'Medium'){
+                <!-- hier logo für medium einfügen -->
+                }
+                @if(taskService.currentlySelectedTask.prio == 'Low'){
+                <!-- hier logo für low einfügen -->
+                }
+                <span class="priority-icon">=</span>
             </div>
         </div>
 
