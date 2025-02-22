@@ -12,13 +12,13 @@ import { TasksService } from '../../shared/services/firebase/tasks.service';
 import { SingleCardComponent } from './single-card/single-card.component';
 
 @Component({
-  selector: 'app-board',
+  selector: 'app-board', 
   standalone: true,
-  imports: [CommonModule, BoardoverlayComponent, CdkDropList, CdkDrag, SingleCardComponent],
+  imports: [CommonModule, BoardoverlayComponent, CdkDropList, CdkDrag, SingleCardComponent], 
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
 })
-export class BoardComponent {
+export class BoardComponent { 
 
   taskService = inject(TasksService);
 

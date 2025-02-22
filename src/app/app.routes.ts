@@ -14,5 +14,5 @@ export const routes: Routes = [
     { path: 'contact', component: ContactsComponent },
     { path: 'board', component: BoardComponent },
     { path: 'addTask', component: AddTaskComponent },
-    { path: 'info', component: InfoComponent }
+    { path: 'info', component: InfoComponent } 
 ];  

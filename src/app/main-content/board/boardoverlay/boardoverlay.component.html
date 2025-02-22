@@ -4,13 +4,13 @@
             [ngClass]="{'y':taskService.currentlySelectedTask.category == 'Technical Task', 'z':taskService.currentlySelectedTask.category == 'User Story' }">
             {{taskService.currentlySelectedTask.category}}</div>
 
-        <h1 class="task-title">Kochwelt Page & Recipe Recommender</h1>
+        <h1 class="task-title">{{taskService.currentlySelectedTask.title}}</h1>
 
-        <p class="task-description">Build start page with recipe recommendation.</p>
+        <p class="task-description">{{taskService.currentlySelectedTask.description}}</p> 
 
         <div class="info-row">
             <span class="label">Due date:</span>
-            <span class="value">10/05/2023</span>
+            <span class="value">{{taskService.currentlySelectedTask.dueDate}}</span> 
         </div>
 
         <div class="info-row">
@@ -18,15 +18,19 @@
             <div class="priority-badge medium">
                 {{taskService.currentlySelectedTask.prio}}
                 @if(taskService.currentlySelectedTask.prio == 'Urgent'){
+                    <img src="./../../../../assets/icones/Prio alta.svg" alt="Urgent">
                 <!-- hier logo für urgent einfügen -->
                 }
                 @if(taskService.currentlySelectedTask.prio == 'Medium'){
+                    <img src="./../../../../assets/icones/Capa 1.svg" alt="Medium">
                 <!-- hier logo für medium einfügen -->
                 }
                 @if(taskService.currentlySelectedTask.prio == 'Low'){
+                    <img src="./../../../../assets/icones/Prio baja.svg" alt="Low">
                 <!-- hier logo für low einfügen -->
                 }
-                <span class="priority-icon">=</span>
+
+                
             </div>
         </div>
 
@@ -46,18 +50,18 @@
             <span class="label">Subtasks</span>
             <div class="subtasks">
                 <div class="subtask">
-                    <input type="checkbox" checked id="subtask1">
-                    <label for="subtask1">Implement Recipe Recommendation</label>
+                    <input type="checkbox" class="custom-checkbox" checked id="subtask1">
+                    <label for="subtask1" class="subtask-text">Implement Recipe Recommendation</label>
                 </div>
                 <div class="subtask">
-                    <input type="checkbox" id="subtask2">
-                    <label for="subtask2">Start Page Layout</label>
+                    <input type="checkbox" class="custom-checkbox" id="subtask2">
+                    <label for="subtask2" class="subtask-text">Start Page Layout</label>
                 </div>
             </div>
         </div>
 
         <div class="modal-actions">
-            <button class="action-btn delete">
+            <button class="action-btn delete" (click)="taskService.deleteTask(taskService.currentlySelectedTask); close()">
                 <img src="./assets/icones/delete.svg" alt="Delete">
                 Delete
             </button>
@@ -70,5 +74,66 @@
         <button class="close-btn" (click)="close()">
             <img src="./assets/icones/close.svg" alt="Close">
         </button>
+    </div>
+</div>
+
+<div class="modal-overlay edit-overlay" [class.show]="isEditMode" (click)="closeEditModal($event)">
+    <div class="modal-content edit-modal">
+
+        <form class="edit-form">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title" class="input-field">
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" class="input-field"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Due date</label>
+                <input type="date" name="dueDate" class="input-field">
+            </div>
+
+            <div class="form-group">
+                <label>Priority</label>
+                <div class="priority-buttons">
+                    <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Urgent'">
+                        Urgent
+                        <img src="./assets/icones/Prio alta.svg" alt="Urgent">
+                    </button>
+                    <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Medium'">
+                        Medium
+                        <img src="./assets/icones/Capa 1.svg" alt="Medium">
+                    </button>
+                    <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Low'">
+                        Low
+                        <img src="./assets/icones/Prio baja.svg" alt="Low">
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Assigned to</label>
+                <select name="assignedTo" multiple class="input-field">
+                
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Subtasks</label>
+                <div class="subtask-input-group">
+                    <input type="text" placeholder="Add new subtask" class="input-field">
+                    <button type="button" class="ok-btn">Ok<img src="./assets/icones/check.svg" alt="checkmark"></button>
+                </div>
+            </div>
+        </form>
+
+        <button class="close-btn" (click)="close()">
+            <img src="./assets/icones/close.svg" alt="Close">
+        </button>
+
+       
     </div>
 </div>

@@ -7,6 +7,6 @@ export interface Contact {
     nameShortcutColorCode: number;
     email: string;
     phone: string;
-    img: string;
-}
+    img: string; 
+} 
 

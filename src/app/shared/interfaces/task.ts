@@ -7,5 +7,5 @@ export interface Task {
     dueDate: string;
     prio: 'Urgent' | 'Medium' | 'Low';
     category: 'Technical Task' | 'User Story';
-    subTasks: string[];
-}
+    subTasks: string[]; 
+} 

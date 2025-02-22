@@ -19,4 +19,4 @@ export class SingleCardComponent {
     "category": 'User Story',
     "subTasks": []
   }
-}
+} 

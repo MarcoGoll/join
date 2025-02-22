@@ -5,12 +5,12 @@ import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapsh
 @Injectable({
   providedIn: 'root'
 })
-export class TasksService {
+export class TasksService { 
 
   DUMMYTASKS: Task[] = [
     {
       "title": "Refactor API Calls",
-      "description": "Optimize API calls to reduce load time",
+      "description": "Optimize API calls to reduce load time", 
       "assignedTo": [],
       "status": "done",
       "dueDate": "2025-06-10",

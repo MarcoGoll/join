@@ -6,11 +6,11 @@ import { IfStmt } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactsService {
+export class ContactsService { 
 
   isContactSelected: boolean = false;
   isContactListViewed: boolean = true;
-  isContactDetailsViewed: boolean = false;
+  isContactDetailsViewed: boolean = false; 
   isAddContactViewed: boolean = false;
   isEditContactViewed: boolean = false;
 

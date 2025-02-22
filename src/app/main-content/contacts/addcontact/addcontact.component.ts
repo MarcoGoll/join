@@ -29,7 +29,7 @@ export class AddcontactComponent implements OnInit {
 
   show() {
     // this.isVisible = true;
-    this.contactService.isAddContactViewed = true;
+    this.contactService.isAddContactViewed = true; 
   }
 
   close() {

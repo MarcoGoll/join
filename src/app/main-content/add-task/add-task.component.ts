@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule], 
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss', './add-task.responsive.scss']
 })

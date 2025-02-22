@@ -69,20 +69,15 @@
 }
 
 .priority-badge {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 8px;
-    
-    font-size: 14px;
+    font-size: $fSMobileTer;
+     
 
-    &.medium {
-        color: $clrBaseDark;
-    }
-
-    .priority-icon {
-        font-weight: $fwH1;
-        color: $clrContact2;
-        transform: scaleX(2)
+    img {
+        width: 20px; 
+        height: 20px;
     }
 }
 
@@ -103,12 +98,36 @@
         align-items: center;
         gap: 12px;
         margin-bottom: 8px;
+        
 
-        input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 10px; 
+            height: 10px;
+            border: 1px solid $clrBaseDark;
+            border-radius: 3px;
+            position: relative;
             cursor: pointer;
+            margin: 0;
+            background-color: white;
 
+            &:checked {
+                background-color: white;
+                border-color: $clrBaseDark;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 4px;
+                    top: 0px;
+                    width: 6px;
+                    height: 12px;
+                    border: solid $clrBaseDark;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                }
+            }
         }
 
         label {
@@ -172,3 +191,157 @@
         border-radius: 50%;
     }
 }
+
+
+// Edit Modal Styles
+.edit-overlay {
+    z-index: 1001;
+}
+
+.edit-modal {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+        color: $clrHighlight1;
+        font-size: 14px;
+    }
+}
+
+.input-field {
+    padding: 12px;
+    border: 1px solid $clrBaseGray;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    transition: all 0.3s ease;
+
+    &:focus {
+        outline: none;
+        border-color: 1px solid $clrBaseGray;
+    }
+}
+
+textarea.input-field {
+    min-height: 100px;
+    resize: vertical;
+    border: 1px solid $clrBaseGray;
+    
+}
+
+.priority-buttons {
+    display: flex;
+    gap: 16px;
+
+    button {
+        flex: 1;
+        padding: 12px;
+        border: 0.5px solid $clrSeparatingLines;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: transparent;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        &.active {
+            &[data-priority="Urgent"] {
+                background-color: $clrPrioUrgend;
+                
+            }
+            &[data-priority="Medium"] {
+                background-color: $clrPrioMedium;
+                
+            }
+            &[data-priority="Low"] {
+                background-color: $clrPrioLow;
+                
+            }
+        }
+    }
+}
+
+
+.subtasks-section {
+    margin-top: 24px;
+}
+
+.subtask-input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+
+    .input-field {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #D1D1D1;
+        border-radius: 8px;
+        font-size: 16px;
+        padding-right: 80px; 
+        
+        &::placeholder {
+           // color: #D1D1D1;
+        }
+        
+        &:focus {
+            outline: none;
+        }
+    }
+
+
+    .ok-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        background: $clrBaseDark;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.3s ease;
+        
+
+        img {
+            width: 16px;
+            height: 16px;
+            filter: brightness(0) invert(1); 
+        }
+
+        &:hover {
+            background-color: $clrHighlight2;
+        }
+    }
+}
+
+
