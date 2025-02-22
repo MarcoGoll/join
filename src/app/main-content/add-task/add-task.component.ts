@@ -19,6 +19,8 @@ export class AddTaskComponent {
   contactService = inject(ContactsService);
 
   isAssignedToOpen = false;
+  isCategoryOpen = false;
+  categoryValue: string = "Select task category";
 
   newTask: Task = {
     "title": "",
@@ -54,6 +56,10 @@ export class AddTaskComponent {
     this.isAssignedToOpen = !this.isAssignedToOpen;
   }
 
+  toggleIsCategoryOpen() {
+    this.isCategoryOpen = !this.isCategoryOpen;
+  }
+
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
     if (this.currentSelectedAssignedTo.includes(contact)) {
       this.deleteContactFromCurrentSelectedAssignedTo(contact);
@@ -81,6 +87,11 @@ export class AddTaskComponent {
     } else {
       return false;
     }
+  }
+
+  setContact(category: string) {
+    this.isCategoryOpen = false;
+    this.categoryValue = category;
   }
 }
 

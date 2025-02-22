@@ -75,6 +75,10 @@
     @include setFlex($fd: column, $ai: stretch, $gap: 8px)
 }
 
+.inputContainer {
+    position: relative;
+}
+
 .selectionInput {
     @include setFlex($jc: space-between);
     background-color: $clrBaseBright;
@@ -96,9 +100,14 @@
 }
 
 .selectionContaktList {
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    right: 0;
+    z-index: 1;
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
     background-color: $clrBaseBright;
-    max-height: 120px;
+    height: 120px;
     overflow-y: auto;
     scrollbar-width: thin;
     border-radius: 10px;
@@ -143,7 +152,30 @@
     font-weight: 400px;
 }
 
-.contactSelection {}
+.selectionCategoryList {
+    position: absolute;
+    bottom: -90px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
+    background-color: $clrBaseBright;
+    height: 90px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    border-radius: 10px;
+}
+
+.selectionCategory {
+    cursor: pointer;
+    @include setFlex($jc: space-between, $gap: 16px);
+    padding: 7px 16px;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: $clrBaseGray;
+    }
+}
 
 .errorMessageContainer {
     height: 30px;

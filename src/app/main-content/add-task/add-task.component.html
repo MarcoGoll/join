@@ -146,15 +146,28 @@
             </div>
         </div>
         <div class="inputAndErrorContainer">
-            <label for="category">Category<span class="clrRed">*</span></label>
+            <label for="description">Category</label>
             <div class="inputContainer">
-                <input #category="ngModel" [(ngModel)]="newTask.category" id="category" name="category"
-                    class="input-field" placeholder="Select task category" required>
+                <div class=selectionInput (click)="toggleIsCategoryOpen()">
+                    <p>{{categoryValue}}</p>
+                    <div class="selectionInputImgContainer">
+                        @if (isCategoryOpen) {
+                        <img src="./assets/icones/arrow_drop_down_reverse.svg" alt="dropdownArrow">
+                        }@else {
+                        <img src="./assets/icones/arrow_drop_down.svg" alt="dropdownArrow">
+                        }
+                    </div>
+                </div>
+                <div class=selectionCategoryList [ngClass]="{'d_none':!isCategoryOpen}">
+                    <div class="selectionCategory" (click)="setContact('Technical Task')">
+                        <p>Technical Task</p>
+                    </div>
+                    <div class="selectionCategory" (click)="setContact('User Story')">
+                        <p>User Story</p>
+                    </div>
+                </div>
             </div>
             <div class="errorMessageContainer">
-                @if (!category.valid && category.touched) {
-                <p class="errorMessage">Please enter a Category</p>
-                }
             </div>
         </div>
         <div class="inputAndErrorContainer">
