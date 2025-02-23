@@ -173,7 +173,29 @@
         <div class="inputAndErrorContainer">
             <label for="subTask">Subtask</label>
             <div class="inputContainer">
-                <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field">
+                <div class="subtaskInputContainer" (click)="setIsSubtaskinFocus(true)">
+                    <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field">
+                    @if (isSubtaskinFocus) {
+                    <div class="inputBtns">
+                        <div class="inputBtn">
+                            <img src="./assets/img/icon/subtask_close.svg" alt="Plus"
+                                (click)="stopPropagation($event); setIsSubtaskinFocus(false)">
+                        </div>
+                        <p>|</p>
+                        <div class="inputBtn">
+                            <img src="./assets/img/icon/subtask_confirm.svg" alt="Plus"
+                                (click)="stopPropagation($event); setIsSubtaskinFocus(false)">
+                        </div>
+                    </div>
+                    }
+                    @if (!isSubtaskinFocus) {
+                    <div class="inputBtns">
+                        <div class="inputBtn">
+                            <img src="./assets/img/icon/subtask_plus.svg" alt="Plus">
+                        </div>
+                    </div>
+                    }
+                </div>
             </div>
             <div class="errorMessageContainer">
             </div>

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ContactsService } from '../../shared/services/firebase/contacts.service';
 import { Contact } from '../../shared/interfaces/contact';
 
+
 @Component({
   selector: 'app-add-task',
   standalone: true,
@@ -18,8 +19,10 @@ export class AddTaskComponent {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
 
+
   isAssignedToOpen = false;
   isCategoryOpen = false;
+  isSubtaskinFocus = false;
   categoryValue: string = "Select task category";
 
   newTask: Task = {
@@ -60,6 +63,15 @@ export class AddTaskComponent {
     this.isCategoryOpen = !this.isCategoryOpen;
   }
 
+  setIsSubtaskinFocus(myBool: boolean) {
+    this.isSubtaskinFocus = myBool;
+    console.log("this.isSubtaskinFocus: ", this.isSubtaskinFocus)
+  }
+
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
+
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
     if (this.currentSelectedAssignedTo.includes(contact)) {
       this.deleteContactFromCurrentSelectedAssignedTo(contact);
@@ -93,5 +105,6 @@ export class AddTaskComponent {
     this.isCategoryOpen = false;
     this.categoryValue = category;
   }
+
 }
 
