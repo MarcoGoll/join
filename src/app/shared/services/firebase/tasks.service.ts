@@ -309,7 +309,7 @@ export class TasksService {
     "dueDate": "2025-05-22",
     "prio": 'Urgent',
     "category": 'Technical Task',
-    "subTasks": [{ "checked": true, "description": "Component Contactdetails" }, { "checked": false, "checked", "description": "Component Contactlist" }]
+    "subTasks": [{ "checked": true, "description": "Component Contactdetails" }, { "checked": false, "description": "Component Contactlist" }]
   };
 
   currentTaskToBeUpdated: Task = {

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ContactsService } from '../../shared/services/firebase/contacts.service';
 import { Contact } from '../../shared/interfaces/contact';
+import { Subtask } from '../../shared/interfaces/subtask';
 
 
 @Component({
@@ -24,6 +25,8 @@ export class AddTaskComponent {
   isCategoryOpen = false;
   isSubtaskinFocus = false;
   categoryValue: string = "Select task category";
+  subtaskValue: string = "";
+  subtasks: Subtask[] = [];
 
   newTask: Task = {
     "title": "",
@@ -53,6 +56,16 @@ export class AddTaskComponent {
       default:
         console.log("Identifier is not known");
     }
+  }
+
+  setSubtaskValue(value: string) {
+    this.subtaskValue = value;
+  }
+
+  confirmSubtask() {
+    this.subtasks.push({ checked: false, description: this.subtaskValue });
+    this.setSubtaskValue("");
+    console.log("Aktuelle Subtasks: ", this.subtasks);
   }
 
   toggleIsAssignedToOpen() {

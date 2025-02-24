@@ -174,17 +174,22 @@
             <label for="subTask">Subtask</label>
             <div class="inputContainer">
                 <div class="subtaskInputContainer" (click)="setIsSubtaskinFocus(true)">
-                    <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field">
+                    <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field"
+                        [(ngModel)]="subtaskValue">
                     @if (isSubtaskinFocus) {
                     <div class="inputBtns">
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/subtask_close.svg" alt="Plus"
-                                (click)="stopPropagation($event); setIsSubtaskinFocus(false)">
+                            <img src="./assets/img/icon/subtask_close.svg" alt="Cancel" (click)="
+                                stopPropagation($event); 
+                                setIsSubtaskinFocus(false);
+                                setSubtaskValue('')">
                         </div>
                         <p>|</p>
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/subtask_confirm.svg" alt="Plus"
-                                (click)="stopPropagation($event); setIsSubtaskinFocus(false)">
+                            <img src="./assets/img/icon/subtask_confirm.svg" alt="Confirm" (click)="
+                                stopPropagation($event);
+                                setIsSubtaskinFocus(false);
+                                confirmSubtask()">
                         </div>
                     </div>
                     }
@@ -196,6 +201,13 @@
                     </div>
                     }
                 </div>
+                @if (subtasks.length>0) {
+                <div class="currentSubtasksList">
+                    @for (subtask of subtasks; track $index) {
+                    <div class="currentSubtaskDisplayView">- {{subtask.description}}</div>
+                    }
+                </div>
+                }
             </div>
             <div class="errorMessageContainer">
             </div>
