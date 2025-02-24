@@ -2,7 +2,7 @@
 
 
 section{
-    height: 100vh;
+    height: calc(100vh - 96px);
     background-color: $clrBackground;
     margin-top: 96px;
     padding: 36px;
@@ -73,7 +73,6 @@ section{
 
 
 
-
 .example-container {
     width: 230px;
     max-width: 100%;
@@ -83,17 +82,18 @@ section{
   }
   
   .example-list {
-    border: solid 1px #ccc;
+    padding: 5px;
     min-height: 60px;
-    background: white;
-    border-radius: 4px;
+    background: $clrBackground;
     overflow: hidden;
     display: block;
   }
   
   .example-box {
     padding: 20px 10px;
-    border-bottom: solid 1px #ccc;
+    border: none;
+    border-radius: 24px;
+    margin-bottom: 16px;
     color: rgba(0, 0, 0, 0.87);
     display: flex;
     flex-direction: row;
@@ -103,6 +103,7 @@ section{
     cursor: move;
     background: white;
     font-size: 14px;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.08);
   }
   
   .cdk-drag-preview {

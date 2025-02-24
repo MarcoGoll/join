@@ -35,8 +35,9 @@
             <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
                 [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                @for (item of inProgress; track item) {
-                <div class="example-box" cdkDrag>{{item}}</div>
+                @for (task of taskService.tasksInProgress; track task) {
+                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                    <app-single-card [task]="task"></app-single-card></div>
                 }
             </div>
         </div>
@@ -49,8 +50,10 @@
             <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="awaitingFeedback"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                @for (item of awaitingFeedback; track item) {
-                <div class="example-box" cdkDrag>{{item}}</div>
+                @for (task of taskService.tasksAwaitFeedback; track task) {
+                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                    <app-single-card [task]="task"></app-single-card>
+                </div>
                 }
             </div>
         </div>
@@ -63,8 +66,10 @@
             <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
                 [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                @for (item of done; track item) {
-                <div class="example-box" cdkDrag>{{item}}</div>
+                @for (task of taskService.tasksDone; track task) {
+                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                    <app-single-card [task]="task"></app-single-card>
+                </div>
                 }
             </div>
         </div>
@@ -72,4 +77,4 @@
 
 
 </section>
-<app-boardoverlay></app-boardoverlay>
+<!-- <app-boardoverlay></app-boardoverlay> -->
