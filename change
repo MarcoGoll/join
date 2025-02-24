@@ -1,0 +1,12 @@
+
+C:\DEV\githubProjects\da_angular_projects\join>git pull 
+Already up to date.
+
+C:\DEV\githubProjects\da_angular_projects\join>git add . 
+
+C:\DEV\githubProjects\da_angular_projects\join>git commit -m "create: logic = tasks column via drag and drop" 
+[main 3e73d6f] create: logic = tasks column via drag and drop
+ 3 files changed, 34 insertions(+), 11 deletions(-)
+ create mode 100644 change
+
+C:\DEV\githubProjects\da_angular_projects\join>git push 
