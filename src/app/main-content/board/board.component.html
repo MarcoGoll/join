@@ -16,6 +16,9 @@
                 <h2>To do</h2>
                 <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
             </div>
+            <div class="no-tasks">
+                <p>No tasks</p>
+            </div>
 
             <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"

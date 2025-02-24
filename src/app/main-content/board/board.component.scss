@@ -70,6 +70,15 @@ section{
     }
 }
 
+.no-tasks{
+  @include setFlex();
+  border: 1px dashed rgba(168, 168, 168, 1);
+  width: 96%;
+  margin-left: 3%;
+  background-color: #e8eaea;
+  color: rgba(168, 168, 168, 1);
+  border-radius: 10px;
+}
 
 
 
