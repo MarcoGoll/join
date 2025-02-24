@@ -371,6 +371,10 @@ export class TasksService {
     const q = query(this.getTasksRef(), orderBy("title"));
     return onSnapshot(q, (list) => {
       this.tasksAll = [];
+      this.tasksToDo = [];
+      this.tasksInProgress = [];
+      this.tasksAwaitFeedback = [];
+      this.tasksDone = [];
       list.forEach(task => {
         let myTask = this.setTaskObjectWithExtraId(task.data(), task.id)
         this.tasksAll.push(myTask);
@@ -513,7 +517,6 @@ export class TasksService {
         .catch((err) => {
           console.error(err);
         }).then(() => {
-          console.log("Folgender Task wurde erfolgreich geupdated: ", task)
         })
     }
   }

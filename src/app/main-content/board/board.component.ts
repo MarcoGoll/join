@@ -35,17 +35,37 @@ export class BoardComponent {
     if (event.previousContainer === event.container) {
       // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex); // brauchen wir erstmal nicht, weil wir nicht mit prios arbeiten
     } else {
-      console.log(event.previousContainer.data[event.previousIndex]);
-      if (event.container.data[0]) {
-        event.previousContainer.data[event.previousIndex].status = event.container.data[0].status;
-        this.taskService.updateTask(event.previousContainer.data[event.previousIndex]);
+      // if (event.container.data[0]) {
+      //   event.previousContainer.data[event.previousIndex].status = event.container.data[0].status;
+
+      // }
+      switch (event.container.id) {
+        case "cdk-drop-list-0":
+          event.previousContainer.data[event.previousIndex].status = "toDo";
+          break;
+        case "cdk-drop-list-1":
+          event.previousContainer.data[event.previousIndex].status = "inProgress";
+          break;
+        case "cdk-drop-list-2":
+          event.previousContainer.data[event.previousIndex].status = "awaitFeedback";
+          break;
+        case "cdk-drop-list-3":
+          event.previousContainer.data[event.previousIndex].status = "done";
+          break;
+        default:
+          console.error("container id is not known");
+          break;
       }
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
+      this.taskService.updateTask(event.previousContainer.data[event.previousIndex]);
+
+      event.previousContainer.data.splice(event.previousIndex, 1);
+      // transferArrayItem(
+      //   event.previousContainer.data,
+      //   event.container.data,
+      //   event.previousIndex,
+      //   event.currentIndex,
+      // );
+      console.log(event);
     }
   }
 }
