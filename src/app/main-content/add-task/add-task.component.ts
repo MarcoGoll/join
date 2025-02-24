@@ -26,7 +26,7 @@ export class AddTaskComponent {
   isSubtaskinFocus = false;
   categoryValue: string = "Select task category";
   subtaskValue: string = "";
-  subtasks: Subtask[] = [];
+  subtasksToAdd: { "inEditMode": boolean, "description": string }[] = [];
 
   newTask: Task = {
     "title": "",
@@ -64,7 +64,7 @@ export class AddTaskComponent {
 
   confirmSubtask() {
     if (this.subtaskValue != "") {
-      this.subtasks.push({ checked: false, description: this.subtaskValue });
+      this.subtasksToAdd.push({ inEditMode: false, description: this.subtaskValue });
       this.setSubtaskValue("");
     }
   }

@@ -201,24 +201,37 @@
                     </div>
                     }
                 </div>
-                @if (subtasks.length>0) {
+                @if (subtasksToAdd.length>0) {
                 <div class="currentSubtasksList">
-                    @for (subtask of subtasks; track $index) {
+                    @for (subtask of subtasksToAdd; track $index) {
                     <div class="currentSubtask">
-                        <div class="currentSubtaskDisplayView">
-                            <div class="currentSubtaskDisplayViewText">{{subtask.description}}</div>
+                        <div class="currentSubtaskDisplayView" [ngClass]="{'d_none': subtask.inEditMode}"
+                            (dblclick)="subtask.inEditMode=true">
+                            <div class="currentSubtaskDisplayViewText">• {{subtask.description}}</div>
                             <div class="currentSubtaskDisplayViewBtns">
                                 <div class="inputBtn">
                                     <img src="./assets/img/icon/subtask_edit.svg" alt="Edit">
                                 </div>
                                 <p>|</p>
                                 <div class="inputBtn">
-                                    <img src="./assets/img/icon/subtask_delete.svg" alt="Confirm">
+                                    <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">
                                 </div>
                             </div>
                         </div>
-                        <div class="currentSubtaskEditView">
-                            <!-- tbd -->
+                        <div class="currentSubtaskEditView" [ngClass]="{'d_none': !subtask.inEditMode}">
+                            <input class="currentSubtaskEditViewInput" type="text" [(ngModel)]="subtask.description">
+                            <!-- [(ngModel)]="subtasksToAdd[$index].description"> -->
+                            <!-- value = "{{subtask.description}}" -->
+                            <div class="currentSubtaskDisplayViewBtns">
+                                <div class="inputBtn">
+                                    <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">
+                                </div>
+                                <p>|</p>
+                                <div class="inputBtn">
+                                    <img src="./assets/img/icon/subtask_confirm.svg" alt="Confirm"
+                                        (click)="subtask.inEditMode=false">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     }

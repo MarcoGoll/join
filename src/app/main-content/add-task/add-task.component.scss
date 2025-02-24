@@ -200,7 +200,7 @@
 }
 
 .currentSubtasksList {
-    @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 4px);
 }
 
 .currentSubtask {
@@ -217,6 +217,21 @@
     &:hover {
         background-color: $clrBaseGray
     }
+}
+
+.currentSubtaskEditView {
+    position: relative;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.currentSubtaskEditViewInput {
+    border-radius: 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $clrHighlight2;
+    padding: 4px 21px;
+    width: 100%;
 }
 
 .currentSubtaskDisplayViewBtns {
