@@ -1,4 +1,5 @@
 import { Contact } from "./contact";
+import { Subtask } from "./subtask";
 
 export interface Task {
     id?: string; // ? optional
@@ -9,5 +10,5 @@ export interface Task {
     dueDate: string;
     prio: 'Urgent' | 'Medium' | 'Low';
     category: 'Technical Task' | 'User Story';
-    subTasks: string[]; 
-} 
+    subTasks: Subtask[];
+}

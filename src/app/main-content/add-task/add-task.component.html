@@ -173,7 +173,41 @@
         <div class="inputAndErrorContainer">
             <label for="subTask">Subtask</label>
             <div class="inputContainer">
-                <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field">
+                <div class="subtaskInputContainer" (click)="setIsSubtaskinFocus(true)">
+                    <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field"
+                        [(ngModel)]="subtaskValue">
+                    @if (isSubtaskinFocus) {
+                    <div class="inputBtns">
+                        <div class="inputBtn">
+                            <img src="./assets/img/icon/subtask_close.svg" alt="Cancel" (click)="
+                                stopPropagation($event); 
+                                setIsSubtaskinFocus(false);
+                                setSubtaskValue('')">
+                        </div>
+                        <p>|</p>
+                        <div class="inputBtn">
+                            <img src="./assets/img/icon/subtask_confirm.svg" alt="Confirm" (click)="
+                                stopPropagation($event);
+                                setIsSubtaskinFocus(false);
+                                confirmSubtask()">
+                        </div>
+                    </div>
+                    }
+                    @if (!isSubtaskinFocus) {
+                    <div class="inputBtns">
+                        <div class="inputBtn">
+                            <img src="./assets/img/icon/subtask_plus.svg" alt="Plus">
+                        </div>
+                    </div>
+                    }
+                </div>
+                @if (subtasks.length>0) {
+                <div class="currentSubtasksList">
+                    @for (subtask of subtasks; track $index) {
+                    <div class="currentSubtaskDisplayView">- {{subtask.description}}</div>
+                    }
+                </div>
+                }
             </div>
             <div class="errorMessageContainer">
             </div>

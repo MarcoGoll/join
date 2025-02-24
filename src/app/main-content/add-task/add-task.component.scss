@@ -177,6 +177,28 @@
     }
 }
 
+.subtaskInputContainer {
+    position: relative;
+}
+
+.inputBtns {
+    @include setFlex($gap: 4px);
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+}
+
+.inputBtn {
+    border-radius: 50%;
+
+    &:hover {
+        background-color: $clrBaseGray;
+    }
+}
+
 .errorMessageContainer {
     height: 30px;
 }

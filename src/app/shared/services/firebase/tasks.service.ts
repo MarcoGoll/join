@@ -16,7 +16,7 @@ export class TasksService {
       "dueDate": "2025-06-10",
       "prio": "Urgent",
       "category": "Technical Task",
-      "subTasks": ["Refactor fetchUserData", "Refactor fetchOrders", "Optimize caching"]
+      "subTasks": [{ "checked": true, "description": "Refactor fetchUserData" }, { "checked": true, "description": "Refactor fetchOrders" }, { "checked": true, "description": "Optimize caching" }]
     },
     {
       "title": "Implement Dark Mode",
@@ -36,7 +36,9 @@ export class TasksService {
       "dueDate": "2025-05-30",
       "prio": "Urgent",
       "category": "Technical Task",
-      "subTasks": ["Investigate error logs"]
+      "subTasks": [
+        { "checked": false, "description": "Investigate error logs" }
+      ]
     },
     {
       "title": "Update Documentation",
@@ -46,7 +48,11 @@ export class TasksService {
       "dueDate": "2025-04-20",
       "prio": "Low",
       "category": "Technical Task",
-      "subTasks": ["Review current documentation", "Add missing endpoints", "Standardize format"]
+      "subTasks": [
+        { "checked": true, "description": "Review current documentation" },
+        { "checked": true, "description": "Add missing endpoints" },
+        { "checked": true, "description": "Standardize format" }
+      ]
     },
     {
       "title": "Improve Mobile Responsiveness",
@@ -56,7 +62,12 @@ export class TasksService {
       "dueDate": "2025-07-01",
       "prio": "Medium",
       "category": "User Story",
-      "subTasks": ["Test on iOS", "Test on Android", "Fix flex/grid issues", "Improve touch interactions"]
+      "subTasks": [
+        { "checked": true, "description": "Test on iOS" },
+        { "checked": false, "description": "Test on Android" },
+        { "checked": false, "description": "Fix flex/grid issues" },
+        { "checked": false, "description": "Improve touch interactions" }
+      ]
     },
     {
       "title": "Redesign Dashboard",
@@ -66,7 +77,27 @@ export class TasksService {
       "dueDate": "2025-06-20",
       "prio": "Urgent",
       "category": "User Story",
-      "subTasks": ["Gather user feedback", "Update UI components", "Improve contrast", "Adjust font sizes"]
+      "subTasks": [
+        { "checked": true, "description": "Gather user feedback" },
+        { "checked": false, "description": "Update UI components" },
+        { "checked": false, "description": "Improve contrast" },
+        { "checked": false, "description": "Adjust font sizes" }
+      ]
+    },
+    {
+      "title": "Redesign Dashboard",
+      "description": "Enhance UI for better usability",
+      "assignedTo": [],
+      "status": "inProgress",
+      "dueDate": "2025-06-20",
+      "prio": "Urgent",
+      "category": "User Story",
+      "subTasks": [
+        { "checked": false, "description": "Gather user feedback" },
+        { "checked": false, "description": "Update UI components" },
+        { "checked": false, "description": "Improve contrast" },
+        { "checked": true, "description": "Adjust font sizes" }
+      ]
     },
     {
       "title": "Migrate Database",
@@ -76,7 +107,12 @@ export class TasksService {
       "dueDate": "2025-08-01",
       "prio": "Urgent",
       "category": "Technical Task",
-      "subTasks": ["Export MySQL data", "Import into PostgreSQL", "Update ORM models", "Test migrations"]
+      "subTasks": [
+        { "checked": true, "description": "Export MySQL data" },
+        { "checked": false, "description": "Import into PostgreSQL" },
+        { "checked": false, "description": "Update ORM models" },
+        { "checked": false, "description": "Test migrations" }
+      ]
     },
     {
       "title": "Optimize Images",
@@ -96,7 +132,12 @@ export class TasksService {
       "dueDate": "2025-06-25",
       "prio": "Medium",
       "category": "User Story",
-      "subTasks": ["Add autocomplete", "Implement search filters", "Optimize search speed", "Support fuzzy search"]
+      "subTasks": [
+        { "checked": true, "description": "Add autocomplete" },
+        { "checked": true, "description": "Implement search filters" },
+        { "checked": true, "description": "Optimize search speed" },
+        { "checked": false, "description": "Support fuzzy search" }
+      ]
     },
     {
       "title": "Set Up CI/CD",
@@ -106,7 +147,12 @@ export class TasksService {
       "dueDate": "2025-06-12",
       "prio": "Urgent",
       "category": "Technical Task",
-      "subTasks": ["Configure GitHub Actions", "Add automated tests", "Deploy staging environment", "Setup rollback strategy"]
+      "subTasks": [
+        { "checked": false, "description": "Configure GitHub Actions" },
+        { "checked": false, "description": "Add automated tests" },
+        { "checked": true, "description": "Deploy staging environment" },
+        { "checked": false, "description": "Setup rollback strategy" }
+      ]
     },
     {
       "title": "Implement Role-Based Access Control",
@@ -116,7 +162,10 @@ export class TasksService {
       "dueDate": "2025-06-30",
       "prio": "Medium",
       "category": "User Story",
-      "subTasks": ["Define roles", "Implement permission checks"]
+      "subTasks": [
+        { "checked": false, "description": "Define roles" },
+        { "checked": false, "description": "Implement permission checks" }
+      ]
     },
     {
       "title": "Fix UI Bugs",
@@ -136,7 +185,10 @@ export class TasksService {
       "dueDate": "2025-07-10",
       "prio": "Urgent",
       "category": "Technical Task",
-      "subTasks": ["Minimize JS bundle size", "Optimize database queries"]
+      "subTasks": [
+        { "checked": true, "description": "Minimize JS bundle size" },
+        { "checked": false, "description": "Optimize database queries" }
+      ]
     },
     {
       "title": "Develop User Profile Page",
@@ -146,7 +198,9 @@ export class TasksService {
       "dueDate": "2025-07-05",
       "prio": "Medium",
       "category": "User Story",
-      "subTasks": ["Add profile picture upload"]
+      "subTasks": [
+        { "checked": false, "description": "Add profile picture upload" }
+      ]
     },
     {
       "title": "Security Audit",
@@ -156,7 +210,11 @@ export class TasksService {
       "dueDate": "2025-05-15",
       "prio": "Urgent",
       "category": "Technical Task",
-      "subTasks": ["Run penetration test", "Fix identified issues", "Review access controls"]
+      "subTasks": [
+        { "checked": true, "description": "Run penetration test" },
+        { "checked": true, "description": "Fix identified issues" },
+        { "checked": true, "description": "Review access controls" }
+      ]
     },
     {
       "title": "Email Notifications",
@@ -176,7 +234,11 @@ export class TasksService {
       "dueDate": "2025-07-15",
       "prio": "Medium",
       "category": "User Story",
-      "subTasks": ["Create feedback form", "Display user reviews", "Analyze feedback"]
+      "subTasks": [
+        { "checked": false, "description": "Create feedback form" },
+        { "checked": false, "description": "Display user reviews" },
+        { "checked": false, "description": "Analyze feedback" }
+      ]
     },
     {
       "title": "Test Automation",
@@ -196,7 +258,11 @@ export class TasksService {
       "dueDate": "2025-07-20",
       "prio": "Medium",
       "category": "User Story",
-      "subTasks": ["Add ARIA attributes", "Improve keyboard navigation", "Increase contrast"]
+      "subTasks": [
+        { "checked": false, "description": "Add ARIA attributes" },
+        { "checked": false, "description": "Improve keyboard navigation" },
+        { "checked": false, "description": "Increase contrast" }
+      ]
     },
     {
       "title": "Analytics Dashboard",
@@ -206,7 +272,9 @@ export class TasksService {
       "dueDate": "2025-07-10",
       "prio": "Medium",
       "category": "User Story",
-      "subTasks": ["Set up tracking events"]
+      "subTasks": [
+        { "checked": false, "description": "Set up tracking events" }
+      ]
     },
     {
       "title": "Migrate Frontend to React 18",
@@ -216,7 +284,11 @@ export class TasksService {
       "dueDate": "2025-08-05",
       "prio": "Urgent",
       "category": "Technical Task",
-      "subTasks": ["Update dependencies", "Test all components", "Fix deprecated methods"]
+      "subTasks": [
+        { "checked": false, "description": "Update dependencies" },
+        { "checked": false, "description": "Test all components" },
+        { "checked": false, "description": "Fix deprecated methods" }
+      ]
     }
   ]
     ;
@@ -237,7 +309,7 @@ export class TasksService {
     "dueDate": "2025-05-22",
     "prio": 'Urgent',
     "category": 'Technical Task',
-    "subTasks": ['Component Contactdetails', 'Component Contactlist']
+    "subTasks": [{ "checked": true, "description": "Component Contactdetails" }, { "checked": false, "description": "Component Contactlist" }]
   };
 
   currentTaskToBeUpdated: Task = {
@@ -248,7 +320,7 @@ export class TasksService {
     "dueDate": "2025-05-22",
     "prio": 'Urgent',
     "category": 'Technical Task',
-    "subTasks": ['Component Contactdetails', 'Component Contactlist']
+    "subTasks": [{ "checked": true, "description": "Component Contactdetails" }, { "checked": false, "description": "Component Contactlist" }]
   };
 
   /**
