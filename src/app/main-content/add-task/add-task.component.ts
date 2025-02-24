@@ -11,7 +11,7 @@ import { Subtask } from '../../shared/interfaces/subtask';
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [FormsModule, CommonModule], 
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss', './add-task.responsive.scss']
 })
@@ -63,9 +63,10 @@ export class AddTaskComponent {
   }
 
   confirmSubtask() {
-    this.subtasks.push({ checked: false, description: this.subtaskValue });
-    this.setSubtaskValue("");
-    console.log("Aktuelle Subtasks: ", this.subtasks);
+    if (this.subtaskValue != "") {
+      this.subtasks.push({ checked: false, description: this.subtaskValue });
+      this.setSubtaskValue("");
+    }
   }
 
   toggleIsAssignedToOpen() {

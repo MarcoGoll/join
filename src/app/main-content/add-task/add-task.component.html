@@ -5,7 +5,7 @@
                 <p>Clear</p>
                 <img src="" alt="">
             </div>
-            <div class="primaryBtnTall btnWithIcon createBTN"> 
+            <div class="primaryBtnTall btnWithIcon createBTN">
                 <p>Create Task</p>
                 <img src="" alt="">
             </div>
@@ -204,7 +204,23 @@
                 @if (subtasks.length>0) {
                 <div class="currentSubtasksList">
                     @for (subtask of subtasks; track $index) {
-                    <div class="currentSubtaskDisplayView">- {{subtask.description}}</div>
+                    <div class="currentSubtask">
+                        <div class="currentSubtaskDisplayView">
+                            <div class="currentSubtaskDisplayViewText">{{subtask.description}}</div>
+                            <div class="currentSubtaskDisplayViewBtns">
+                                <div class="inputBtn">
+                                    <img src="./assets/img/icon/subtask_edit.svg" alt="Edit">
+                                </div>
+                                <p>|</p>
+                                <div class="inputBtn">
+                                    <img src="./assets/img/icon/subtask_delete.svg" alt="Confirm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="currentSubtaskEditView">
+                            <!-- tbd -->
+                        </div>
+                    </div>
                     }
                 </div>
                 }

@@ -513,6 +513,7 @@ export class TasksService {
         .catch((err) => {
           console.error(err);
         }).then(() => {
+          console.log("Folgender Task wurde erfolgreich geupdated: ", task)
         })
     }
   }
@@ -530,6 +531,7 @@ export class TasksService {
       title: task.title,
       description: task.description,
       assignedTo: task.assignedTo,
+      status: task.status,
       dueDate: task.dueDate,
       prio: task.prio,
       category: task.category,
