@@ -26,4 +26,15 @@ export class SingleCardComponent {
     "category": 'User Story',
     "subTasks": []
   }
+
+  getAllDoneSubTasks(task: Task) {
+    let counter = 0;
+    for (let i = 0; i < task.subTasks.length; i++) {
+      if (task.subTasks[i].checked == true) {
+        counter++;
+      }
+    }
+
+    return counter;
+  }
 } 

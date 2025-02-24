@@ -1,5 +1,6 @@
 <section>
-    <div class="category" [ngClass]="{'technical-task':taskService.currentlySelectedTask.category == 'Technical Task', 'user-story':taskService.currentlySelectedTask.category == 'User Story'}">
+    <div class="category"
+        [ngClass]="{'technical-task':task.category == 'Technical Task', 'user-story':task.category == 'User Story'}">
         <p>{{task.category}}</p>
     </div>
     <div>
@@ -10,13 +11,20 @@
         <div class="progressbar">
             <div class="progress"></div>
         </div>
-        <p>0/{{task.subTasks.length}} Subtasks</p>
+        <!-- <p>0/{{task.subTasks.length}} Subtasks</p> -->
+        <p>{{getAllDoneSubTasks(task)}}/{{task.subTasks.length}} Subtasks</p>
     </div>
     <div class="profil-prio-container">
         <div class="profil-container">
-            <div class="profil"><p>SM</p></div>
-            <div class="profil"><p>MA</p></div>
-            <div class="profil"><p>FH</p></div>
+            <div class="profil">
+                <p>SM</p>
+            </div>
+            <div class="profil">
+                <p>MA</p>
+            </div>
+            <div class="profil">
+                <p>FH</p>
+            </div>
         </div>
         <div class="prio">
             {{task.prio}}
