@@ -67,11 +67,114 @@
 // ##############################################################################################################
 .addTaskForm {
     overflow-y: auto;
+    scrollbar-width: thin;
     @include setFlex($ai: flex-start, $gap: 32px);
 }
 
 .inputAndErrorContainer {
     @include setFlex($fd: column, $ai: stretch, $gap: 8px)
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.selectionInput {
+    @include setFlex($jc: space-between);
+    background-color: $clrBaseBright;
+    padding: $stdPaddingInteractive;
+    border-radius: $stdRadiusInteractive;
+    border: 1px solid $clrBaseGray;
+}
+
+.selectionInputImgContainer {
+    border-radius: 50%;
+
+    &:hover {
+        background-color: $clrBaseGray;
+    }
+}
+
+.selectedContaktList {
+    @include setFlex($jc: flex-start);
+}
+
+.selectionContaktList {
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
+    background-color: $clrBaseBright;
+    height: 120px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    border-radius: 10px;
+}
+
+.selectionContact {
+    cursor: pointer;
+    @include setFlex($jc: space-between, $gap: 16px);
+    padding: 7px 16px;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: $clrBaseGray;
+    }
+
+    &:active {
+        background-color: $clrHighlight1Darker;
+        color: $clrBaseBright;
+    }
+}
+
+.isSelected {
+    background-color: $clrHighlight1Darker !important;
+    color: $clrBaseBright;
+}
+
+.contactShortcut {
+    @include setFlex();
+    color: white;
+    border: 2px solid $clrBaseBright;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 400px;
+    width: 42px;
+    height: 42px;
+}
+
+.contactFullname {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 400px;
+}
+
+.selectionCategoryList {
+    position: absolute;
+    bottom: -90px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
+    background-color: $clrBaseBright;
+    height: 90px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    border-radius: 10px;
+}
+
+.selectionCategory {
+    cursor: pointer;
+    @include setFlex($jc: space-between, $gap: 16px);
+    padding: 7px 16px;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: $clrBaseGray;
+    }
 }
 
 .errorMessageContainer {

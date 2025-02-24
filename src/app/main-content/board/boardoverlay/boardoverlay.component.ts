@@ -15,7 +15,7 @@ export class BoardoverlayComponent {
   taskService = inject(TasksService);
 
   isVisible = true;
-  isEditMode = true;
+  isEditMode = false;
 
   show() {
     this.isVisible = true; 
@@ -30,9 +30,10 @@ export class BoardoverlayComponent {
     this.isEditMode = false;
   }
 
-  toggleEditMode() {
-    this.isEditMode = !this.isEditMode;
-  }
+  openEditModal() {
+    this.isEditMode = true;
+    this.isVisible = false;
+}
 
   closeModal(event: MouseEvent) {
     if ((event.target as HTMLElement).classList.contains('overlay')) { 

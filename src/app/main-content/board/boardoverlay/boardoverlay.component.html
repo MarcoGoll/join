@@ -8,25 +8,25 @@
 
         <p class="task-description">{{taskService.currentlySelectedTask.description}}</p> 
 
-        <div class="info-row">
+        <div class="info-row horizontal">
             <span class="label">Due date:</span>
             <span class="value">{{taskService.currentlySelectedTask.dueDate}}</span> 
         </div>
 
-        <div class="info-row">
+        <div class="info-row horizontal">
             <span class="label">Priority:</span>
             <div class="priority-badge medium">
                 {{taskService.currentlySelectedTask.prio}}
                 @if(taskService.currentlySelectedTask.prio == 'Urgent'){
-                    <img src="./../../../../assets/icones/Prio alta.svg" alt="Urgent">
+                    <img src="./assets/icones/Prio alta.svg" alt="Urgent">
                 <!-- hier logo für urgent einfügen -->
                 }
                 @if(taskService.currentlySelectedTask.prio == 'Medium'){
-                    <img src="./../../../../assets/icones/Capa 1.svg" alt="Medium">
+                    <img src="./assets/icones/Capa 1.svg" alt="Medium">
                 <!-- hier logo für medium einfügen -->
                 }
                 @if(taskService.currentlySelectedTask.prio == 'Low'){
-                    <img src="./../../../../assets/icones/Prio baja.svg" alt="Low">
+                    <img src="./assets/icones/Prio baja.svg" alt="Low">
                 <!-- hier logo für low einfügen -->
                 }
 
@@ -37,11 +37,13 @@
         <div class="info-row">
             <span class="label">Assigned To:</span>
             <div class="assigned-users">
-                <!--<div class="user-avatar turquoise">EM</div>
-                <div class="user-avatar purple">MB</div>
-                <div class="user-avatar blue">AM</div>-->
+                <div class="user-avatar green">EM</div>
                 <div class="user-name">Emmanuel Mauer</div>
+
+                <div class="user-avatar purple">MB</div>
                 <div class="user-name">Marcel Bauer</div>
+
+                <div class="user-avatar blue">AM</div>
                 <div class="user-name">Anton Mayer</div>
             </div>
         </div>
@@ -65,7 +67,7 @@
                 <img src="./assets/icones/delete.svg" alt="Delete">
                 Delete
             </button>
-            <button class="action-btn edit">
+            <button class="action-btn edit" (click)="openEditModal()">
                 <img src="./assets/icones/edit.svg" alt="Edit">
                 Edit
             </button>
@@ -80,60 +82,64 @@
 <div class="modal-overlay edit-overlay" [class.show]="isEditMode" (click)="closeEditModal($event)">
     <div class="modal-content edit-modal">
 
-        <form class="edit-form">
-            <div class="form-group">
-                <label>Title</label>
-                <input type="text" name="title" class="input-field">
-            </div>
-
-            <div class="form-group">
-                <label>Description</label>
-                <textarea name="description" class="input-field"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Due date</label>
-                <input type="date" name="dueDate" class="input-field">
-            </div>
-
-            <div class="form-group">
-                <label>Priority</label>
-                <div class="priority-buttons">
-                    <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Urgent'">
-                        Urgent
-                        <img src="./assets/icones/Prio alta.svg" alt="Urgent">
-                    </button>
-                    <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Medium'">
-                        Medium
-                        <img src="./assets/icones/Capa 1.svg" alt="Medium">
-                    </button>
-                    <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Low'">
-                        Low
-                        <img src="./assets/icones/Prio baja.svg" alt="Low">
-                    </button>
+        <div class="modal-header">
+            <button class="close-btn" (click)="close()">
+                <img src="./assets/icones/close.svg" alt="Close">
+            </button>
+        </div>
+        <div class="modal-scrollable-content">
+            <form class="edit-form">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="input-field">
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label>Assigned to</label>
-                <select name="assignedTo" multiple class="input-field">
-                
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Subtasks</label>
-                <div class="subtask-input-group">
-                    <input type="text" placeholder="Add new subtask" class="input-field">
-                    <button type="button" class="ok-btn">Ok<img src="./assets/icones/check.svg" alt="checkmark"></button>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="input-field"></textarea>
                 </div>
-            </div>
-        </form>
 
-        <button class="close-btn" (click)="close()">
-            <img src="./assets/icones/close.svg" alt="Close">
-        </button>
+                <div class="form-group">
+                    <label>Due date</label>
+                    <input type="date" name="dueDate" class="input-field">
+                </div>
 
-       
+                <div class="form-group">
+                    <label>Priority</label>
+                    <div class="priority-buttons">
+                        <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Urgent'">
+                            Urgent
+                            <img src="./assets/icones/Prio alta.svg" alt="Urgent">
+                        </button>
+                        <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Medium'">
+                            Medium
+                            <img src="./assets/icones/Capa 1.svg" alt="Medium">
+                        </button>
+                        <button type="button" [class.active]="taskService.currentTaskToBeUpdated.prio === 'Low'">
+                            Low
+                            <img src="./assets/icones/Prio baja.svg" alt="Low">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Assigned to</label>
+                    <select name="assignedTo" multiple class="input-field">
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Subtasks</label>
+                    <div class="subtask-input-group">
+                        <input type="text" placeholder="Add new subtask" class="input-field">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="ok-btn">
+                Ok<img src="./assets/icones/check.svg" alt="checkmark">
+            </button>
+        </div>
     </div>
 </div>

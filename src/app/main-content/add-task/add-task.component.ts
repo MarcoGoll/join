@@ -3,6 +3,8 @@ import { TasksService } from '../../shared/services/firebase/tasks.service';
 import { Task } from '../../shared/interfaces/task';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ContactsService } from '../../shared/services/firebase/contacts.service';
+import { Contact } from '../../shared/interfaces/contact';
 
 @Component({
   selector: 'app-add-task',
@@ -14,6 +16,11 @@ import { CommonModule } from '@angular/common';
 export class AddTaskComponent {
 
   taskService = inject(TasksService);
+  contactService = inject(ContactsService);
+
+  isAssignedToOpen = false;
+  isCategoryOpen = false;
+  categoryValue: string = "Select task category";
 
   newTask: Task = {
     "title": "",
@@ -27,6 +34,7 @@ export class AddTaskComponent {
   }
 
   currentPrioSelection: string = "medium";
+  currentSelectedAssignedTo: Contact[] = [];
 
   setPrio(prio: string) {
     switch (prio) {
@@ -44,4 +52,46 @@ export class AddTaskComponent {
     }
   }
 
+  toggleIsAssignedToOpen() {
+    this.isAssignedToOpen = !this.isAssignedToOpen;
+  }
+
+  toggleIsCategoryOpen() {
+    this.isCategoryOpen = !this.isCategoryOpen;
+  }
+
+  toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
+    if (this.currentSelectedAssignedTo.includes(contact)) {
+      this.deleteContactFromCurrentSelectedAssignedTo(contact);
+      console.log("List after delete: ", this.currentSelectedAssignedTo);
+    } else {
+      this.addContactToCurrentSelectedAssignedTo(contact);
+      console.log("List after add: ", this.currentSelectedAssignedTo);
+    }
+  }
+
+  addContactToCurrentSelectedAssignedTo(contact: Contact) {
+    this.currentSelectedAssignedTo.push(contact);
+  }
+
+  deleteContactFromCurrentSelectedAssignedTo(contact: Contact) {
+    const index = this.currentSelectedAssignedTo.indexOf(contact);
+    if (index > -1) {
+      this.currentSelectedAssignedTo.splice(index, 1);
+    }
+  }
+
+  isContactCurrentlySelected(contact: Contact) {
+    if (this.currentSelectedAssignedTo.includes(contact)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  setContact(category: string) {
+    this.isCategoryOpen = false;
+    this.categoryValue = category;
+  }
 }
+

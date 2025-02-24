@@ -1,8 +1,10 @@
+import { Contact } from "./contact";
+
 export interface Task {
     id?: string; // ? optional
     title: string;
     description: string;
-    assignedTo: string[]; //list of Contact ID's
+    assignedTo: Contact[];
     status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done';
     dueDate: string;
     prio: 'Urgent' | 'Medium' | 'Low';

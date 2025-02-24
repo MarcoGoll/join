@@ -30,7 +30,7 @@
     border-radius: 30px;
     padding: 40px;
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     position: relative;
     transform: translateY(-20px);
     transition: transform 0.3s ease-in-out;
@@ -66,6 +66,17 @@
         font-size: 14px;
         margin-bottom: 8px;
     }
+
+    &.horizontal {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        .label {
+            min-width: 100px;
+            margin-bottom: 0; 
+        }
+    }
 }
 
 .priority-badge {
@@ -82,10 +93,27 @@
 }
 
 .assigned-users {
-    //display: grid;
+    display: grid;
     grid-template-columns: auto 1fr;
-    gap: 16px 8px;
+    gap: 20px 16px;
     align-items: center;
+
+    .user-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: white;
+
+
+        &.green { background: #1fd7c1;}
+        &.purple { background: #9327ff;}
+        &.blue { background: #2d7fe0;}
+    }
 
     .user-name {
         font-size: 14px;
@@ -97,7 +125,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         
 
         .custom-checkbox {
@@ -169,6 +197,17 @@
                 filter: invert(67%) sepia(72%) saturate(463%) hue-rotate(165deg) brightness(87%) contrast(90%);
             }
         }
+
+        &.edit:hover::before { 
+            content: '';
+            position: absolute;
+            left: 75px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 24px;
+            width: 2px;
+            background-color: $clrBaseGray;
+        }
     }
 }
 
@@ -199,11 +238,53 @@
 }
 
 .edit-modal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     background: white;
     border-radius: 30px;
-    padding: 40px;
     width: 100%;
     max-width: 500px;
+    max-height: 90vh;
+}
+
+.modal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 40px;
+    background: white;
+    border-bottom: none;
+    border-radius: 30px 30px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1; 
+}
+
+.modal-scrollable-content {
+    padding: 50px 10px;
+    padding-bottom: 100px; 
+    overflow-y: auto;
+    flex: 1;
+
+    &::-webkit-scrollbar {
+        width: 6px;  
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2);  
+        border-radius: 10px; 
+        
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.05); 
+        border-radius: 10px; 
+    }
 }
 
 .edit-form {
@@ -241,7 +322,6 @@ textarea.input-field {
     min-height: 100px;
     resize: vertical;
     border: 1px solid $clrBaseGray;
-    
 }
 
 .priority-buttons {
@@ -270,30 +350,21 @@ textarea.input-field {
         &.active {
             &[data-priority="Urgent"] {
                 background-color: $clrPrioUrgend;
-                
             }
             &[data-priority="Medium"] {
                 background-color: $clrPrioMedium;
-                
             }
             &[data-priority="Low"] {
                 background-color: $clrPrioLow;
-                
             }
         }
     }
-}
-
-
-.subtasks-section {
-    margin-top: 24px;
 }
 
 .subtask-input-group {
     display: flex;
     gap: 8px;
     align-items: center;
-    position: relative;
     width: 100%;
     margin-bottom: 16px;
 
@@ -303,22 +374,26 @@ textarea.input-field {
         border: 1px solid #D1D1D1;
         border-radius: 8px;
         font-size: 16px;
-        padding-right: 80px; 
-        
-        &::placeholder {
-           // color: #D1D1D1;
-        }
-        
+
         &:focus {
             outline: none;
         }
     }
+}
 
+.modal-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 50px;
+    background: white;
+    border-top: none;
+    border-radius: 0 0 30px 30px;
+    display: flex;
+    justify-content: flex-end;
 
     .ok-btn {
-        position: absolute;
-        right: 8px;
-        top: 50%;
         background: $clrBaseDark;
         color: white;
         border: none;
@@ -330,12 +405,11 @@ textarea.input-field {
         align-items: center;
         gap: 4px;
         transition: all 0.3s ease;
-        
 
         img {
             width: 16px;
             height: 16px;
-            filter: brightness(0) invert(1); 
+            filter: brightness(0) invert(1);
         }
 
         &:hover {
