@@ -7,6 +7,7 @@
         <h4 class="title">{{task.title}}</h4>
         <p class="description">{{task.description}}</p>
     </div>
+    @if(task.subTasks.length > 0){
     <div class="progressbar-container">
         <div class="progressbar">
             <div class="progress"></div>
@@ -14,6 +15,7 @@
         <!-- <p>0/{{task.subTasks.length}} Subtasks</p> -->
         <p>{{getAllDoneSubTasks(task)}}/{{task.subTasks.length}} Subtasks</p>
     </div>
+    }   
     <div class="profil-prio-container">
         <div class="profil-container">
             <div class="profil">
@@ -26,8 +28,7 @@
                 <p>FH</p>
             </div>
         </div>
-        <div class="prio">
-            {{task.prio}}
+        <div class="prio" [ngClass]="{'prio-low':task.prio == 'Low', 'prio-medium':task.prio == 'Medium', 'prio-urgent': task.prio == 'Urgent'}">
         </div>
     </div>
 </section>

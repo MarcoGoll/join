@@ -22,6 +22,30 @@ section{
 
 .prio{
     @include setFlex($ai: center);
+    width: 30px;
+    height: 30px;
+    margin-right: 16px;
+}
+
+.prio-low{
+    background-image: url('./../../../../assets/img/board/Prio-low.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.prio-medium{
+    background-image: url('./../../../../assets/img/board/Prio-medium.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.prio-urgent{
+    background-image: url('./../../../../assets/img/board/Prio-urgent.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .profil-prio-container{
