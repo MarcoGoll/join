@@ -213,9 +213,7 @@
                             </div>
                         </div>
                         <div class="currentSubtaskEditView" [ngClass]="{'d_none': !subtask.inEditMode}">
-                            <input class="currentSubtaskEditViewInput" type="text" [(ngModel)]="subtask.description">
-                            <!-- [(ngModel)]="subtasksToAdd[$index].description"> -->
-                            <!-- value = "{{subtask.description}}" -->
+                            <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription" [(ngModel)]="subtask.description">
                             <div class="currentSubtaskDisplayViewBtns">
                                 <div class="inputBtn">
                                     <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">

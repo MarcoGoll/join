@@ -11,16 +11,7 @@ export class TasksService {
     {
       "title": "Refactor API Calls",
       "description": "Optimize API calls to reduce load time",
-      "assignedTo": [{
-        "firstName": "Lukas",
-        "lastName": "Meier",
-        "fullName": "Lukas Meier",
-        "nameShortcut": "LM",
-        "nameShortcutColorCode": 1,
-        "email": "lukas.meier@gmail.de",
-        "phone": "+4915234567890",
-        "img": ""
-      }],
+      "assignedTo": [],
       "status": "done",
       "dueDate": "2025-06-10",
       "prio": "Urgent",
@@ -313,25 +304,7 @@ export class TasksService {
   currentlySelectedTask: Task = {
     "title": "Create JSDoc",
     "description": "Create a JSDoc description for each method",
-    "assignedTo": [{
-      "firstName": "Lukas",
-      "lastName": "Meier",
-      "fullName": "Lukas Meier",
-      "nameShortcut": "LM",
-      "nameShortcutColorCode": 1,
-      "email": "lukas.meier@gmail.de",
-      "phone": "+4915234567890",
-      "img": ""
-    }, {
-      "firstName": "Nina",
-      "lastName": "Fischer",
-      "fullName": "Nina Fischer",
-      "nameShortcut": "NF",
-      "nameShortcutColorCode": 2,
-      "email": "nina.fischer@gmail.de",
-      "phone": "+4915234567891",
-      "img": ""
-    }],
+    "assignedTo": [],
     "status": "toDo",
     "dueDate": "2025-05-22",
     "prio": 'Urgent',

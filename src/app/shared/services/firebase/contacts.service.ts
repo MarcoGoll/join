@@ -304,6 +304,28 @@ export class ContactsService {
     return this.contacts;
   }
 
+  getContactsViaIds(ids:string[]) {
+    let foundContacs:Contact[] = [];
+    ids.forEach(id => {
+      this.contacts.forEach(contact => {
+        if(contact.id == id){
+          foundContacs.push(contact);
+        }
+      });  
+    });
+    return foundContacs;
+  }
+
+  // getContactsViaId(id:string) {
+  //   let foundContac:Contact = {};
+  //     this.contacts.forEach(contact => {
+  //       if(contact.id == id){
+  //         foundContac = contact;
+  //       }
+  //     });  
+  //   return foundContac;
+  // }
+
   /**
  * Retrieves all contacts whose first name starts with a specified letter.
  * The results are sorted alphabetically by first name.
