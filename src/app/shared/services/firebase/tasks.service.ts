@@ -371,6 +371,10 @@ export class TasksService {
     const q = query(this.getTasksRef(), orderBy("title"));
     return onSnapshot(q, (list) => {
       this.tasksAll = [];
+      this.tasksToDo = [];
+      this.tasksInProgress = [];
+      this.tasksAwaitFeedback = [];
+      this.tasksDone = [];
       list.forEach(task => {
         let myTask = this.setTaskObjectWithExtraId(task.data(), task.id)
         this.tasksAll.push(myTask);
@@ -530,6 +534,7 @@ export class TasksService {
       title: task.title,
       description: task.description,
       assignedTo: task.assignedTo,
+      status: task.status,
       dueDate: task.dueDate,
       prio: task.prio,
       category: task.category,
