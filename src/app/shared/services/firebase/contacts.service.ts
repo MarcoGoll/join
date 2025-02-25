@@ -3,7 +3,7 @@ import { Contact } from '../../interfaces/contact';
 import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, limit, onSnapshot, orderBy, query, updateDoc } from '@angular/fire/firestore';
 import { IfStmt } from '@angular/compiler';
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class ContactsService { 

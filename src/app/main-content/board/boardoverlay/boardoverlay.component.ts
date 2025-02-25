@@ -2,17 +2,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { TasksService } from '../../../shared/services/firebase/tasks.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-boardoverlay',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './boardoverlay.component.html',
   styleUrls: ['./boardoverlay.component.scss', './boardoverlay.responsive.scss']
 })
 export class BoardoverlayComponent {
 
-  taskService = inject(TasksService);
+  taskService = inject(TasksService); 
 
   isVisible = true;
   isEditMode = false;

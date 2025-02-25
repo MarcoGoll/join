@@ -14,7 +14,7 @@
         </div>
 
         <div class="info-row horizontal">
-            <span class="label">Priority:</span>
+            <span class="label">Priority:</span> 
             <div class="priority-badge medium">
                 {{taskService.currentlySelectedTask.prio}}
                 @if(taskService.currentlySelectedTask.prio == 'Urgent'){
@@ -49,12 +49,18 @@
             <span class="label">Subtasks</span>
             <div class="subtasks">
                 <div class="subtask">
-                    <input type="checkbox" class="custom-checkbox" checked id="subtask1">
-                    <label for="subtask1" class="subtask-text">Implement Recipe Recommendation</label>
+                    <div class="custom-checkbox" onclick="this.classList.toggle('checked')">
+                        <img src="./assets/icones/Vector 9.svg" class="checkbox-empty">
+                        <img src="./assets/icones/Group 19.svg" class="checkbox-checked">
+                    </div>
+                    <label class="subtask-text">Implement Recipe Recommendation</label>
                 </div>
                 <div class="subtask">
-                    <input type="checkbox" class="custom-checkbox" id="subtask2">
-                    <label for="subtask2" class="subtask-text">Start Page Layout</label>
+                    <div class="custom-checkbox" onclick="this.classList.toggle('checked')">
+                        <img src="./assets/icones/Vector 9.svg" class="checkbox-empty">
+                        <img src="./assets/icones/Group 19.svg" class="checkbox-checked">
+                    </div>
+                    <label class="subtask-text">Start Page Layout</label>
                 </div>
             </div>
         </div>
@@ -87,19 +93,28 @@
         </div>
         <div class="modal-scrollable-content">
             <form class="edit-form">
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="title" class="input-field">
+                
+                <div class="inputAndErrorContainer">
+                    <label for="title">Title<span class="clrRed">*</span></label>
+                    <div class="inputContainer">
+                        <input #title="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.title" id="title" name="title" type="text"
+                            placeholder="Enter a title" class="input-field" required>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!title.valid && title.touched) {
+                        <p class="errorMessage">Please enter a title</p>
+                        }
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea name="description" class="input-field"></textarea>
+                    <textarea name="description" [(ngModel)]="taskService.currentTaskToBeUpdated.description" class="input-field"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Due date</label>
-                    <input type="date" name="dueDate" class="input-field">
+                    <input type="date" name="dueDate" [(ngModel)]="taskService.currentTaskToBeUpdated.dueDate" class="input-field">
                 </div>
 
                 <div class="form-group">

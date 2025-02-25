@@ -115,50 +115,47 @@
     }
 }
 
-.subtasks {
-    .subtask {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 10px;
-
-
-        .custom-checkbox {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 10px;
-            height: 10px;
-            border: 1px solid $clrBaseDark;
-            border-radius: 3px;
-            position: relative;
-            cursor: pointer;
-            margin: 0;
-            background-color: white;
-
-            &:checked {
-                background-color: white;
-                border-color: $clrBaseDark;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    left: 4px;
-                    top: 0px;
-                    width: 6px;
-                    height: 12px;
-                    border: solid $clrBaseDark;
-                    border-width: 0 2px 2px 0;
-                    transform: rotate(45deg);
-                }
-            }
-        }
-
-        label {
-            font-size: 14px;
-            cursor: pointer;
-        }
-    }
+.custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    cursor: pointer;
+    display: inline-block;
 }
+  
+.checkbox-empty, .checkbox-checked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+}
+  
+.checkbox-checked {
+    display: none;
+}
+  
+.custom-checkbox.checked .checkbox-empty {
+    display: none;
+}
+  
+.custom-checkbox.checked .checkbox-checked { 
+    display: block;
+}
+  
+.subtask {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+  
+.subtask-text {
+    cursor: pointer;
+    margin-left: 4px;
+    font-size: 14px;
+}
+  
 
 .modal-actions {
     display: flex;
