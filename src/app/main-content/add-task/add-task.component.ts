@@ -69,6 +69,10 @@ export class AddTaskComponent {
     }
   }
 
+  deleteSubtask(index:number){
+    this.subtasksToAdd.splice(index,1);
+  }
+
   toggleIsAssignedToOpen() {
     this.isAssignedToOpen = !this.isAssignedToOpen;
   }

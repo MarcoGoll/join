@@ -203,19 +203,19 @@
                             (dblclick)="subtask.inEditMode=true">
                             <div class="currentSubtaskDisplayViewText">• {{subtask.description}}</div>
                             <div class="currentSubtaskDisplayViewBtns">
-                                <div class="inputBtn">
+                                <div class="inputBtn"  (click)="subtask.inEditMode=true">
                                     <img src="./assets/img/icon/subtask_edit.svg" alt="Edit">
                                 </div>
                                 <p>|</p>
-                                <div class="inputBtn">
+                                <div class="inputBtn" (click)="deleteSubtask($index)">
                                     <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">
                                 </div>
                             </div>
                         </div>
                         <div class="currentSubtaskEditView" [ngClass]="{'d_none': !subtask.inEditMode}">
-                            <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription" [(ngModel)]="subtask.description">
+                            <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription{{$index}}" [(ngModel)]="subtask.description">
                             <div class="currentSubtaskDisplayViewBtns">
-                                <div class="inputBtn">
+                                <div class="inputBtn" (click)="deleteSubtask($index)">
                                     <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">
                                 </div>
                                 <p>|</p>
