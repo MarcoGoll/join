@@ -11,7 +11,7 @@ export class TasksService {
     {
       "title": "Refactor API Calls",
       "description": "Optimize API calls to reduce load time",
-      "assignedTo": [],
+      "assignedTo": ["5AWBsiFYfWsiYst9Aw3A"],
       "status": "done",
       "dueDate": "2025-06-10",
       "prio": "Urgent",
@@ -304,7 +304,7 @@ export class TasksService {
   currentlySelectedTask: Task = { 
     "title": "Create JSDoc",
     "description": "Create a JSDoc description for each method",
-    "assignedTo": [],
+    "assignedTo": ["5AWBsiFYfWsiYst9Aw3A"],
     "status": "toDo",
     "dueDate": "2025-05-22",
     "prio": 'Urgent',
@@ -315,7 +315,7 @@ export class TasksService {
   currentTaskToBeUpdated: Task = {
     "title": "Create JSDoc",
     "description": "Create a JSDoc description for each method",
-    "assignedTo": [],
+    "assignedTo": ["5AWBsiFYfWsiYst9Aw3A"],
     "status": "toDo",
     "dueDate": "2025-05-22",
     "prio": 'Urgent',

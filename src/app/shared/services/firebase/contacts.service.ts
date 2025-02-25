@@ -316,15 +316,25 @@ export class ContactsService {
     return foundContacs;
   }
 
-  // getContactsViaId(id:string) {
-  //   let foundContac:Contact = {};
-  //     this.contacts.forEach(contact => {
-  //       if(contact.id == id){
-  //         foundContac = contact;
-  //       }
-  //     });  
-  //   return foundContac;
-  // }
+  getContactsViaId(id:string) {
+    let foundContac:Contact = {
+      "id": "", // ? optional
+      "firstName": "",
+      "lastName": "",
+      "fullName": "",
+      "nameShortcut": "",
+      "nameShortcutColorCode": 1,
+      "email": "",
+      "phone": "",
+      "img": "",
+    };
+      this.contacts.forEach(contact => {
+        if(contact.id == id){
+          foundContac = contact;
+        }
+      });  
+    return foundContac;
+  }
 
   /**
  * Retrieves all contacts whose first name starts with a specified letter.

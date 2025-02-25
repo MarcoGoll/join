@@ -37,10 +37,12 @@
         <div class="info-row">
             <span class="label">Assigned To:</span>
             <div class="assigned-users">
-                @for (assigne of taskService.currentlySelectedTask.assignedTo; track $index) {
-                <div class="user-avatar backgroundColor{{assigne.nameShortcutColorCode}}">{{assigne.nameShortcut}}
-                </div>
-                <div class="user-name">{{assigne.fullName}}</div>
+                @for (idOfAssigne of taskService.currentlySelectedTask.assignedTo; track $index) {
+                    @if (contactService.getContactsViaId(idOfAssigne).id !="") {
+                        <div class="user-avatar backgroundColor{{contactService.getContactsViaId(idOfAssigne).nameShortcutColorCode}}">{{contactService.getContactsViaId(idOfAssigne).nameShortcut}}
+                        </div>
+                        <div class="user-name">{{contactService.getContactsViaId(idOfAssigne).fullName}}</div>
+                    }
                 }
             </div>
         </div>
