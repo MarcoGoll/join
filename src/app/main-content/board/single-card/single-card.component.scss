@@ -63,21 +63,18 @@ section{
     border-radius: 16px;
     width: 30px;
     height: 30px;
-    background-color: $clrContact1;
 }
 
 .profil:nth-child(2) {
     position: relative;
     left: -7px; /* Bewegt das Element nach links */
     z-index: 2;
-    background-color: $clrContact2;
   }
 
 .profil:nth-child(3) {
     position: relative;
     left: -14px; /* Bewegt das Element nach links */
     z-index: 3;
-    background-color: $clrContact6;
   }
 
 .description{
