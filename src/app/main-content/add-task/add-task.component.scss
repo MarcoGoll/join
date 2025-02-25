@@ -43,9 +43,7 @@
 }
 
 .addTaskControlBtns {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
+    padding-left: 500px;
     @include setFlex($gap: 16px);
 }
 
@@ -201,6 +199,7 @@
 
 .currentSubtasksList {
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 4px);
+    margin-top: 4px;
 }
 
 .currentSubtask {

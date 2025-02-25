@@ -1,15 +1,6 @@
 <section id="addTaskSection">
     <div class="addTaskSectionContent">
-        <div class="addTaskControlBtns">
-            <div class="secundaryBtnTall btnWithIcon clearBTN">
-                <p>Clear</p>
-                <img src="" alt="">
-            </div>
-            <div class="primaryBtnTall btnWithIcon createBTN">
-                <p>Create Task</p>
-                <img src="" alt="">
-            </div>
-        </div>
+      
         <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button>
         <div class="addTaskHeadContainer">
             <H1>Add Task</H1>
@@ -70,21 +61,24 @@
                     </div>
                     <div class="selectedContaktList" [ngClass]="{'d_none':isAssignedToOpen}">
                         @for (contact of currentSelectedAssignedTo; track $index) {
-                        @if ($index<3) { <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
-                            {{contact.nameShortcut}}</div>
-                    }
-                    }
-                    @if (currentSelectedAssignedTo.length>=3) {
-                    <div class="contactShortcut backgroundColorBaseGray">
-                        {{currentSelectedAssignedTo.length-3}}..</div>
-                    }
-                </div>
+                            @if ($index<3) { 
+                                <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
+                                    {{contact.nameShortcut}}
+                                </div>
+                            }
+                        }
+                        @if (currentSelectedAssignedTo.length>=3) {
+                            <div class="contactShortcut backgroundColorBaseGray">
+                                {{currentSelectedAssignedTo.length-3}}..
+                            </div>
+                        }
+                    </div>
                 <div class="errorMessageContainer">
                 </div>
             </div>
-    </div>
-    <div class="formSeperator"></div>
-    <div class="formFieldGroup2">
+            </div>
+            <div class="formSeperator"></div>
+            <div class="formFieldGroup2">
         <div class="inputAndErrorContainer">
             <label for="duDate">Due date<span class="clrRed">*</span></label>
             <div class="inputContainer">
@@ -180,16 +174,16 @@
                     <div class="inputBtns">
                         <div class="inputBtn">
                             <img src="./assets/img/icon/subtask_close.svg" alt="Cancel" (click)="
-                                stopPropagation($event); 
-                                setIsSubtaskinFocus(false);
-                                setSubtaskValue('')">
+                            stopPropagation($event); 
+                            setIsSubtaskinFocus(false);
+                            setSubtaskValue('')">
                         </div>
                         <p>|</p>
                         <div class="inputBtn">
                             <img src="./assets/img/icon/subtask_confirm.svg" alt="Confirm" (click)="
-                                stopPropagation($event);
-                                setIsSubtaskinFocus(false);
-                                confirmSubtask()">
+                            stopPropagation($event);
+                            setIsSubtaskinFocus(false);
+                            confirmSubtask()">
                         </div>
                     </div>
                     }
@@ -241,9 +235,18 @@
             <div class="errorMessageContainer">
             </div>
         </div>
-    </div>
-
-    </form>
-    <div class="addTaskAsteriskText"><span class="clrRed">*</span>This field is required</div>
+            </div>
+        </form>
+        <div class="addTaskControlBtns">
+            <div class="secundaryBtnTall btnWithIcon clearBTN">
+                <p>Clear</p>
+                <img src="" alt="">
+            </div>
+            <div class="primaryBtnTall btnWithIcon createBTN">
+                <p>Create Task</p>
+                <img src="" alt="">
+            </div>
+        </div>
+        <div class="addTaskAsteriskText"><span class="clrRed">*</span>This field is required</div>
     </div>
 </section>
