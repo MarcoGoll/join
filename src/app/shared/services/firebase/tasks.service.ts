@@ -310,7 +310,7 @@ export class TasksService {
   tasksDone: Task[] = [];
   unsubTasks;
 
-  currentlySelectedTask: Task = {
+  currentlySelectedTask: Task = { 
     "title": "Create JSDoc",
     "description": "Create a JSDoc description for each method",
     "assignedTo": [{
