@@ -81,11 +81,27 @@ html {
     &:hover {
         background-color: $clrHighlight2;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        svg{
+            path{
+                fill: $clrHighlight2;;
+            }
+        }
     }
 
     &:active {
         background-color: $clrHighlight1Darker;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        svg{
+            path{
+                fill: $clrHighlight1Darker;;
+            }
+        }
+    }
+
+    svg{
+        path{
+            fill: $clrBaseBright;;
+        }
     }
 }
 
@@ -97,18 +113,34 @@ html {
     color: $clrHighlight1;
     background-color: $clrBaseBright;
     border: 2px solid $clrHighlight1;
-    transition: all 100ms ease-in-out;
+    // transition: all 100ms ease-in-out;
 
     &:hover {
         color: $clrHighlight2;
         border: 2px solid $clrHighlight2;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        svg{
+            path{
+                fill: $clrHighlight2;
+            }
+        }
     }
 
     &:active {
         color: $clrHighlight1Darker;
         border: 2px solid $clrHighlight1Darker;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        svg{
+            path{
+                fill: $clrHighlight1Darker;
+            }
+        }
+    }
+
+    svg{
+        path{
+            fill: $clrHighlight1;
+        }
     }
 }
 
@@ -126,12 +158,27 @@ html {
         background-color: $clrHighlight2;
         border: 2px solid $clrHighlight2;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        svg{
+            path{
+                fill: $clrBaseBright;;
+            }
+        }
     }
 
     &:active {
         background-color: $clrHighlight1Darker;
         border: 2px solid $clrHighlight1Darker;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        svg{
+            path{
+                fill: $clrBaseBright;;
+            }
+        }
+    }
+    svg{
+        path{
+            fill: $clrBaseBright;;
+        }
     }
 }
 
@@ -149,12 +196,28 @@ html {
         color: $clrHighlight2;
         border: 2px solid $clrHighlight2;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        svg{
+            path{
+                fill: $clrHighlight2;
+            }
+        }
     }
 
     &:active {
         color: $clrHighlight1Darker;
         border: 2px solid $clrHighlight1Darker;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+        svg{
+            path{
+                fill: $clrHighlight1Darker;
+            }
+        }
+    }
+
+    svg{
+        path{
+            fill: $clrHighlight1;
+        }
     }
 }
 

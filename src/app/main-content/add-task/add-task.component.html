@@ -5,7 +5,8 @@
         <div class="addTaskHeadContainer">
             <H1>Add Task</H1>
         </div>
-        <form class="addTaskForm">
+        <form id="addTaskForm" class="addTaskForm" (ngSubmit)="onSubmit(addTaskForm)" #addTaskForm="ngForm">
+        <div class="forFieldsContainer">
             <div class="formFieldGroup1">
                 <div class="inputAndErrorContainer">
                     <label for="title">Title<span class="clrRed">*</span></label>
@@ -95,45 +96,44 @@
             <p>Prio</p>
             <div class="prioSelection">
                 <div class="prioChoice"
-                    [ngClass]="{'clrBackgroundUrgent':currentPrioSelection==='urgent', 'shadow':!(currentPrioSelection==='urgent')}"
-                    (click)="setPrio('urgent')">
+                    [ngClass]="{'clrBackgroundUrgent':currentPrioSelection==='Urgent', 'shadow':!(currentPrioSelection==='Urgent')}"
+                    (click)="setPrio('Urgent')">
                     <p>Urgent</p>
                     <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path [ngClass]="{'clrFillUrgent':!(currentPrioSelection==='urgent')}"
+                        <path [ngClass]="{'clrFillUrgent':!(currentPrioSelection==='Urgent')}"
                             d="M19.5708 14.755C19.3361 14.7554 19.1076 14.6805 18.9187 14.5414L10.6666 8.45824L2.4146 14.5414C2.29874 14.627 2.16716 14.6889 2.02736 14.7237C1.88756 14.7584 1.74228 14.7653 1.59981 14.7439C1.45734 14.7226 1.32048 14.6734 1.19703 14.5992C1.07359 14.525 0.965978 14.4272 0.880349 14.3114C0.79472 14.1957 0.732748 14.0642 0.697971 13.9245C0.663194 13.7848 0.656294 13.6396 0.677664 13.4973C0.720823 13.2097 0.876514 12.9511 1.11049 12.7783L10.0146 6.20786C10.2033 6.06826 10.4319 5.99292 10.6666 5.99292C10.9014 5.99292 11.13 6.06826 11.3187 6.20786L20.2228 12.7783C20.4087 12.9153 20.5466 13.1074 20.6168 13.3272C20.6869 13.5471 20.6858 13.7835 20.6135 14.0027C20.5411 14.2219 20.4014 14.4126 20.2141 14.5477C20.0269 14.6828 19.8017 14.7554 19.5708 14.755Z"
                             fill="white" />
-                        <path [ngClass]="{'clrFillUrgent':!(currentPrioSelection==='urgent')}"
+                        <path [ngClass]="{'clrFillUrgent':!(currentPrioSelection==='Urgent')}"
                             d="M19.5708 9.00581C19.3361 9.00621 19.1076 8.93136 18.9187 8.79226L10.6667 2.7091L2.4146 8.79226C2.18063 8.96507 1.88754 9.03793 1.59981 8.9948C1.31209 8.95167 1.05329 8.7961 0.880353 8.5623C0.707418 8.3285 0.63451 8.03563 0.677669 7.74811C0.720828 7.4606 0.876518 7.20199 1.11049 7.02919L10.0146 0.45871C10.2033 0.319119 10.4319 0.243774 10.6667 0.243774C10.9014 0.243774 11.13 0.319119 11.3187 0.45871L20.2228 7.02919C20.4087 7.1661 20.5466 7.35822 20.6168 7.5781C20.6869 7.79797 20.6858 8.03438 20.6135 8.25356C20.5412 8.47274 20.4014 8.6635 20.2141 8.79859C20.0269 8.93368 19.8017 9.0062 19.5708 9.00581Z"
                             fill="white" />
                     </svg>
                 </div>
                 <div class="prioChoice"
-                    [ngClass]="{'clrBackgroundMedium':currentPrioSelection==='medium', 'shadow':!(currentPrioSelection==='medium')}"
-                    (click)="setPrio('medium')">
+                    [ngClass]="{'clrBackgroundMedium':currentPrioSelection==='Medium', 'shadow':!(currentPrioSelection==='Medium')}"
+                    (click)="setPrio('Medium')">
                     <p>Medium</p>
                     <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path [ngClass]="{'clrFillMedium':!(currentPrioSelection==='medium')}"
+                        <path [ngClass]="{'clrFillMedium':!(currentPrioSelection==='Medium')}"
                             d="M19.1526 7.72528H1.34443C1.05378 7.72528 0.775033 7.60898 0.569514 7.40197C0.363995 7.19495 0.248535 6.91419 0.248535 6.62143C0.248535 6.32867 0.363995 6.0479 0.569514 5.84089C0.775033 5.63388 1.05378 5.51758 1.34443 5.51758H19.1526C19.4433 5.51758 19.722 5.63388 19.9276 5.84089C20.1331 6.0479 20.2485 6.32867 20.2485 6.62143C20.2485 6.91419 20.1331 7.19495 19.9276 7.40197C19.722 7.60898 19.4433 7.72528 19.1526 7.72528Z"
                             fill="white" />
-                        <path [ngClass]="{'clrFillMedium':!(currentPrioSelection==='medium')}"
+                        <path [ngClass]="{'clrFillMedium':!(currentPrioSelection==='Medium')}"
                             d="M19.1526 2.48211H1.34443C1.05378 2.48211 0.775033 2.36581 0.569514 2.1588C0.363995 1.95179 0.248535 1.67102 0.248535 1.37826C0.248535 1.0855 0.363995 0.804736 0.569514 0.597724C0.775033 0.390712 1.05378 0.274414 1.34443 0.274414L19.1526 0.274414C19.4433 0.274414 19.722 0.390712 19.9276 0.597724C20.1331 0.804736 20.2485 1.0855 20.2485 1.37826C20.2485 1.67102 20.1331 1.95179 19.9276 2.1588C19.722 2.36581 19.4433 2.48211 19.1526 2.48211Z"
                             fill="white" />
                     </svg>
 
                 </div>
                 <div class="prioChoice"
-                    [ngClass]="{'clrBackgroundLow':currentPrioSelection==='low', 'shadow':!(currentPrioSelection==='low')}"
-                    (click)="setPrio('low')">
+                    [ngClass]="{'clrBackgroundLow':currentPrioSelection==='Low', 'shadow':!(currentPrioSelection==='Low')}"
+                    (click)="setPrio('Low')">
                     <p>Low</p>
                     <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path [ngClass]="{'clrFillLow':!(currentPrioSelection==='low')}"
+                        <path [ngClass]="{'clrFillLow':!(currentPrioSelection==='Low')}"
                             d="M10.833 9.00614C10.5984 9.00654 10.3699 8.9317 10.181 8.79262L1.27792 2.22288C1.16208 2.13733 1.06424 2.02981 0.989988 1.90647C0.915732 1.78313 0.866516 1.64638 0.845148 1.50404C0.801994 1.21655 0.874893 0.923717 1.04781 0.689945C1.22073 0.456173 1.47949 0.300615 1.76719 0.257493C2.05488 0.21437 2.34794 0.287216 2.58188 0.460004L10.833 6.54248L19.0841 0.460004C19.2 0.374448 19.3315 0.312529 19.4713 0.277782C19.6111 0.243035 19.7564 0.236141 19.8988 0.257493C20.0413 0.278844 20.1781 0.328025 20.3016 0.402225C20.425 0.476425 20.5326 0.574193 20.6182 0.689945C20.7038 0.805697 20.7658 0.937168 20.8006 1.07685C20.8353 1.21653 20.8422 1.36169 20.8209 1.50404C20.7995 1.64638 20.7503 1.78313 20.676 1.90647C20.6018 2.02981 20.5039 2.13733 20.3881 2.22288L11.485 8.79262C11.2961 8.9317 11.0676 9.00654 10.833 9.00614Z"
                             fill="white" />
-                        <path [ngClass]="{'clrFillLow':!(currentPrioSelection==='low')}"
+                        <path [ngClass]="{'clrFillLow':!(currentPrioSelection==='Low')}"
                             d="M10.833 14.7547C10.5984 14.7551 10.3699 14.6802 10.181 14.5412L1.27792 7.97142C1.04398 7.79863 0.888302 7.54005 0.845148 7.25257C0.801994 6.96509 0.874893 6.67225 1.04781 6.43848C1.22073 6.20471 1.47949 6.04915 1.76719 6.00603C2.05488 5.96291 2.34794 6.03575 2.58188 6.20854L10.833 12.291L19.0841 6.20854C19.3181 6.03575 19.6111 5.96291 19.8988 6.00603C20.1865 6.04915 20.4453 6.20471 20.6182 6.43848C20.7911 6.67225 20.864 6.96509 20.8209 7.25257C20.7777 7.54005 20.622 7.79863 20.3881 7.97142L11.485 14.5412C11.2961 14.6802 11.0676 14.7551 10.833 14.7547Z"
                             fill="white" />
                     </svg>
-
                 </div>
             </div>
             <div class="errorMessageContainer">
@@ -173,14 +173,14 @@
                     @if (isSubtaskinFocus) {
                     <div class="inputBtns">
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/subtask_close.svg" alt="Cancel" (click)="
+                            <img src="./assets/img/icon/close.svg" alt="Cancel" (click)="
                             stopPropagation($event); 
                             setIsSubtaskinFocus(false);
                             setSubtaskValue('')">
                         </div>
                         <p>|</p>
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/subtask_confirm.svg" alt="Confirm" (click)="
+                            <img src="./assets/img/icon/confirm.svg" alt="Confirm" (click)="
                             stopPropagation($event);
                             setIsSubtaskinFocus(false);
                             confirmSubtask()">
@@ -190,7 +190,7 @@
                     @if (!isSubtaskinFocus) {
                     <div class="inputBtns">
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/subtask_plus.svg" alt="Plus">
+                            <img src="./assets/img/icon/plus.svg" alt="Plus">
                         </div>
                     </div>
                     }
@@ -203,26 +203,24 @@
                             (dblclick)="subtask.inEditMode=true">
                             <div class="currentSubtaskDisplayViewText">• {{subtask.description}}</div>
                             <div class="currentSubtaskDisplayViewBtns">
-                                <div class="inputBtn">
-                                    <img src="./assets/img/icon/subtask_edit.svg" alt="Edit">
+                                <div class="inputBtn"  (click)="subtask.inEditMode=true">
+                                    <img src="./assets/img/icon/edit.svg" alt="Edit">
                                 </div>
                                 <p>|</p>
-                                <div class="inputBtn">
-                                    <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">
+                                <div class="inputBtn" (click)="deleteSubtask($index)">
+                                    <img src="./assets/img/icon/delete.svg" alt="Delete">
                                 </div>
                             </div>
                         </div>
                         <div class="currentSubtaskEditView" [ngClass]="{'d_none': !subtask.inEditMode}">
-                            <input class="currentSubtaskEditViewInput" type="text" [(ngModel)]="subtask.description">
-                            <!-- [(ngModel)]="subtasksToAdd[$index].description"> -->
-                            <!-- value = "{{subtask.description}}" -->
+                            <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription{{$index}}" [(ngModel)]="subtask.description">
                             <div class="currentSubtaskDisplayViewBtns">
-                                <div class="inputBtn">
-                                    <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">
+                                <div class="inputBtn" (click)="deleteSubtask($index)">
+                                    <img src="./assets/img/icon/delete.svg" alt="Delete">
                                 </div>
                                 <p>|</p>
                                 <div class="inputBtn">
-                                    <img src="./assets/img/icon/subtask_confirm.svg" alt="Confirm"
+                                    <img src="./assets/img/icon/confirm.svg" alt="Confirm"
                                         (click)="subtask.inEditMode=false">
                                 </div>
                             </div>
@@ -236,17 +234,33 @@
             </div>
         </div>
             </div>
-        </form>
-        <div class="addTaskControlBtns">
-            <div class="secundaryBtnTall btnWithIcon clearBTN">
-                <p>Clear</p>
-                <img src="" alt="">
-            </div>
-            <div class="primaryBtnTall btnWithIcon createBTN">
-                <p>Create Task</p>
-                <img src="" alt="">
-            </div>
         </div>
+            <div class="addTaskControlBtns">
+                <div class="secundaryBtnTall btnWithIcon clearBTN">
+                    <p>Clear</p>
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <mask id="mask0_75601_14760" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
+                        <rect x="0.144531" width="24" height="24" fill="#D9D9D9"/>
+                        </mask>
+                        <g mask="url(#mask0_75601_14760)">
+                        <path d="M12.1443 13.4L7.24434 18.3C7.061 18.4834 6.82767 18.575 6.54434 18.575C6.261 18.575 6.02767 18.4834 5.84434 18.3C5.661 18.1167 5.56934 17.8834 5.56934 17.6C5.56934 17.3167 5.661 17.0834 5.84434 16.9L10.7443 12L5.84434 7.10005C5.661 6.91672 5.56934 6.68338 5.56934 6.40005C5.56934 6.11672 5.661 5.88338 5.84434 5.70005C6.02767 5.51672 6.261 5.42505 6.54434 5.42505C6.82767 5.42505 7.061 5.51672 7.24434 5.70005L12.1443 10.6L17.0443 5.70005C17.2277 5.51672 17.461 5.42505 17.7443 5.42505C18.0277 5.42505 18.261 5.51672 18.4443 5.70005C18.6277 5.88338 18.7193 6.11672 18.7193 6.40005C18.7193 6.68338 18.6277 6.91672 18.4443 7.10005L13.5443 12L18.4443 16.9C18.6277 17.0834 18.7193 17.3167 18.7193 17.6C18.7193 17.8834 18.6277 18.1167 18.4443 18.3C18.261 18.4834 18.0277 18.575 17.7443 18.575C17.461 18.575 17.2277 18.4834 17.0443 18.3L12.1443 13.4Z" fill="#2A3647"/>
+                        </g>
+                        </svg>
+                        
+                </div>
+                <button class="primaryBtnTall btnWithIcon createBTN" id="createBTN" type="submit" value="Send">
+                    <p>Create Task</p>
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <mask id="mask0_75601_14762" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
+                        <rect x="0.144531" width="24" height="24" fill="#D9D9D9"/>
+                        </mask>
+                        <g mask="url(#mask0_75601_14762)">
+                        <path d="M9.69474 15.15L18.1697 6.675C18.3697 6.475 18.6072 6.375 18.8822 6.375C19.1572 6.375 19.3947 6.475 19.5947 6.675C19.7947 6.875 19.8947 7.1125 19.8947 7.3875C19.8947 7.6625 19.7947 7.9 19.5947 8.1L10.3947 17.3C10.1947 17.5 9.96141 17.6 9.69474 17.6C9.42807 17.6 9.19474 17.5 8.99474 17.3L4.69474 13C4.49474 12.8 4.3989 12.5625 4.40724 12.2875C4.41557 12.0125 4.51974 11.775 4.71974 11.575C4.91974 11.375 5.15724 11.275 5.43224 11.275C5.70724 11.275 5.94474 11.375 6.14474 11.575L9.69474 15.15Z" fill="#2A3647"/>
+                        </g>
+                        </svg>
+                </button>
+            </div>
+        </form>
         <div class="addTaskAsteriskText"><span class="clrRed">*</span>This field is required</div>
     </div>
 </section>

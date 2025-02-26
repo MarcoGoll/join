@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { TasksService } from '../../../shared/services/firebase/tasks.service';
 import { FormsModule } from '@angular/forms';
+import { ContactsService } from '../../../shared/services/firebase/contacts.service';
 
 @Component({
   selector: 'app-boardoverlay',
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class BoardoverlayComponent {
 
   taskService = inject(TasksService); 
+  contactService = inject(ContactsService); 
 
   isVisible = true;
   isEditMode = false;

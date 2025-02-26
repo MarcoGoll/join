@@ -3,6 +3,7 @@ import { Task } from '../../../shared/interfaces/task';
 import { CommonModule } from '@angular/common';
 import { TasksService } from '../../../shared/services/firebase/tasks.service';
 import { FormsModule } from '@angular/forms';
+import { ContactsService } from '../../../shared/services/firebase/contacts.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 export class SingleCardComponent {
 
   taskService = inject(TasksService);
+  contactService = inject(ContactsService);
 
   @Input("task") task: Task = {
     "title": "",

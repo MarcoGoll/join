@@ -11,8 +11,8 @@
     margin-top: 96px;
     height: calc(100vh - 96px);
     flex: 1;
-    padding-top: 64px;
-    padding-left: 64px;
+    padding-top: 32px;
+    padding-left: 32px;
 
     @include setFlex($fd: column, $jc: flex-start, $ai: flex-start, $gap: 8px);
 }
@@ -43,13 +43,13 @@
 }
 
 .addTaskControlBtns {
-    padding-left: 500px;
+    align-self: flex-end;
     @include setFlex($gap: 16px);
 }
 
 .btnWithIcon {
     align-self: center;
-    @include setFlex();
+    @include setFlex($gap:8px);
 }
 
 // ##############################################################################################################
@@ -64,8 +64,13 @@
 // addTaskForm
 // ##############################################################################################################
 .addTaskForm {
+    @include setFlex($fd:column, $jc:flex-start, $ai: stretch, $gap: 16px);
+}
+
+.forFieldsContainer{
     overflow-y: auto;
     scrollbar-width: thin;
+    max-height: calc(100vh - 96px - 350px);
     @include setFlex($ai: flex-start, $gap: 32px);
 }
 
