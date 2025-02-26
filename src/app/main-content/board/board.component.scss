@@ -57,17 +57,29 @@ section{
 }
 
 .task-board{
-    margin-top: 100px;
     @include setFlex($ai: flex-start);
+    flex-direction: column;
+}
+
+.column-title-container{
+  @include setFlex($jc: flex-start);
+  flex: 1;
 }
 
 .column-title{
     @include setFlex($jc: space-between);
+    margin-top: 100px;
+    width: 230px;
     margin-bottom: 8px;
+    margin-right: 25px;
     >h2{
         font-size: 20px;
         color: #42526E;
     }
+}
+
+.task-board-container{
+  @include setFlex();
 }
 
 .no-tasks{
