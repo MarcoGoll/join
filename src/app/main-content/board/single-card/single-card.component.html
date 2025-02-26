@@ -18,7 +18,7 @@
     }   
     <div class="profil-prio-container">
         <div class="profil-container">
-            @for (idOfAssigne of taskService.currentlySelectedTask.assignedTo; track $index) {
+            @for (idOfAssigne of task.assignedTo; track $index) {
                 <div class="profil backgroundColor{{contactService.getContactsViaId(idOfAssigne).nameShortcutColorCode}}">
                     <p>{{contactService.getContactsViaId(idOfAssigne).nameShortcut}}</p>
                 </div>
