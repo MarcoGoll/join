@@ -7,54 +7,51 @@ import { ContactsService } from '../../shared/services/firebase/contacts.service
 import { Contact } from '../../shared/interfaces/contact';
 import { Subtask } from '../../shared/interfaces/subtask';
 
-
 @Component({
   selector: 'app-add-task',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.scss', './add-task.responsive.scss']
+  styleUrls: ['./add-task.component.scss', './add-task.responsive.scss'],
 })
 export class AddTaskComponent {
-
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
-
 
   isAssignedToOpen = false;
   isCategoryOpen = false;
   isSubtaskinFocus = false;
-  categoryValue: string = "Select task category";
-  subtaskValue: string = "";
-  subtasksToAdd: { "inEditMode": boolean, "description": string }[] = [];
+  categoryValue: string = 'Select task category';
+  subtaskValue: string = '';
+  subtasksToAdd: { inEditMode: boolean; description: string }[] = [];
 
   newTask: Task = {
-    "title": "",
-    "description": "",
-    "assignedTo": [],
-    "status": "toDo",
-    "dueDate": "yyyy-mm-dd",
-    "prio": "Medium",
-    "category": "User Story",
-    "subTasks": [],
-  }
+    title: '',
+    description: '',
+    assignedTo: [],
+    status: 'toDo',
+    dueDate: 'yyyy-mm-dd',
+    prio: 'Medium',
+    category: 'User Story',
+    subTasks: [],
+  };
 
-  currentPrioSelection: string = "medium";
+  currentPrioSelection: string = 'Medium';
   currentSelectedAssignedTo: Contact[] = [];
 
   setPrio(prio: string) {
     switch (prio) {
-      case "urgent":
-        this.currentPrioSelection = "urgent";
+      case 'Urgent':
+        this.currentPrioSelection = 'Urgent';
         break;
-      case "medium":
-        this.currentPrioSelection = "medium";
+      case 'Medium':
+        this.currentPrioSelection = 'Medium';
         break;
-      case "low":
-        this.currentPrioSelection = "low";
+      case 'Low':
+        this.currentPrioSelection = 'Low';
         break;
       default:
-        console.log("Identifier is not known");
+        console.log('Identifier is not known');
     }
   }
 
@@ -63,14 +60,17 @@ export class AddTaskComponent {
   }
 
   confirmSubtask() {
-    if (this.subtaskValue != "") {
-      this.subtasksToAdd.push({ inEditMode: false, description: this.subtaskValue });
-      this.setSubtaskValue("");
+    if (this.subtaskValue != '') {
+      this.subtasksToAdd.push({
+        inEditMode: false,
+        description: this.subtaskValue,
+      });
+      this.setSubtaskValue('');
     }
   }
 
-  deleteSubtask(index:number){
-    this.subtasksToAdd.splice(index,1);
+  deleteSubtask(index: number) {
+    this.subtasksToAdd.splice(index, 1);
   }
 
   toggleIsAssignedToOpen() {
@@ -83,7 +83,6 @@ export class AddTaskComponent {
 
   setIsSubtaskinFocus(myBool: boolean) {
     this.isSubtaskinFocus = myBool;
-    console.log("this.isSubtaskinFocus: ", this.isSubtaskinFocus)
   }
 
   stopPropagation(event: Event) {
@@ -93,10 +92,8 @@ export class AddTaskComponent {
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
     if (this.currentSelectedAssignedTo.includes(contact)) {
       this.deleteContactFromCurrentSelectedAssignedTo(contact);
-      console.log("List after delete: ", this.currentSelectedAssignedTo);
     } else {
       this.addContactToCurrentSelectedAssignedTo(contact);
-      console.log("List after add: ", this.currentSelectedAssignedTo);
     }
   }
 
@@ -126,25 +123,50 @@ export class AddTaskComponent {
 
   onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid) {
-      console.log("formValide");
-      console.log("Title: ", this.newTask.title);
-      console.log("Description: ", this.newTask.description);
-      console.log("Due Date: ", this.newTask.dueDate);
-      console.log("Prio", this.currentPrioSelection);
-      this.currentSelectedAssignedTo.forEach((assignee, index) => {
-        console.log(index, ". AssignedTo ID:", assignee.id)
-      });
-      if(this.categoryValue == "Technical Task" || this.categoryValue == "User Story"){ //TODO: Prüfung eventuell früher. Direkt nach oder vor ngForm.form.valid
-        console.log("Category: ", this.categoryValue);
-      }
-      this.subtasksToAdd.forEach((subtask, index) => {
-        console.log(index, ". Subtask :", subtask.description);
-      });
+      console.log('formValide');
+      console.log('Cat:', this.categoryValue);
+      console.log('Prio:', this.currentPrioSelection);
+      if (
+        this.categoryValue == 'Technical Task' ||
+        this.categoryValue == 'User Story'
+      ) {
+        //TODO: Prüfung eventuell früher. Direkt nach oder vor ngForm.form.valid
+        if (
+          this.currentPrioSelection == 'Urgent' ||
+          this.currentPrioSelection == 'Medium' ||
+          this.currentPrioSelection == 'Low'
+        ) {
+          let assignedToIds: string[] = [];
+          let subtasksToCreate: Subtask[] = [];
 
-    }
-    else{
-      console.log("formInValide");
+          this.currentSelectedAssignedTo.forEach((assignee) => {
+            if (assignee.id) {
+              assignedToIds.push(assignee.id);
+            }
+          });
+          this.subtasksToAdd.forEach((subtask, index) => {
+            subtasksToCreate.push({
+              checked: true,
+              description: subtask.description,
+            });
+          });
+          let taskToCreate: Task = {
+            title: this.newTask.title,
+            description: this.newTask.description,
+            assignedTo: assignedToIds,
+            status: 'toDo',
+            dueDate: this.newTask.dueDate,
+            prio: this.currentPrioSelection,
+            category: this.categoryValue,
+            subTasks: subtasksToCreate,
+          };
+          console.log('Task to add - within submit:', taskToCreate);
+          this.taskService.addTask(taskToCreate);
+          ngForm.resetForm();
+        }
+      }
+    } else {
+      console.log('formInValide');
     }
   }
 }
-
