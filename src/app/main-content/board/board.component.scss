@@ -59,6 +59,13 @@ section{
 .task-board{
     @include setFlex($ai: flex-start);
     flex-direction: column;
+    display: block;
+}
+
+.search-board{
+  @include setFlex($ai: flex-start);
+  flex-direction: column;
+  display: none;
 }
 
 .column-title-container{
@@ -84,17 +91,26 @@ section{
 
 .no-tasks{
   @include setFlex();
+  position: absolute;
+  top: 10px;
+  left: 2px;
   border: 1px dashed rgba(168, 168, 168, 1);
-  width: 96%;
+  width: 92%;
   margin-left: 3%;
   background-color: #e8eaea;
   color: rgba(168, 168, 168, 1);
   border-radius: 10px;
+  z-index: 1;
 }
 
 
 
+//=======================================================
+//========ANGULAR IMPORT=================================
+//=======================================================
+
 .example-container {
+    position: relative;
     width: 230px;
     max-width: 100%;
     margin: 0 25px 25px 0;

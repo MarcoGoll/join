@@ -68,4 +68,21 @@ export class BoardComponent {
       console.log(event);
     }
   }
+  // toggleBoard(){
+  //   let searchBoard = document.querySelector('.search-board');
+  //   let taskBoard = document.querySelector('.task-board');
+  //   let searchInput = document.querySelector('.search-input');
+
+  //   if (searchInput && searchBoard && taskBoard) {
+  //     searchInput.addEventListener('input', () => {
+  //         if (searchInput.value.length > 3) {
+  //             searchBoard.style.display = 'block';
+  //             taskBoard.style.display = 'none';
+  //         } else {
+  //             searchBoard.style.display = 'none';
+  //             taskBoard.style.display = 'block';
+  //         }
+  //     });
+  // }
+  // }
 }

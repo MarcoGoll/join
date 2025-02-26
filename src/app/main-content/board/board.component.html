@@ -3,7 +3,7 @@
         <h1>Board</h1>
         <div class="input-task-container">
             <div class="search-bar">
-                <input type="search" name="query" placeholder="Find Task">
+                <input class="search-input" type="search" name="query" placeholder="Find Task">
                 <button>Search</button>
             </div>
             <button class="add-task-button">Add task</button>
@@ -33,7 +33,7 @@
     <div>
         <div class="example-container">
             <div class="no-tasks">
-                <p>No tasks</p>
+                <p class="no-task-msg">No tasks</p>
             </div>
 
             <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
@@ -91,6 +91,89 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="search-board">
+    <div class="task-board-container">
+    <div class="column-title-container">
+        <div class="column-title">
+            <h2>To do</h2>
+            <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
+        </div>
+        <div class="column-title">
+            <h2>In progress</h2>
+            <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
+        </div>
+        <div class="column-title">
+            <h2>Awaiting feedback</h2>
+            <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
+        </div>
+        <div class="column-title">
+            <h2>Done</h2>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="example-container">
+        <div class="no-tasks">
+            <p>No tasks</p>
+        </div>
+
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
+            [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (task of taskService.tasksToDo; track task) {
+            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)"><app-single-card
+                    [task]="task"></app-single-card></div>
+            }
+        </div>
+    </div>
+
+    <div class="example-container">
+        <div class="no-tasks">
+            <p>No tasks</p>
+        </div>
+        <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
+            [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (task of taskService.tasksInProgress; track task) {
+            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                <app-single-card [task]="task"></app-single-card>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="example-container">
+        <div class="no-tasks">
+            <p>No tasks</p>
+        </div>
+        <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
+            [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (task of taskService.tasksAwaitFeedback; track task) {
+            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                <app-single-card [task]="task"></app-single-card>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="example-container">
+        <div class="no-tasks">
+            <p>No tasks</p>
+        </div>
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="taskService.tasksDone"
+            [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            @for (task of taskService.tasksDone; track task) {
+            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                <app-single-card [task]="task"></app-single-card>
+            </div>
+            }
+        </div>
+    </div>
+</div>
 </div>
 
 
