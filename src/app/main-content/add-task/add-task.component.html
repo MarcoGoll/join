@@ -5,7 +5,8 @@
         <div class="addTaskHeadContainer">
             <H1>Add Task</H1>
         </div>
-        <form class="addTaskForm">
+        <form id="addTaskForm" class="addTaskForm" (ngSubmit)="onSubmit(addTaskForm)" #addTaskForm="ngForm">
+        <div class="forFieldsContainer">
             <div class="formFieldGroup1">
                 <div class="inputAndErrorContainer">
                     <label for="title">Title<span class="clrRed">*</span></label>
@@ -173,14 +174,14 @@
                     @if (isSubtaskinFocus) {
                     <div class="inputBtns">
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/subtask_close.svg" alt="Cancel" (click)="
+                            <img src="./assets/img/icon/close.svg" alt="Cancel" (click)="
                             stopPropagation($event); 
                             setIsSubtaskinFocus(false);
                             setSubtaskValue('')">
                         </div>
                         <p>|</p>
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/subtask_confirm.svg" alt="Confirm" (click)="
+                            <img src="./assets/img/icon/confirm.svg" alt="Confirm" (click)="
                             stopPropagation($event);
                             setIsSubtaskinFocus(false);
                             confirmSubtask()">
@@ -190,7 +191,7 @@
                     @if (!isSubtaskinFocus) {
                     <div class="inputBtns">
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/subtask_plus.svg" alt="Plus">
+                            <img src="./assets/img/icon/plus.svg" alt="Plus">
                         </div>
                     </div>
                     }
@@ -204,11 +205,11 @@
                             <div class="currentSubtaskDisplayViewText">• {{subtask.description}}</div>
                             <div class="currentSubtaskDisplayViewBtns">
                                 <div class="inputBtn"  (click)="subtask.inEditMode=true">
-                                    <img src="./assets/img/icon/subtask_edit.svg" alt="Edit">
+                                    <img src="./assets/img/icon/edit.svg" alt="Edit">
                                 </div>
                                 <p>|</p>
                                 <div class="inputBtn" (click)="deleteSubtask($index)">
-                                    <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">
+                                    <img src="./assets/img/icon/delete.svg" alt="Delete">
                                 </div>
                             </div>
                         </div>
@@ -216,11 +217,11 @@
                             <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription{{$index}}" [(ngModel)]="subtask.description">
                             <div class="currentSubtaskDisplayViewBtns">
                                 <div class="inputBtn" (click)="deleteSubtask($index)">
-                                    <img src="./assets/img/icon/subtask_delete.svg" alt="Delete">
+                                    <img src="./assets/img/icon/delete.svg" alt="Delete">
                                 </div>
                                 <p>|</p>
                                 <div class="inputBtn">
-                                    <img src="./assets/img/icon/subtask_confirm.svg" alt="Confirm"
+                                    <img src="./assets/img/icon/confirm.svg" alt="Confirm"
                                         (click)="subtask.inEditMode=false">
                                 </div>
                             </div>
@@ -234,17 +235,33 @@
             </div>
         </div>
             </div>
-        </form>
-        <div class="addTaskControlBtns">
-            <div class="secundaryBtnTall btnWithIcon clearBTN">
-                <p>Clear</p>
-                <img src="" alt="">
-            </div>
-            <div class="primaryBtnTall btnWithIcon createBTN">
-                <p>Create Task</p>
-                <img src="" alt="">
-            </div>
         </div>
+            <div class="addTaskControlBtns">
+                <div class="secundaryBtnTall btnWithIcon clearBTN">
+                    <p>Clear</p>
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <mask id="mask0_75601_14760" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
+                        <rect x="0.144531" width="24" height="24" fill="#D9D9D9"/>
+                        </mask>
+                        <g mask="url(#mask0_75601_14760)">
+                        <path d="M12.1443 13.4L7.24434 18.3C7.061 18.4834 6.82767 18.575 6.54434 18.575C6.261 18.575 6.02767 18.4834 5.84434 18.3C5.661 18.1167 5.56934 17.8834 5.56934 17.6C5.56934 17.3167 5.661 17.0834 5.84434 16.9L10.7443 12L5.84434 7.10005C5.661 6.91672 5.56934 6.68338 5.56934 6.40005C5.56934 6.11672 5.661 5.88338 5.84434 5.70005C6.02767 5.51672 6.261 5.42505 6.54434 5.42505C6.82767 5.42505 7.061 5.51672 7.24434 5.70005L12.1443 10.6L17.0443 5.70005C17.2277 5.51672 17.461 5.42505 17.7443 5.42505C18.0277 5.42505 18.261 5.51672 18.4443 5.70005C18.6277 5.88338 18.7193 6.11672 18.7193 6.40005C18.7193 6.68338 18.6277 6.91672 18.4443 7.10005L13.5443 12L18.4443 16.9C18.6277 17.0834 18.7193 17.3167 18.7193 17.6C18.7193 17.8834 18.6277 18.1167 18.4443 18.3C18.261 18.4834 18.0277 18.575 17.7443 18.575C17.461 18.575 17.2277 18.4834 17.0443 18.3L12.1443 13.4Z" fill="#2A3647"/>
+                        </g>
+                        </svg>
+                        
+                </div>
+                <button class="primaryBtnTall btnWithIcon createBTN" id="createBTN" type="submit" value="Send">
+                    <p>Create Task</p>
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <mask id="mask0_75601_14762" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
+                        <rect x="0.144531" width="24" height="24" fill="#D9D9D9"/>
+                        </mask>
+                        <g mask="url(#mask0_75601_14762)">
+                        <path d="M9.69474 15.15L18.1697 6.675C18.3697 6.475 18.6072 6.375 18.8822 6.375C19.1572 6.375 19.3947 6.475 19.5947 6.675C19.7947 6.875 19.8947 7.1125 19.8947 7.3875C19.8947 7.6625 19.7947 7.9 19.5947 8.1L10.3947 17.3C10.1947 17.5 9.96141 17.6 9.69474 17.6C9.42807 17.6 9.19474 17.5 8.99474 17.3L4.69474 13C4.49474 12.8 4.3989 12.5625 4.40724 12.2875C4.41557 12.0125 4.51974 11.775 4.71974 11.575C4.91974 11.375 5.15724 11.275 5.43224 11.275C5.70724 11.275 5.94474 11.375 6.14474 11.575L9.69474 15.15Z" fill="#2A3647"/>
+                        </g>
+                        </svg>
+                </button>
+            </div>
+        </form>
         <div class="addTaskAsteriskText"><span class="clrRed">*</span>This field is required</div>
     </div>
 </section>

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TasksService } from '../../shared/services/firebase/tasks.service';
 import { Task } from '../../shared/interfaces/task';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ContactsService } from '../../shared/services/firebase/contacts.service';
 import { Contact } from '../../shared/interfaces/contact';
@@ -124,5 +124,27 @@ export class AddTaskComponent {
     this.categoryValue = category;
   }
 
+  onSubmit(ngForm: NgForm) {
+    if (ngForm.submitted && ngForm.form.valid) {
+      console.log("formValide");
+      console.log("Title: ", this.newTask.title);
+      console.log("Description: ", this.newTask.description);
+      console.log("Due Date: ", this.newTask.dueDate);
+      console.log("Prio", this.currentPrioSelection);
+      this.currentSelectedAssignedTo.forEach((assignee, index) => {
+        console.log(index, ". AssignedTo ID:", assignee.id)
+      });
+      if(this.categoryValue == "Technical Task" || this.categoryValue == "User Story"){ //TODO: Prüfung eventuell früher. Direkt nach oder vor ngForm.form.valid
+        console.log("Category: ", this.categoryValue);
+      }
+      this.subtasksToAdd.forEach((subtask, index) => {
+        console.log(index, ". Subtask :", subtask.description);
+      });
+
+    }
+    else{
+      console.log("formInValide");
+    }
+  }
 }
 
