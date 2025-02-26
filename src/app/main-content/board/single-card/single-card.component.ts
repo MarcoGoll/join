@@ -14,6 +14,8 @@ import { ContactsService } from '../../../shared/services/firebase/contacts.serv
   styleUrls: ['./single-card.component.scss', './single-card.responsive.scss']
 })
 export class SingleCardComponent {
+  
+ 
 
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
@@ -38,5 +40,10 @@ export class SingleCardComponent {
     }
 
     return counter;
+  }
+
+  getProgress(task: Task): string {
+    if (!task.subTasks || task.subTasks.length === 0) return "0%";
+    return (this.getAllDoneSubTasks(task) / task.subTasks.length) * 100 + "%";
   }
 } 

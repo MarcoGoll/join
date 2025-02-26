@@ -35,6 +35,9 @@
                 <h2>In progress</h2>
                 <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
             </div>
+            <div class="no-tasks">
+                <p>No tasks</p>
+            </div>
             <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
                 [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
@@ -51,6 +54,9 @@
                 <h2>Awaiting feedback</h2>
                 <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
             </div>
+            <div class="no-tasks">
+                <p>No tasks</p>
+            </div>
             <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
@@ -65,6 +71,9 @@
         <div class="example-container">
             <div class="column-title">
                 <h2>Done</h2>
+            </div>
+            <div class="no-tasks">
+                <p>No tasks</p>
             </div>
             <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="taskService.tasksDone"
                 [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
