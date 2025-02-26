@@ -547,6 +547,20 @@ export class TasksService {
   }
 
   // ##########################################################################################################
+  // Search Tasks
+  // ##########################################################################################################
+  searchTasks(searchString: string) {
+    let searchResults: Task[] = [];
+    this.getAllTasks().forEach((task) => {
+      if (task.title.includes(searchString)) {
+        // include klappt nur wenn string 1:1 Titel. Der string ist aber nur ein Teil vom Titel
+        searchResults.push(task);
+      }
+    });
+    return searchResults;
+  }
+
+  // ##########################################################################################################
   // Reset DB
   // ##########################################################################################################
   /**
