@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="inputAndErrorContainer">
-                    <label for="description">Assigned to</label>
+                    <label>Assigned to</label>
                     <div class="inputContainer">
                         <div class=selectionInput (click)="toggleIsAssignedToOpen()">
                             <p>Select contacts to assign</p>
@@ -70,7 +70,7 @@
                         }
                         @if (currentSelectedAssignedTo.length>=3) {
                             <div class="contactShortcut backgroundColorBaseGray">
-                                {{currentSelectedAssignedTo.length-3}}..
+                                +{{currentSelectedAssignedTo.length-3}}
                             </div>
                         }
                     </div>
@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="inputAndErrorContainer">
-            <p>Prio</p>
+            <label>Prio</label>
             <div class="prioSelection">
                 <div class="prioChoice"
                     [ngClass]="{'clrBackgroundUrgent':currentPrioSelection==='Urgent', 'shadow':!(currentPrioSelection==='Urgent')}"

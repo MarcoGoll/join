@@ -100,7 +100,6 @@ section{
   background-color: #e8eaea;
   color: rgba(168, 168, 168, 1);
   border-radius: 10px;
-  z-index: 1;
 }
 
 
@@ -127,6 +126,7 @@ section{
   }
   
   .example-box {
+    position: relative;
     padding: 20px 10px;
     border: none;
     border-radius: 24px;

@@ -315,7 +315,7 @@ export class TasksService {
     assignedTo: ['5AWBsiFYfWsiYst9Aw3A'],
     status: 'toDo',
     dueDate: '2025-05-22',
-    prio: 'Urgent',
+    prio: 'Low',
     category: 'Technical Task',
     subTasks: [
       { checked: true, description: 'Component Contactdetails' },
@@ -329,7 +329,7 @@ export class TasksService {
     assignedTo: ['5AWBsiFYfWsiYst9Aw3A'],
     status: 'toDo',
     dueDate: '2025-05-22',
-    prio: 'Urgent',
+    prio: 'Low',
     category: 'Technical Task',
     subTasks: [
       { checked: true, description: 'Component Contactdetails' },
@@ -549,12 +549,16 @@ export class TasksService {
   // ##########################################################################################################
   searchTasks(searchString: string) {
     let searchResults: Task[] = [];
-    this.getAllTasks().forEach((task) => {
-      if (task.title.includes(searchString)) {
-        // include klappt nur wenn string 1:1 Titel. Der string ist aber nur ein Teil vom Titel
-        searchResults.push(task);
-      }
-    });
+
+    if (searchString.length >= 3) {
+      this.getAllTasks().forEach((task) => {
+        if (task.title.includes(searchString)) {
+          // include klappt nur wenn string 1:1 Titel. Der string ist aber nur ein Teil vom Titel
+          searchResults.push(task);
+        }
+      });
+    }
+
     return searchResults;
   }
 
