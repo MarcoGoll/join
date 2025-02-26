@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { TasksService } from '../../shared/services/firebase/tasks.service';
 import { Task } from '../../shared/interfaces/task';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -17,6 +17,11 @@ import { Subtask } from '../../shared/interfaces/subtask';
 export class AddTaskComponent {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
+  @Input('statusToBeUsed') statusToBeUsed:
+    | 'toDo'
+    | 'inProgress'
+    | 'awaitFeedback'
+    | 'done' = 'toDo';
 
   isAssignedToOpen = false;
   isCategoryOpen = false;
@@ -124,8 +129,6 @@ export class AddTaskComponent {
   onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid) {
       console.log('formValide');
-      console.log('Cat:', this.categoryValue);
-      console.log('Prio:', this.currentPrioSelection);
       if (
         this.categoryValue == 'Technical Task' ||
         this.categoryValue == 'User Story'
@@ -154,19 +157,26 @@ export class AddTaskComponent {
             title: this.newTask.title,
             description: this.newTask.description,
             assignedTo: assignedToIds,
-            status: 'toDo',
+            status: this.statusToBeUsed,
             dueDate: this.newTask.dueDate,
             prio: this.currentPrioSelection,
             category: this.categoryValue,
             subTasks: subtasksToCreate,
           };
-          console.log('Task to add - within submit:', taskToCreate);
           this.taskService.addTask(taskToCreate);
           ngForm.resetForm();
+          this.resetAddTaskComponent();
         }
       }
     } else {
       console.log('formInValide');
     }
+  }
+
+  resetAddTaskComponent() {
+    this.setPrio('Medium');
+    this.categoryValue = 'Select task category';
+    this.subtasksToAdd = [];
+    this.currentSelectedAssignedTo = [];
   }
 }

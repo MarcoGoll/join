@@ -456,7 +456,6 @@ export class TasksService {
    * @returns {Promise<void>} A promise that resolves when the task has been added and processed.
    */
   async addTask(task: Task) {
-    console.log('Task to add - within Service:', task);
     await addDoc(this.getTasksRef(), task)
       .catch((err) => {
         console.error(err);
@@ -542,7 +541,6 @@ export class TasksService {
     if (task.id) {
       this.currentlySelectedTask = { ...task };
       this.currentTaskToBeUpdated = { ...task };
-      console.log(this.currentlySelectedTask);
     }
   }
 
