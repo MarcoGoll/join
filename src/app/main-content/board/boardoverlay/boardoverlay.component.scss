@@ -19,7 +19,7 @@
         visibility: visible;
         opacity: 1;
 
-        .modal-content {
+        .modal-content { 
             transform: translateY(0);
         }
     }
@@ -279,12 +279,6 @@
     }
 }
 
-.edit-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
 .form-group {
     display: flex;
     flex-direction: column;
@@ -296,24 +290,40 @@
     }
 }
 
-.input-field {
-    padding: 12px;
-    border: 1px solid $clrBaseGray;
-    border-radius: 8px;
-    font-size: 16px;
-    width: 100%;
-    transition: all 0.3s ease;
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
 
-    &:focus {
-        outline: none;
-        border-color: 1px solid $clrBaseGray;
-    }
+.clrRed {
+    color: $clrErrorMessageText;
+}
+
+.inputAndErrorContainer {
+    @include setFlex($fd: column, $ai: stretch, $gap: 8px)
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.errorMessageContainer {
+    height: 30px;
+}
+
+.errorMessage {
+    color: $clrErrorMessageText;
+    padding-left: 8px;
+    font-size: 12px;
 }
 
 textarea.input-field {
     min-height: 100px;
     resize: vertical;
     border: 1px solid $clrBaseGray;
+    min-width: 100%;
+    max-width: 100%;
 }
 
 .priority-buttons {

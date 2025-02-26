@@ -24,7 +24,7 @@ export class AddTaskComponent {
   isAssignedToOpen = false;
   isCategoryOpen = false;
   isSubtaskinFocus = false;
-  categoryValue: string = "Select task category";
+  categoryValue: string = "Select task category"; 
   subtaskValue: string = "";
   subtasksToAdd: { "inEditMode": boolean, "description": string }[] = [];
 

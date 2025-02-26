@@ -24,7 +24,7 @@ export class BoardoverlayComponent {
 
   close() {
     this.isVisible = false;
-    this.isEditMode = false;
+    this.isEditMode = false; 
   }
 
   closeEdit() {

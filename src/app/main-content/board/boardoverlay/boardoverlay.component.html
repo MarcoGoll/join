@@ -19,15 +19,12 @@
                 {{taskService.currentlySelectedTask.prio}}
                 @if(taskService.currentlySelectedTask.prio == 'Urgent'){
                 <img src="./assets/icones/Prio alta.svg" alt="Urgent">
-                <!-- hier logo für urgent einfügen -->
                 }
                 @if(taskService.currentlySelectedTask.prio == 'Medium'){
                 <img src="./assets/icones/Capa 1.svg" alt="Medium">
-                <!-- hier logo für medium einfügen -->
                 }
                 @if(taskService.currentlySelectedTask.prio == 'Low'){
                 <img src="./assets/icones/Prio baja.svg" alt="Low">
-                <!-- hier logo für low einfügen -->
                 }
 
 
@@ -46,18 +43,18 @@
         </div>
 
         <div class="info-row">
-            <span class="label">Subtasks</span>
+            <span class="label">Subtasks</span> 
             <div class="subtasks">
                 <div class="subtask">
                     <div class="custom-checkbox" onclick="this.classList.toggle('checked')">
-                        <img src="./assets/icones/Vector 9.svg" class="checkbox-empty">
+                        <img src="./assets/icones/Rectangle 5.svg" class="checkbox-empty">
                         <img src="./assets/icones/Group 19.svg" class="checkbox-checked">
                     </div>
                     <label class="subtask-text">Implement Recipe Recommendation</label>
                 </div>
                 <div class="subtask">
                     <div class="custom-checkbox" onclick="this.classList.toggle('checked')">
-                        <img src="./assets/icones/Vector 9.svg" class="checkbox-empty">
+                        <img src="./assets/icones/Rectangle 5.svg" class="checkbox-empty">
                         <img src="./assets/icones/Group 19.svg" class="checkbox-checked">
                     </div>
                     <label class="subtask-text">Start Page Layout</label>
@@ -107,14 +104,31 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea name="description" [(ngModel)]="taskService.currentTaskToBeUpdated.description" class="input-field"></textarea>
+                <div class="inputAndErrorContainer">
+                    <label for="description">Description</label>
+                    <div class="inputContainer">
+                        <textarea #description="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.description" id="description" 
+                            name="description" type="text" placeholder="Enter a Description"
+                            class="input-field"></textarea>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!description.valid && description.touched) {
+                        <p class="errorMessage">Please enter a valid description</p>
+                        }
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Due date</label>
-                    <input type="date" name="dueDate" [(ngModel)]="taskService.currentTaskToBeUpdated.dueDate" class="input-field">
+                <div class="inputAndErrorContainer">
+                    <label for="duDate">Due date<span class="clrRed">*</span></label>
+                    <div class="inputContainer">
+                        <input #duDate="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.dueDate" id="duDate" name="duDate" type="date"
+                            placeholder="dd/mm/yyyy" class="input-field" required>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!duDate.valid && duDate.touched) {
+                        <p class="errorMessage">Please enter a date</p>
+                        }
+                    </div>
                 </div>
 
                 <div class="form-group">

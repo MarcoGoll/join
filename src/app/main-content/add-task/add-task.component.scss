@@ -94,7 +94,7 @@
 }
 
 .selectedContaktList {
-    @include setFlex($jc: flex-start);
+    @include setFlex($jc: flex-start); 
 }
 
 .selectionContaktList {
