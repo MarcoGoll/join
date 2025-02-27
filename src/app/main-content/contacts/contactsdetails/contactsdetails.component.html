@@ -1,20 +1,20 @@
 <section class="section-details-content">
     <div class="backBtn" (click)="contactService.changeMobileContactView(isMobileView); setInitialValues()">
-        <img src="./assets/icones/arrow-left-line.svg" alt="back">
+        <img src="./assets/img/icons/arrow-left-line.svg" alt="back">
     </div>
     <div class="moreBtn mobileBtn" (click)="toggleMoreControlOverview()">
-        <img src="./assets/icones/more_vert.svg" alt="back">
+        <img src="./assets/img/icons/more_vert.svg" alt="back">
     </div>
     <div class="moreControlOverview"
         [ngClass]="{'fadeInControlMore':isMoreControlOverviewShown, 'fadeOutControlMore':!isMoreControlOverviewShown && !isInitialLoad}"
         (click)="setInitialValues()">
         <div class="moreControlContent">
             <div class="moreControlBtn" (click)="showEditContact()">
-                <img src="./assets/icones/edit.svg" alt="edit">
+                <img src="./assets/img/icons/edit.svg" alt="edit">
                 <p>Edit</p>
             </div>
             <div class="moreControlBtn">
-                <img src="./assets/icones/delete.svg" alt="delete">
+                <img src="./assets/img/icons/delete.svg" alt="delete">
                 <p
                     (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView); setInitialValues()">
                     Delete</p>
@@ -43,12 +43,12 @@
                         {{contactService.currentlySelectedContact.lastName}}</p>
                     <div class="actions">
                         <button class="edit" (click)="showEditContact()">
-                            <img src="./assets/icones/edit.svg" alt="edit">
+                            <img src="./assets/img/icons/edit.svg" alt="edit">
                             Edit
                         </button>
                         <button class="delete" alt="delete"
                             (click)="contactService.deleteContact(contactService.currentlySelectedContact); contactService.changeMobileContactView(isMobileView); setInitialValues()">
-                            <img src="./assets/icones/delete.svg" alt="delete">
+                            <img src="./assets/img/icons/delete.svg" alt="delete">
                             Delete
                         </button>
                     </div>

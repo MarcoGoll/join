@@ -11,14 +11,14 @@
 
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-content">
             <div class="avatar-container">
-                <img src="./assets/icones/Group 13.svg" alt="Person Icon" class="person-icon">
+                <img src="./assets/img/icons/Group 13.svg" alt="Person Icon" class="person-icon">
             </div>
 
             <div class="form-fields">
                 <div class="inputanderror-container">
                     <div class="input-container">
                         <input type="text" formControlName="name" placeholder="Name" class="input-field">
-                        <img src="./assets/icones/person.svg" alt="Person" class="input-icon">
+                        <img src="./assets/img/icons/person.svg" alt="Person" class="input-icon">
                     </div>
                     <div class="errorMessageContainer">
                         @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
@@ -30,7 +30,7 @@
                 <div class="inputanderror-container">
                     <div class="input-container">
                         <input type="email" formControlName="email" placeholder="Email" class="input-field">
-                        <img src="./assets/icones/mail (3).svg" alt="Email" class="input-icon">
+                        <img src="./assets/img/icons/mail (3).svg" alt="Email" class="input-icon">
                     </div>
                     <div class="errorMessageContainer">
                         @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
@@ -42,7 +42,7 @@
                 <div class="inputanderror-container">
                     <div class="input-container">
                         <input type="tel" formControlName="phone" placeholder="Phone" class="input-field">
-                        <img src="./assets/icones/call.svg" alt="Phone" class="input-icon">
+                        <img src="./assets/img/icons/call.svg" alt="Phone" class="input-icon">
                     </div>
                     <div class="errorMessageContainer">
                         @if (contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched) {
@@ -54,18 +54,18 @@
                 <div class="button-container">
                     <button type="button" class="cancel-btn" (click)="close()">
                         Cancel
-                        <img src="./assets/icones/close.svg" alt="Cancel">
+                        <img src="./assets/img/icons/close.svg" alt="Cancel">
                     </button>
                     <button type="submit" class="create-btn">
                         Create contact
-                        <img src="./assets/icones/check.svg" alt="Create">
+                        <img src="./assets/img/icons/check.svg" alt="Create">
                     </button>
                 </div>
             </div>
         </form>
 
         <button class="close-btn" (click)="close()">
-            <img src="./assets/icones/close.svg" alt="Close">
+            <img src="./assets/img/icons/close.svg" alt="Close">
         </button>
     </div>
 </div>

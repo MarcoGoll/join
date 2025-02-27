@@ -1,5 +1,8 @@
-<div class="modal-overlay overlay" [class.show]="isVisible" (click)="closeModal($event)">
-    <div class="modal-content">
+<!-- <div class="modal-overlay overlay" [class.show]="isVisible" (click)="closeModal($event)">
+
+</div> -->
+<div>
+    <div class="modal-content" [ngClass]="{'d_none':taskService.isTaskinEditMode}">
         <div class="task-tag"
             [ngClass]="{'y':taskService.currentlySelectedTask.category == 'Technical Task', 'z':taskService.currentlySelectedTask.category == 'User Story' }">
             {{taskService.currentlySelectedTask.category}}</div>
@@ -18,13 +21,13 @@
             <div class="priority-badge medium">
                 {{taskService.currentlySelectedTask.prio}}
                 @if(taskService.currentlySelectedTask.prio == 'Urgent'){
-                <img src="./assets/icones/Prio alta.svg" alt="Urgent">
+                <img src="./assets/img/icons/Prio alta.svg" alt="Urgent">
                 }
                 @if(taskService.currentlySelectedTask.prio == 'Medium'){
-                <img src="./assets/icones/Capa 1.svg" alt="Medium">
+                <img src="./assets/img/icons/Capa 1.svg" alt="Medium">
                 }
                 @if(taskService.currentlySelectedTask.prio == 'Low'){
-                <img src="./assets/icones/Prio baja.svg" alt="Low">
+                <img src="./assets/img/icons/Prio baja.svg" alt="Low">
                 }
 
 
@@ -49,15 +52,15 @@
             <div class="subtasks">
                 <div class="subtask">
                     <div class="custom-checkbox" onclick="this.classList.toggle('checked')">
-                        <img src="./assets/icones/Rectangle 5.svg" class="checkbox-empty">
-                        <img src="./assets/icones/Group 19.svg" class="checkbox-checked">
+                        <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
+                        <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
                     </div>
                     <label class="subtask-text">Implement Recipe Recommendation</label>
                 </div>
                 <div class="subtask">
                     <div class="custom-checkbox" onclick="this.classList.toggle('checked')">
-                        <img src="./assets/icones/Rectangle 5.svg" class="checkbox-empty">
-                        <img src="./assets/icones/Group 19.svg" class="checkbox-checked">
+                        <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
+                        <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
                     </div>
                     <label class="subtask-text">Start Page Layout</label>
                 </div>
@@ -66,30 +69,17 @@
 
         <div class="modal-actions">
             <button class="action-btn delete"
-                (click)="taskService.deleteTask(taskService.currentlySelectedTask); close()">
-                <img src="./assets/icones/delete.svg" alt="Delete">
+                (click)="taskService.deleteTask(taskService.currentlySelectedTask); taskService.toggleIsTaskOverlayDisplayed()">
+                <img src="./assets/img/icons/delete.svg" alt="Delete">
                 Delete
             </button>
-            <button class="action-btn edit" (click)="openEditModal()">
-                <img src="./assets/icones/edit.svg" alt="Edit">
+            <button class="action-btn edit" (click)="taskService.isTaskinEditMode=true">
+                <img src="./assets/img/icons/edit.svg" alt="Edit">
                 Edit
             </button>
         </div>
-
-        <button class="close-btn" (click)="close()">
-            <img src="./assets/icones/close.svg" alt="Close">
-        </button>
     </div>
-</div>
-
-<div class="modal-overlay edit-overlay" [class.show]="isEditMode" (click)="closeEditModal($event)">
-    <div class="modal-content edit-modal">
-
-        <div class="modal-header">
-            <button class="close-btn" (click)="close()">
-                <img src="./assets/icones/close.svg" alt="Close">
-            </button>
-        </div>
+    <div class="modal-content edit-modal" [ngClass]="{'d_none':!taskService.isTaskinEditMode}">
         <div class="modal-scrollable-content">
             <form class="edit-form">
                 
@@ -188,9 +178,9 @@
                             <p>Select contacts to assign</p>
                             <div class="selectionInputImgContainer">
                                 @if (isAssignedToOpen) {
-                                <img src="./assets/icones/arrow_drop_down_reverse.svg" alt="dropdownArrow">
+                                <img src="./assets/img/icons/arrow_drop_down_reverse.svg" alt="dropdownArrow">
                                 }@else {
-                                <img src="./assets/icones/arrow_drop_down.svg" alt="dropdownArrow">
+                                <img src="./assets/img/icons/arrow_drop_down.svg" alt="dropdownArrow">
                                 }
                             </div>
                         </div>
@@ -234,10 +224,13 @@
                 </div>
             </form>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="ok-btn">
-                Ok<img src="./assets/icones/check.svg" alt="checkmark">
-            </button>
-        </div>
+    <div class="modal-footer">
+        <button type="button" class="ok-btn">
+            Ok<img src="./assets/img/icons/check.svg" alt="checkmark">
+        </button>
     </div>
 </div>
+
+<!-- <div class="modal-overlay edit-overlay" [class.show]="isEditMode" (click)="closeEditModal($event)">
+    
+</div> -->
