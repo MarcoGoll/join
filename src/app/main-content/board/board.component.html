@@ -14,7 +14,7 @@
         <div class="example-container">
             <div class="column-title">
                 <h2>To do</h2>
-                <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
+                <img src="./assets/icones/plus button.png" alt="add task icon">
             </div>
             <div class="no-tasks">
                 <p>No tasks</p>
@@ -33,7 +33,7 @@
         <div class="example-container">
             <div class="column-title">
                 <h2>In progress</h2>
-                <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
+                <img src="./assets/icones/plus button.png" alt="add task icon">
             </div>
             <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
                 [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
@@ -49,7 +49,7 @@
         <div class="example-container">
             <div class="column-title">
                 <h2>Awaiting feedback</h2>
-                <img src="./../../../assets/img/icon/plus button.png" alt="add task icon">
+                <img src="./assets/icones/plus button.png" alt="add task icon">
             </div>
             <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
