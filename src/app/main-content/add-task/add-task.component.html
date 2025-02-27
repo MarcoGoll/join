@@ -40,9 +40,9 @@
                             <p>Select contacts to assign</p>
                             <div class="selectionInputImgContainer">
                                 @if (isAssignedToOpen) {
-                                <img src="./assets/icones/arrow_drop_down_reverse.svg" alt="dropdownArrow">
+                                <img src="./assets/img/icons/arrow_drop_down_reverse.svg" alt="dropdownArrow">
                                 }@else {
-                                <img src="./assets/icones/arrow_drop_down.svg" alt="dropdownArrow">
+                                <img src="./assets/img/icons/arrow_drop_down.svg" alt="dropdownArrow">
                                 }
                             </div>
                         </div>
@@ -146,9 +146,9 @@
                     <p>{{categoryValue}}</p>
                     <div class="selectionInputImgContainer">
                         @if (isCategoryOpen) {
-                        <img src="./assets/icones/arrow_drop_down_reverse.svg" alt="dropdownArrow">
+                        <img src="./assets/img/icons/arrow_drop_down_reverse.svg" alt="dropdownArrow">
                         }@else {
-                        <img src="./assets/icones/arrow_drop_down.svg" alt="dropdownArrow">
+                        <img src="./assets/img/icons/arrow_drop_down.svg" alt="dropdownArrow">
                         }
                     </div>
                 </div>
@@ -173,14 +173,14 @@
                     @if (isSubtaskinFocus) {
                     <div class="inputBtns">
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/close.svg" alt="Cancel" (click)="
+                            <img src="./assets/img/icons/close.svg" alt="Cancel" (click)="
                             stopPropagation($event); 
                             setIsSubtaskinFocus(false);
                             setSubtaskValue('')">
                         </div>
                         <p>|</p>
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/confirm.svg" alt="Confirm" (click)="
+                            <img src="./assets/img/icons/confirm.svg" alt="Confirm" (click)="
                             stopPropagation($event);
                             setIsSubtaskinFocus(false);
                             confirmSubtask()">
@@ -190,7 +190,7 @@
                     @if (!isSubtaskinFocus) {
                     <div class="inputBtns">
                         <div class="inputBtn">
-                            <img src="./assets/img/icon/plus.svg" alt="Plus">
+                            <img src="./assets/img/icons/plus.svg" alt="Plus">
                         </div>
                     </div>
                     }
@@ -204,11 +204,11 @@
                             <div class="currentSubtaskDisplayViewText">• {{subtask.description}}</div>
                             <div class="currentSubtaskDisplayViewBtns">
                                 <div class="inputBtn"  (click)="subtask.inEditMode=true">
-                                    <img src="./assets/img/icon/edit.svg" alt="Edit">
+                                    <img src="./assets/img/icons/edit.svg" alt="Edit">
                                 </div>
                                 <p>|</p>
                                 <div class="inputBtn" (click)="deleteSubtask($index)">
-                                    <img src="./assets/img/icon/delete.svg" alt="Delete">
+                                    <img src="./assets/img/icons/delete.svg" alt="Delete">
                                 </div>
                             </div>
                         </div>
@@ -216,11 +216,11 @@
                             <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription{{$index}}" [(ngModel)]="subtask.description">
                             <div class="currentSubtaskDisplayViewBtns">
                                 <div class="inputBtn" (click)="deleteSubtask($index)">
-                                    <img src="./assets/img/icon/delete.svg" alt="Delete">
+                                    <img src="./assets/img/icons/delete.svg" alt="Delete">
                                 </div>
                                 <p>|</p>
                                 <div class="inputBtn">
-                                    <img src="./assets/img/icon/confirm.svg" alt="Confirm"
+                                    <img src="./assets/img/icons/confirm.svg" alt="Confirm"
                                         (click)="subtask.inEditMode=false">
                                 </div>
                             </div>

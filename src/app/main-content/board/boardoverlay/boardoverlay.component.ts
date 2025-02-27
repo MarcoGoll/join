@@ -22,6 +22,9 @@ export class BoardoverlayComponent {
   isVisible = true;
   isEditMode = false;
   isAssignedToOpen = false;
+  currentSelectedAssignedTo: Contact[] = this.contactService.getContactsViaIds(
+    this.taskService.currentTaskToBeUpdated.assignedTo
+  );
 
   show() {
     this.isVisible = true;
@@ -74,11 +77,7 @@ export class BoardoverlayComponent {
   }
 
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
-    if (
-      this.contactService
-        .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-        .includes(contact)
-    ) {
+    if (this.currentSelectedAssignedTo.includes(contact)) {
       this.deleteContactFromCurrentSelectedAssignedTo(contact);
     } else {
       this.addContactToCurrentSelectedAssignedTo(contact);
@@ -86,32 +85,63 @@ export class BoardoverlayComponent {
   }
 
   addContactToCurrentSelectedAssignedTo(contact: Contact) {
-    // TODO: ergebnis muss in array gespeichert werden
-    this.contactService
-      .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-      .push(contact);
+    this.currentSelectedAssignedTo.push(contact);
   }
 
   deleteContactFromCurrentSelectedAssignedTo(contact: Contact) {
-    const index = this.contactService
-      .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-      .indexOf(contact);
+    const index = this.currentSelectedAssignedTo.indexOf(contact);
     if (index > -1) {
-      this.contactService
-        .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-        .splice(index, 1);
+      this.currentSelectedAssignedTo.splice(index, 1);
     }
   }
 
   isContactCurrentlySelected(contact: Contact) {
-    if (
-      this.contactService
-        .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-        .includes(contact)
-    ) {
+    if (this.currentSelectedAssignedTo.includes(contact)) {
       return true;
     } else {
       return false;
     }
   }
+
+  // toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
+  //   if (
+  //     this.contactService
+  //       .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
+  //       .includes(contact)
+  //   ) {
+  //     this.deleteContactFromCurrentSelectedAssignedTo(contact);
+  //   } else {
+  //     this.addContactToCurrentSelectedAssignedTo(contact);
+  //   }
+  // }
+
+  // addContactToCurrentSelectedAssignedTo(contact: Contact) {
+  //   // TODO: ergebnis muss in array gespeichert werden
+  //   this.contactService
+  //     .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
+  //     .push(contact);
+  // }
+
+  // deleteContactFromCurrentSelectedAssignedTo(contact: Contact) {
+  //   const index = this.contactService
+  //     .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
+  //     .indexOf(contact);
+  //   if (index > -1) {
+  //     this.contactService
+  //       .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
+  //       .splice(index, 1);
+  //   }
+  // }
+
+  // isContactCurrentlySelected(contact: Contact) {
+  //   if (
+  //     this.contactService
+  //       .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
+  //       .includes(contact)
+  //   ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 }

@@ -2,7 +2,7 @@
     <div class="addtaskOverlay" [ngClass]="{'d_none':!isAddTaskOverlayDisplayed}">
         <div class="addTasContainer">
             <div class="closeContainer" (click)="toggleIsAddTaskOverlayDisplayed()">
-                <img src="./assets/img/icon/close.svg" alt="close">
+                <img src="./assets/img/icons/close.svg" alt="close">
             </div>
             <app-add-task [statusToBeUsed]="statusToBeUsed"></app-add-task>
         </div>
@@ -23,15 +23,15 @@
         <div class="column-title-container">
             <div class="column-title">
                 <h2>To do</h2>
-                <img src="./../../../assets/img/icon/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
             </div>
             <div class="column-title">
                 <h2>In progress</h2>
-                <img src="./../../../assets/img/icon/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
             </div>
             <div class="column-title">
                 <h2>Awaiting feedback</h2>
-                <img src="./../../../assets/img/icon/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
             </div>
             <div class="column-title">
                 <h2>Done</h2>
@@ -55,14 +55,8 @@
         </div>
 
         <div class="example-container">
-<<<<<<< HEAD
-            <div class="column-title">
-                <h2>In progress</h2>
-                <img src="./assets/icones/plus button.png" alt="add task icon">
-=======
             <div class="no-tasks">
                 <p>No tasks</p>
->>>>>>> 6906c4910fe6c67fed8af3bb0d5b40720f8aaf08
             </div>
             <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
                 [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
@@ -76,14 +70,8 @@
         </div>
 
         <div class="example-container">
-<<<<<<< HEAD
-            <div class="column-title">
-                <h2>Awaiting feedback</h2>
-                <img src="./assets/icones/plus button.png" alt="add task icon">
-=======
             <div class="no-tasks">
                 <p>No tasks</p>
->>>>>>> 6906c4910fe6c67fed8af3bb0d5b40720f8aaf08
             </div>
             <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
@@ -118,15 +106,15 @@
     <div class="column-title-container">
         <div class="column-title">
             <h2>To do</h2>
-            <img src="./../../../assets/img/icon/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
+            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
         </div>
         <div class="column-title">
             <h2>In progress</h2>
-            <img src="./../../../assets/img/icon/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
+            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
         </div>
         <div class="column-title">
             <h2>Awaiting feedback</h2>
-            <img src="./../../../assets/img/icon/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
+            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
         </div>
         <div class="column-title">
             <h2>Done</h2>
@@ -195,7 +183,5 @@
     </div>
 </div>
 </div>
-
-
 </section>
 <app-boardoverlay></app-boardoverlay>
