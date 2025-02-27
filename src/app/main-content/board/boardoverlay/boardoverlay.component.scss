@@ -301,7 +301,7 @@
 }
 
 .inputAndErrorContainer {
-    @include setFlex($fd: column, $ai: stretch, $gap: 8px)
+    @include setFlex($fd: column, $ai: stretch, $gap: 8px) 
 }
 
 .inputContainer {

@@ -18,7 +18,7 @@ import { AddTaskComponent } from '../add-task/add-task.component';
   standalone: true,
   imports: [
     CommonModule,
-    BoardoverlayComponent,
+    BoardoverlayComponent, 
     CdkDropList,
     CdkDrag,
     SingleCardComponent,

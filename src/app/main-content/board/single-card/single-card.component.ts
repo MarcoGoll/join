@@ -18,7 +18,7 @@ export class SingleCardComponent {
  
 
   taskService = inject(TasksService);
-  contactService = inject(ContactsService);
+  contactService = inject(ContactsService); 
 
   @Input("task") task: Task = {
     "title": "",

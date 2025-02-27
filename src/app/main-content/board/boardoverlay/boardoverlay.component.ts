@@ -20,7 +20,7 @@ export class BoardoverlayComponent {
   contactService = inject(ContactsService);
 
   isVisible = true;
-  isEditMode = false;
+  isEditMode = false; 
   isAssignedToOpen = false;
 
   show() {
