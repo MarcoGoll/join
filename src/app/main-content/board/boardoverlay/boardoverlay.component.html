@@ -1,5 +1,8 @@
-<div class="modal-overlay overlay" [class.show]="isVisible" (click)="closeModal($event)">
-    <div class="modal-content">
+<!-- <div class="modal-overlay overlay" [class.show]="isVisible" (click)="closeModal($event)">
+
+</div> -->
+<div>
+    <div class="modal-content" [ngClass]="{'d_none':taskService.isTaskinEditMode}">
         <div class="task-tag"
             [ngClass]="{'y':taskService.currentlySelectedTask.category == 'Technical Task', 'z':taskService.currentlySelectedTask.category == 'User Story' }">
             {{taskService.currentlySelectedTask.category}}</div>
@@ -66,30 +69,17 @@
 
         <div class="modal-actions">
             <button class="action-btn delete"
-                (click)="taskService.deleteTask(taskService.currentlySelectedTask); close()">
+                (click)="taskService.deleteTask(taskService.currentlySelectedTask); taskService.toggleIsTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/delete.svg" alt="Delete">
                 Delete
             </button>
-            <button class="action-btn edit" (click)="openEditModal()">
+            <button class="action-btn edit" (click)="taskService.isTaskinEditMode=true">
                 <img src="./assets/img/icons/edit.svg" alt="Edit">
                 Edit
             </button>
         </div>
-
-        <button class="close-btn" (click)="close()">
-            <img src="./assets/img/icons/close.svg" alt="Close">
-        </button>
     </div>
-</div>
-
-<div class="modal-overlay edit-overlay" [class.show]="isEditMode" (click)="closeEditModal($event)">
-    <div class="modal-content edit-modal">
-
-        <div class="modal-header">
-            <button class="close-btn" (click)="close()">
-                <img src="./assets/img/icons/close.svg" alt="Close">
-            </button>
-        </div>
+    <div class="modal-content edit-modal" [ngClass]="{'d_none':!taskService.isTaskinEditMode}">
         <div class="modal-scrollable-content">
             <form class="edit-form">
                 
@@ -234,10 +224,13 @@
                 </div>
             </form>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="ok-btn">
-                Ok<img src="./assets/img/icons/check.svg" alt="checkmark">
-            </button>
-        </div>
+    <div class="modal-footer">
+        <button type="button" class="ok-btn">
+            Ok<img src="./assets/img/icons/check.svg" alt="checkmark">
+        </button>
     </div>
 </div>
+
+<!-- <div class="modal-overlay edit-overlay" [class.show]="isEditMode" (click)="closeEditModal($event)">
+    
+</div> -->

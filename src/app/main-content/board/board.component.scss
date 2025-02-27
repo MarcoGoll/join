@@ -173,6 +173,30 @@ section{
   
 
 //=======================================================
+// Task Overlay
+//=======================================================
+.taskOverlay{
+  @include setFlex();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.taskOverlayContainer{
+  position: relative;
+  margin-top: 24px;
+  @include setFlex();
+  border-radius: 30px;
+  background-color: $clrBaseBright;
+}
+
+//=======================================================
 // Add Task Overlay
 //=======================================================
 .addtaskOverlay{
@@ -188,7 +212,7 @@ section{
   scrollbar-width: thin;
 }
 
-.addTasContainer{
+.addTaskContainer{
   position: relative;
   margin-top: 24px;
   @include setFlex();

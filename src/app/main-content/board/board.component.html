@@ -1,12 +1,21 @@
 <section>
     <div class="addtaskOverlay" [ngClass]="{'d_none':!isAddTaskOverlayDisplayed}">
-        <div class="addTasContainer">
+        <div class="addTaskContainer">
             <div class="closeContainer" (click)="toggleIsAddTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
             <app-add-task [statusToBeUsed]="statusToBeUsed"></app-add-task>
         </div>
     </div>
+    <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}">
+        <div class="taskOverlayContainer">
+            <div class="closeContainer" (click)="taskService.toggleIsTaskOverlayDisplayed()">
+                <img src="./assets/img/icons/close.svg" alt="close">
+            </div>
+            <app-boardoverlay></app-boardoverlay>
+        </div>
+    </div>
+
     <div class="title-container">
         <h1>Board</h1>
         <div class="input-task-container">
@@ -48,7 +57,7 @@
                 [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 @for (task of taskService.tasksToDo; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)"><app-single-card
+                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                         [task]="task"></app-single-card></div>
                 }
             </div>
@@ -62,7 +71,7 @@
                 [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 @for (task of taskService.tasksInProgress; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
                     <app-single-card [task]="task"></app-single-card>
                 </div>
                 }
@@ -77,7 +86,7 @@
                 [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 @for (task of taskService.tasksAwaitFeedback; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
                     <app-single-card [task]="task"></app-single-card>
                 </div>
                 }
@@ -92,7 +101,7 @@
                 [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 @for (task of taskService.tasksDone; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
                     <app-single-card [task]="task"></app-single-card>
                 </div>
                 }
@@ -131,7 +140,7 @@
             [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
             (cdkDropListDropped)="drop($event)">
             @for (task of taskService.tasksToDo; track task) {
-            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)"><app-single-card
+            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                     [task]="task"></app-single-card></div>
             }
         </div>
@@ -145,7 +154,7 @@
             [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
             (cdkDropListDropped)="drop($event)">
             @for (task of taskService.tasksInProgress; track task) {
-            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
                 <app-single-card [task]="task"></app-single-card>
             </div>
             }
@@ -160,7 +169,7 @@
             [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
             (cdkDropListDropped)="drop($event)">
             @for (task of taskService.tasksAwaitFeedback; track task) {
-            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
                 <app-single-card [task]="task"></app-single-card>
             </div>
             }
@@ -175,7 +184,7 @@
             [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
             (cdkDropListDropped)="drop($event)">
             @for (task of taskService.tasksDone; track task) {
-            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task)">
+            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
                 <app-single-card [task]="task"></app-single-card>
             </div>
             }
@@ -184,4 +193,3 @@
 </div>
 </div>
 </section>
-<app-boardoverlay></app-boardoverlay>

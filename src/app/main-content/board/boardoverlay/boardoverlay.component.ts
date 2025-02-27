@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { TasksService } from '../../../shared/services/firebase/tasks.service';
 import { FormsModule } from '@angular/forms';
 import { ContactsService } from '../../../shared/services/firebase/contacts.service';
@@ -18,43 +18,11 @@ import { Contact } from '../../../shared/interfaces/contact';
 export class BoardoverlayComponent {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
+  currentSelectedAssignedTo: Contact[] = [];
 
   isVisible = true;
   isEditMode = false;
   isAssignedToOpen = false;
-  currentSelectedAssignedTo: Contact[] = this.contactService.getContactsViaIds(
-    this.taskService.currentTaskToBeUpdated.assignedTo
-  );
-
-  show() {
-    this.isVisible = true;
-  }
-
-  close() {
-    this.isVisible = false;
-    this.isEditMode = false;
-  }
-
-  closeEdit() {
-    this.isEditMode = false;
-  }
-
-  openEditModal() {
-    this.isEditMode = true;
-    this.isVisible = false;
-  }
-
-  closeModal(event: MouseEvent) {
-    if ((event.target as HTMLElement).classList.contains('overlay')) {
-      this.close();
-    }
-  }
-
-  closeEditModal(event: MouseEvent) {
-    if ((event.target as HTMLElement).classList.contains('edit-overlay')) {
-      this.closeEdit();
-    }
-  }
 
   setPrio(prio: string) {
     switch (prio) {
@@ -77,71 +45,40 @@ export class BoardoverlayComponent {
   }
 
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
-    if (this.currentSelectedAssignedTo.includes(contact)) {
-      this.deleteContactFromCurrentSelectedAssignedTo(contact);
-    } else {
-      this.addContactToCurrentSelectedAssignedTo(contact);
+    if (contact.id) {
+      if (
+        this.taskService.currentTaskToBeUpdated.assignedTo.includes(contact.id)
+      ) {
+        this.deleteContactFromCurrentSelectedAssignedTo(contact.id);
+      } else {
+        this.addContactToCurrentSelectedAssignedTo(contact.id);
+      }
     }
   }
 
-  addContactToCurrentSelectedAssignedTo(contact: Contact) {
-    this.currentSelectedAssignedTo.push(contact);
+  addContactToCurrentSelectedAssignedTo(id: string) {
+    this.taskService.currentTaskToBeUpdated.assignedTo.push(id);
   }
 
-  deleteContactFromCurrentSelectedAssignedTo(contact: Contact) {
-    const index = this.currentSelectedAssignedTo.indexOf(contact);
+  deleteContactFromCurrentSelectedAssignedTo(id: string) {
+    const index =
+      this.taskService.currentTaskToBeUpdated.assignedTo.indexOf(id);
     if (index > -1) {
-      this.currentSelectedAssignedTo.splice(index, 1);
+      this.taskService.currentTaskToBeUpdated.assignedTo.splice(index, 1);
     }
   }
 
   isContactCurrentlySelected(contact: Contact) {
-    if (this.currentSelectedAssignedTo.includes(contact)) {
-      return true;
+    if (contact.id) {
+      if (
+        this.taskService.currentTaskToBeUpdated.assignedTo.includes(contact.id)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
   }
-
-  // toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
-  //   if (
-  //     this.contactService
-  //       .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-  //       .includes(contact)
-  //   ) {
-  //     this.deleteContactFromCurrentSelectedAssignedTo(contact);
-  //   } else {
-  //     this.addContactToCurrentSelectedAssignedTo(contact);
-  //   }
-  // }
-
-  // addContactToCurrentSelectedAssignedTo(contact: Contact) {
-  //   // TODO: ergebnis muss in array gespeichert werden
-  //   this.contactService
-  //     .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-  //     .push(contact);
-  // }
-
-  // deleteContactFromCurrentSelectedAssignedTo(contact: Contact) {
-  //   const index = this.contactService
-  //     .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-  //     .indexOf(contact);
-  //   if (index > -1) {
-  //     this.contactService
-  //       .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-  //       .splice(index, 1);
-  //   }
-  // }
-
-  // isContactCurrentlySelected(contact: Contact) {
-  //   if (
-  //     this.contactService
-  //       .getContactsViaIds(this.taskService.currentTaskToBeUpdated.assignedTo)
-  //       .includes(contact)
-  //   ) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
 }

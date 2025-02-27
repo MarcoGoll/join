@@ -307,6 +307,8 @@ export class TasksService {
   tasksInProgress: Task[] = [];
   tasksAwaitFeedback: Task[] = [];
   tasksDone: Task[] = [];
+  isTaskOverlayDisplayed: boolean = false;
+  isTaskinEditMode: boolean = false;
   unsubTasks;
 
   currentlySelectedTask: Task = {
@@ -560,6 +562,14 @@ export class TasksService {
     }
 
     return searchResults;
+  }
+
+  // ##########################################################################################################
+  // Overlays
+  // ##########################################################################################################
+  toggleIsTaskOverlayDisplayed() {
+    this.isTaskOverlayDisplayed = !this.isTaskOverlayDisplayed;
+    this.isTaskinEditMode = false;
   }
 
   // ##########################################################################################################
