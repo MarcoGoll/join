@@ -218,8 +218,15 @@
     padding: 6px 16px;
     font-size: 16px;
 
+    .currentSubtaskDisplayViewBtns{
+        display:none;
+    }
+
     &:hover {
-        background-color: $clrBaseGray
+        background-color: $clrBaseGray;
+        .currentSubtaskDisplayViewBtns{
+            display:flex;
+        }
     }
 }
 

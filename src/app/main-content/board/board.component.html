@@ -1,4 +1,12 @@
 <section>
+    <div class="addtaskOverlay" [ngClass]="{'d_none':!isAddTaskOverlayDisplayed}">
+        <div class="addTasContainer">
+            <div class="closeContainer" (click)="toggleIsAddTaskOverlayDisplayed()">
+                <img src="./assets/img/icon/close.svg" alt="close">
+            </div>
+            <app-add-task></app-add-task>
+        </div>
+    </div>
     <div class="title-container">
         <h1>Board</h1>
         <div class="input-task-container">
@@ -6,7 +14,7 @@
                 <input class="search-input" type="search" name="query" placeholder="Find Task">
                 <button>Search</button>
             </div>
-            <button class="add-task-button">Add task</button>
+            <button class="add-task-button" (click)="toggleIsAddTaskOverlayDisplayed()">Add task</button>
         </div>
     </div>
     

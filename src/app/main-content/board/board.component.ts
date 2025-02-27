@@ -11,25 +11,29 @@ import {
 import { TasksService } from '../../shared/services/firebase/tasks.service';
 import { SingleCardComponent } from './single-card/single-card.component';
 import { Task } from '../../shared/interfaces/task';
+import { AddTaskComponent } from '../add-task/add-task.component';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, BoardoverlayComponent, CdkDropList, CdkDrag, SingleCardComponent],
+  imports: [
+    CommonModule,
+    BoardoverlayComponent,
+    CdkDropList,
+    CdkDrag,
+    SingleCardComponent,
+    AddTaskComponent,
+  ],
   templateUrl: './board.component.html',
-  styleUrl: './board.component.scss'
+  styleUrl: './board.component.scss',
 })
 export class BoardComponent {
-
   taskService = inject(TasksService);
+  isAddTaskOverlayDisplayed: boolean = false;
 
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  inProgress = ['Get the document', 'Write project report', 'Fix login issue', 'Prepare presentation'];
-
-  awaitingFeedback = ['responsive', 'Review design mockup', 'Client approval on proposal', 'Code review from team'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  toggleIsAddTaskOverlayDisplayed() {
+    this.isAddTaskOverlayDisplayed = !this.isAddTaskOverlayDisplayed;
+  }
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -40,23 +44,27 @@ export class BoardComponent {
 
       // }
       switch (event.container.id) {
-        case "cdk-drop-list-0":
-          event.previousContainer.data[event.previousIndex].status = "toDo";
+        case 'cdk-drop-list-0':
+          event.previousContainer.data[event.previousIndex].status = 'toDo';
           break;
-        case "cdk-drop-list-1":
-          event.previousContainer.data[event.previousIndex].status = "inProgress";
+        case 'cdk-drop-list-1':
+          event.previousContainer.data[event.previousIndex].status =
+            'inProgress';
           break;
-        case "cdk-drop-list-2":
-          event.previousContainer.data[event.previousIndex].status = "awaitFeedback";
+        case 'cdk-drop-list-2':
+          event.previousContainer.data[event.previousIndex].status =
+            'awaitFeedback';
           break;
-        case "cdk-drop-list-3":
-          event.previousContainer.data[event.previousIndex].status = "done";
+        case 'cdk-drop-list-3':
+          event.previousContainer.data[event.previousIndex].status = 'done';
           break;
         default:
-          console.error("container id is not known");
+          console.error('container id is not known');
           break;
       }
-      this.taskService.updateTask(event.previousContainer.data[event.previousIndex]);
+      this.taskService.updateTask(
+        event.previousContainer.data[event.previousIndex]
+      );
 
       event.previousContainer.data.splice(event.previousIndex, 1);
       // transferArrayItem(

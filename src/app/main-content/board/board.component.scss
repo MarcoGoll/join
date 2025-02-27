@@ -171,3 +171,35 @@ section{
     width: 100%;
   }
   
+
+//=======================================================
+// Add Task Overlay
+//=======================================================
+.addtaskOverlay{
+  @include setFlex();
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.addTasContainer{
+  position: relative;
+  @include setFlex();
+  border-radius: 30px;
+  background-color: $clrBaseBright;
+}
+
+.closeContainer{
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 1;
+  border-radius: 50%;
+  &:hover{
+    background-color: $clrHoverIcon;
+  }
+}
