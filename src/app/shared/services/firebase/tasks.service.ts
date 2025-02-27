@@ -315,7 +315,7 @@ export class TasksService {
     assignedTo: ['5AWBsiFYfWsiYst9Aw3A'],
     status: 'toDo',
     dueDate: '2025-05-22',
-    prio: 'Urgent',
+    prio: 'Low',
     category: 'Technical Task',
     subTasks: [
       { checked: true, description: 'Component Contactdetails' },
@@ -329,7 +329,7 @@ export class TasksService {
     assignedTo: ['5AWBsiFYfWsiYst9Aw3A'],
     status: 'toDo',
     dueDate: '2025-05-22',
-    prio: 'Urgent',
+    prio: 'Low',
     category: 'Technical Task',
     subTasks: [
       { checked: true, description: 'Component Contactdetails' },
@@ -456,7 +456,6 @@ export class TasksService {
    * @returns {Promise<void>} A promise that resolves when the task has been added and processed.
    */
   async addTask(task: Task) {
-    console.log('Task to add - within Service:', task);
     await addDoc(this.getTasksRef(), task)
       .catch((err) => {
         console.error(err);
@@ -542,7 +541,6 @@ export class TasksService {
     if (task.id) {
       this.currentlySelectedTask = { ...task };
       this.currentTaskToBeUpdated = { ...task };
-      console.log(this.currentlySelectedTask);
     }
   }
 
@@ -551,12 +549,16 @@ export class TasksService {
   // ##########################################################################################################
   searchTasks(searchString: string) {
     let searchResults: Task[] = [];
-    this.getAllTasks().forEach((task) => {
-      if (task.title.includes(searchString)) {
-        // include klappt nur wenn string 1:1 Titel. Der string ist aber nur ein Teil vom Titel
-        searchResults.push(task);
-      }
-    });
+
+    if (searchString.length >= 3) {
+      this.getAllTasks().forEach((task) => {
+        if (task.title.includes(searchString)) {
+          // include klappt nur wenn string 1:1 Titel. Der string ist aber nur ein Teil vom Titel
+          searchResults.push(task);
+        }
+      });
+    }
+
     return searchResults;
   }
 

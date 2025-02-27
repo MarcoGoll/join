@@ -326,43 +326,131 @@ textarea.input-field {
     max-width: 100%;
 }
 
-.priority-buttons {
-    display: flex;
-    gap: 16px;
+// Prio
+.prioSelection {
+    @include setFlex($jc: space-between, $gap: 8px);
+}
 
-    button {
-        flex: 1;
-        padding: 12px;
-        border: 0.5px solid $clrSeparatingLines;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: transparent;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.prioChoice {
+    cursor: pointer;
+    @include setFlex($gap: 8px);
+    padding: 10px 18px;
+    background-color: $clrBaseBright;
+    border-radius: 10px;
 
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
 
-        &.active {
-            &[data-priority="Urgent"] {
-                background-color: $clrPrioUrgend;
-            }
-
-            &[data-priority="Medium"] {
-                background-color: $clrPrioMedium;
-            }
-
-            &[data-priority="Low"] {
-                background-color: $clrPrioLow;
-            }
-        }
+    svg {
+        width: 20px;
     }
+}
+
+.shadow {
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+
+    &:hover {
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    }
+}
+
+.clrBackgroundUrgent {
+    background-color: $clrPrioUrgend;
+    color: $clrBaseBright;
+}
+
+.clrBackgroundMedium {
+    background-color: $clrPrioMedium;
+    color: $clrBaseBright;
+}
+
+.clrBackgroundLow {
+    background-color: $clrPrioLow;
+    color: $clrBaseBright;
+}
+
+.clrFillUrgent {
+    fill: $clrPrioUrgend;
+}
+
+.clrFillMedium {
+    fill: $clrPrioMedium;
+}
+
+.clrFillLow {
+    fill: $clrPrioLow;
+}
+
+// AssignTo
+.selectionInput {
+    @include setFlex($jc: space-between);
+    background-color: $clrBaseBright;
+    padding: $stdPaddingInteractive;
+    border-radius: $stdRadiusInteractive;
+    border: 1px solid $clrBaseGray;
+}
+
+.selectionInputImgContainer {
+    border-radius: 50%;
+
+    &:hover {
+        background-color: $clrBaseGray;
+    }
+}
+
+.selectedContaktList {
+    @include setFlex($jc: flex-start); 
+}
+
+.selectionContaktList {
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
+    background-color: $clrBaseBright;
+    height: 120px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    border-radius: 10px;
+}
+
+.selectionContact {
+    cursor: pointer;
+    @include setFlex($jc: space-between, $gap: 16px);
+    padding: 7px 16px;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: $clrBaseGray;
+    }
+
+    &:active {
+        background-color: $clrHighlight1Darker;
+        color: $clrBaseBright;
+    }
+}
+
+.isSelected {
+    background-color: $clrHighlight1Darker !important;
+    color: $clrBaseBright;
+}
+
+.contactShortcut {
+    @include setFlex();
+    color: white;
+    border: 2px solid $clrBaseBright;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 400px;
+    width: 42px;
+    height: 42px;
+}
+
+.contactFullname {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 400px;
 }
 
 .subtask-input-group {

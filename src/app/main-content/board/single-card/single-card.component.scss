@@ -4,6 +4,7 @@
 
 section{
     border-radius: 10px;
+    z-index: 10;
 }
 
 .technical-task{
@@ -54,6 +55,8 @@ section{
 
 .profil-container{
     @include setFlex($jc: flex-start, $ai:center);
+    flex: 1;
+    position: relative;
 }
 
 .profil{
@@ -66,15 +69,21 @@ section{
 }
 
 .profil:nth-child(2) {
-    position: relative;
-    left: -7px; /* Bewegt das Element nach links */
+    position: absolute;
+    left: 21px; /* Bewegt das Element nach links */
     z-index: 2;
   }
 
 .profil:nth-child(3) {
-    position: relative;
-    left: -14px; /* Bewegt das Element nach links */
+    position: absolute;
+    left: 42px; /* Bewegt das Element nach links */
     z-index: 3;
+  }
+
+.profil:nth-child(4) {
+    position: absolute;
+    left: 63px; /* Bewegt das Element nach links */
+    z-index: 4;
   }
 
 .description{
