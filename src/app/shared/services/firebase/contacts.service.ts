@@ -327,7 +327,7 @@ export class ContactsService {
     return foundContacs;
   }
 
-  getContactsViaId(id: string) {
+  getContactViaId(id: string) {
     let foundContac: Contact = {
       id: '', // ? optional
       firstName: '',

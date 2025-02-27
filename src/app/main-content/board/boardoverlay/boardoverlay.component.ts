@@ -18,10 +18,10 @@ import { Contact } from '../../../shared/interfaces/contact';
 export class BoardoverlayComponent {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
-  currentSelectedAssignedTo: Contact[] = [];
+  // currentSelectedAssignedTo: Contact[] = [];
 
   isVisible = true;
-  isEditMode = false; 
+  isEditMode = false;
   isAssignedToOpen = false;
 
   setPrio(prio: string) {
