@@ -171,6 +171,11 @@ section{
     width: 100%;
   }
   
+  .seperator{
+    width: 1px;
+    height: 80%;
+    border-left: 1px solid $clrSeparatingLines;
+  }
 
 //=======================================================
 // Task Overlay
