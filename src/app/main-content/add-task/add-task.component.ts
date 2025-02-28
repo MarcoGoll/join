@@ -17,6 +17,7 @@ import { Subtask } from '../../shared/interfaces/subtask';
 export class AddTaskComponent {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
+  @Input('overlayMode') overlayMode: boolean = false;
   @Input('statusToBeUsed') statusToBeUsed:
     | 'toDo'
     | 'inProgress'
@@ -178,5 +179,12 @@ export class AddTaskComponent {
     this.categoryValue = 'Select task category';
     this.subtasksToAdd = [];
     this.currentSelectedAssignedTo = [];
+    this.isAssignedToOpen = false;
+    this.isCategoryOpen = false;
+    this.isSubtaskinFocus = false;
+  }
+
+  myResetForm(ngForm: NgForm) {
+    ngForm.resetForm();
   }
 }

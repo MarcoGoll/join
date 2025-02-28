@@ -307,6 +307,7 @@ export class TasksService {
   tasksInProgress: Task[] = [];
   tasksAwaitFeedback: Task[] = [];
   tasksDone: Task[] = [];
+  isAddTaskOverlayDisplayed: boolean = false;
   isTaskOverlayDisplayed: boolean = false;
   isTaskinEditMode: boolean = false;
   unsubTasks;
@@ -567,6 +568,10 @@ export class TasksService {
   // ##########################################################################################################
   // Overlays
   // ##########################################################################################################
+  toggleIsAddTaskOverlayDisplayed() {
+    this.isAddTaskOverlayDisplayed = !this.isAddTaskOverlayDisplayed;
+  }
+
   toggleIsTaskOverlayDisplayed() {
     this.isTaskOverlayDisplayed = !this.isTaskOverlayDisplayed;
     this.isTaskinEditMode = false;
