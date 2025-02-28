@@ -1,14 +1,16 @@
 <section>
-    <div class="addtaskOverlay" [ngClass]="{'d_none':!taskService.isAddTaskOverlayDisplayed}">
-        <div class="addTaskContainer">
+    <div class="addtaskOverlay"
+        [ngClass]="{'d_none':!taskService.isAddTaskOverlayDisplayed}" 
+        (click)="taskService.toggleIsAddTaskOverlayDisplayed()">
+        <div class="addTaskContainer" (click)="$event.stopPropagation()">
             <div class="closeContainer" (click)="taskService.toggleIsAddTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
             <app-add-task [statusToBeUsed]="statusToBeUsed" [overlayMode]="true"></app-add-task>
         </div>
     </div>
-    <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}">
-        <div class="taskOverlayContainer">
+    <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}" (click)="taskService.toggleIsTaskOverlayDisplayed()">
+        <div class="taskOverlayContainer" (click)="$event.stopPropagation()">
             <div class="closeContainer" (click)="taskService.toggleIsTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
