@@ -27,7 +27,10 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
   templateUrl: './board.component.html',
-  styleUrl: './board.component.scss',
+  styleUrls: [
+    './board.component.scss', 
+    './board.responsive.scss'
+  ]
 })
 export class BoardComponent {
   taskService = inject(TasksService);

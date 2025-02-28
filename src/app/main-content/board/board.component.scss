@@ -57,7 +57,7 @@ section{
     border-radius: 50%;
     &:hover{
       cursor: pointer;
-      background-color: $clrHoverIcon;
+      background-color: rgba(128, 128, 128, 0.24);
 
     }
   }
