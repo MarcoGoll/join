@@ -22,8 +22,9 @@
         <h1>Board</h1>
         <div class="input-task-container">
             <div class="search-bar">
-                <input class="search-input" type="search" name="query" placeholder="Find Task">
-                <button>Search</button>
+                <input class="search-input" type="search" name="query" placeholder="Find Task" [(ngModel)]="searchString" (input)="searchTask()">
+                <div class="seperator"></div>
+                <button (click)="searchTask()">Search</button>
             </div>
             <button class="add-task-button" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">Add task</button>
         </div>
@@ -58,9 +59,27 @@
             <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                @for (task of taskService.tasksToDo; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
-                        [task]="task"></app-single-card></div>
+                
+                
+                <!-- Keine Suche -->
+                @if (this.isSearchActive ==false) {
+                    @for (task of taskService.tasksToDo; track task) {
+                        <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                [task]="task"></app-single-card></div>
+                    }
+                }
+                <!-- Suche ohne Ergebnisse -->
+                @if (this.isSearchActive == true && this.allSearchResults == []) {
+                    <!-- irgendwas leeres -->
+                }
+                <!--Suche mit Ergebnissen -->
+                @if (this.isSearchActive == true && this.allSearchResults != []) {
+                    @for (task of taskService.tasksToDo; track task) {
+                        @if(isTaskInSearchResult(task)){
+                            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                    [task]="task"></app-single-card></div>
+                        }
+                    }
                 }
             </div>
         </div>
@@ -112,6 +131,7 @@
     </div>
 </div>
 
+<!-- 
 <div class="search-board">
     <div class="task-board-container">
     <div class="column-title-container">
@@ -193,5 +213,5 @@
         </div>
     </div>
 </div>
-</div>
+</div> -->
 </section>
