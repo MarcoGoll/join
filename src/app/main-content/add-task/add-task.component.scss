@@ -74,6 +74,10 @@
     @include setFlex($ai: flex-start, $gap: 32px);
 }
 
+.createBTN, .clearBTN{
+    cursor: pointer;
+}
+
 .inputAndErrorContainer {
     @include setFlex($fd: column, $ai: stretch, $gap: 8px)
 }

@@ -18,7 +18,7 @@ import { AddTaskComponent } from '../add-task/add-task.component';
   standalone: true,
   imports: [
     CommonModule,
-    BoardoverlayComponent, 
+    BoardoverlayComponent,
     CdkDropList,
     CdkDrag,
     SingleCardComponent,
@@ -29,17 +29,11 @@ import { AddTaskComponent } from '../add-task/add-task.component';
 })
 export class BoardComponent {
   taskService = inject(TasksService);
-  isAddTaskOverlayDisplayed: boolean = false;
-  isTaskOverlayDisplayed: boolean = false;
   isTaskinEditMode: boolean = false;
   statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
 
   setStatusToBeUsed(status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done') {
     this.statusToBeUsed = status;
-  }
-
-  toggleIsAddTaskOverlayDisplayed() {
-    this.isAddTaskOverlayDisplayed = !this.isAddTaskOverlayDisplayed;
   }
 
   drop(event: CdkDragDrop<Task[]>) {

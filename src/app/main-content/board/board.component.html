@@ -1,14 +1,16 @@
 <section>
-    <div class="addtaskOverlay" [ngClass]="{'d_none':!isAddTaskOverlayDisplayed}">
-        <div class="addTaskContainer">
-            <div class="closeContainer" (click)="toggleIsAddTaskOverlayDisplayed()">
+    <div class="addtaskOverlay"
+        [ngClass]="{'d_none':!taskService.isAddTaskOverlayDisplayed}" 
+        (click)="taskService.toggleIsAddTaskOverlayDisplayed()">
+        <div class="addTaskContainer" (click)="$event.stopPropagation()">
+            <div class="closeContainer" (click)="taskService.toggleIsAddTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
-            <app-add-task [statusToBeUsed]="statusToBeUsed"></app-add-task>
+            <app-add-task [statusToBeUsed]="statusToBeUsed" [overlayMode]="true"></app-add-task>
         </div>
     </div>
-    <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}">
-        <div class="taskOverlayContainer">
+    <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}" (click)="taskService.toggleIsTaskOverlayDisplayed()">
+        <div class="taskOverlayContainer" (click)="$event.stopPropagation()">
             <div class="closeContainer" (click)="taskService.toggleIsTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
@@ -23,7 +25,7 @@
                 <input class="search-input" type="search" name="query" placeholder="Find Task">
                 <button>Search</button>
             </div>
-            <button class="add-task-button" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">Add task</button>
+            <button class="add-task-button" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">Add task</button>
         </div>
     </div>
     
@@ -32,15 +34,15 @@
         <div class="column-title-container">
             <div class="column-title">
                 <h2>To do</h2>
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
             </div>
             <div class="column-title">
                 <h2>In progress</h2>
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
             </div>
             <div class="column-title">
                 <h2>Awaiting feedback</h2>
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
             </div>
             <div class="column-title">
                 <h2>Done</h2>
@@ -115,15 +117,15 @@
     <div class="column-title-container">
         <div class="column-title">
             <h2>To do</h2>
-            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
+            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
         </div>
         <div class="column-title">
             <h2>In progress</h2>
-            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
+            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
         </div>
         <div class="column-title">
             <h2>Awaiting feedback</h2>
-            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
+            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
         </div>
         <div class="column-title">
             <h2>Done</h2>

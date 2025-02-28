@@ -36,10 +36,10 @@
             <span class="label">Assigned To:</span>
             <div class="assigned-users">
                 @for (idOfAssigne of taskService.currentlySelectedTask.assignedTo; track $index) {
-                    @if (contactService.getContactsViaId(idOfAssigne).id !="") {
-                        <div class="user-avatar backgroundColor{{contactService.getContactsViaId(idOfAssigne).nameShortcutColorCode}}">{{contactService.getContactsViaId(idOfAssigne).nameShortcut}}
+                    @if (contactService.getContactViaId(idOfAssigne).id !="") {
+                        <div class="user-avatar backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">{{contactService.getContactViaId(idOfAssigne).nameShortcut}}
                         </div>
-                        <div class="user-name">{{contactService.getContactsViaId(idOfAssigne).fullName}}</div>
+                        <div class="user-name">{{contactService.getContactViaId(idOfAssigne).fullName}}</div>
                     }
                 }
             </div>

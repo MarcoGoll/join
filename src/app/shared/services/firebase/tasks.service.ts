@@ -307,6 +307,7 @@ export class TasksService {
   tasksInProgress: Task[] = [];
   tasksAwaitFeedback: Task[] = [];
   tasksDone: Task[] = [];
+  isAddTaskOverlayDisplayed: boolean = false;
   isTaskOverlayDisplayed: boolean = false;
   isTaskinEditMode: boolean = false;
   unsubTasks;
@@ -345,6 +346,14 @@ export class TasksService {
    */
   constructor() {
     this.unsubTasks = this.subTasksList();
+    // TEST:
+    setTimeout(() => {
+      this.searchTasks('da');
+      this.searchTasks('men');
+      this.searchTasks('Fix');
+      this.searchTasks('Fix Login Bug');
+      this.searchTasks('Analytics Dashboard');
+    }, 1500);
   }
 
   // ##########################################################################################################
@@ -554,19 +563,27 @@ export class TasksService {
 
     if (searchString.length >= 3) {
       this.getAllTasks().forEach((task) => {
-        if (task.title.includes(searchString)) {
-          // include klappt nur wenn string 1:1 Titel. Der string ist aber nur ein Teil vom Titel
+        if (task.title.toLowerCase().includes(searchString.toLowerCase())) {
           searchResults.push(task);
         }
       });
     }
-
+    console.log(
+      'searchString:',
+      searchString,
+      ' => searchResults: ',
+      searchResults
+    );
     return searchResults;
   }
 
   // ##########################################################################################################
   // Overlays
   // ##########################################################################################################
+  toggleIsAddTaskOverlayDisplayed() {
+    this.isAddTaskOverlayDisplayed = !this.isAddTaskOverlayDisplayed;
+  }
+
   toggleIsTaskOverlayDisplayed() {
     this.isTaskOverlayDisplayed = !this.isTaskOverlayDisplayed;
     this.isTaskinEditMode = false;
