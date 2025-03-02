@@ -310,6 +310,7 @@ export class TasksService {
   isAddTaskOverlayDisplayed: boolean = false;
   isTaskOverlayDisplayed: boolean = false;
   isTaskinEditMode: boolean = false;
+  statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
   unsubTasks;
 
   currentlySelectedTask: Task = {
@@ -530,6 +531,10 @@ export class TasksService {
       category: task.category,
       subTasks: task.subTasks,
     };
+  }
+
+  setStatusToBeUsed(status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done') {
+    this.statusToBeUsed = status;
   }
 
   // ##########################################################################################################

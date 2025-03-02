@@ -27,22 +27,14 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
   templateUrl: './board.component.html',
-  styleUrls: [
-    './board.component.scss', 
-    './board.responsive.scss'
-  ]
+  styleUrls: ['./board.component.scss', './board.responsive.scss'],
 })
 export class BoardComponent {
   taskService = inject(TasksService);
   isTaskinEditMode: boolean = false;
-  statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
   searchString: string = '';
   allSearchResults: Task[] = [];
   isSearchActive: boolean = false;
-
-  setStatusToBeUsed(status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done') {
-    this.statusToBeUsed = status;
-  }
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {

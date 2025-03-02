@@ -18,11 +18,6 @@ export class AddTaskComponent {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
   @Input('overlayMode') overlayMode: boolean = false;
-  @Input('statusToBeUsed') statusToBeUsed:
-    | 'toDo'
-    | 'inProgress'
-    | 'awaitFeedback'
-    | 'done' = 'toDo';
 
   isAssignedToOpen = false;
   isCategoryOpen = false;
@@ -158,7 +153,7 @@ export class AddTaskComponent {
             title: this.newTask.title,
             description: this.newTask.description,
             assignedTo: assignedToIds,
-            status: this.statusToBeUsed,
+            status: this.taskService.statusToBeUsed,
             dueDate: this.newTask.dueDate,
             prio: this.currentPrioSelection,
             category: this.categoryValue,
