@@ -547,8 +547,8 @@ export class TasksService {
    */
   setCurrentTask(task: Task) {
     if (task.id) {
-      this.currentlySelectedTask = { ...task };
-      this.currentTaskToBeUpdated = { ...task };
+      this.currentlySelectedTask = structuredClone(task);
+      this.currentTaskToBeUpdated = structuredClone(task);
     }
   }
 
