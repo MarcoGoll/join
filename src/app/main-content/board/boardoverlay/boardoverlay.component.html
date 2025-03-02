@@ -48,20 +48,15 @@
         <div class="info-row">
             <span class="label">Subtasks</span> 
             <div class="subtasks">
-                <div class="subtask">
-                    <div class="custom-checkbox" onclick="this.classList.toggle('checked')">
-                        <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
-                        <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
+                @for (subtask of taskService.currentlySelectedTask.subTasks; track $index) {
+                    <div class="subtask">
+                        <div class="custom-checkbox" [ngClass]="{'checked': subtask.checked}" (click)="subtask.checked=!subtask.checked; updateFromDisplayMode()">
+                            <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
+                            <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
+                        </div>
+                        <label class="subtask-text">{{subtask.description}}</label>
                     </div>
-                    <label class="subtask-text">Implement Recipe Recommendation</label>
-                </div>
-                <div class="subtask">
-                    <div class="custom-checkbox" onclick="this.classList.toggle('checked')">
-                        <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
-                        <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
-                    </div>
-                    <label class="subtask-text">Start Page Layout</label>
-                </div>
+                }
             </div>
         </div>
 
@@ -79,8 +74,7 @@
     </div>
     <div class="modal-content edit-modal" [ngClass]="{'d_none':!taskService.isTaskinEditMode}">
         <div class="modal-scrollable-content">
-            <form class="edit-form">
-                
+            <form id="edit-form" class="edit-form" (ngSubmit)="updateFromEditMode(editTaskForm)" #editTaskForm="ngForm">
                 <div class="inputAndErrorContainer">
                     <label for="title">Title<span class="clrRed">*</span></label>
                     <div class="inputContainer">
@@ -214,18 +208,81 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Subtasks</label>
-                    <div class="subtask-input-group">
-                        <input type="text" placeholder="Add new subtask" class="input-field">
+                <div class="inputAndErrorContainer">
+                    <label for="subTask">Subtask</label>
+                    <div class="inputContainer">
+                        <div class="subtaskInputContainer" (click)="setIsSubtaskinFocus(true)">
+                            <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field"
+                                [(ngModel)]="subtaskValue">
+                            @if (isSubtaskinFocus) {
+                            <div class="inputBtns">
+                                <div class="inputBtn">
+                                    <img src="./assets/img/icons/close.svg" alt="Cancel" (click)="
+                                    $event.stopPropagation();
+                                    setIsSubtaskinFocus(false);
+                                    setSubtaskValue('')">
+                                </div>
+                                <p>|</p>
+                                <div class="inputBtn">
+                                    <img src="./assets/img/icons/check.svg" alt="Confirm" (click)="
+                                    $event.stopPropagation();
+                                    setIsSubtaskinFocus(false);
+                                    confirmSubtask()">
+                                </div>
+                            </div>
+                            }
+                            @if (!isSubtaskinFocus) {
+                            <div class="inputBtns">
+                                <div class="inputBtn">
+                                    <img src="./assets/img/icons/plus.svg" alt="Plus">
+                                </div>
+                            </div>
+                            }
+                        </div>
+                        @if (taskService.subtasksToAdd.length>0) {
+                        <div class="currentSubtasksList">
+                            @for (subtask of taskService.subtasksToAdd; track $index) {
+                            <div class="currentSubtask">
+                                <div class="currentSubtaskDisplayView" [ngClass]="{'d_none': subtask.inEditMode}"
+                                    (dblclick)="subtask.inEditMode=true">
+                                    <div class="currentSubtaskDisplayViewText">• {{subtask.description}}</div>
+                                    <div class="currentSubtaskDisplayViewBtns">
+                                        <div class="inputBtn"  (click)="subtask.inEditMode=true">
+                                            <img src="./assets/img/icons/edit.svg" alt="Edit">
+                                        </div>
+                                        <p>|</p>
+                                        <div class="inputBtn" (click)="deleteSubtask($index)">
+                                            <img src="./assets/img/icons/delete.svg" alt="Delete">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="currentSubtaskEditView" [ngClass]="{'d_none': !subtask.inEditMode}">
+                                    <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription{{$index}}" [(ngModel)]="subtask.description">
+                                    <div class="currentSubtaskDisplayViewBtns">
+                                        <div class="inputBtn" (click)="deleteSubtask($index)">
+                                            <img src="./assets/img/icons/delete.svg" alt="Delete">
+                                        </div>
+                                        <p>|</p>
+                                        <div class="inputBtn">
+                                            <img src="./assets/img/icons/check.svg" alt="Confirm"
+                                                (click)="subtask.inEditMode=false">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                        }
                     </div>
+                    <div class="errorMessageContainer">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="ok-btn" type="submit" value="Send" (click)="taskService.toggleIsTaskOverlayDisplayed()">
+                        Ok<img src="./assets/img/icons/check.svg" alt="checkmark">
+                    </button>
                 </div>
             </form>
         </div>
-    <div class="modal-footer">
-        <button type="button" class="ok-btn">
-            Ok<img src="./assets/img/icons/check.svg" alt="checkmark">
-        </button>
-    </div>
 </div>
 

@@ -311,6 +311,7 @@ export class TasksService {
   isTaskOverlayDisplayed: boolean = false;
   isTaskinEditMode: boolean = false;
   statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
+  subtasksToAdd: { inEditMode: boolean; description: string }[] = [];
   unsubTasks;
 
   currentlySelectedTask: Task = {
@@ -549,7 +550,18 @@ export class TasksService {
     if (task.id) {
       this.currentlySelectedTask = structuredClone(task);
       this.currentTaskToBeUpdated = structuredClone(task);
+      this.subtasksToAdd = [];
+      this.setSubtasksToAdd(task);
     }
+  }
+
+  setSubtasksToAdd(task: Task) {
+    task.subTasks.forEach((subtask) => {
+      this.subtasksToAdd.push({
+        inEditMode: false,
+        description: subtask.description,
+      });
+    });
   }
 
   // ##########################################################################################################

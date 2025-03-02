@@ -145,7 +145,7 @@ export class AddTaskComponent {
           });
           this.subtasksToAdd.forEach((subtask, index) => {
             subtasksToCreate.push({
-              checked: true,
+              checked: false,
               description: subtask.description,
             });
           });
