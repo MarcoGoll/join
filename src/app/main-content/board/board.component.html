@@ -6,7 +6,7 @@
             <div class="closeContainer" (click)="taskService.toggleIsAddTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
-            <app-add-task [statusToBeUsed]="statusToBeUsed" [overlayMode]="true"></app-add-task>
+            <app-add-task [overlayMode]="true"></app-add-task>
         </div>
     </div>
     <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}" (click)="taskService.toggleIsTaskOverlayDisplayed()">
@@ -22,10 +22,15 @@
         <h1>Board</h1>
         <div class="input-task-container">
             <div class="search-bar">
-                <input class="search-input" type="search" name="query" placeholder="Find Task">
-                <button>Search</button>
+                <input class="search-input" type="search" name="query" placeholder="Find Task" [(ngModel)]="searchString" (input)="searchTask()">
+                <div class="seperator"></div>
+                <img src="./assets/img/icons/search-icon.png" alt="search icon">
             </div>
-            <button class="add-task-button" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">Add task</button>
+            @if(isMobileView){
+                <a class="add-task-button" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('toDo')">Add task</a>
+            }@else {
+                <button class="add-task-button" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">Add task</button>
+            }
         </div>
     </div>
     
@@ -34,15 +39,33 @@
         <div class="column-title-container">
             <div class="column-title">
                 <h2>To do</h2>
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
+                @if(isMobileView){
+                    <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('toDo')">
+                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                    </a>
+                }@else {
+                    <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">
+                }
             </div>
             <div class="column-title">
                 <h2>In progress</h2>
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
+                @if(isMobileView){
+                    <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('inProgress')">
+                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                    </a>
+                }@else {
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('inProgress')">
+                }
             </div>
             <div class="column-title">
                 <h2>Awaiting feedback</h2>
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
+                @if(isMobileView){
+                    <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('awaitFeedback')">
+                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                    </a>
+                }@else {
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('awaitFeedback')">
+                }
             </div>
             <div class="column-title">
                 <h2>Done</h2>
@@ -58,9 +81,27 @@
             <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                @for (task of taskService.tasksToDo; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
-                        [task]="task"></app-single-card></div>
+                
+                
+                <!-- Keine Suche -->
+                @if (this.isSearchActive ==false) {
+                    @for (task of taskService.tasksToDo; track task) {
+                        <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                [task]="task"></app-single-card></div>
+                    }
+                }
+                <!-- Suche ohne Ergebnisse -->
+                @if (this.isSearchActive == true && this.allSearchResults == []) {
+                    <!-- irgendwas leeres -->
+                }
+                <!--Suche mit Ergebnissen -->
+                @if (this.isSearchActive == true && this.allSearchResults != []) {
+                    @for (task of taskService.tasksToDo; track task) {
+                        @if(isTaskInSearchResult(task)){
+                            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                    [task]="task"></app-single-card></div>
+                        }
+                    }
                 }
             </div>
         </div>
@@ -72,11 +113,31 @@
             <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
                 [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                @for (task of taskService.tasksInProgress; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
-                    <app-single-card [task]="task"></app-single-card>
-                </div>
+
+
+                <!-- Keine Suche -->
+                @if (this.isSearchActive ==false) {
+                    @for (task of taskService.tasksInProgress; track task) {
+                        <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                [task]="task"></app-single-card></div>
+                    }
                 }
+                <!-- Suche ohne Ergebnisse -->
+                @if (this.isSearchActive == true && this.allSearchResults == []) {
+                    <!-- irgendwas leeres -->
+                }
+                <!--Suche mit Ergebnissen -->
+                @if (this.isSearchActive == true && this.allSearchResults != []) {
+                    @for (task of taskService.tasksInProgress; track task) {
+                        @if(isTaskInSearchResult(task)){
+                            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                    [task]="task"></app-single-card></div>
+                        }
+                    }
+                }
+
+
+                
             </div>
         </div>
 
@@ -87,11 +148,27 @@
             <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                @for (task of taskService.tasksAwaitFeedback; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
-                    <app-single-card [task]="task"></app-single-card>
-                </div>
+                <!-- Keine Suche -->
+                @if (this.isSearchActive ==false) {
+                    @for (task of taskService.tasksAwaitFeedback; track task) {
+                        <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                [task]="task"></app-single-card></div>
+                    }
                 }
+                <!-- Suche ohne Ergebnisse -->
+                @if (this.isSearchActive == true && this.allSearchResults == []) {
+                    <!-- irgendwas leeres -->
+                }
+                <!--Suche mit Ergebnissen -->
+                @if (this.isSearchActive == true && this.allSearchResults != []) {
+                    @for (task of taskService.tasksAwaitFeedback; track task) {
+                        @if(isTaskInSearchResult(task)){
+                            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                    [task]="task"></app-single-card></div>
+                        }
+                    }
+                }
+                
             </div>
         </div>
 
@@ -102,96 +179,28 @@
             <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="taskService.tasksDone"
                 [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                @for (task of taskService.tasksDone; track task) {
-                <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
-                    <app-single-card [task]="task"></app-single-card>
-                </div>
+                <!-- Keine Suche -->
+                @if (this.isSearchActive ==false) {
+                    @for (task of taskService.tasksDone; track task) {
+                        <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                [task]="task"></app-single-card></div>
+                    }
+                }
+                <!-- Suche ohne Ergebnisse -->
+                @if (this.isSearchActive == true && this.allSearchResults == []) {
+                    <!-- irgendwas leeres -->
+                }
+                <!--Suche mit Ergebnissen -->
+                @if (this.isSearchActive == true && this.allSearchResults != []) {
+                    @for (task of taskService.tasksDone; track task) {
+                        @if(isTaskInSearchResult(task)){
+                            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                                    [task]="task"></app-single-card></div>
+                        }
+                    }
                 }
             </div>
         </div>
     </div>
-</div>
-
-<div class="search-board">
-    <div class="task-board-container">
-    <div class="column-title-container">
-        <div class="column-title">
-            <h2>To do</h2>
-            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
-        </div>
-        <div class="column-title">
-            <h2>In progress</h2>
-            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('inProgress')">
-        </div>
-        <div class="column-title">
-            <h2>Awaiting feedback</h2>
-            <img src="./../../../assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('awaitFeedback')">
-        </div>
-        <div class="column-title">
-            <h2>Done</h2>
-        </div>
-    </div>
-</div>
-<div>
-    <div class="example-container">
-        <div class="no-tasks">
-            <p>No tasks</p>
-        </div>
-
-        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
-            [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            @for (task of taskService.tasksToDo; track task) {
-            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
-                    [task]="task"></app-single-card></div>
-            }
-        </div>
-    </div>
-
-    <div class="example-container">
-        <div class="no-tasks">
-            <p>No tasks</p>
-        </div>
-        <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
-            [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            @for (task of taskService.tasksInProgress; track task) {
-            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
-                <app-single-card [task]="task"></app-single-card>
-            </div>
-            }
-        </div>
-    </div>
-
-    <div class="example-container">
-        <div class="no-tasks">
-            <p>No tasks</p>
-        </div>
-        <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
-            [cdkDropListConnectedTo]="[doneList, inProgressList, todoList]" class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            @for (task of taskService.tasksAwaitFeedback; track task) {
-            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
-                <app-single-card [task]="task"></app-single-card>
-            </div>
-            }
-        </div>
-    </div>
-
-    <div class="example-container">
-        <div class="no-tasks">
-            <p>No tasks</p>
-        </div>
-        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="taskService.tasksDone"
-            [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            @for (task of taskService.tasksDone; track task) {
-            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()">
-                <app-single-card [task]="task"></app-single-card>
-            </div>
-            }
-        </div>
-    </div>
-</div>
 </div>
 </section>

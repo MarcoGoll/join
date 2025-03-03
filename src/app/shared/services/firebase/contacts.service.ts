@@ -528,8 +528,10 @@ export class ContactsService {
    */
   setCurrentContacts(contact: Contact) {
     if (contact.id) {
-      this.currentlySelectedContact = { ...contact };
-      this.currentContactToBeUpdated = { ...contact };
+      // this.currentlySelectedContact = { ...contact };
+      // this.currentContactToBeUpdated = { ...contact };
+      this.currentlySelectedContact = structuredClone(contact);
+      this.currentContactToBeUpdated = structuredClone(contact);
       this.isContactSelected = true;
     }
   }

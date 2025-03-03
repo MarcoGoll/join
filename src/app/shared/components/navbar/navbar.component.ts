@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TasksService } from '../../services/firebase/tasks.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss', './navbar.responsive.scss']
+  styleUrls: ['./navbar.component.scss', './navbar.responsive.scss'],
 })
 export class NavbarComponent {
+  taskService = inject(TasksService);
+
   isSummarySelected: boolean = false;
   isAddTaskSelected: boolean = false;
   isBoardSelected: boolean = false;
@@ -26,26 +29,26 @@ export class NavbarComponent {
     this.isLegalNoticeSelected = false;
 
     switch (id) {
-      case "summary":
+      case 'summary':
         this.isSummarySelected = true;
         break;
-      case "addTask":
+      case 'addTask':
         this.isAddTaskSelected = true;
         break;
-      case "board":
+      case 'board':
         this.isBoardSelected = true;
         break;
-      case "contact":
+      case 'contact':
         this.isContactSelected = true;
         break;
-      case "privacyPolicy":
+      case 'privacyPolicy':
         this.isPrivacyPolicySelected = true;
         break;
-      case "legal":
+      case 'legal':
         this.isLegalNoticeSelected = true;
         break;
       default:
-        console.log("Identifier is not known");
+        console.log('Identifier is not known');
     }
   }
 }

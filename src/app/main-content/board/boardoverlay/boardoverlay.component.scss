@@ -17,7 +17,7 @@
 .modal-content {
     background: white;
     border-radius: 30px;
-    padding: 40px;
+    padding: 48px;
     width: 100%;
     max-width: 450px;
     position: relative;
@@ -259,6 +259,84 @@
 
 .inputContainer {
     position: relative;
+}
+
+.subtaskInputContainer {
+    position: relative;
+}
+
+.inputBtns {
+    @include setFlex($gap: 4px);
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+}
+
+.inputBtn {
+    border-radius: 50%;
+
+    &:hover {
+        background-color: $clrBaseGray;
+    }
+}
+
+
+.currentSubtasksList {
+    @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 4px);
+    margin-top: 4px;
+}
+
+.currentSubtask {
+    position: relative;
+}
+
+.currentSubtaskDisplayView {
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 6px 16px;
+    font-size: 16px;
+
+    .currentSubtaskDisplayViewBtns{
+        display:none;
+    }
+
+    &:hover {
+        background-color: $clrBaseGray;
+        .currentSubtaskDisplayViewBtns{
+            display:flex;
+        }
+    }
+}
+
+.currentSubtaskEditView {
+    position: relative;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.currentSubtaskEditViewInput {
+    border-radius: 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $clrHighlight2;
+    padding: 4px 21px;
+    width: 100%;
+}
+
+.currentSubtaskDisplayViewBtns {
+    @include setFlex();
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+}
+
+.input-field {
+    width: 100%;
 }
 
 .errorMessageContainer {

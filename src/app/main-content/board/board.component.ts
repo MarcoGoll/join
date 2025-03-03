@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  HostListener,
+  Injectable,
+  OnInit,
+} from '@angular/core';
 import { BoardoverlayComponent } from './boardoverlay/boardoverlay.component';
 import {
   CdkDragDrop,
@@ -12,6 +18,8 @@ import { TasksService } from '../../shared/services/firebase/tasks.service';
 import { SingleCardComponent } from './single-card/single-card.component';
 import { Task } from '../../shared/interfaces/task';
 import { AddTaskComponent } from '../add-task/add-task.component';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -23,27 +31,42 @@ import { AddTaskComponent } from '../add-task/add-task.component';
     CdkDrag,
     SingleCardComponent,
     AddTaskComponent,
+    FormsModule,
+    RouterLink,
   ],
   templateUrl: './board.component.html',
-  styleUrl: './board.component.scss',
+  styleUrls: ['./board.component.scss', './board.responsive.scss'],
 })
-export class BoardComponent {
+@Injectable({
+  providedIn: 'root',
+})
+export class BoardComponent implements OnInit {
   taskService = inject(TasksService);
   isTaskinEditMode: boolean = false;
-  statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
+  searchString: string = '';
+  allSearchResults: Task[] = [];
+  isSearchActive: boolean = false;
+  isMobileView: boolean = false;
 
-  setStatusToBeUsed(status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done') {
-    this.statusToBeUsed = status;
+  ngOnInit() {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize(): void {
+    this.isMobileView = window.innerWidth <= 1200;
   }
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
+      // TODO: Drag&Drop within same Column
       // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex); // brauchen wir erstmal nicht, weil wir nicht mit prios arbeiten
     } else {
-      // if (event.container.data[0]) {
-      //   event.previousContainer.data[event.previousIndex].status = event.container.data[0].status;
-
-      // }
+      //Drag&Drop between different Columns
       switch (event.container.id) {
         case 'cdk-drop-list-0':
           event.previousContainer.data[event.previousIndex].status = 'toDo';
@@ -66,17 +89,41 @@ export class BoardComponent {
       this.taskService.updateTask(
         event.previousContainer.data[event.previousIndex]
       );
-
       event.previousContainer.data.splice(event.previousIndex, 1);
-      // transferArrayItem(
-      //   event.previousContainer.data,
-      //   event.container.data,
-      //   event.previousIndex,
-      //   event.currentIndex,
-      // );
-      console.log(event);
     }
   }
+
+  searchTask() {
+    if (this.searchString.length < 3) {
+      console.log('du darfst nicht suchen');
+      this.isSearchActive = false;
+    } else {
+      this.allSearchResults = this.taskService.searchTasks(this.searchString);
+      this.isSearchActive = true;
+      console.log('Ergebnisse: ', this.allSearchResults);
+    }
+  }
+
+  isTaskInSearchResult(task: Task) {
+    let allSearchResultsIDs: string[] = [];
+
+    this.allSearchResults.forEach((searchResult) => {
+      if (searchResult.id) {
+        allSearchResultsIDs.push(searchResult.id);
+      }
+    });
+
+    if (task.id) {
+      if (allSearchResultsIDs.includes(task.id)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   // toggleBoard(){
   //   let searchBoard = document.querySelector('.search-board');
   //   let taskBoard = document.querySelector('.task-board');
