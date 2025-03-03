@@ -130,7 +130,7 @@
             <div class="no-tasks">
                 <p class="no-task-msg">No tasks</p>
             </div>
-            <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
+            <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
                 [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
 
