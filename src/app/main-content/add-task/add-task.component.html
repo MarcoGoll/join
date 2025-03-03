@@ -34,67 +34,20 @@
                     </div>
                 </div>
                 <div class="inputAndErrorContainer">
-                    <label>Assigned to</label>
+                    <label for="duDate">Due date<span class="clrRed">*</span></label>
                     <div class="inputContainer">
-                        <div class=selectionInput (click)="toggleIsAssignedToOpen()">
-                            <p>Select contacts to assign</p>
-                            <div class="selectionInputImgContainer">
-                                @if (isAssignedToOpen) {
-                                <img src="./assets/img/icons/arrow_drop_down_reverse.svg" alt="dropdownArrow">
-                                }@else {
-                                <img src="./assets/img/icons/arrow_drop_down.svg" alt="dropdownArrow">
-                                }
-                            </div>
-                        </div>
-                        <div class=selectionContaktList [ngClass]="{'d_none':!isAssignedToOpen}">
-                            @for (contact of contactService.getAllContacts(); track $index) {
-                            <div class="selectionContact" (click)="toggleContactInCurrentSelectedAssignedTo(contact)"
-                                [ngClass]="{'isSelected':isContactCurrentlySelected(contact)}">
-                                <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
-                                    {{contact.nameShortcut}}</div>
-                                <div class="contactFullname">{{contact.fullName}}</div>
-                                <div class="contactSelection">
-                                    <div class="custom-checkbox" [ngClass]="{'checked': isContactCurrentlySelected(contact)}" (click)="toggleContactInCurrentSelectedAssignedTo(contact)">
-                                        <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
-                                        <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
-                                    </div>
-                                </div>
-                            </div>
-                            }
-                        </div>
+                        <input #duDate="ngModel" [(ngModel)]="newTask.dueDate" id="duDate" name="duDate" type="date"
+                            placeholder="dd/mm/yyyy" class="input-field" required>
                     </div>
-                    <div class="selectedContaktList" [ngClass]="{'d_none':isAssignedToOpen}">
-                        @for (contact of currentSelectedAssignedTo; track $index) {
-                            @if ($index<3) { 
-                                <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
-                                    {{contact.nameShortcut}}
-                                </div>
-                            }
-                        }
-                        @if (currentSelectedAssignedTo.length>=3) {
-                            <div class="contactShortcut backgroundColorBaseGray">
-                                +{{currentSelectedAssignedTo.length-3}}
-                            </div>
+                    <div class="errorMessageContainer">
+                        @if (!duDate.valid && duDate.touched) {
+                        <p class="errorMessage">Please enter a date</p>
                         }
                     </div>
-                <div class="errorMessageContainer">
                 </div>
-            </div>
             </div>
             <div class="formSeperator"></div>
             <div class="formFieldGroup2">
-        <div class="inputAndErrorContainer">
-            <label for="duDate">Due date<span class="clrRed">*</span></label>
-            <div class="inputContainer">
-                <input #duDate="ngModel" [(ngModel)]="newTask.dueDate" id="duDate" name="duDate" type="date"
-                    placeholder="dd/mm/yyyy" class="input-field" required>
-            </div>
-            <div class="errorMessageContainer">
-                @if (!duDate.valid && duDate.touched) {
-                <p class="errorMessage">Please enter a date</p>
-                }
-            </div>
-        </div>
         <div class="inputAndErrorContainer">
             <label>Prio</label>
             <div class="prioSelection">
@@ -142,6 +95,53 @@
             <div class="errorMessageContainer">
             </div>
         </div>
+        <div class="inputAndErrorContainer">
+            <label>Assigned to</label>
+            <div class="inputContainer">
+                <div class=selectionInput (click)="toggleIsAssignedToOpen()">
+                    <p>Select contacts to assign</p>
+                    <div class="selectionInputImgContainer">
+                        @if (isAssignedToOpen) {
+                        <img src="./assets/img/icons/arrow_drop_down_reverse.svg" alt="dropdownArrow">
+                        }@else {
+                        <img src="./assets/img/icons/arrow_drop_down.svg" alt="dropdownArrow">
+                        }
+                    </div>
+                </div>
+                <div class=selectionContaktList [ngClass]="{'d_none':!isAssignedToOpen}">
+                    @for (contact of contactService.getAllContacts(); track $index) {
+                    <div class="selectionContact" (click)="toggleContactInCurrentSelectedAssignedTo(contact)"
+                        [ngClass]="{'isSelected':isContactCurrentlySelected(contact)}">
+                        <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
+                            {{contact.nameShortcut}}</div>
+                        <div class="contactFullname">{{contact.fullName}}</div>
+                        <div class="contactSelection">
+                            <div class="custom-checkbox" [ngClass]="{'checked': isContactCurrentlySelected(contact)}" (click)="toggleContactInCurrentSelectedAssignedTo(contact); $event.stopPropagation()">
+                                <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
+                                <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            <div class="selectedContaktList" [ngClass]="{'d_none':isAssignedToOpen}">
+                @for (contact of currentSelectedAssignedTo; track $index) {
+                    @if ($index<3) { 
+                        <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
+                            {{contact.nameShortcut}}
+                        </div>
+                    }
+                }
+                @if (currentSelectedAssignedTo.length>=3) {
+                    <div class="contactShortcut backgroundColorBaseGray">
+                        +{{currentSelectedAssignedTo.length-3}}
+                    </div>
+                }
+            </div>
+        <div class="errorMessageContainer">
+        </div>
+    </div>
         <div class="inputAndErrorContainer">
             <label for="description">Category</label>
             <div class="inputContainer">

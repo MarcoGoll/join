@@ -208,8 +208,9 @@
 
 
 .modal-scrollable-content {
-    padding: 50px 10px;
-    padding-bottom: 100px;
+    margin-top: 80px;
+    padding: 0px 10px;
+    padding-bottom: 50px;
     overflow-y: auto;
     flex: 1;
 
@@ -246,7 +247,7 @@
 .edit-form {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 4px;
 }
 
 .clrRed {
@@ -254,7 +255,7 @@
 }
 
 .inputAndErrorContainer {
-    @include setFlex($fd: column, $ai: stretch, $gap: 8px)  
+    @include setFlex($fd: column, $ai: stretch)
 }
 
 .inputContainer {
@@ -340,7 +341,8 @@
 }
 
 .errorMessageContainer {
-    height: 30px;
+    @include setFlex($jc: flex-start);
+    height: 16px;
 }
 
 .errorMessage {
@@ -466,6 +468,36 @@ textarea.input-field {
     color: $clrBaseBright;
 }
 
+.custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.checkbox-empty, .checkbox-checked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.checkbox-checked {
+    display: none;
+    filter: brightness(0) invert(1); 
+}
+
+.custom-checkbox.checked .checkbox-empty {
+    display: none;
+}
+
+.custom-checkbox.checked .checkbox-checked {
+    display: block;
+}
+
 .contactShortcut {
     @include setFlex();
     color: white;
@@ -539,4 +571,8 @@ textarea.input-field {
             background-color: $clrHighlight2;
         }
     }
+}
+
+label{
+    padding-bottom: 4px;
 }

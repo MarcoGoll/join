@@ -75,7 +75,7 @@
 }
 
 .inputAndErrorContainer {
-    @include setFlex($fd: column, $ai: stretch, $gap: 8px)
+    @include setFlex($fd: column, $ai: stretch)
 }
 
 .inputContainer {
@@ -188,6 +188,7 @@
     cursor: pointer;
     display: inline-block;
 }
+
   
 .checkbox-empty, .checkbox-checked {
     position: absolute;
@@ -207,6 +208,7 @@
   
 .custom-checkbox.checked .checkbox-checked { 
     display: block;
+    filter: brightness(0) invert(1);
 }
 
 .subtaskInputContainer {
@@ -283,7 +285,8 @@
 }
 
 .errorMessageContainer {
-    height: 30px;
+    @include setFlex($jc: flex-start);
+    height: 16px;
 }
 
 .errorMessage {
@@ -352,6 +355,9 @@
 
 .formFieldGroup1,
 .formFieldGroup2 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     width: 440px;
 }
 
@@ -366,7 +372,9 @@ textarea {
     max-width: 100%;
 }
 
-
+label{
+        padding-bottom: 4px;
+}
 
 // ##############################################################################################################
 // addTaskAsteriskText
