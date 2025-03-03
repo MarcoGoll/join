@@ -48,7 +48,7 @@
         <div class="info-row">
             <span class="label">Subtasks</span>  
             <div class="subtasks">
-                @for (subtask of taskService.currentlySelectedTask.subTasks; track $index) {
+                @for (subtask of taskService.currentlySelectedTask.subTasks; track $index) { 
                     <div class="subtask">
                         <div class="custom-checkbox" [ngClass]="{'checked': subtask.checked}" (click)="subtask.checked=!subtask.checked; updateFromDisplayMode()">
                             <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">

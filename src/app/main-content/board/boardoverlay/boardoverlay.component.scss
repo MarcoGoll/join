@@ -486,8 +486,7 @@ textarea.input-field {
 }
 
 .checkbox-checked {
-    display: none;
-    filter: brightness(0) invert(1); 
+    display: none;  
 }
 
 .custom-checkbox.checked .checkbox-empty {
@@ -496,6 +495,14 @@ textarea.input-field {
 
 .custom-checkbox.checked .checkbox-checked {
     display: block;
+}
+
+.selectionContact .custom-checkbox.checked .checkbox-checked {
+    filter: brightness(0) invert(1);  
+}
+
+.subtasks .custom-checkbox.checked .checkbox-checked {
+    filter: none; 
 }
 
 .contactShortcut {
