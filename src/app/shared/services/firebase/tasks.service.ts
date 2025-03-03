@@ -22,7 +22,7 @@ export class TasksService {
     {
       title: 'Refactor API Calls',
       description: 'Optimize API calls to reduce load time',
-      assignedTo: ['5AWBsiFYfWsiYst9Aw3A'],
+      assignedTo: [],
       status: 'done',
       dueDate: '2025-06-10',
       prio: 'Urgent',
