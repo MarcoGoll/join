@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="inputAndErrorContainer">
-                    <label for="description">Description</label>
+                    <label for="description">Description</label> 
                     <div class="inputContainer">
                         <textarea #description="ngModel" [(ngModel)]="newTask.description" id="description" 
                             name="description" type="text" placeholder="Enter a Description"
@@ -54,7 +54,10 @@
                                     {{contact.nameShortcut}}</div>
                                 <div class="contactFullname">{{contact.fullName}}</div>
                                 <div class="contactSelection">
-                                    <input type="checkbox" [checked]="isContactCurrentlySelected(contact)">
+                                    <div class="custom-checkbox" [ngClass]="{'checked': isContactCurrentlySelected(contact)}" (click)="toggleContactInCurrentSelectedAssignedTo(contact)">
+                                        <img src="./../../../assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
+                                        <img src="./../../../assets/img/icons/Group 19.svg" class="checkbox-checked">
+                                    </div>
                                 </div>
                             </div>
                             }
