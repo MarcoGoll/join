@@ -4,4 +4,14 @@
     .addTaskSectionContent {
         height: calc(100vh - 96px - 68px);
     }
+
+    .forFieldsContainer{
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0;
+    }
+
+    .formSeperator{
+        display: none;
+    }
 }
