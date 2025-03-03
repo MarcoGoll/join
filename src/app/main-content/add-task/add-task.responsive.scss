@@ -14,4 +14,54 @@
     .formSeperator{
         display: none;
     }
+
+    .formFieldGroup1,
+    .formFieldGroup2 {
+    width: 100%;
+    }
+
+    .addTaskForm{
+        width: 100%;
+        gap: 16px;
+    }
 }
+
+@media (max-width: 1023px) {
+    h1{
+        font-size: $fsMobileH1;
+    }
+}
+
+@media (max-width: 450px) {
+    .addTaskSectionContent{
+        padding: 8px;
+    }
+
+    .addTaskForm{
+        gap: 8px;
+    }
+
+    .prioSelection{
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .addTaskControlBtns{
+        align-self: stretch;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .secundaryBtnTall, .primaryBtnTall{
+        width: 100%;
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .addTaskAsteriskText{
+        font-size: 16px;
+    }
+} 
