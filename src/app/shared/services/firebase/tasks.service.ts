@@ -311,7 +311,11 @@ export class TasksService {
   isTaskOverlayDisplayed: boolean = false;
   isTaskinEditMode: boolean = false;
   statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
-  subtasksToAdd: { inEditMode: boolean; description: string }[] = [];
+  subtasksToAdd: {
+    inEditMode: boolean;
+    checked: boolean;
+    description: string;
+  }[] = [];
   unsubTasks;
 
   currentlySelectedTask: Task = {
@@ -559,6 +563,7 @@ export class TasksService {
     task.subTasks.forEach((subtask) => {
       this.subtasksToAdd.push({
         inEditMode: false,
+        checked: subtask.checked,
         description: subtask.description,
       });
     });

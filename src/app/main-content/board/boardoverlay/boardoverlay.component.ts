@@ -99,6 +99,7 @@ export class BoardoverlayComponent {
     if (this.subtaskValue != '') {
       this.taskService.subtasksToAdd.push({
         inEditMode: false,
+        checked: false, //TODO: Ein Abgeschlossener Task der bearbeitet wird, wird hier wieder auf unbearbeitet gesetzt.
         description: this.subtaskValue,
       });
       this.setSubtaskValue('');
@@ -113,45 +114,36 @@ export class BoardoverlayComponent {
     if (ngForm.submitted && ngForm.form.valid) {
       console.log('formValide');
       //TODO: Prüfung eventuell früher. Direkt nach oder vor ngForm.form.valid
-      if (
-        this.taskService.currentTaskToBeUpdated.prio == 'Urgent' ||
-        this.taskService.currentTaskToBeUpdated.prio == 'Medium' ||
-        this.taskService.currentTaskToBeUpdated.prio == 'Low'
-      ) {
-        // let assignedToIds: string[] = [];
-        let subtasksToUpdate: Subtask[] = [];
 
-        // this.currentSelectedAssignedTo.forEach((assignee) => {
-        //   if (assignee.id) {
-        //     assignedToIds.push(assignee.id);
-        //   }
-        // });
-        this.taskService.subtasksToAdd.forEach((subtask, index) => {
-          subtasksToUpdate.push({
-            checked: true, // TODO: neue mit checked false sonst so wie vorher
-            description: subtask.description,
-          });
+      let subtasksToUpdate: Subtask[] = [];
+
+      this.taskService.subtasksToAdd.forEach((subtask, index) => {
+        subtasksToUpdate.push({
+          checked: subtask.checked,
+          description: subtask.description,
         });
-        let taskToUpdate: Task = {
-          id: this.taskService.currentTaskToBeUpdated.id,
-          title: this.taskService.currentTaskToBeUpdated.title,
-          description: this.taskService.currentTaskToBeUpdated.description,
-          assignedTo: this.taskService.currentTaskToBeUpdated.assignedTo,
-          status: this.taskService.statusToBeUsed,
-          dueDate: this.taskService.currentTaskToBeUpdated.dueDate,
-          prio: this.taskService.currentTaskToBeUpdated.prio,
-          category: this.taskService.currentTaskToBeUpdated.category,
-          subTasks: subtasksToUpdate,
-        };
-        this.taskService.updateTask(taskToUpdate);
-        // this.resetUpdateTaskComponent();
-      }
+      });
+      let taskToUpdate: Task = {
+        id: this.taskService.currentTaskToBeUpdated.id,
+        title: this.taskService.currentTaskToBeUpdated.title,
+        description: this.taskService.currentTaskToBeUpdated.description,
+        assignedTo: this.taskService.currentTaskToBeUpdated.assignedTo,
+        status: this.taskService.statusToBeUsed,
+        dueDate: this.taskService.currentTaskToBeUpdated.dueDate,
+        prio: this.taskService.currentTaskToBeUpdated.prio,
+        category: this.taskService.currentTaskToBeUpdated.category,
+        subTasks: subtasksToUpdate,
+      };
+      this.taskService.updateTask(taskToUpdate);
+      // this.resetUpdateTaskComponent();
     } else {
       console.log('formInValide');
     }
   }
 
   updateFromDisplayMode() {
+    this.taskService.currentTaskToBeUpdated =
+      this.taskService.currentlySelectedTask;
     this.taskService.updateTask(this.taskService.currentlySelectedTask);
   }
 }
