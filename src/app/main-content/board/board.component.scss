@@ -89,9 +89,10 @@ section{
 .column-title{
     @include setFlex($jc: space-between);
     margin-top: 100px;
-    width: 230px;
+    width: 250px;
     margin-bottom: 8px;
-    margin-right: 25px;
+    margin-left: 16px;
+    margin-right: 16px;
     >h2{
         font-size: 20px;
         color: #42526E;
