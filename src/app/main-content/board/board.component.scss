@@ -78,7 +78,6 @@ section{
 
 .task-board{
     @include setFlex($ai: flex-start);
-    flex-direction: column;
     display: block;
 }
 

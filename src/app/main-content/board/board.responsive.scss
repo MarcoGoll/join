@@ -1,0 +1,25 @@
+// @import './../../../../styles.scss';
+
+@media (max-width: 1200px){
+    .board-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .example-list{
+        display: flex;
+        width: 1000px;
+        gap: 16px;
+        overflow-x: auto;
+        white-space: nowrap; // Verhindert Umbrüche
+        scrollbar-width: thin; //macht die Scrollbar dünner
+        scrollbar-color: #888 #f1f1f1; // Farbe
+    
+        &::-webkit-scrollbar {
+            height: 8px;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+        }
+    }
+}
