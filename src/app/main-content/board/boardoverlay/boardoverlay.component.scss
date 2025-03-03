@@ -468,6 +468,36 @@ textarea.input-field {
     color: $clrBaseBright;
 }
 
+.custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.checkbox-empty, .checkbox-checked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.checkbox-checked {
+    display: none;
+    filter: brightness(0) invert(1); 
+}
+
+.custom-checkbox.checked .checkbox-empty {
+    display: none;
+}
+
+.custom-checkbox.checked .checkbox-checked {
+    display: block;
+}
+
 .contactShortcut {
     @include setFlex();
     color: white;
