@@ -72,6 +72,7 @@ section{
     @include setFlex();
     &:hover{
         background-color: $clrHighlight2;
+        color: $clrBaseBright;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     }
 }
