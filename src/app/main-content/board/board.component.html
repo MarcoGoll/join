@@ -78,6 +78,9 @@
         <div class="example-container">
             <div class="column-title">
                 <h2>In progress</h2>
+<<<<<<< HEAD
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('inProgress')">
+=======
                 @if(isMobileView){
                     <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('inProgress')">
                         <img src="./assets/img/icons/plus button.png" alt="add task icon">
@@ -85,6 +88,7 @@
                 }@else {
                 <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('inProgress')">
                 }
+>>>>>>> 5604d16671d5c8cbe3b19c142f472e4781aa21e5
             </div>
             <div class="no-tasks">
                 <p class="no-task-msg">No tasks</p>
