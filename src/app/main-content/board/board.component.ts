@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  HostListener,
+  Injectable,
+  OnInit,
+} from '@angular/core';
 import { BoardoverlayComponent } from './boardoverlay/boardoverlay.component';
 import {
   CdkDragDrop,
@@ -13,6 +19,7 @@ import { SingleCardComponent } from './single-card/single-card.component';
 import { Task } from '../../shared/interfaces/task';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -25,23 +32,33 @@ import { FormsModule } from '@angular/forms';
     SingleCardComponent,
     AddTaskComponent,
     FormsModule,
+    RouterLink,
   ],
   templateUrl: './board.component.html',
-  styleUrls: [
-    './board.component.scss', 
-    './board.responsive.scss'
-  ]
+  styleUrls: ['./board.component.scss', './board.responsive.scss'],
 })
-export class BoardComponent {
+@Injectable({
+  providedIn: 'root',
+})
+export class BoardComponent implements OnInit {
   taskService = inject(TasksService);
   isTaskinEditMode: boolean = false;
-  statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
   searchString: string = '';
   allSearchResults: Task[] = [];
   isSearchActive: boolean = false;
+  isMobileView: boolean = false;
 
-  setStatusToBeUsed(status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done') {
-    this.statusToBeUsed = status;
+  ngOnInit() {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize(): void {
+    this.isMobileView = window.innerWidth <= 1200;
   }
 
   drop(event: CdkDragDrop<Task[]>) {

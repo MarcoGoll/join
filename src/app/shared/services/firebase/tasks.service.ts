@@ -310,6 +310,12 @@ export class TasksService {
   isAddTaskOverlayDisplayed: boolean = false;
   isTaskOverlayDisplayed: boolean = false;
   isTaskinEditMode: boolean = false;
+  statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
+  subtasksToAdd: {
+    inEditMode: boolean;
+    checked: boolean;
+    description: string;
+  }[] = [];
   unsubTasks;
 
   currentlySelectedTask: Task = {
@@ -346,14 +352,6 @@ export class TasksService {
    */
   constructor() {
     this.unsubTasks = this.subTasksList();
-    // TEST:
-    setTimeout(() => {
-      this.searchTasks('da');
-      this.searchTasks('men');
-      this.searchTasks('Fix');
-      this.searchTasks('Fix Login Bug');
-      this.searchTasks('Analytics Dashboard');
-    }, 1500);
   }
 
   // ##########################################################################################################
@@ -540,6 +538,10 @@ export class TasksService {
     };
   }
 
+  setStatusToBeUsed(status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done') {
+    this.statusToBeUsed = status;
+  }
+
   // ##########################################################################################################
   // Current Tasks
   // ##########################################################################################################
@@ -550,9 +552,21 @@ export class TasksService {
    */
   setCurrentTask(task: Task) {
     if (task.id) {
-      this.currentlySelectedTask = { ...task };
-      this.currentTaskToBeUpdated = { ...task };
+      this.currentlySelectedTask = structuredClone(task);
+      this.currentTaskToBeUpdated = structuredClone(task);
+      this.subtasksToAdd = [];
+      this.setSubtasksToAdd(task);
     }
+  }
+
+  setSubtasksToAdd(task: Task) {
+    task.subTasks.forEach((subtask) => {
+      this.subtasksToAdd.push({
+        inEditMode: false,
+        checked: subtask.checked,
+        description: subtask.description,
+      });
+    });
   }
 
   // ##########################################################################################################
@@ -563,17 +577,16 @@ export class TasksService {
 
     if (searchString.length >= 3) {
       this.getAllTasks().forEach((task) => {
+        //Title
         if (task.title.toLowerCase().includes(searchString.toLowerCase())) {
+          searchResults.push(task);
+        } else if (
+          task.description.toLowerCase().includes(searchString.toLowerCase())
+        ) {
           searchResults.push(task);
         }
       });
     }
-    console.log(
-      'searchString:',
-      searchString,
-      ' => searchResults: ',
-      searchResults
-    );
     return searchResults;
   }
 

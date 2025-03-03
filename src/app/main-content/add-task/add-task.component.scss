@@ -11,8 +11,7 @@
     margin-top: 96px;
     height: calc(100vh - 96px);
     flex: 1;
-    padding-top: 32px;
-    padding-left: 32px;
+    padding: 32px;
 
     @include setFlex($fd: column, $jc: flex-start, $ai: flex-start, $gap: 8px);
 }
@@ -57,20 +56,17 @@
 // ##############################################################################################################
 .addTaskHeadContainer {}
 
-
-
-
 // ##############################################################################################################
 // addTaskForm
 // ##############################################################################################################
 .addTaskForm {
-    @include setFlex($fd:column, $jc:flex-start, $ai: stretch, $gap: 16px);
+    @include setFlex($fd:column, $jc:flex-start, $ai: stretch, $gap: 32px);
 }
 
 .forFieldsContainer{
     overflow-y: auto;
     scrollbar-width: thin;
-    max-height: calc(100vh - 96px - 350px);
+    max-height: calc(100vh - 96px - 300px);
     @include setFlex($ai: flex-start, $gap: 32px);
 }
 
@@ -182,6 +178,35 @@
     &:hover {
         background-color: $clrBaseGray;
     }
+}
+
+.custom-checkbox {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    cursor: pointer;
+    display: inline-block;
+}
+  
+.checkbox-empty, .checkbox-checked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+}
+  
+.checkbox-checked {
+    display: none;
+}
+  
+.custom-checkbox.checked .checkbox-empty {
+    display: none;
+}
+  
+.custom-checkbox.checked .checkbox-checked { 
+    display: block;
 }
 
 .subtaskInputContainer {
@@ -299,7 +324,7 @@
 }
 
 .clrBackgroundUrgent {
-    background-color: $clrPrioUrgend;
+    background-color: $clrPrioUrgend; 
     color: $clrBaseBright;
 }
 

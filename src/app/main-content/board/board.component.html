@@ -6,7 +6,7 @@
             <div class="closeContainer" (click)="taskService.toggleIsAddTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
-            <app-add-task [statusToBeUsed]="statusToBeUsed" [overlayMode]="true"></app-add-task>
+            <app-add-task [overlayMode]="true"></app-add-task>
         </div>
     </div>
     <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}" (click)="taskService.toggleIsTaskOverlayDisplayed()">
@@ -26,15 +26,55 @@
                 <div class="seperator"></div>
                 <img src="./assets/img/icons/search-icon.png" alt="search icon">
             </div>
-            <button class="add-task-button" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">Add task</button>
+            @if(isMobileView){
+                <a class="add-task-button" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('toDo')">Add task</a>
+            }@else {
+                <button class="add-task-button" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">Add task</button>
+            }
         </div>
     </div>
     <div class="board-container">
         <div class="example-container">
             <div class="column-title">
                 <h2>To do</h2>
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); setStatusToBeUsed('toDo')">
+                @if(isMobileView){
+                    <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('toDo')">
+                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                    </a>
+                }@else {
+                    <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">
+                }
             </div>
+<<<<<<< HEAD
+=======
+            <div class="column-title">
+                <h2>In progress</h2>
+                @if(isMobileView){
+                    <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('inProgress')">
+                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                    </a>
+                }@else {
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('inProgress')">
+                }
+            </div>
+            <div class="column-title">
+                <h2>Awaiting feedback</h2>
+                @if(isMobileView){
+                    <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('awaitFeedback')">
+                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                    </a>
+                }@else {
+                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('awaitFeedback')">
+                }
+            </div>
+            <div class="column-title">
+                <h2>Done</h2>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="example-container">
+>>>>>>> c58f9dc7961c6d0bd446b2d9eb4ae7e96636ff93
             <div class="no-tasks">
                 <p class="no-task-msg">No tasks</p>
             </div>
@@ -173,6 +213,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
 
 <!-- 
@@ -258,4 +299,7 @@
     </div>
 </div>
 </div> -->
+=======
+</div>
+>>>>>>> c58f9dc7961c6d0bd446b2d9eb4ae7e96636ff93
 </section>
