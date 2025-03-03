@@ -128,7 +128,7 @@ export class BoardoverlayComponent {
         title: this.taskService.currentTaskToBeUpdated.title,
         description: this.taskService.currentTaskToBeUpdated.description,
         assignedTo: this.taskService.currentTaskToBeUpdated.assignedTo,
-        status: this.taskService.statusToBeUsed,
+        status: this.taskService.currentTaskToBeUpdated.status,
         dueDate: this.taskService.currentTaskToBeUpdated.dueDate,
         prio: this.taskService.currentTaskToBeUpdated.prio,
         category: this.taskService.currentTaskToBeUpdated.category,

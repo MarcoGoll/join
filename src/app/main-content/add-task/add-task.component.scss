@@ -376,6 +376,42 @@ label{
         padding-bottom: 4px;
 }
 
+.confirmationMessageContainer{
+    @include setFlex();
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    transform: translateY(120%);
+    animation: fadeInConfirmation 125ms ease-in-out forwards;
+}
+
+.confirmationMessage{
+    @include setFlex($gap:48px);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    border-radius: 20px;
+    width: 326px;
+    height: 74px;
+    background-color: $clrHighlight1;
+    color: $clrBaseBright;
+    padding: 16px 8px;
+}
+
+@keyframes fadeInConfirmation {
+    0% {
+        transform: translateY(120%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+
 // ##############################################################################################################
 // addTaskAsteriskText
 // ##############################################################################################################

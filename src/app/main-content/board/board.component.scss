@@ -210,7 +210,7 @@ section{
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.4);
   overflow-y: auto;
   scrollbar-width: thin;
@@ -234,7 +234,7 @@ section{
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.4);
   overflow-y: auto;
   scrollbar-width: thin;
@@ -249,6 +249,7 @@ section{
 }
 
 .closeContainer{
+  cursor: pointer;
   position: absolute;
   top: 32px;
   right: 32px;

@@ -1,7 +1,12 @@
 <section id="addTaskSection">
     <div class="addTaskSectionContent">
-      
         <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button>
+        <div class="confirmationMessageContainer" [ngClass]="{'d_none':!displayConfirmation}">
+            <div class="confirmationMessage">
+                <p>Task added to board</p>
+                <img src="./assets/img/icons/board.svg" alt="Board">
+            </div>
+        </div>
         <div class="addTaskHeadContainer">
             <H1>Add Task</H1>
         </div>
@@ -37,11 +42,11 @@
                     <label for="duDate">Due date<span class="clrRed">*</span></label>
                     <div class="inputContainer">
                         <input #duDate="ngModel" [(ngModel)]="newTask.dueDate" id="duDate" name="duDate" type="date"
-                            placeholder="dd/mm/yyyy" class="input-field" required>
+                            placeholder="dd/mm/yyyy" class="input-field" required [min]="today">
                     </div>
                     <div class="errorMessageContainer">
-                        @if (!duDate.valid && duDate.touched) {
-                        <p class="errorMessage">Please enter a date</p>
+                        @if ((!duDate.valid || !newTask.dueDate) && duDate.touched) {
+                            <p class="errorMessage">Please enter a date</p>
                         }
                     </div>
                 </div>
@@ -143,7 +148,7 @@
         </div>
     </div>
         <div class="inputAndErrorContainer">
-            <label for="description">Category</label>
+            <label for="description">Category<span class="clrRed">*</span></label>
             <div class="inputContainer">
                 <div class=selectionInput (click)="toggleIsCategoryOpen()">
                     <p>{{categoryValue}}</p>
@@ -165,6 +170,9 @@
                 </div>
             </div>
             <div class="errorMessageContainer">
+                @if (showErrorCategory) {
+                    <p class="errorMessage">Please enter a category</p>
+                }
             </div>
         </div>
         <div class="inputAndErrorContainer">

@@ -69,6 +69,7 @@ export class BoardComponent implements OnInit {
       // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex); // brauchen wir erstmal nicht, weil wir nicht mit prios arbeiten
     } else {
       //Drag&Drop between different Columns
+      console.log('Container ID: ', event.container.id);
       switch (event.container.id) {
         case 'cdk-drop-list-0':
           event.previousContainer.data[event.previousIndex].status = 'toDo';
@@ -88,6 +89,10 @@ export class BoardComponent implements OnInit {
           console.error('container id is not known');
           break;
       }
+      console.log(
+        'Task wird upgetadet zu: ',
+        event.previousContainer.data[event.previousIndex]
+      );
       this.taskService.updateTask(
         event.previousContainer.data[event.previousIndex]
       );
