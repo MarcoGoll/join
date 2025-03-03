@@ -5,7 +5,7 @@ section{
     height: calc(100vh - 96px);
     background-color: $clrBackground;
     margin-top: 96px;
-    padding: 36px;
+    padding: 32px;
 }
 
 .title-container{
@@ -90,9 +90,10 @@ section{
 .column-title{
     @include setFlex($jc: space-between);
     margin-top: 100px;
-    width: 230px;
+    width: 250px;
     margin-bottom: 8px;
-    margin-right: 25px;
+    margin-left: 16px;
+    margin-right: 16px;
     >h2{
         font-size: 20px;
         color: #42526E;
@@ -109,7 +110,7 @@ section{
   top: 150px;
   left: 2px;
   border: 1px dashed rgba(168, 168, 168, 1);
-  width: 92%;
+  width: 88%;
   margin-left: 3%;
   background-color: #e8eaea;
   color: rgba(168, 168, 168, 1);
@@ -124,7 +125,7 @@ section{
 
 .example-container {
     position: relative;
-    width: 230px;
+    width: 280px;
     max-width: 100%;
     margin: 0 25px 25px 0;
     display: inline-block;
@@ -134,10 +135,14 @@ section{
   .example-list {
     padding: 5px;
     min-height: 60px;
+    min-width: 260px;
     background: $clrBackground;
-    overflow: hidden;
+    overflow-y: auto; /* Vertikale Scrollbar hinzufügen */
     display: block;
-  }
+    max-height: 65vh; /* Optional: Begrenzung der maximalen Höhe */
+    scrollbar-width: thin; /* Für Firefox */
+    scrollbar-color: #888 transparent;
+}
   
   .example-box {
     position: relative;
@@ -155,7 +160,6 @@ section{
     background: white;
     font-size: 14px;
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.08);
-    pointer-events: auto;
   }
   
   .cdk-drag-preview {

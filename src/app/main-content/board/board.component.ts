@@ -47,6 +47,7 @@ export class BoardComponent implements OnInit {
   allSearchResults: Task[] = [];
   isSearchActive: boolean = false;
   isMobileView: boolean = false;
+  isDragDisabled = window.innerWidth >= 1200;
 
   ngOnInit() {
     this.checkScreenSize();
@@ -55,6 +56,7 @@ export class BoardComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.checkScreenSize();
+    this.isDragDisabled = window.innerWidth >= 1200;
   }
 
   private checkScreenSize(): void {
