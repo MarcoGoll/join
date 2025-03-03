@@ -45,9 +45,11 @@
                     <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">
                 }
             </div>
-            <div class="no-tasks">
-                <p class="no-task-msg">No tasks</p>
-            </div>
+            @if (taskService.tasksToDo.length <=1){
+                <div class="no-tasks">
+                    <p class="no-task-msg">No tasks</p>
+                </div>
+            }
             <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
@@ -68,7 +70,7 @@
                 @if (this.isSearchActive == true && this.allSearchResults != []) {
                     @for (task of taskService.tasksToDo; track task) {
                         @if(isTaskInSearchResult(task)){
-                            <div class="example-box" cdkDrag (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
+                            <div class="example-box" cdkDrag [cdkDragDisabled]="isDragDisabled" (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                                     [task]="task"></app-single-card></div>
                         }
                     }
@@ -86,9 +88,11 @@
                 <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('inProgress')">
                 }
             </div>
-            <div class="no-tasks">
-                <p class="no-task-msg">No tasks</p>
-            </div>
+            @if (taskService.tasksInProgress.length <=1){
+                <div class="no-tasks">
+                    <p class="no-task-msg">No tasks</p>
+                </div>
+            }
             <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
                 [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
@@ -127,9 +131,11 @@
                 <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('awaitFeedback')">
                 }
             </div>
-            <div class="no-tasks">
-                <p class="no-task-msg">No tasks</p>
-            </div>
+            @if (taskService.tasksAwaitFeedback.length <=1){
+                <div class="no-tasks">
+                    <p class="no-task-msg">No tasks</p>
+                </div>
+            }
             <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
                 [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
@@ -161,9 +167,11 @@
             <div class="column-title">
                 <h2>Done</h2>
             </div>
-            <div class="no-tasks">
-                <p>No tasks</p>
-            </div>
+            @if (taskService.tasksDone.length <=1){
+                <div class="no-tasks">
+                    <p class="no-task-msg">No tasks</p>
+                </div>
+            }
             <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="taskService.tasksDone"
                 [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
