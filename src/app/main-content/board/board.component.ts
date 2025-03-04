@@ -69,33 +69,33 @@ export class BoardComponent implements OnInit {
       // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex); // brauchen wir erstmal nicht, weil wir nicht mit prios arbeiten
     } else {
       //Drag&Drop between different Columns
+      const task = event.previousContainer.data[event.previousIndex];
+
+      if (!task) {
+        console.error('Task nicht gefunden');
+        return;
+      }
+
       console.log('Container ID: ', event.container.id);
       switch (event.container.id) {
-        case 'cdk-drop-list-0':
-          event.previousContainer.data[event.previousIndex].status = 'toDo';
+        case 'toDoList':
+          task.status = 'toDo';
           break;
-        case 'cdk-drop-list-1':
-          event.previousContainer.data[event.previousIndex].status =
-            'inProgress';
+        case 'inProgressList':
+          task.status = 'inProgress';
           break;
-        case 'cdk-drop-list-2':
-          event.previousContainer.data[event.previousIndex].status =
-            'awaitFeedback';
+        case 'awaitFeedbackList':
+          task.status = 'awaitFeedback';
           break;
-        case 'cdk-drop-list-3':
-          event.previousContainer.data[event.previousIndex].status = 'done';
+        case 'doneList':
+          task.status = 'done';
           break;
         default:
-          console.error('container id is not known');
-          break;
+          console.error('Unbekannte Container-ID:', event.container.id);
+          return;
       }
-      console.log(
-        'Task wird upgetadet zu: ',
-        event.previousContainer.data[event.previousIndex]
-      );
-      this.taskService.updateTask(
-        event.previousContainer.data[event.previousIndex]
-      );
+      console.log('Task wird upgetadet zu: ', task);
+      this.taskService.updateTask(task);
       event.previousContainer.data.splice(event.previousIndex, 1);
     }
   }

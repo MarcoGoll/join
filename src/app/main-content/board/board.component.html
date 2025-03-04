@@ -50,7 +50,7 @@
                     <p class="no-task-msg">No tasks</p>
                 </div>
             }
-            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
+            <div cdkDropList id="toDoList" #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
                 [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 
@@ -93,7 +93,7 @@
                     <p class="no-task-msg">No tasks</p>
                 </div>
             }
-            <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
+            <div cdkDropList id="inProgressList" #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
                 [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
 
@@ -136,7 +136,7 @@
                     <p class="no-task-msg">No tasks</p>
                 </div>
             }
-            <div cdkDropList #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
+            <div cdkDropList id="awaitFeedbackList" #awaitingFeedbackList="cdkDropList" [cdkDropListData]="taskService.tasksAwaitFeedback"
                 [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
 
@@ -172,7 +172,7 @@
                     <p class="no-task-msg">No tasks</p>
                 </div>
             }
-            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="taskService.tasksDone"
+            <div cdkDropList id="doneList" #doneList="cdkDropList" [cdkDropListData]="taskService.tasksDone"
                 [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
                 (cdkDropListDropped)="drop($event)">
                 <!-- Keine Suche -->
