@@ -59,10 +59,21 @@
     .board-container{
         display: flex;
         flex-direction: column;
+        width: 100%;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        margin-bottom: 48px;
     }
+    .title-container{
+        width: 100%;
+    }
+    .example-container{
+        width: 100%;
+    }
+
     .example-list{
         display: flex;
-        width: 1000px;
+        width: 65%;
         gap: 16px;
         overflow-x: auto;
         white-space: nowrap; // Verhindert Umbrüche

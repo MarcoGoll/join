@@ -26,11 +26,9 @@ header {
         align-items: center;
         padding-right: 8px;
         gap: 16px;
-
         >div {
             display: flex;
             justify-content: center;
-
             >img {
                 transition: $stdTransition;
                 width: 20px;
