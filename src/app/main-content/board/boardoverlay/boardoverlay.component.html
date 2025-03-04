@@ -73,6 +73,7 @@
         </div>
     </div>
     <div class="modal-content edit-modal" [ngClass]="{'d_none':!taskService.isTaskinEditMode}">
+        <div class="assignedToBackgroundContainer" [ngClass]="{'d_none':!taskService.isAssignedToOpen}" (click)="taskService.isAssignedToOpen = !taskService.isAssignedToOpen"></div>
         <div class="modal-scrollable-content">
             <form id="edit-form" class="edit-form" (ngSubmit)="updateFromEditMode(editTaskForm)" #editTaskForm="ngForm">
                 <div class="inputAndErrorContainer">
@@ -166,17 +167,17 @@
                 <div class="inputAndErrorContainer">
                     <label>Assigned to</label>
                     <div class="inputContainer">
-                        <div class=selectionInput (click)="toggleIsAssignedToOpen()">
+                        <div class=selectionInput (click)="taskService.toggleIsAssignedToOpen()">
                             <p>Select contacts to assign</p>
                             <div class="selectionInputImgContainer">
-                                @if (isAssignedToOpen) {
+                                @if (taskService.isAssignedToOpen) {
                                 <img src="./assets/img/icons/arrow_drop_down_reverse.svg" alt="dropdownArrow">
                                 }@else {
                                 <img src="./assets/img/icons/arrow_drop_down.svg" alt="dropdownArrow">
                                 }
                             </div>
                         </div>
-                        <div class=selectionContaktList [ngClass]="{'d_none':!isAssignedToOpen}">
+                        <div class=selectionContaktList [ngClass]="{'d_none':!taskService.isAssignedToOpen}">
                             @for (contact of contactService.getAllContacts(); track $index) {
                             <div class="selectionContact" (click)="toggleContactInCurrentSelectedAssignedTo(contact)"
                                 [ngClass]="{'isSelected':isContactCurrentlySelected(contact)}">
@@ -193,7 +194,7 @@
                             }
                         </div>
                     </div>
-                    <div class="selectedContaktList" [ngClass]="{'d_none':isAssignedToOpen}">
+                    <div class="selectedContaktList" [ngClass]="{'d_none':taskService.isAssignedToOpen}">
                         @for (contact of contactService.getContactsViaIds(taskService.currentTaskToBeUpdated.assignedTo); track $index) {
                             @if ($index<3) { 
                                 <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">

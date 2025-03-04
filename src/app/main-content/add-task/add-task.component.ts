@@ -206,6 +206,7 @@ export class AddTaskComponent implements OnInit {
     this.currentSelectedAssignedTo = [];
     this.isAssignedToOpen = false;
     this.isCategoryOpen = false;
+    this.showErrorCategory = false;
     this.isSubtaskinFocus = false;
     this.displayConfirmation = false;
   }

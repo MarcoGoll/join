@@ -434,11 +434,8 @@ textarea.input-field {
 }
 
 .selectionContaktList {
-    position: absolute;
-    bottom: -120px;
-    left: 0;
-    right: 0;
-    z-index: 2;
+    position: relative;
+    z-index: 11;
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
     background-color: $clrBaseBright;
     height: 120px;
@@ -582,4 +579,13 @@ textarea.input-field {
 
 label{
     padding-bottom: 4px;
+}
+
+.assignedToBackgroundContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
 }

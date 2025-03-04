@@ -24,7 +24,6 @@ export class BoardoverlayComponent {
 
   isVisible: boolean = true;
   isEditMode: boolean = false;
-  isAssignedToOpen: boolean = false;
   isSubtaskinFocus: boolean = false;
   subtaskValue: string = '';
   // subtasksToAdd: { inEditMode: boolean; description: string }[] = [];
@@ -43,10 +42,6 @@ export class BoardoverlayComponent {
       default:
         console.log('Identifier is not known');
     }
-  }
-
-  toggleIsAssignedToOpen() {
-    this.isAssignedToOpen = !this.isAssignedToOpen;
   }
 
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {

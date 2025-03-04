@@ -51,6 +51,15 @@
     @include setFlex($gap:8px);
 }
 
+.assignedToBackgroundContainer, .categoryBackgroundContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
 // ##############################################################################################################
 // addTaskHeadContainer
 // ##############################################################################################################
@@ -98,16 +107,23 @@
     }
 }
 
+.selectedContaktListContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 .selectedContaktList {
-    @include setFlex($jc: flex-start); 
+    @include setFlex($jc: flex-start);
 }
 
 .selectionContaktList {
-    position: absolute;
-    bottom: -120px;
-    left: 0;
-    right: 0;
-    z-index: 1;
+    position: relative;
+    z-index: 11;
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
     background-color: $clrBaseBright;
     height: 120px;
@@ -156,11 +172,8 @@
 }
 
 .selectionCategoryList {
-    position: absolute;
-    bottom: -90px;
-    left: 0;
-    right: 0;
-    z-index: 1;
+    position: relative;
+    z-index: 11;
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch);
     background-color: $clrBaseBright;
     height: 90px;

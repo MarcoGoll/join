@@ -9,7 +9,7 @@
             <app-add-task [overlayMode]="true"></app-add-task>
         </div>
     </div>
-    <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}" (click)="taskService.toggleIsTaskOverlayDisplayed()">
+    <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}" (click)="taskService.toggleIsTaskOverlayDisplayed(); taskService.isAssignedToOpen=false">
         <div class="taskOverlayContainer" (click)="$event.stopPropagation()">
             <div class="closeContainer" (click)="taskService.toggleIsTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">

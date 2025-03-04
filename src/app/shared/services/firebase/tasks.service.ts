@@ -310,6 +310,7 @@ export class TasksService {
   isAddTaskOverlayDisplayed: boolean = false;
   isTaskOverlayDisplayed: boolean = false;
   isTaskinEditMode: boolean = false;
+  isAssignedToOpen: boolean = false;
   statusToBeUsed: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done' = 'toDo';
   subtasksToAdd: {
     inEditMode: boolean;
@@ -602,6 +603,9 @@ export class TasksService {
     this.isTaskinEditMode = false;
   }
 
+  toggleIsAssignedToOpen() {
+    this.isAssignedToOpen = !this.isAssignedToOpen;
+  }
   // ##########################################################################################################
   // Reset DB
   // ##########################################################################################################

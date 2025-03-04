@@ -7,6 +7,8 @@
                 <img src="./assets/img/icons/board.svg" alt="Board">
             </div>
         </div>
+        <div class="assignedToBackgroundContainer" [ngClass]="{'d_none':!isAssignedToOpen}" (click)="isAssignedToOpen = !isAssignedToOpen"></div>
+        <div class="categoryBackgroundContainer" [ngClass]="{'d_none':!isCategoryOpen}" (click)="isCategoryOpen = !isCategoryOpen"></div>
         <div class="addTaskHeadContainer">
             <H1>Add Task</H1>
         </div>
@@ -132,18 +134,18 @@
             </div>
             <div class="selectedContaktList" [ngClass]="{'d_none':isAssignedToOpen}">
                 @for (contact of currentSelectedAssignedTo; track $index) {
-                    @if ($index<3) { 
+                     @if ($index<3) { 
                         <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
                             {{contact.nameShortcut}}
                         </div>
                     }
                 }
-                @if (currentSelectedAssignedTo.length>=3) {
+               @if (currentSelectedAssignedTo.length>=3) {
                     <div class="contactShortcut backgroundColorBaseGray">
                         +{{currentSelectedAssignedTo.length-3}}
                     </div>
                 }
-            </div>
+            </div>       
         <div class="errorMessageContainer">
         </div>
     </div>
