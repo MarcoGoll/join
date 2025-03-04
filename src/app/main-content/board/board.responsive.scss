@@ -1,5 +1,60 @@
 @import "./../../../styles.scss";
 
+
+@media (max-width: 1500px){
+    .example-list{
+        min-width: 0;
+        width: 260px;
+    }
+    .example-box{
+        width: 230px;
+    }
+    .example-container{
+        width: 240px;
+    }
+}
+
+@media (max-width: 1400px){
+    .section{
+        padding-top: 32px;
+        padding-right: 32px;
+        padding-bottom: 32px;
+    }
+    .example-list{
+        min-width: 0;
+        width: 235px;
+    }
+    .example-box{
+        width: 210px;
+    }
+    .example-container{
+        width: 200px;
+    }
+    .column-title{
+        >h2{
+            font-size: 18px;
+        }
+        >img{
+            width: 18px;
+        }
+    }
+}
+
+@media (max-width: 1300px){
+    .board-container{
+        justify-content: space-evenly;
+        gap: 20px;
+    }
+    .example-box{
+        width: 193px;
+    }
+    .example-list{
+        min-width: 0;
+        width: 216px;
+    }
+}
+
+
 @media (max-width: 1200px){
     .board-container{
         display: flex;

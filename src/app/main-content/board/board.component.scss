@@ -12,6 +12,7 @@ section{
 
 .board-container{
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: nowrap;
 }
 
@@ -98,7 +99,7 @@ section{
 .column-title{
     @include setFlex($jc: space-between);
     margin-top: 50px;
-    width: 90%;
+    width: 95%;
     margin-bottom: 8px;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -135,7 +136,6 @@ section{
     position: relative;
     width: 260px;
     max-width: 100%;
-    margin: 0 25px 25px 0;
     display: inline-block;
     vertical-align: top;
   }
@@ -143,16 +143,17 @@ section{
   .example-list {
     padding: 5px;
     min-height: 60px;
-    min-width: 260px;
+    max-height: 71.8vh;
+    min-width: 290px;
     background: $clrBackground;
-    overflow-y: auto; /* Vertikale Scrollbar hinzufügen */
+    overflow-y: auto;
     display: block;
-    max-height: 65vh; /* Optional: Begrenzung der maximalen Höhe */
     scrollbar-width: thin; /* Für Firefox */
     scrollbar-color: #888 transparent;
 }
   
   .example-box {
+    width: 260px;
     position: relative;
     padding: 20px 10px;
     border: none;
