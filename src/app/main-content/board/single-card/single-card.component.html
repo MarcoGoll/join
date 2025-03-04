@@ -19,8 +19,15 @@
     <div class="profil-prio-container">
         <div class="profil-container">
             @for (idOfAssigne of task.assignedTo; track $index) {
-                <div class="profil backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">
-                    <p>{{contactService.getContactViaId(idOfAssigne).nameShortcut}}</p>
+                @if ($index<3) { 
+                    <div class="profil backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">
+                        <p>{{contactService.getContactViaId(idOfAssigne).nameShortcut}}</p>
+                    </div>
+                }
+            }
+            @if (task.assignedTo.length>=3) {
+                <div class="profil backgroundColorBaseGray">
+                    +{{task.assignedTo.length-3}}
                 </div>
             }
         </div>
