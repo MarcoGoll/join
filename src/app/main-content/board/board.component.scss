@@ -23,6 +23,7 @@ section{
 
 .input-task-container{
     @include setFlex();
+    margin-bottom: 16px;
     gap: 36px;
 }
 
