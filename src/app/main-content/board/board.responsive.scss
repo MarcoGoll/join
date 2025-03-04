@@ -56,6 +56,9 @@
 
 
 @media (max-width: 1200px){
+    section{
+        width: 55%;
+    }
     .board-container{
         display: flex;
         flex-direction: column;
@@ -73,7 +76,7 @@
 
     .example-list{
         display: flex;
-        width: 65%;
+        width: 100%;
         gap: 16px;
         overflow-x: auto;
         white-space: nowrap; // Verhindert Umbrüche
