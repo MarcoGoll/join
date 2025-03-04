@@ -8,6 +8,7 @@
     .forFieldsContainer{
         flex-direction: column;
         justify-content: flex-start;
+        max-height: calc(100vh - 96px - 320px);
         gap: 0;
     }
 
@@ -30,6 +31,11 @@
     h1{
         font-size: $fsMobileH1;
     }
+    
+    .forFieldsContainer{
+        max-height: calc(100vh - 96px - 300px);
+    }
+
 }
 
 @media (max-width: 450px) {
