@@ -95,10 +95,30 @@ textarea {
 
 }
 
-.filled-input {
-    border: 1px solid $clrHighlight2 !important;
+input,
+textarea {
+    font-family: inherit;
+    font-size: $fSDefaultInteractive;
+    font-weight: $fwDefaultInteractive;
+    border-radius: $stdRadiusInteractive;
+    padding: $stdPaddingInteractive;
+    border: 1px solid $clrBaseGray;
+
+    &:active,
+    &:focus-visible {
+        border: 1px solid $clrHoverIcon; 
+        outline: none;
+    }
 }
 
 .error-input {
     border: 1px solid $clrErrorMessageText !important;
+}
+
+.selectionInput {
+    border: 1px solid $clrBaseGray;
+
+    &:focus, &:active, &.active {
+        border: 1px solid $clrHoverIcon !important;
+    }
 }

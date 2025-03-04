@@ -107,7 +107,7 @@
         <div class="inputAndErrorContainer">
             <label>Assigned to</label>
             <div class="inputContainer">
-                <div class=selectionInput (click)="toggleIsAssignedToOpen()">
+                <div class=selectionInput [ngClass]="{'active': isAssignedToOpen}" (click)="toggleIsAssignedToOpen()">
                     <p>Select contacts to assign</p>
                     <div class="selectionInputImgContainer">
                         @if (isAssignedToOpen) {
@@ -154,7 +154,7 @@
         <div class="inputAndErrorContainer">
             <label for="description">Category<span class="clrRed">*</span></label>
             <div class="inputContainer">
-                <div class=selectionInput [ngClass]="{'error-input': showErrorCategory}" (click)="toggleIsCategoryOpen()">
+                <div class=selectionInput [ngClass]="{'error-input': showErrorCategory, 'active': isCategoryOpen}" (click)="toggleIsCategoryOpen()">
                     <p>{{categoryValue}}</p>
                     <div class="selectionInputImgContainer">
                         @if (isCategoryOpen) {

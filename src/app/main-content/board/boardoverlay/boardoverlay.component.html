@@ -1,6 +1,7 @@
 
 <div>
     <div class="modal-content" [ngClass]="{'d_none':taskService.isTaskinEditMode}">
+     <div class="modal-scrollable-content-display">  
         <div class="task-tag"
             [ngClass]="{'technical-task-tag':taskService.currentlySelectedTask.category == 'Technical Task', 'user-story-tag':taskService.currentlySelectedTask.category == 'User Story' }">
             {{taskService.currentlySelectedTask.category}}</div>
@@ -59,6 +60,7 @@
                 }
             </div>
         </div>
+     </div>  
 
         <div class="modal-actions">
             <button class="action-btn delete"
@@ -169,7 +171,7 @@
                 <div class="inputAndErrorContainer">
                     <label>Assigned to</label>
                     <div class="inputContainer">
-                        <div class=selectionInput (click)="taskService.toggleIsAssignedToOpen()">
+                        <div class=selectionInput [ngClass]="{'active': taskService.isAssignedToOpen}" (click)="taskService.toggleIsAssignedToOpen()">
                             <p>Select contacts to assign</p>
                             <div class="selectionInputImgContainer">
                                 @if (taskService.isAssignedToOpen) {
