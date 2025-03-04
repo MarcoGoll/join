@@ -27,7 +27,8 @@
                 <img src="./assets/img/icons/search-icon.png" alt="search icon">
             </div>
             @if(isMobileView){
-                <a class="add-task-button" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('toDo')">Add task</a>
+                <a class="add-task-button" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('toDo'); changeImage()"><img [src]="clicked?'./../../../img/icons/add-task-clicked-icon.png' : './../../../assets/img/icons/add-task-mobile-icon.png'" 
+                    alt="Add Task"></a>
             }@else {
                 <button class="add-task-button" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">Add task</button>
             }

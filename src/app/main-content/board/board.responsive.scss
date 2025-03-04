@@ -36,6 +36,7 @@
         }
         >img{
             width: 18px;
+            margin-right: 16px;
         }
     }
 }
@@ -59,6 +60,8 @@
     section{
         height: calc(100vh - 96px - 68px);
         max-width: 100vw;
+        padding-right: 0;
+        padding-left: 0;
     }
 
     .board-container{
@@ -66,13 +69,34 @@
         flex-direction: column;
         width: 100%;
         overflow-y: auto;
-        scrollbar-width: thin;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar{
+        display: none; // Scrollbar ausblenden
+        width: 0;
+        height: 0;
+        }
     }
-    .column-title{
-        width: 300px;
+    .add-task-button{
+        color: transparent;
+        background-color: transparent;
+        border: unset;
+        border-radius: 10px;
+        height: 48px;
+        @include setFlex();
+        &:hover{
+            background-color: transparent;
+            box-shadow: none;
+        }
     }
     .title-container{
         width: 100%;
+        >h1{
+            margin-left: 1rem;
+        }
+    }
+    .input-task-container{
+        margin-right: 1rem;
     }
     .example-container{
         width: 100%;
@@ -84,15 +108,44 @@
         gap: 16px;
         overflow-x: auto;
         white-space: nowrap; // Verhindert Umbrüche
-        scrollbar-width: thin; //macht die Scrollbar dünner
-        scrollbar-color: #888 #f1f1f1; // Farbe
+        scrollbar-width: none;
     
         &::-webkit-scrollbar {
-            height: 8px;
+            display: none; // Scrollbar ausblenden
+            width: 0;
+            height: 0;
         }
     
         &::-webkit-scrollbar-thumb {
             border-radius: 4px;
+        }
+    }
+
+    .iconLink{
+        margin-right: 8px;
+    }
+
+
+    @media (max-width: 1000px){
+        .input-task-container{
+            margin-right: 8px;
+            gap: 0;
+        }
+        .search-bar{
+            width: 200px;
+        }
+    }
+
+    @media (max-width: 600px){
+        .title-container{
+            align-items: flex-start;
+            flex-direction: column;
+            >h1{
+                font-size: 52px;
+            }
+        }
+        .search-bar{
+            margin-left: 16px;
         }
     }
 }

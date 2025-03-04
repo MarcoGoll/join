@@ -53,6 +53,15 @@ export class BoardComponent implements OnInit {
     this.checkScreenSize();
   }
 
+  clicked: boolean = false;
+
+  changeImage() {
+    this.clicked = true;
+    setTimeout(() => {
+      this.clicked = false;
+    }, 3000); // Das Bild nach 300ms zurücksetzen (anpassbar)
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.checkScreenSize();
