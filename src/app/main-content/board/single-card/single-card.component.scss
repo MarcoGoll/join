@@ -87,6 +87,8 @@ section{
   }
 
 .description{
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
     color: $clrHoverIcon;
     font-weight: 400;
     font-size: 16px;
