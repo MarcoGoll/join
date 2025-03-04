@@ -56,13 +56,16 @@
 
 
 @media (max-width: 1200px){
+    section{
+        height: calc(100vh - 96px - 68px);
+    }
+
     .board-container{
         display: flex;
         flex-direction: column;
         width: 100%;
         overflow-y: auto;
         scrollbar-width: thin;
-        margin-bottom: 48px;
     }
     .title-container{
         width: 100%;
