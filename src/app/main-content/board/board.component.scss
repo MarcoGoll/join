@@ -2,14 +2,22 @@
 
 
 section{
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - 96px);
     background-color: $clrBackground;
     margin-top: 96px;
     padding: 32px;
 }
 
+.board-container{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .title-container{
     @include setFlex($jc: space-between);
+    margin-right: 40px;
 }
 
 .input-task-container{
@@ -90,10 +98,10 @@ section{
 .column-title{
     @include setFlex($jc: space-between);
     margin-top: 50px;
-    width: 250px;
+    width: 90%;
     margin-bottom: 8px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 1rem;
+    margin-right: 1rem;
     >h2{
         font-size: 20px;
         color: #42526E;
@@ -125,7 +133,7 @@ section{
 
 .example-container {
     position: relative;
-    width: 280px;
+    width: 260px;
     max-width: 100%;
     margin: 0 25px 25px 0;
     display: inline-block;
