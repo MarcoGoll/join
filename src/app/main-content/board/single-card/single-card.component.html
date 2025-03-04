@@ -10,7 +10,7 @@
     @if(task.subTasks.length > 0){
     <div class="progressbar-container">
         <div class="progressbar">
-            <div class="progress" [style.width]="getProgress(task)"></div>
+            <div class="progress" [style.width]="getProgress(task)"></div> 
         </div>
         <!-- <p>0/{{task.subTasks.length}} Subtasks</p> -->
         <p>{{getAllDoneSubTasks(task)}}/{{task.subTasks.length}} Subtasks</p> 

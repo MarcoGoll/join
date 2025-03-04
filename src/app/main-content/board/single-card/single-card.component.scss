@@ -22,7 +22,7 @@ section{
 }
 
 .prio{
-    @include setFlex($ai: center);
+    @include setFlex($ai: center); 
     width: 30px;
     height: 30px;
     margin-right: 16px;

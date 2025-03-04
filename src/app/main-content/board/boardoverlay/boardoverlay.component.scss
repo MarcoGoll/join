@@ -27,12 +27,19 @@
 
 .task-tag {
     display: inline-block;
-    background: $clrContact1;
     color: white;
     padding: 4px 16px;
     border-radius: 8px;
     margin-bottom: 24px;
     font-size: 14px;
+}
+
+.technical-task-tag {
+    background-color: $clrContact7; 
+}
+
+.user-story-tag {
+    background-color: $clrContact1; 
 }
 
 .task-title {
@@ -482,7 +489,7 @@ textarea.input-field {
     height: 20px;
 }
 
-.checkbox-checked {
+.checkbox-checked { 
     display: none;  
 }
 

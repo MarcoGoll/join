@@ -81,14 +81,24 @@ textarea {
     border-radius: $stdRadiusInteractive;
     padding: $stdPaddingInteractive;
     border: 1px solid $clrBaseGray;
+    transition: border-color 0.2s ease-in-out;
 
-    &:active,
-    &:focus-visible {
-        border: 1px solid $clrHoverIcon;
+
+    &:focus {
+        border: 1px solid $clrHighlight2; 
         outline: none;
     }
 
-    &:not(:placeholder-shown) {
-        border: 1px solid $clrHighlight2;
+    &.error-input {
+        border: 1px solid $clrErrorMessageText; 
     }
+
+}
+
+.filled-input {
+    border: 1px solid $clrHighlight2 !important;
+}
+
+.error-input {
+    border: 1px solid $clrErrorMessageText !important;
 }

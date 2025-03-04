@@ -4,7 +4,7 @@
         <div class="confirmationMessageContainer" [ngClass]="{'d_none':!displayConfirmation}">
             <div class="confirmationMessage">
                 <p>Task added to board</p>
-                <img src="./assets/img/icons/board.svg" alt="Board">
+                <img src="./assets/img/icons/board.svg" alt="Board"> 
             </div>
         </div>
         <div class="assignedToBackgroundContainer" [ngClass]="{'d_none':!isAssignedToOpen}" (click)="isAssignedToOpen = !isAssignedToOpen"></div>
@@ -19,7 +19,8 @@
                     <label for="title">Title<span class="clrRed">*</span></label>
                     <div class="inputContainer">
                         <input #title="ngModel" [(ngModel)]="newTask.title" id="title" name="title" type="text"
-                            placeholder="Enter a title" class="input-field" required>
+                            placeholder="Enter a title" class="input-field" required
+                            [ngClass]="{'error-input': !title.valid && title.touched}">
                     </div>
                     <div class="errorMessageContainer">
                         @if (!title.valid && title.touched) {
@@ -32,7 +33,7 @@
                     <div class="inputContainer">
                         <textarea #description="ngModel" [(ngModel)]="newTask.description" id="description" 
                             name="description" type="text" placeholder="Enter a Description"
-                            class="input-field"></textarea>
+                            class="input-field" [ngClass]="{'error-input': !description.valid && description.touched}"></textarea>
                     </div>
                     <div class="errorMessageContainer">
                         @if (!description.valid && description.touched) {
@@ -44,7 +45,8 @@
                     <label for="duDate">Due date<span class="clrRed">*</span></label>
                     <div class="inputContainer">
                         <input #duDate="ngModel" [(ngModel)]="newTask.dueDate" id="duDate" name="duDate" type="date"
-                            placeholder="dd/mm/yyyy" class="input-field" required [min]="today">
+                            placeholder="dd/mm/yyyy" class="input-field" required [min]="today"
+                            [ngClass]="{'error-input': (!duDate.valid || !newTask.dueDate) && duDate.touched}">
                     </div>
                     <div class="errorMessageContainer">
                         @if ((!duDate.valid || !newTask.dueDate) && duDate.touched) {
@@ -152,7 +154,7 @@
         <div class="inputAndErrorContainer">
             <label for="description">Category<span class="clrRed">*</span></label>
             <div class="inputContainer">
-                <div class=selectionInput (click)="toggleIsCategoryOpen()">
+                <div class=selectionInput [ngClass]="{'error-input': showErrorCategory}" (click)="toggleIsCategoryOpen()">
                     <p>{{categoryValue}}</p>
                     <div class="selectionInputImgContainer">
                         @if (isCategoryOpen) {

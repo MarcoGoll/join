@@ -2,7 +2,7 @@
 <div>
     <div class="modal-content" [ngClass]="{'d_none':taskService.isTaskinEditMode}">
         <div class="task-tag"
-            [ngClass]="{'y':taskService.currentlySelectedTask.category == 'Technical Task', 'z':taskService.currentlySelectedTask.category == 'User Story' }">
+            [ngClass]="{'technical-task-tag':taskService.currentlySelectedTask.category == 'Technical Task', 'user-story-tag':taskService.currentlySelectedTask.category == 'User Story' }">
             {{taskService.currentlySelectedTask.category}}</div>
 
         <h1 class="task-title">{{taskService.currentlySelectedTask.title}}</h1>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="info-row">
-            <span class="label">Subtasks</span>  
+            <span class="label">Subtasks</span>   
             <div class="subtasks">
                 @for (subtask of taskService.currentlySelectedTask.subTasks; track $index) { 
                     <div class="subtask">
@@ -80,7 +80,8 @@
                     <label for="title">Title<span class="clrRed">*</span></label>
                     <div class="inputContainer">
                         <input #title="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.title" id="title" name="title" type="text"
-                            placeholder="Enter a title" class="input-field" required>
+                            placeholder="Enter a title" class="input-field" required
+                            [ngClass]="{'error-input': !title.valid && title.touched}">
                     </div>
                     <div class="errorMessageContainer">
                         @if (!title.valid && title.touched) {
@@ -94,7 +95,7 @@
                     <div class="inputContainer">
                         <textarea #description="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.description" id="description" 
                             name="description" type="text" placeholder="Enter a Description"
-                            class="input-field"></textarea>
+                            class="input-field" [ngClass]="{'error-input': !description.valid && description.touched}"></textarea>
                     </div>
                     <div class="errorMessageContainer">
                         @if (!description.valid && description.touched) {
@@ -107,7 +108,8 @@
                     <label for="duDate">Due date<span class="clrRed">*</span></label>
                     <div class="inputContainer">
                         <input #duDate="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.dueDate" id="duDate" name="duDate" type="date"
-                            placeholder="dd/mm/yyyy" class="input-field" required>
+                            placeholder="dd/mm/yyyy" class="input-field" required
+                            [ngClass]="{'error-input': !duDate.valid && duDate.touched}">
                     </div>
                     <div class="errorMessageContainer">
                         @if (!duDate.valid && duDate.touched) {
