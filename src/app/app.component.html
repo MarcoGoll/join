@@ -1,10 +1,17 @@
 <div class="mainArea">
     <div class="mainAreaContent contentLimit">
-
-        <app-navbar></app-navbar>
-        <div class="flex1">
-            <router-outlet></router-outlet>
-        </div>
-        <app-header></app-header>
+        @if (authenticationService.isLoginDisplayed) {
+            <app-login></app-login>
+        }
+        @if (authenticationService.isSignupDisplayed) {
+            <app-signup></app-signup>
+        }
+        @if (authenticationService.isMainContentDisplayed) {
+            <app-navbar></app-navbar>
+            <div class="flex1">
+                <router-outlet></router-outlet>
+            </div>
+            <app-header></app-header>
+        }
     </div>
 </div> 
