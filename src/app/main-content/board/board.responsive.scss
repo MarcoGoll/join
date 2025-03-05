@@ -70,6 +70,7 @@
     }
     .column-title{
         width: 97%;
+        padding-top: 0;
     }
     .board-container{
         display: flex;
@@ -108,7 +109,7 @@
     }
     .example-container{
         width: 100%;
-        height: 224px;
+        height: 290px;
     }
 
     .example-list{
@@ -117,12 +118,12 @@
         gap: 24px;
         overflow-x: auto;
         white-space: nowrap; // Verhindert Umbrüche
-        scrollbar-width: none;
-    
+        scrollbar-width: thin;
+
         &::-webkit-scrollbar {
-            display: none; // Scrollbar ausblenden
-            width: 0;
-            height: 0;
+            display: block; // Scrollbar ausblenden
+            width: 20;
+            height: 30;
         }
     
         &::-webkit-scrollbar-thumb {
@@ -134,10 +135,11 @@
         align-items: flex-start;
         width: auto;
         max-width: 220px;
+        min-width: 200px;
     }
 
     .no-tasks{
-        width: 15%;
+        width: 190px;
     }
 
     .iconLink{
