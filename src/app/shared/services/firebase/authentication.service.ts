@@ -25,6 +25,13 @@ export class AuthenticationService {
 
   DUMMYUSERS: User[] = [
     {
+      firstName: 'Guest',
+      lastName: 'User',
+      fullName: 'Guest User',
+      email: 'guest.user@gmail.de',
+      pw: this.masterPW,
+    },
+    {
       firstName: 'Maxi',
       lastName: 'Musterfrau',
       fullName: 'Maxi Musterfrau',
@@ -37,7 +44,7 @@ export class AuthenticationService {
     firstName: 'Guest',
     lastName: 'User',
     fullName: 'Guest User',
-    email: 'guest.user.de',
+    email: 'guest.user@gmail.de',
     pw: this.masterPW,
   };
 
