@@ -5,7 +5,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './main-content/login/login.component';
 import { SignupComponent } from './main-content/signup/signup.component';
-import { AuthenticationService } from './shared/services/authentication.service';
+import { AuthenticationService } from './shared/services/firebase/authentication.service';
 
 @Component({
   selector: 'app-root',

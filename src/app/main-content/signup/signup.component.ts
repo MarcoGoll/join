@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AuthenticationService } from '../../shared/services/authentication.service';
+import { AuthenticationService } from '../../shared/services/firebase/authentication.service';
 
 @Component({
   selector: 'app-signup',
