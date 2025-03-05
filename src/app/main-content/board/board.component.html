@@ -1,8 +1,9 @@
 <section>
     <div class="addtaskOverlay"
-        [ngClass]="{'d_none':!taskService.isAddTaskOverlayDisplayed}" 
+        [ngClass]="{
+            'd_none':!taskService.isAddTaskOverlayDisplayed}" 
         (click)="taskService.toggleIsAddTaskOverlayDisplayed()">
-        <div class="addTaskContainer" (click)="$event.stopPropagation()">
+        <div class="addTaskContainer" (click)="$event.stopPropagation()"  [ngClass]="{'fadeInOverlay': taskService.isAddTaskOverlayDisplayed}" >
             <div class="closeContainer" (click)="taskService.toggleIsAddTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
@@ -10,7 +11,7 @@
         </div>
     </div>
     <div class="taskOverlay" [ngClass]="{'d_none':!taskService.isTaskOverlayDisplayed}" (click)="taskService.toggleIsTaskOverlayDisplayed(); taskService.isAssignedToOpen=false">
-        <div class="taskOverlayContainer" (click)="$event.stopPropagation()">
+        <div class="taskOverlayContainer" (click)="$event.stopPropagation()" [ngClass]="{'fadeInOverlay': taskService.isTaskOverlayDisplayed}">
             <div class="closeContainer" (click)="taskService.toggleIsTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/close.svg" alt="close">
             </div>
@@ -40,10 +41,18 @@
                 <h2>To do</h2>
                 @if(isMobileView){
                     <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('toDo')">
-                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                        <svg class="plusIconColour" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                            <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            </svg>                 
                     </a>
                 }@else {
-                    <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">
+                    <svg class="plusIconColour" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">
+                        <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                        <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                        </svg>  
                 }
             </div>
             @if (taskService.tasksToDo.length <=1){
@@ -83,10 +92,18 @@
                 <h2>In progress</h2>
                 @if(isMobileView){
                     <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('inProgress')">
-                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                        <svg class="plusIconColour" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                            <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            </svg>    
                     </a>
                 }@else {
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('inProgress')">
+                <svg class="plusIconColour" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('inProgress')">
+                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                    <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                    </svg> 
                 }
             </div>
             @if (taskService.tasksInProgress.length <=1){
@@ -126,10 +143,18 @@
                 <h2>Awaiting feedback</h2>
                 @if(isMobileView){
                     <a class="iconLink" routerLink="/addTask" (click)="taskService.setStatusToBeUsed('awaitFeedback')">
-                        <img src="./assets/img/icons/plus button.png" alt="add task icon">
+                        <svg class="plusIconColour" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                            <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            </svg>    
                     </a>
                 }@else {
-                <img src="./assets/img/icons/plus button.png" alt="add task icon" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('awaitFeedback')">
+                <svg class="plusIconColour" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('awaitFeedback')">
+                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                    <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                    </svg> 
                 }
             </div>
             @if (taskService.tasksAwaitFeedback.length <=1){
