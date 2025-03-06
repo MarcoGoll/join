@@ -24,5 +24,17 @@ export class SignupComponent {
     pw: '',
   };
 
-  onSubmit(ngForm: NgForm) {}
+  onSubmit(ngForm: NgForm) {
+    if (ngForm.submitted && ngForm.form.valid) {
+      if (this.newUser.pw === this.pwConfirmation) {
+        this.authenticationService.createUser(
+          this.newUser.email,
+          this.newUser.pw
+        );
+        this.authenticationService.updateUser(this.newUser.fullName);
+      } else {
+        //TODO: ERROR PW DOES NOT MATCH
+      }
+    }
+  }
 }
