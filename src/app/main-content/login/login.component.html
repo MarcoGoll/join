@@ -1,3 +1,3 @@
 <p>login works!</p>
 <button (click)="authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">signup</button>
-<button (click)="authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true ">mainContent</button>
+<button class="secundaryBtnTall" (click)="authenticationService.login(authenticationService.GUESTUSER.email, authenticationService.GUESTUSER.pw); authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true; consoleCurrentLogedInUser()">Guest Log in</button>

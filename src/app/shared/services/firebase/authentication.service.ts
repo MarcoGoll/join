@@ -19,6 +19,7 @@ import {
   onAuthStateChanged,
   updateProfile,
   User,
+  signOut,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 
@@ -70,28 +71,46 @@ export class AuthenticationService {
   }
 
   // Sign in existing users
-  login(email: string, password: string) {
+  async login(email: string, password: string) {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
+    await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        console.log('This User was loged in right now: ', user);
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.error('Error durring Login: ', errorCode, errorMessage);
+      });
+  }
+
+  async logout() {
+    const auth = getAuth();
+    await signOut(auth)
+      .then(() => {
+        // Signed out
+        console.log('User was loged out right now');
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error('Error durring Logout: ', errorCode, errorMessage);
       });
   }
 
   //Set an authentication state observer and get user data
-  SetAuthenticationStateObserver() {
+  async setAuthenticationStateObserver() {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+    await onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
+        console.log('This User is currently loged in: ', user);
         // ...
       } else {
         // User is signed out
