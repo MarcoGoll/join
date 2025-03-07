@@ -7,7 +7,7 @@ import { AuthenticationService } from '../../shared/services/firebase/authentica
   standalone: true,
   imports: [RouterLink],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss', './login.responsive.scss'],
 })
 export class LoginComponent {
   authenticationService = inject(AuthenticationService);
