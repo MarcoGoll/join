@@ -63,11 +63,11 @@
                     </div>
                     <div class="errorMessageContainer">
                         @if (!checkPP.valid && checkPP.touched) {
-                        <p class="errorMessage">Please enter a valid Password</p>
+                        <p class="errorMessage">Please accept the Privacy Policy</p>
                         }
                     </div>
                 </div>
-                <button class="primaryBtnTall" id="signupBTN" type="submit" value="Send">
+                <button class="primaryBtnTall" id="signupBTN" type="submit" value="Send" [disabled]="!isPrivacyPolicyChecked">
                     Sign up
                 </button>
             </form>

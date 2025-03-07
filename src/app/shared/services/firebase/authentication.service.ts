@@ -22,6 +22,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
+import { Observable } from 'rxjs';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBmPjsLf9R76U3csMNtLgAhffJOZeh9Rvc',
@@ -48,6 +49,7 @@ export class AuthenticationService {
     email: 'guest@user.de',
     pw: '123456',
   };
+  currentLogedinUser$: any = '';
 
   // ##########################################################################################################
   // Authentication
@@ -110,11 +112,13 @@ export class AuthenticationService {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
+        this.currentLogedinUser$ = user;
         console.log('This User is currently loged in: ', user);
         // ...
       } else {
         // User is signed out
         // ...
+        this.currentLogedinUser$ = '';
       }
     });
   }
