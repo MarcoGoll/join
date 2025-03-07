@@ -1,4 +1,5 @@
 <button (click)="authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">signup</button>
+<<<<<<< HEAD
 <button (click)="authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true ">mainContent</button>
 
 <section>
@@ -21,3 +22,6 @@
         </div>
     </div>
 </section>
+=======
+<button class="secundaryBtnTall" (click)="authenticationService.login(authenticationService.GUESTUSER.email, authenticationService.GUESTUSER.pw); authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true; consoleCurrentLogedInUser()">Guest Log in</button>
+>>>>>>> dbde82a31c94a82d18c273a1aba906a732994074
