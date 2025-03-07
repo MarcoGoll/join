@@ -1,7 +1,7 @@
 <section>
     <img class="logoContainer" src="./assets/img/join_logo.png" alt="Join Logo">
     <nav>
-        <a routerLink="" [ngClass]="{'isSelected':isSummarySelected}" (click)="setSelection('summary')">
+        <a routerLink="summary" [ngClass]="{'isSelected':isSummarySelected}" (click)="setSelection('summary')">
             <div>
                 <img src="./assets/img/navbar/summary_icon.png" alt="">
                 <p>Summary</p>
@@ -15,7 +15,7 @@
         </a>
         <a routerLink="board" [ngClass]="{'isSelected':isBoardSelected}" (click)="setSelection('board')">
             <div>
-                <img src="./assets/img/navbar/board_icon.png" alt="">
+                <img src="./assets/img/navbar/board_icon.png" alt=""> 
                 <p>Board</p>
             </div>
         </a>

@@ -6,6 +6,7 @@ import { ContactsComponent } from './main-content/contacts/contacts.component';
 import { InfoComponent } from './shared/components/header/info/info.component';
 import { BoardComponent } from './main-content/board/board.component';
 import { AddTaskComponent } from './main-content/add-task/add-task.component';
+import { SummaryComponent } from './main-content/summary/summary.component';
 
 export const routes: Routes = [
     { path: '', component: MainContentComponent },
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { path: 'contact', component: ContactsComponent },
     { path: 'board', component: BoardComponent },
     { path: 'addTask', component: AddTaskComponent },
-    { path: 'info', component: InfoComponent } 
-];  
+    { path: 'info', component: InfoComponent },
+    { path: 'summary', component: SummaryComponent } 
+];   

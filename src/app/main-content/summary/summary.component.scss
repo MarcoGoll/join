@@ -1,0 +1,299 @@
+@import './../../../styles.scss';
+
+.summary-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 32px;
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+    padding-top: 64px;
+    padding-left: 32px;
+    padding-right: 32px;
+    overflow: hidden;
+}
+
+.header-section {
+    @include setFlex($jc: flex-start, $gap: 16px);
+    margin-bottom: 32px;
+
+    h1 {
+        font-size: $fsH1;
+        color: $clrBaseDark;
+    }
+
+    .subtitle {
+        color: $clrBaseDark;
+        font-size: $fsH3;
+    }
+}
+
+.separatorVertical {
+    color: $clrHighlight2;
+    font-size: $fsH2;
+}
+
+.main-content-wrapper {
+    display: flex;
+    width: 100%;
+    gap: 32px;
+}
+
+.metrics-column {
+    flex: 2; 
+    display: flex;
+    flex-direction: column;
+}
+
+.greeting-column {
+    flex: 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 150px;
+    padding-left: 20px;
+}
+
+.greeting-section {
+    margin-top: 0;
+    
+    .greeting-title {
+        font-size: $fsH2;
+        font-weight: 500;
+        color: $clrBaseDark;
+        margin: 0;
+    }
+    
+    .user-name {
+        font-size: $fsH6;
+        font-weight: 700;
+        color: $clrHighlight2;
+        margin: 0;
+    }
+}
+
+.top-cards-container {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+}
+
+.top-cards-container .metric-card {
+    flex: 1;
+    margin-bottom: 24px;
+}
+
+.metrics-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.metric-card {
+    background: white;
+    border-radius: 30px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    width: 100%;
+    margin-bottom: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-align: center; 
+    
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+
+        .default-icone {
+            display: none;
+        }
+
+        .hover-icone {
+            display: block;
+        }
+    
+    }
+}
+
+.top-cards-container {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+}
+
+.top-cards-container .metric-card {
+    margin-bottom: 0;
+    flex: 1; 
+}
+
+.icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: $clrHighlight1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    transition: background-color 0.2s;
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hover-icon {
+        display: none;
+    }
+}
+
+.metric-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    .metric-value {
+        font-size: $fsH6;
+        font-weight: 600;
+        color: $clrBaseDark;
+    }
+    
+    .metric-label {
+        font-size: $fSDefault;
+        color: $clrBaseDark;
+    }
+}
+
+.urgent-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 24px 32px;
+
+    .icon-container {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        background: $clrHighlight1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    
+    .metric-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .metric-value {
+            font-size: $fsH6;
+            font-weight: 600;
+            color: $clrBaseDark;
+        }
+        
+        .metric-label {
+            font-size: $fSDefault;
+            color: $clrBaseDark;
+        }
+    }
+    
+      //Vertical line
+    &::after {
+        content: '';
+        position: absolute;
+        top: 28px; 
+        bottom: 28px; 
+        left: 50%; 
+        width: 2px; 
+        background-color: $clrBaseGray; 
+        transform: translateX(-50%);
+    }
+    
+    .deadline-section {
+        margin-left: auto; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-right: 50px;
+        
+        .deadline-date {
+            font-size: $fSSec;
+            font-weight: 600;
+            color: $clrBaseDark;
+        }
+        
+        .deadline-label {
+            font-size: $fSTer;
+            color: $clrBaseDark;
+            opacity: 0.8;
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        
+        &::after {
+            display: none; 
+        }
+        
+        .deadline-section {
+            margin-left: 0;
+            margin-top: 16px;
+            align-items: flex-start;
+            text-align: left;
+        }
+    }
+}
+
+.small-cards-container {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+}
+
+.small-card {
+    flex: 1;
+    padding: 24px 16px;
+    min-height: 120px;
+    margin-bottom: 0;
+    
+    .centered-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        
+        .metric-value {
+            font-size: $fsH6;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: $fSTer;
+            text-align: center;
+        }
+    }
+}
+

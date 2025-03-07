@@ -17,7 +17,7 @@ export class NavbarComponent {
   isAddTaskSelected: boolean = false;
   isBoardSelected: boolean = false;
   isContactSelected: boolean = false;
-  isPrivacyPolicySelected: boolean = false;
+  isPrivacyPolicySelected: boolean = false; 
   isLegalNoticeSelected: boolean = false;
 
   setSelection(id: string) {
