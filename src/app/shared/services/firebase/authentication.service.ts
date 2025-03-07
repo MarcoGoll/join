@@ -37,15 +37,8 @@ export class AuthenticationService {
     pw: '123456',
   };
 
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
-  currentUser$ = this.currentUserSubject.asObservable();
-
-  private isUserLoggedInSubject = new BehaviorSubject<boolean>(false);
-  isUserLoggedIn$ = this.isUserLoggedInSubject.asObservable();
-
-  constructor() {
-    this.setAuthenticationStateObserver();
-  }
+  isUserLoggedIn: boolean = false;
+  currentLoggedInUser: User | null = null;
 
   // ##########################################################################################################
   // Authentication
@@ -75,7 +68,7 @@ export class AuthenticationService {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('This User was loged in right now: ', user);
+        console.log('This User was logged in right now: ', user);
         // ...
       })
       .catch((error) => {
@@ -90,7 +83,7 @@ export class AuthenticationService {
     await signOut(auth)
       .then(() => {
         // Signed out
-        console.log('User was loged out right now');
+        console.log('User was logged out right now');
         // ...
       })
       .catch((error) => {
@@ -101,30 +94,22 @@ export class AuthenticationService {
   }
 
   //Set an authentication state observer and get user data
-  private setAuthenticationStateObserver() {
+  setAuthenticationStateObserver() {
     onAuthStateChanged(auth, (user) => {
-      this.currentUserSubject.next(user);
       if (user) {
-        this.isUserLoggedInSubject.next(true);
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        console.log('This User is currently logged in: ', user);
+        this.currentLoggedInUser = user;
+        this.isUserLoggedIn = true;
+        // ...
       } else {
-        this.isUserLoggedInSubject.next(false);
+        // User is signed out
+        // ...
+        this.isUserLoggedIn = false;
       }
-      // if (user) {
-      //   // User is signed in, see docs for a list of available properties
-      //   // https://firebase.google.com/docs/reference/js/auth.user
-      //   const uid = user.uid;
-      //   console.log('This User is currently loged in: ', user);
-      //   // ...
-      // } else {
-      //   // User is signed out
-      //   // ...
-      // }
     });
-  }
-
-  /** Wartet auf das erste Auth-Update */
-  async waitForAuth(): Promise<User | null> {
-    return firstValueFrom(this.currentUser$); // Wartet, bis der erste Wert eintrifft
   }
 
   //Update a user's profile

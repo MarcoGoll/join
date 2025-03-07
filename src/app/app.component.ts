@@ -27,20 +27,14 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     console.log('App neu geladen');
-    const user = await this.authenticationService.waitForAuth();
-    console.log(
-      user ? 'User is logged in: ' + user.uid : 'No User is logged in'
-    );
-
-    // console.log('App neu geladen');
-    // this.authenticationService.setAuthenticationStateObserver();
-    // if (this.authenticationService.isUserLoggedin) {
-    //   console.log(
-    //     'User is logged in: ',
-    //     this.authenticationService.currentLoggedinUser$
-    //   );
-    // } else {
-    //   console.log('No User is logged in');
-    // }
+    this.authenticationService.setAuthenticationStateObserver();
+    if (this.authenticationService.isUserLoggedIn) {
+      console.log(
+        'User is logged in: ',
+        this.authenticationService.currentLoggedInUser
+      );
+    } else {
+      console.log('No User is logged in');
+    }
   }
 }
