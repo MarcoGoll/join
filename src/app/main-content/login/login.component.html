@@ -1,3 +1,23 @@
-<p>login works!</p>
 <button (click)="authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">signup</button>
 <button (click)="authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true ">mainContent</button>
+
+<section>
+    <div class="login-container">
+        <div class="title-container">
+            <h1>Log in</h1>
+            <div class="horizontal-seperator"></div>
+        </div>
+        <div>
+            <div>
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <input type="text">
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="login-btn">Log in</button>
+            <button class="guest-login-btn">Guest Log in</button>
+        </div>
+    </div>
+</section>
