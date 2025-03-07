@@ -11,8 +11,4 @@ import { AuthenticationService } from '../../shared/services/firebase/authentica
 })
 export class LoginComponent {
   authenticationService = inject(AuthenticationService);
-
-  consoleCurrentLogedInUser() {
-    this.authenticationService.setAuthenticationStateObserver();
-  }
 }

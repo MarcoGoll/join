@@ -1,18 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  Firestore,
-  getDocs,
-  limit,
-  onSnapshot,
-  orderBy,
-  query,
-  updateDoc,
-} from '@angular/fire/firestore';
-import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -22,7 +9,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBmPjsLf9R76U3csMNtLgAhffJOZeh9Rvc',
@@ -49,14 +36,23 @@ export class AuthenticationService {
     email: 'guest@user.de',
     pw: '123456',
   };
-  currentLogedinUser$: any = '';
+
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  currentUser$ = this.currentUserSubject.asObservable();
+
+  private isUserLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isUserLoggedIn$ = this.isUserLoggedInSubject.asObservable();
+
+  constructor() {
+    this.setAuthenticationStateObserver();
+  }
 
   // ##########################################################################################################
   // Authentication
   // ##########################################################################################################
   //Sign up new users
   async createUser(email: string, password: string) {
-    const auth = getAuth();
+    // const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
@@ -74,7 +70,7 @@ export class AuthenticationService {
 
   // Sign in existing users
   async login(email: string, password: string) {
-    const auth = getAuth();
+    // const auth = getAuth();
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -90,7 +86,7 @@ export class AuthenticationService {
   }
 
   async logout() {
-    const auth = getAuth();
+    // const auth = getAuth();
     await signOut(auth)
       .then(() => {
         // Signed out
@@ -105,27 +101,35 @@ export class AuthenticationService {
   }
 
   //Set an authentication state observer and get user data
-  async setAuthenticationStateObserver() {
-    const auth = getAuth();
-    await onAuthStateChanged(auth, (user) => {
+  private setAuthenticationStateObserver() {
+    onAuthStateChanged(auth, (user) => {
+      this.currentUserSubject.next(user);
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
-        this.currentLogedinUser$ = user;
-        console.log('This User is currently loged in: ', user);
-        // ...
+        this.isUserLoggedInSubject.next(true);
       } else {
-        // User is signed out
-        // ...
-        this.currentLogedinUser$ = '';
+        this.isUserLoggedInSubject.next(false);
       }
+      // if (user) {
+      //   // User is signed in, see docs for a list of available properties
+      //   // https://firebase.google.com/docs/reference/js/auth.user
+      //   const uid = user.uid;
+      //   console.log('This User is currently loged in: ', user);
+      //   // ...
+      // } else {
+      //   // User is signed out
+      //   // ...
+      // }
     });
+  }
+
+  /** Wartet auf das erste Auth-Update */
+  async waitForAuth(): Promise<User | null> {
+    return firstValueFrom(this.currentUser$); // Wartet, bis der erste Wert eintrifft
   }
 
   //Update a user's profile
   async updateUser(fullName: string) {
-    const auth = getAuth();
+    // const auth = getAuth();
     const user: User | null = auth.currentUser;
     if (user) {
       await updateProfile(user, {
