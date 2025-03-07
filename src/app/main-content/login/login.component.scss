@@ -20,9 +20,11 @@ footer{
     >a{
         color: rgb(190, 189, 189);
         padding: 0;
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
         &:hover{
             color: $clrHighlight2;
             border-color: $clrHighlight2;
+            transform: scale(1.1);
         }  
     }
 }
