@@ -1,8 +1,3 @@
-<!-- <button (click)="authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true ">mainContent</button> -->
-<button class="secundaryBtnTall" (click)="authenticationService.login(authenticationService.GUESTUSER.email, authenticationService.GUESTUSER.pw); authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true;">Guest Log in</button> 
-<button (click)="authenticationService.logout()">Logout</button>
-
-
 <header>
     <img src="./../../../assets/img/Join-logo-blue.png" alt="Join Logo">
     <div class="signup-container">
@@ -18,17 +13,17 @@
         </div>
         <div class="input-container">
             <div class="email-input-container">
-                <input class="email-input" type="text" placeholder="Email">
+                <input class="email-input" type="text" placeholder="Email" #loginEmail>
                 <img class="email-icon" src="./../../../assets/img/icons/mail.png" alt="E-mail symbol">
             </div>
             <div class="password-input-container">
-                <input class="password-input" type="text" placeholder="Password">
+                <input class="password-input" type="text" placeholder="Password" #loginPW>
                 <img class="password-icon" src="./../../../assets/img/icons/lock.png" alt="Lock symbol">
             </div>
         </div>
         <div class="button-container">
-            <button class="login-btn">Log in</button>
-            <button class="guest-login-btn">Guest Log in</button>
+            <button class="login-btn" (click)="login(loginEmail.value, loginPW.value)">Log in</button>
+            <button class="guest-login-btn" (click)="loginAsGuest()">Guest Log in</button>
         </div>
     </div>
 </section>

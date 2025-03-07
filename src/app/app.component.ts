@@ -26,15 +26,14 @@ export class AppComponent implements OnInit {
   title = 'join';
 
   async ngOnInit() {
-    console.log('App neu geladen');
-    this.authenticationService.setAuthenticationStateObserver();
-    if (this.authenticationService.isUserLoggedIn) {
-      console.log(
-        'User is logged in: ',
-        this.authenticationService.currentLoggedInUser
-      );
+    if (await this.authenticationService.checkLogin()) {
+      this.authenticationService.isLoginDisplayed = false;
+      this.authenticationService.isSignupDisplayed = false;
+      this.authenticationService.isMainContentDisplayed = true;
     } else {
-      console.log('No User is logged in');
+      this.authenticationService.isLoginDisplayed = true;
+      this.authenticationService.isSignupDisplayed = false;
+      this.authenticationService.isMainContentDisplayed = false;
     }
   }
 }

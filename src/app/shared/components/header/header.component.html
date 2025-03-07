@@ -22,7 +22,7 @@
             <a class="dropdown-menu-help" routerLink="info">Help</a>
             <a routerLink="legalNotice">Legal Notice</a>
             <a routerLink="privacyPolicy">Privacy Policy</a>
-            <a routerLink="contact">Log out</a>
+            <a routerLink="" (click)="authenticationService.logout()">Log out</a>
         </div>
     </nav>
 </header>

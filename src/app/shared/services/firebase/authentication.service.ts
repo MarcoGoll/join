@@ -67,9 +67,9 @@ export class AuthenticationService {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log('This User was logged in right now: ', user);
-        // ...
+        this.isLoginDisplayed = false;
+        this.isSignupDisplayed = false;
+        this.isMainContentDisplayed = true;
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -84,6 +84,9 @@ export class AuthenticationService {
       .then(() => {
         // Signed out
         console.log('User was logged out right now');
+        this.isLoginDisplayed = true;
+        this.isSignupDisplayed = false;
+        this.isMainContentDisplayed = false;
         // ...
       })
       .catch((error) => {
@@ -94,21 +97,20 @@ export class AuthenticationService {
   }
 
   //Set an authentication state observer and get user data
-  setAuthenticationStateObserver() {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
-        console.log('This User is currently logged in: ', user);
-        this.currentLoggedInUser = user;
-        this.isUserLoggedIn = true;
-        // ...
-      } else {
-        // User is signed out
-        // ...
-        this.isUserLoggedIn = false;
-      }
+  async checkLogin(): Promise<boolean> {
+    return new Promise((resolve) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in
+          this.currentLoggedInUser = user;
+          this.isUserLoggedIn = true;
+          resolve(true);
+        } else {
+          // User is signed out
+          this.currentLoggedInUser = null;
+          this.isUserLoggedIn = false;
+        }
+      });
     });
   }
 

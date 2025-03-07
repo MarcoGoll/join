@@ -11,4 +11,15 @@ import { AuthenticationService } from '../../shared/services/firebase/authentica
 })
 export class LoginComponent {
   authenticationService = inject(AuthenticationService);
+
+  login(email: string, pw: string) {
+    this.authenticationService.login(email, pw);
+  }
+
+  loginAsGuest() {
+    this.authenticationService.login(
+      this.authenticationService.GUESTUSER.email,
+      this.authenticationService.GUESTUSER.pw
+    );
+  }
 }
