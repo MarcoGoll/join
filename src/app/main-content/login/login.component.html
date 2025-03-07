@@ -1,0 +1,37 @@
+<!-- <button (click)="authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true ">mainContent</button>
+<button class="secundaryBtnTall" (click)="authenticationService.login(authenticationService.GUESTUSER.email, authenticationService.GUESTUSER.pw); authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=true; consoleCurrentLogedInUser()">Guest Log in</button> -->
+
+
+<header>
+    <img src="./../../../assets/img/Join-logo-blue.png" alt="Join Logo">
+    <div class="signup-container">
+        <span>Not a Join user?</span>
+        <button class="signup-btn" (click)="authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign up</button>
+    </div>
+</header>
+<section>
+    <div class="login-container">
+        <div class="title-container">
+            <h1>Log in</h1>
+            <div class="horizontal-seperator"></div>
+        </div>
+        <div class="input-container">
+            <div class="email-input-container">
+                <input class="email-input" type="text" placeholder="Email">
+                <img class="email-icon" src="./../../../assets/img/icons/mail.png" alt="E-mail symbol">
+            </div>
+            <div class="password-input-container">
+                <input class="password-input" type="text" placeholder="Password">
+                <img class="password-icon" src="./../../../assets/img/icons/lock.png" alt="Lock symbol">
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="login-btn">Log in</button>
+            <button class="guest-login-btn">Guest Log in</button>
+        </div>
+    </div>
+</section>
+<footer>
+        <a routerLink="privacyPolicy">Privacy Policy</a>
+        <a routerLink="legalNotice">Legal notice</a>
+</footer>

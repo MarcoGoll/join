@@ -48,12 +48,11 @@ export class BoardComponent implements OnInit {
   isSearchActive: boolean = false;
   isMobileView: boolean = false;
   isDragDisabled = window.innerWidth >= 1200;
+  clicked: boolean = false;
 
   ngOnInit() {
     this.checkScreenSize();
   }
-
-  clicked: boolean = false;
 
   changeImage() {
     this.clicked = true;

@@ -23,6 +23,7 @@ section{
 
 .input-task-container{
     @include setFlex();
+    margin-bottom: 16px;
     gap: 36px;
 }
 
@@ -143,7 +144,7 @@ section{
   .example-list {
     padding: 5px;
     min-height: 60px;
-    max-height: 71.8vh;
+    max-height: 65vh;
     min-width: 290px;
     background: $clrBackground;
     overflow-y: auto;
@@ -208,6 +209,18 @@ section{
   .iconLink{
     padding: 0px;
   }
+
+  .plusIconColour{
+    cursor: pointer;
+    rect, path{
+      stroke: $clrHighlight1;
+    }
+    &:hover{
+      rect, path{
+        stroke: $clrHighlight2;
+      }
+    }
+  }
   
 //=======================================================
 // Task Overlay
@@ -222,6 +235,7 @@ section{
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.4);
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
 }
 
@@ -231,6 +245,7 @@ section{
   @include setFlex();
   border-radius: 30px;
   background-color: $clrBaseBright;
+  transform: translateX(300%);
 }
 
 //=======================================================
@@ -246,7 +261,9 @@ section{
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.4);
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
+ 
 }
 
 .addTaskContainer{
@@ -255,6 +272,8 @@ section{
   @include setFlex();
   border-radius: 30px;
   background-color: $clrBaseBright;
+  transform: translateX(300%);
+ 
 }
 
 .closeContainer{
@@ -266,5 +285,22 @@ section{
   border-radius: 50%;
   &:hover{
     background-color: $clrHoverIcon;
+  }
+}
+
+//=======================================================
+// Overlay Animation
+//=======================================================
+.fadeInOverlay {
+  animation: fadeInOverlay 125ms ease-in-out forwards;
+}
+
+@keyframes fadeInOverlay {
+  0% {
+      transform: translateX(300%);
+  }
+
+  100% {
+      transform: translateX(0%);
   }
 }

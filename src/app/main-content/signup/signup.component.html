@@ -1,0 +1,78 @@
+<div class ="contorlBtns-DELETETHIS">
+    <button (click)="authenticationService.isSignupDisplayed=false; authenticationService.isLoginDisplayed=true; authenticationService.isMainContentDisplayed=false ">login</button>
+</div>
+<section id="signupSection">
+    <div class="signupSectionContent contentLimit">
+        <div class="signUpContainer">
+            <h1>Sign up</h1>
+            <form id="signUpForm" class="signUpForm" (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
+                        <input #fullName="ngModel" [(ngModel)]="newUser.fullName" id="fullName" name="fullName" type="text"
+                            placeholder="Name" class="input-field" required
+                            [ngClass]="{'error-input': !fullName.valid && fullName.touched}">
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!fullName.valid && fullName.touched) {
+                        <p class="errorMessage">Please enter a Name</p>
+                        }
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
+                        <input #email="ngModel" [(ngModel)]="newUser.email" id="email" name="email" type="text"
+                            placeholder="Email" class="input-field" required
+                            [ngClass]="{'error-input': !email.valid && email.touched}">
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!email.valid && email.touched) {
+                        <p class="errorMessage">Please enter a Email</p>
+                        }
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
+                        <input #pw="ngModel" [(ngModel)]="newUser.pw" id="pw" name="pw" type="text"
+                            placeholder="Password" class="input-field" required
+                            [ngClass]="{'error-input': !pw.valid && pw.touched}">
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!pw.valid && pw.touched) {
+                        <p class="errorMessage">Please enter a valid Password</p>
+                        }
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
+                        <input #pwConfirm="ngModel" [(ngModel)]="pwConfirmation" id="pwConfirmation" name="pwConfirmation" type="text"
+                            placeholder="Confirm Password" class="input-field" required
+                            [ngClass]="{'error-input': !pwConfirm.valid && pwConfirm.touched}">
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!pwConfirm.valid && pwConfirm.touched) {
+                        <p class="errorMessage">Please enter a valid Password</p>
+                        }
+                    </div>
+                </div>
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
+                        <div class="checkPPContainer">
+                            <input #checkPP="ngModel" [(ngModel)]="isPrivacyPolicyChecked" id="privacyPolicy" name="privacyPolicy" type="checkbox" required>
+                            <p class="checkPPText">I accept the <a href="">Privacy Policy</a></p>
+                        </div>
+                    </div>
+                    <div class="errorMessageContainer">
+                        @if (!checkPP.valid && checkPP.touched) {
+                        <p class="errorMessage">Please accept the Privacy Policy</p>
+                        }
+                    </div>
+                </div>
+                <button class="primaryBtnTall" id="signupBTN" type="submit" value="Send" [disabled]="!isPrivacyPolicyChecked">
+                    Sign up
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+</section>

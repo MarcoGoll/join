@@ -1,0 +1,65 @@
+@import './../../../styles.scss';
+
+.contorlBtns-DELETETHIS{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 10;
+}
+
+#signupSection {
+    @include setFlex();
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.signupSectionContent {
+    @include setFlex($fd: column, $gap: 8px);
+}
+
+.signUpContainer{
+    padding: 44px 88px;
+    border-radius: 30px;
+    @include setFlex($fd: column, $gap: 32px);
+    background-color: $clrBaseBright;
+    filter: drop-shadow(0px 0px 14px rgba(0, 0, 0, 0.2));
+}
+
+.signUpForm{
+    @include setFlex($fd: column, $gap:8px);
+}
+
+.inputAndErrorContainer {
+    @include setFlex($fd: column, $ai: stretch)
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.input-field {
+    width: 100%;
+}
+
+.checkPPContainer{
+    font-size: 16px;
+    @include setFlex($gap:8px);
+    a{
+        padding: 0;
+        font: inherit;
+    }
+}
+
+.errorMessageContainer {
+    @include setFlex($jc: flex-start);
+    height: 16px;
+}
+
+.errorMessage {
+    color: $clrErrorMessageText;
+    padding-left: 8px;
+    font-size: 12px;
+}

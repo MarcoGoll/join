@@ -8,6 +8,7 @@ import { BoardComponent } from './main-content/board/board.component';
 import { AddTaskComponent } from './main-content/add-task/add-task.component';
 import { SummaryComponent } from './main-content/summary/summary.component';
 
+
 export const routes: Routes = [
     { path: '', component: MainContentComponent },
     { path: 'legalNotice', component: LegalNoticeComponent },
@@ -18,3 +19,5 @@ export const routes: Routes = [
     { path: 'info', component: InfoComponent },
     { path: 'summary', component: SummaryComponent } 
 ];   
+
+
