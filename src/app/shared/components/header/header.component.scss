@@ -27,7 +27,7 @@ header {
         padding-right: 8px;
         gap: 16px;
         >div {
-            display: flex;
+            display: flex;  
             justify-content: center;
             >img {
                 transition: $stdTransition;

@@ -11,4 +11,4 @@ import { AuthenticationService } from '../../shared/services/firebase/authentica
 })
 export class SummaryComponent {
   authenticationService = inject(AuthenticationService);
-}
+} 

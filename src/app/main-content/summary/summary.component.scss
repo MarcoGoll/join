@@ -1,3 +1,4 @@
+
 @import './../../../styles.scss';
 
 .summary-container {
@@ -9,8 +10,8 @@
     margin-top: 96px;
     height: calc(100vh - 96px);
     padding-top: 64px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 60px;
+    padding-right: 60px;
     overflow: hidden;
 }
 
@@ -23,6 +24,7 @@
         color: $clrBaseDark;
     }
 
+
     .subtitle {
         color: $clrBaseDark;
         font-size: $fsH3;
@@ -32,6 +34,10 @@
 .separatorVertical {
     color: $clrHighlight2;
     font-size: $fsH2;
+
+    &:hover {
+        color: white;
+    }
 }
 
 .main-content-wrapper {
@@ -44,6 +50,7 @@
     flex: 2; 
     display: flex;
     flex-direction: column;
+    max-width: 65%;
 }
 
 .greeting-column {
@@ -53,7 +60,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding-top: 150px;
-    padding-left: 20px;
+    padding-left: 50px;
 }
 
 .greeting-section {
@@ -103,25 +110,33 @@
     flex: 1;
     width: 100%;
     margin-bottom: 24px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
     cursor: pointer;
     text-align: center; 
     
     &:hover {
-      transform: scale(1.02);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        background-color: $clrHighlight1; 
 
-
-        .default-icone {
-            display: none;
+        .metric-content {
+            .metric-value, .metric-label {
+                color: white; 
+            }
         }
 
-        .hover-icone {
-            display: block;
+        .icon-container {
+            .default-icon {
+                opacity: 0;
+            }
+
+            .hover-icon {
+                opacity: 1;
+            }
         }
-    
     }
 }
+
 
 .top-cards-container {
     display: flex;
@@ -144,14 +159,25 @@
     align-items: center;
     margin-right: 20px;
     transition: background-color 0.2s;
+    position: relative;
+
 
     img {
         width: 60px;
         height: 60px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .default-icon {
+        opacity: 1;
+        transition: opacity 0.2s;
     }
 
     .hover-icon {
-        display: none;
+        opacity: 0;
+        transition: opacity 0.2s;
     }
 }
 
@@ -179,6 +205,7 @@
     justify-content: flex-start;
     position: relative;
     padding: 24px 32px;
+
 
     .icon-container {
         width: 60px;
@@ -216,7 +243,7 @@
     }
     
       //Vertical line
-    &::after {
+        &::after {
         content: '';
         position: absolute;
         top: 28px; 
@@ -237,14 +264,24 @@
         
         .deadline-date {
             font-size: $fSSec;
-            font-weight: 600;
+            font-weight: 700;
             color: $clrBaseDark;
+            transition: color 0.2s;
         }
         
         .deadline-label {
             font-size: $fSTer;
             color: $clrBaseDark;
             opacity: 0.8;
+            transition: color 0.2s, opacity 0.2s;
+        }
+
+    }
+
+    &.metric-card:hover .deadline-section {
+        .deadline-date, .deadline-label {
+            color: white;
+            opacity: 1;
         }
     }
 
@@ -296,4 +333,3 @@
         }
     }
 }
-
