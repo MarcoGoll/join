@@ -38,10 +38,19 @@
         </div>
         <div class="inputAndErrorContainer">
           <div class="inputContainer">
-            <input #pw="ngModel" [(ngModel)]="newUser.pw" id="pw" name="pw" type="password" placeholder="Password"
-              class="input-field" required [ngClass]="{'error-input': !pw.valid && pw.touched}">
-            <div class="inputIconContainer">
+            <input #pw="ngModel" [(ngModel)]="newUser.pw" id="pw" name="pw"
+              [type]="isPasswordVisible? 'text' : 'password'" placeholder="Password" class="input-field" required
+              [ngClass]="{'error-input': !pw.valid && pw.touched}">
+            <div class="inputIconContainer" [ngClass]="{'pointer':pw.value!=''}" (click)="toggleIsPasswordVisible()">
+              @if(pw.value == ""){
               <img class="inputIcon" src="./assets/img/icons/lock.svg" alt="lock">
+              }@else {
+              @if (isPasswordVisible) {
+              <img class="inputIcon" src="./assets/img/icons/visibility.svg" alt="visibility">
+              }@else {
+              <img class="inputIcon" src="./assets/img/icons/visibility_off.svg" alt="visibility_off">
+              }
+              }
             </div>
           </div>
           <div class="errorMessageContainer">
@@ -53,10 +62,19 @@
         <div class="inputAndErrorContainer">
           <div class="inputContainer">
             <input #pwConfirm="ngModel" [(ngModel)]="pwConfirmation" id="pwConfirmation" name="pwConfirmation"
-              type="password" placeholder="Confirm Password" class="input-field" required
-              [ngClass]="{'error-input': !pwConfirm.valid && pwConfirm.touched}">
-            <div class="inputIconContainer">
+              [type]="isPasswordConfirmVisible? 'text' : 'password'" placeholder="Confirm Password" class="input-field"
+              required [ngClass]="{'error-input': !pwConfirm.valid && pwConfirm.touched}">
+            <div class="inputIconContainer" [ngClass]="{'pointer':pwConfirmation!=''}"
+              (click)="toggleIsPasswordConfirmVisible()">
+              @if(pwConfirmation == ""){
               <img class="inputIcon" src="./assets/img/icons/lock.svg" alt="lock">
+              }@else {
+              @if (isPasswordConfirmVisible) {
+              <img class="inputIcon" src="./assets/img/icons/visibility.svg" alt="visibility">
+              }@else {
+              <img class="inputIcon" src="./assets/img/icons/visibility_off.svg" alt="visibility_off">
+              }
+              }
             </div>
           </div>
           <div class="errorMessageContainer">

@@ -15,6 +15,8 @@ export class SignupComponent {
   authenticationService = inject(AuthenticationService);
   pwConfirmation: string = '';
   isPrivacyPolicyChecked: boolean = false;
+  isPasswordVisible: boolean = false;
+  isPasswordConfirmVisible: boolean = false;
 
   newUser: User = {
     firstName: '',
@@ -23,6 +25,14 @@ export class SignupComponent {
     email: '',
     pw: '',
   };
+
+  toggleIsPasswordVisible() {
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
+  toggleIsPasswordConfirmVisible() {
+    this.isPasswordConfirmVisible = !this.isPasswordConfirmVisible;
+  }
 
   async onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid) {
