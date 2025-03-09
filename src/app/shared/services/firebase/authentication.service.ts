@@ -59,6 +59,7 @@ export class AuthenticationService {
         console.error('Fehler beim Erstellen:', errorCode, errorMessage);
         // ..
       });
+    await this.logout();
   }
 
   // Sign in existing users
@@ -105,6 +106,7 @@ export class AuthenticationService {
           this.currentLoggedInUser = user;
           this.isUserLoggedIn = true;
           resolve(true);
+          console.log('This User changed State: ', user);
         } else {
           // User is signed out
           this.currentLoggedInUser = null;

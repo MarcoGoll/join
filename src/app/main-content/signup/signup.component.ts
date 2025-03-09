@@ -32,6 +32,9 @@ export class SignupComponent {
           this.newUser.pw
         );
         await this.authenticationService.updateUser(this.newUser.fullName);
+        this.authenticationService.isSignupDisplayed = false;
+        this.authenticationService.isLoginDisplayed = true;
+        this.authenticationService.isMainContentDisplayed = false;
       } else {
         //TODO: ERROR PW DOES NOT MATCH
       }

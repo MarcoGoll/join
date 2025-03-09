@@ -31,7 +31,7 @@
                             <input #email="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.email"
                                 id="email" name="email" type="email" placeholder="Email" class="input-field" required
                                 pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
-                            <img src="./assets/img/icons/mail (3).svg" alt="Email" class="input-icon">
+                            <img src="./assets/img/icons/mail.svg" alt="Email" class="input-icon">
                         </div>
                         <div class="errorMessageContainer">
                             @if (!email.valid && email.touched) {
