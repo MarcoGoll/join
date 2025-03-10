@@ -29,6 +29,12 @@
         </div>
     </div>
 </section>
+<div class="signup-container-mobile">
+    <span>Not a Join user?</span>
+    <button class="signup-btn"
+        (click)="authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign
+        up</button>
+</div>
 <footer>
     <a routerLink="privacyPolicy">Privacy Policy</a>
     <a routerLink="legalNotice">Legal notice</a>

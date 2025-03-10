@@ -59,6 +59,12 @@ footer{
     gap: 35px; 
 }
 
+.signup-container-mobile{
+    @include setFlex();
+    gap: 35px;
+    display: none;
+}
+
 .signup-btn{
     color: white;
     background-color: $clrHighlight1;
