@@ -17,6 +17,7 @@ export class SignupComponent {
   isPrivacyPolicyChecked: boolean = false;
   isPasswordVisible: boolean = false;
   isPasswordConfirmVisible: boolean = false;
+  isPWDifferent = false;
 
   newUser: User = {
     firstName: '',
@@ -35,18 +36,32 @@ export class SignupComponent {
   }
 
   async onSubmit(ngForm: NgForm) {
+    ngForm.control.markAllAsTouched();
+    if (this.newUser.pw === this.pwConfirmation) {
+      this.isPWDifferent = false;
+    } else {
+      this.isPWDifferent = true;
+      ngForm.controls['pw'].setErrors({ invalid: true });
+      ngForm.controls['pwConfirmation'].setErrors({ invalid: true });
+    }
+
     if (ngForm.submitted && ngForm.form.valid) {
       if (this.newUser.pw === this.pwConfirmation) {
         await this.authenticationService.createUser(
           this.newUser.email,
           this.newUser.pw
         );
-        await this.authenticationService.updateUser(this.newUser.fullName);
-        this.authenticationService.isSignupDisplayed = false;
-        this.authenticationService.isLoginDisplayed = true;
-        this.authenticationService.isMainContentDisplayed = false;
+        if (this.authenticationService.errorOccoursIn == null) {
+          await this.authenticationService.updateUser(this.newUser.fullName);
+        }
+        if (this.authenticationService.errorOccoursIn == null) {
+          this.authenticationService.isSignupDisplayed = false;
+          this.authenticationService.isLoginDisplayed = true;
+          this.authenticationService.isMainContentDisplayed = false;
+          this.isPWDifferent = false;
+          await this.authenticationService.logout();
+        }
       } else {
-        //TODO: ERROR PW DOES NOT MATCH
       }
     }
   }

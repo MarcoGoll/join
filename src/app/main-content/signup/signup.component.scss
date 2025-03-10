@@ -71,6 +71,21 @@
     }
 }
 
+.serverError{
+    @include setFlex($jc: flex-start);
+    align-self: stretch;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: $clrErrorMessageBackground;
+
+    svg{
+        path{
+            fill: $clrErrorMessageText;
+        }
+    }
+
+}
+
 .errorMessageContainer {
     @include setFlex($jc: flex-start);
     height: 16px;
@@ -80,4 +95,10 @@
     color: $clrErrorMessageText;
     padding-left: 8px;
     font-size: 12px;
+}
+
+.signupBTN{
+    &:disabled{
+        pointer-events: none;
+    }
 }

@@ -7,6 +7,7 @@ import {
   updateProfile,
   User,
   signOut,
+  beforeAuthStateChanged,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
@@ -37,6 +38,10 @@ export class AuthenticationService {
     pw: '123456',
   };
 
+  errorMessageForFailedFirebaseRequest: string = '';
+  errorOccoursIn: 'fullname' | 'email' | 'pw' | 'pwConfirm' | 'global' | null =
+    null;
+
   isUserLoggedIn: boolean = false;
   currentLoggedInUser: User | null = null;
 
@@ -51,15 +56,12 @@ export class AuthenticationService {
         // Signed up
         const user = userCredential.user;
         console.log('Erstellter User: ', user);
+        this.resetFirebaseError();
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Fehler beim Erstellen:', errorCode, errorMessage);
-        // ..
+        this.setFirebaseError(error);
       });
-    await this.logout();
   }
 
   // Sign in existing users
@@ -71,11 +73,10 @@ export class AuthenticationService {
         this.isLoginDisplayed = false;
         this.isSignupDisplayed = false;
         this.isMainContentDisplayed = true;
+        this.resetFirebaseError();
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Error durring Login: ', errorCode, errorMessage);
+        this.setFirebaseError(error);
       });
   }
 
@@ -88,12 +89,11 @@ export class AuthenticationService {
         this.isLoginDisplayed = true;
         this.isSignupDisplayed = false;
         this.isMainContentDisplayed = false;
+        this.resetFirebaseError();
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Error durring Logout: ', errorCode, errorMessage);
+        this.setFirebaseError(error);
       });
   }
 
@@ -127,11 +127,24 @@ export class AuthenticationService {
         .then(() => {
           // Profile updated!
           console.log('Update Erfolgreich: ', user);
+          this.errorOccoursIn = null;
         })
         .catch((error) => {
           // An error occurred
-          console.error('Fehler beim Update: ', error);
+          this.setFirebaseError(error);
         });
     }
+  }
+
+  setFirebaseError(error: any) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    this.errorOccoursIn = 'global';
+    this.errorMessageForFailedFirebaseRequest = error.code;
+    console.log('ErrorCode: ', errorCode, 'ErrorMessage: ', errorMessage);
+  }
+
+  resetFirebaseError() {
+    this.errorOccoursIn = null;
   }
 }
