@@ -1,8 +1,10 @@
 <header>
-    <img src="./../../../assets/img/Join-logo-blue.png" alt="Join Logo">
+    <img src="./assets/img/Join-logo-blue.png" alt="Join Logo">
     <div class="signup-container">
         <span>Not a Join user?</span>
-        <button class="signup-btn" (click)="authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign up</button>
+        <button class="signup-btn"
+            (click)="authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign
+            up</button>
     </div>
 </header>
 <section>
@@ -14,11 +16,11 @@
         <div class="input-container">
             <div class="email-input-container">
                 <input class="email-input" type="text" placeholder="Email" #loginEmail>
-                <img class="email-icon" src="./../../../assets/img/icons/mail.png" alt="E-mail symbol">
+                <img class="email-icon" src="./assets/img/icons/mail.png" alt="E-mail symbol">
             </div>
             <div class="password-input-container">
                 <input class="password-input" type="text" placeholder="Password" #loginPW>
-                <img class="password-icon" src="./../../../assets/img/icons/lock.png" alt="Lock symbol">
+                <img class="password-icon" src="./assets/img/icons/lock.png" alt="Lock symbol">
             </div>
         </div>
         <div class="button-container">
@@ -28,6 +30,6 @@
     </div>
 </section>
 <footer>
-        <a routerLink="privacyPolicy">Privacy Policy</a>
-        <a routerLink="legalNotice">Legal notice</a>
+    <a routerLink="privacyPolicy">Privacy Policy</a>
+    <a routerLink="legalNotice">Legal notice</a>
 </footer>

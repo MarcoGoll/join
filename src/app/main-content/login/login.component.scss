@@ -1,21 +1,22 @@
 @import "./../../../styles.scss";
 
 section{
-    @include setFlex($ai: flex-start);
+    @include setFlex();
     width: 100vw;
-    height: calc(100vh - 344px);
+    min-height: 500px;
+    height: calc(100vh - 200px - 100px);
     background-color: $clrBackground;
-    padding-top: 64px;
 }
 
 header{
     @include setFlex($jc: space-between, $ai: flex-start);
-    margin: 64px;
+    padding: 64px;
+    height: 200px;
 }
 
 footer{
     @include setFlex();
-    padding-bottom: 64px;
+    height: 100px;
     gap: 35px;
     >a{
         color: rgb(190, 189, 189);
