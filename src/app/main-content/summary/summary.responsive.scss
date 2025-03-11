@@ -1,0 +1,187 @@
+@import './../../../styles.scss';
+
+
+@media (max-width: 1200px) {
+    .summary-container {
+        margin-top: 96px;
+        padding-top: 32px;
+        padding-left: 40px;
+        padding-right: 40px;
+        max-width: 100%;
+        height: calc(100vh - 160px); 
+        overflow-y: auto; 
+    }
+
+    .header-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 32px;
+
+        h1 {
+            font-size: 36px; 
+        }
+
+        .subtitle {
+            font-size: 22px; 
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .subtitle:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: $clrHighlight2; 
+        }
+    }
+
+    .separatorVertical {
+        display: none;
+    }
+
+    .greeting-column {
+        display: none; 
+    }
+
+    .metrics-column {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .main-content-wrapper {
+        padding-bottom: 80px; 
+    }
+}
+
+
+@media (max-width: 900px) {
+    .summary-container {
+        padding-left: 24px;
+        padding-right: 24px;
+        gap: 24px;
+    }
+
+    .header-section {
+        margin-bottom: 24px;
+    }
+
+    .metrics-section {
+        gap: 20px;
+    }
+
+    .top-cards-container {
+        gap: 16px;
+    }
+
+    .small-cards-container {
+        gap: 16px;
+    }
+
+    .metric-card {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .urgent-card {
+        padding: 16px 24px;
+    }
+}
+
+@media (min-width: 901px) {
+    .summary-container {
+        height: auto;
+        min-height: calc(100vh - 96px);
+        overflow-y: auto;
+    }
+    
+    .main-content-wrapper {
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .summary-container {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 24px;
+        gap: 16px;
+        margin-top: 72px;
+    }
+
+    .header-section {
+        gap: 8px;
+        margin-bottom: 16px;
+
+        .subtitle:after {
+            width: 80px; 
+        }
+    }
+}
+
+
+@media (max-width: 400px) {
+    .summary-container {
+        padding-left: 12px;
+        padding-right: 12px;
+        overflow-y: auto; 
+    }
+
+    .top-cards-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .small-cards-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .metric-card {
+        padding: 12px;
+        margin-bottom: 12px;
+        width: 100%; 
+    }
+
+    .urgent-card {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .urgent-left-section {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .vertical-separator {
+        width: 80%;
+        height: 2px;
+        margin: 8px auto;
+    }
+
+    .urgent-right-section {
+        width: 100%;
+    }
+
+    .header-section {
+        h1 {
+            font-size: 24px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+        }
+
+        .subtitle:after {
+            width: 60px; 
+        }
+    }
+
+    
+}

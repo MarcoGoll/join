@@ -1,0 +1,254 @@
+@import './../../../styles.scss';
+
+
+@media (orientation: landscape) {
+    .summary-container {
+        overflow-y: auto; 
+        padding-bottom: 80px;
+        width: 100%;
+        max-width: 100vw;
+        margin: 0;
+        box-sizing: border-box; 
+    }
+}
+
+
+@media (orientation: landscape) and (max-width: 1200px) and (min-width: 901px) { 
+    .summary-container {
+        padding-top: 32px;
+        
+        .header-section {
+            flex-direction: row; 
+            align-items: center;
+            gap: 16px;
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 22px;
+                position: relative;
+                padding-bottom: 0;
+                
+                &:after {
+                    display: none; 
+                }
+            }
+        }
+        
+        .separatorVertical {
+            display: block; 
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+    .summary-container {
+        margin-top: 72px;
+        padding-top: 20px;
+        height: auto; 
+        min-height: calc(100vh - 152px); 
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .main-content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding-bottom: 16px;
+    }
+    
+    .header-section {
+        width: 100%;
+        margin-bottom: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        z-index: 1;
+        
+        h1 {
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 10px;
+            
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80px;
+                height: 3px;
+                background-color: #29ABE2; 
+            }
+        }
+    }
+    
+    .metrics-section {
+        width: 100%;
+        gap: 16px;
+    }
+    
+    .top-cards-container {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+    
+    .urgent-card {
+        flex-direction: row;
+        padding: 16px;
+    }
+    
+    .vertical-separator {
+        width: 2px;
+        height: 80%;
+        margin: 0 16px;
+    }
+    
+    
+    .small-cards-container {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        flex-wrap: wrap; 
+    }
+    
+    .small-card {
+        flex: 1;
+        min-width: 150px; 
+    }
+}
+
+
+@media (orientation: landscape) and (max-width: 800px) {
+    .summary-container {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 16px;
+    }
+    
+    .header-section {
+        margin-bottom: 12px;
+        
+        h1 {
+            font-size: 26px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            
+            &:after {
+                width: 70px;
+            }
+        }
+    }
+    
+    .metric-card {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+    
+    .small-card {
+        min-width: 120px;
+    }
+}
+
+
+@media (orientation: landscape) and (max-height: 450px) {
+    .summary-container {
+        margin-top: 60px; 
+        padding-top: 12px;
+        height: calc(100vh - 96px);
+        overflow: hidden;
+        width: 100%;
+    }
+    
+    .header-section {
+        margin-bottom: 8px;
+        flex-direction: row;
+        align-items: center;
+        
+        h1 {
+            font-size: 24px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            
+            &:after {
+                width: 60px;
+                height: 2px;
+            }
+        }
+    }
+    
+    .top-cards-container {
+        gap: 8px;
+    }
+    
+    .small-cards-container {
+        gap: 8px;
+    }
+    
+    .metric-card {
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+    
+    .urgent-card {
+        padding: 10px;
+    }
+    
+    .vertical-separator {
+        margin: 0 10px;
+    }
+    
+    
+    .small-card {
+        min-width: 100px;
+        flex-basis: calc(33.33% - 6px);
+    }
+}
+
+
+@media (orientation: landscape) and (max-height: 350px) {
+    .summary-container {
+        margin-top: 50px;
+        padding-top: 8px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .header-section {
+        margin-bottom: 6px;
+        
+        h1 {
+            font-size: 20px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            
+            &:after {
+                width: 50px;
+                height: 2px;
+            }
+        }
+    }
+    
+
+    .metric-card {
+        padding: 8px;
+        margin-bottom: 6px;
+    }
+    
+    .metric-content .metric-label {
+        font-size: 12px; 
+    }
+}
