@@ -1,0 +1,28 @@
+@import "./../../../../../styles.scss";
+
+@media (max-width: 1200px){
+    section{
+        overflow-y: auto;
+        max-height: 92vh;
+        padding-bottom: 32px;
+    }
+}
+
+@media (max-width: 600px){
+    section{
+        padding-bottom: 84px;
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+    h2{
+        margin-bottom: 24px;
+    }
+    h3{
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .list{
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+}
