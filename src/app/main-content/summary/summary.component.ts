@@ -10,5 +10,7 @@ import { AuthenticationService } from '../../shared/services/firebase/authentica
   styleUrls: ['./summary.component.scss', './summary.responsive.scss', 'summary.landscape.scss'],
 })
 export class SummaryComponent {
-  authenticationService = inject(AuthenticationService);
+  authenticationService = inject(AuthenticationService); 
+
+  
 } 
