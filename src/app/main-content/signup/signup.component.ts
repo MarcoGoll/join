@@ -41,8 +41,6 @@ export class SignupComponent {
       this.isPWDifferent = false;
     } else {
       this.isPWDifferent = true;
-      ngForm.controls['pw'].setErrors({ invalid: true });
-      ngForm.controls['pwConfirmation'].setErrors({ invalid: true });
     }
 
     if (ngForm.submitted && ngForm.form.valid) {

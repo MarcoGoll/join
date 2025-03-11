@@ -36,14 +36,19 @@
         <div class="inputAndErrorContainer">
           <div class="inputContainer">
             <input #email="ngModel" [(ngModel)]="newUser.email" id="email" name="email" type="text" placeholder="Email"
-              class="input-field" required [ngClass]="{'error-input': !email.valid && email.touched}">
+              class="input-field" required
+              [ngClass]="{'error-input': (!email.valid && email.touched) || (this.authenticationService.errorOccoursIn == 'email')}"
+              pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
             <div class="inputIconContainer">
               <img class="inputIcon" src="./assets/img/icons/mail.svg" alt="mail">
             </div>
           </div>
           <div class="errorMessageContainer">
             @if (!email.valid && email.touched) {
-            <p class="errorMessage">Please enter a Email</p>
+            <p class="errorMessage">Please enter a valid Email</p>
+            }
+            @if (this.authenticationService.errorOccoursIn == 'email') {
+            <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}</p>
             }
           </div>
         </div>
@@ -51,7 +56,7 @@
           <div class="inputContainer">
             <input #pw="ngModel" [(ngModel)]="newUser.pw" id="pw" name="pw"
               [type]="isPasswordVisible? 'text' : 'password'" placeholder="Password" class="input-field" required
-              [ngClass]="{'error-input': !pw.valid && pw.touched}">
+              [ngClass]="{'error-input': (!pw.valid && pw.touched) || (isPWDifferent && (pwConfirm.touched && pw.touched)) || ( this.authenticationService.errorOccoursIn == 'pw') }">
             <div class="inputIconContainer" [ngClass]="{'pointer':pw.value!=''}" (click)="toggleIsPasswordVisible()">
               @if(pw.value == ""){
               <img class="inputIcon" src="./assets/img/icons/lock.svg" alt="lock">
@@ -65,12 +70,14 @@
             </div>
           </div>
           <div class="errorMessageContainer">
-            @if ((!pw.valid && pw.touched) || (isPWDifferent && (pwConfirm.touched && pw.touched))) {
-            @if (isPWDifferent) {
-            <p class="errorMessage">Your passwords don't match. Please try again.</p>
-            }@else {
+            @if(!pw.valid && pw.touched) {
             <p class="errorMessage">Please enter a valid Password</p>
             }
+            @if (isPWDifferent && (pwConfirm.touched && pw.touched)) {
+            <p class="errorMessage">Your passwords don't match. Please try again.</p>
+            }
+            @if (this.authenticationService.errorOccoursIn == 'pw') {
+            <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}</p>
             }
           </div>
         </div>
@@ -78,7 +85,8 @@
           <div class="inputContainer">
             <input #pwConfirm="ngModel" [(ngModel)]="pwConfirmation" id="pwConfirmation" name="pwConfirmation"
               [type]="isPasswordConfirmVisible? 'text' : 'password'" placeholder="Confirm Password" class="input-field"
-              required [ngClass]="{'error-input': !pwConfirm.valid && pwConfirm.touched}">
+              required
+              [ngClass]="{'error-input': (!pwConfirm.valid && pwConfirm.touched) || (isPWDifferent && (pwConfirm.touched && pw.touched)) || (this.authenticationService.errorOccoursIn == 'pw')}">
             <div class="inputIconContainer" [ngClass]="{'pointer':pwConfirmation!=''}"
               (click)="toggleIsPasswordConfirmVisible()">
               @if(pwConfirmation == ""){
@@ -93,12 +101,14 @@
             </div>
           </div>
           <div class="errorMessageContainer">
-            @if ((!pwConfirm.valid && pwConfirm.touched) || (isPWDifferent && (pwConfirm.touched && pw.touched))) {
-            @if (isPWDifferent) {
-            <p class="errorMessage">Your passwords don't match. Please try again.</p>
-            }@else {
+            @if(!pwConfirm.valid && pwConfirm.touched) {
             <p class="errorMessage">Please enter a valid Password</p>
             }
+            @if (isPWDifferent && (pwConfirm.touched && pw.touched)) {
+            <p class="errorMessage">Your passwords don't match. Please try again.</p>
+            }
+            @if (this.authenticationService.errorOccoursIn == 'pw') {
+            <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}</p>
             }
           </div>
         </div>

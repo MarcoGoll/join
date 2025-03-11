@@ -141,14 +141,28 @@ export class AuthenticationService {
   }
 
   setFirebaseError(error: any) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    this.errorOccoursIn = 'global';
-    this.errorMessageForFailedFirebaseRequest = error.code;
-    console.log('ErrorCode: ', errorCode, 'ErrorMessage: ', errorMessage);
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        console.log('Email is already in use');
+        this.errorOccoursIn = 'email';
+        this.errorMessageForFailedFirebaseRequest = 'Email is already in use';
+        break;
+      case 'auth/weak-password':
+        console.log('Weak-password');
+        this.errorOccoursIn = 'pw';
+        this.errorMessageForFailedFirebaseRequest =
+          'Weak password. Use at least 6 characters';
+        break;
+      default:
+        console.log('error.code:', error.code);
+        this.errorOccoursIn = 'global';
+        this.errorMessageForFailedFirebaseRequest =
+          'Technical Error, please try again later';
+    }
   }
 
   resetFirebaseError() {
     this.errorOccoursIn = null;
+    this.errorMessageForFailedFirebaseRequest = '';
   }
 }
