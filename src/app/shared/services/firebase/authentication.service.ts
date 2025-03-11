@@ -30,7 +30,7 @@ const auth = getAuth(app);
   providedIn: 'root',
 })
 export class AuthenticationService {
-  isLoginDisplayed: boolean = true;
+  isLoginDisplayed: boolean = false;
   isSignupDisplayed: boolean = false;
   isMainContentDisplayed: boolean = false;
   GUESTUSER: { email: string; pw: string } = {
@@ -106,11 +106,15 @@ export class AuthenticationService {
           this.currentLoggedInUser = user;
           this.isUserLoggedIn = true;
           resolve(true);
-          console.log('This User changed State: ', user);
+          console.log('SERVICE: This User is logged in: ', user);
+          console.log('SERVICE: isUserLoggedIn', this.isUserLoggedIn);
         } else {
           // User is signed out
           this.currentLoggedInUser = null;
           this.isUserLoggedIn = false;
+          console.log('SERVICE: No User is logged in');
+          console.log('SERVICE: isUserLoggedIn', this.isUserLoggedIn);
+          resolve(false);
         }
       });
     });
