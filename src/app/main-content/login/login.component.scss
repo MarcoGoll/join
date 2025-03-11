@@ -123,10 +123,9 @@ footer{
 //===============================================================
 
 .input-container{
-    height: 120px;
     @include setFlex();
     flex-direction: column;
-    gap: 32px;
+    gap: 8px;
     margin-bottom: 48px;
 }
 
@@ -210,4 +209,22 @@ input::placeholder {
     color: $clrErrorMessageText;
     padding-left: 8px;
     font-size: 12px;
+}
+
+.inputIconContainer{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    padding-right: 21px;
+    @include setFlex();
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.inputIinputIconcon{
+   width: 24px;
+   height: 24px;
 }

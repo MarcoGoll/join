@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { AuthenticationService } from '../../shared/services/firebase/authentication.service';
 import { TasksService } from '../../shared/services/firebase/tasks.service';
 import { RouterLink } from '@angular/router';
+import { NavbarService } from '../../shared/services/navbar.service';
 
 @Component({
   selector: 'app-summary',
@@ -18,4 +19,5 @@ import { RouterLink } from '@angular/router';
 export class SummaryComponent {
   authenticationService = inject(AuthenticationService);
   taskService = inject(TasksService);
+  navbarService = inject(NavbarService);
 }

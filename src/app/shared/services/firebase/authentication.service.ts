@@ -39,8 +39,14 @@ export class AuthenticationService {
   };
 
   errorMessageForFailedFirebaseRequest: string = '';
-  errorOccoursIn: 'fullname' | 'email' | 'pw' | 'pwConfirm' | 'global' | null =
-    null;
+  errorOccoursIn:
+    | 'fullname'
+    | 'email'
+    | 'pw'
+    | 'pwConfirm'
+    | 'email-pw'
+    | 'global'
+    | null = null;
 
   isUserLoggedIn: boolean = false;
   currentLoggedInUser: User | null = null;
@@ -153,6 +159,12 @@ export class AuthenticationService {
         this.errorMessageForFailedFirebaseRequest =
           'Weak password. Use at least 6 characters';
         break;
+      case 'auth/invalid-credential':
+        this.errorOccoursIn = 'email-pw';
+        this.errorMessageForFailedFirebaseRequest =
+          'Check your email and password. Please try again.';
+        break;
+
       default:
         console.log('error.code:', error.code);
         this.errorOccoursIn = 'global';

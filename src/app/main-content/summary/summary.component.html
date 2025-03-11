@@ -9,7 +9,7 @@
         <div class="metrics-column">
             <div class="metrics-section">
                 <div class="top-cards-container">
-                    <a class="metrics-link" routerLink="/board">
+                    <a class="metrics-link" routerLink="/board" (click)="navbarService.setSelection('board')">
                         <div class="metric-card">
                             <div class="icon-container">
                                 <img src="./assets/img/icons/black-circle-pen.svg" alt="To-do icon">
@@ -17,11 +17,11 @@
                             </div>
                             <div class="metric-content">
                                 <span class="metric-value">{{this.taskService.getAmountOfTasksByStatus('toDo')}}</span>
-                                <span class="metric-label">To-do</span>
+                                <span class="metric-label nowrap">To-do</span>
                             </div>
                         </div>
                     </a>
-                    <a class="metrics-link" routerLink="/board">
+                    <a class="metrics-link" routerLink="/board" (click)="navbarService.setSelection('board')">
                         <div class="metric-card">
                             <div class="icon-container">
                                 <img src="./assets/img/icons/black-circle-check.svg" alt="Done icon">
@@ -34,7 +34,7 @@
                         </div>
                     </a>
                 </div>
-                <a routerLink="/board" class="metrics-link">
+                <a routerLink="/board" class="metrics-link" (click)="navbarService.setSelection('board')">
                     <div class="metric-card urgent-card">
                         <div class="urgent-left-section">
                             <div class="icon-container urgent-icon">
@@ -55,7 +55,7 @@
                     </div>
                 </a>
                 <div class="small-cards-container">
-                    <a routerLink="/board" class="metrics-link">
+                    <a routerLink="/board" class="metrics-link" (click)="navbarService.setSelection('board')">
                         <div class="metric-card small-card">
                             <div class="metric-content centered-content">
                                 <span class="metric-value">{{this.taskService.getAmountOfAllTasks()}}</span>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </a>
-                    <a routerLink="/board" class="metrics-link">
+                    <a routerLink="/board" class="metrics-link" (click)="navbarService.setSelection('board')">
                         <div class="metric-card small-card">
                             <div class="metric-content centered-content">
                                 <span
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                     </a>
-                    <a routerLink="/board" class="metrics-link">
+                    <a routerLink="/board" class="metrics-link" (click)="navbarService.setSelection('board')">
                         <div class="metric-card small-card">
                             <div class="metric-content centered-content">
                                 <span

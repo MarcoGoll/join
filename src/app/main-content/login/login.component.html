@@ -26,23 +26,71 @@
                 </div>
             </div>
             }
-            <div class="input-container">
-                <div class="email-input-container">
-                    <input class="email-input" type="text" placeholder="Email" #loginEmail>
-                    <img class="email-icon" src="./assets/img/icons/mail.png" alt="E-mail symbol">
+            <form id="signUpForm" class="signUpForm" (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+                <div class="input-container">
+                    <div>
+                        <div class="email-input-container">
+                            <input #loginEmail="ngModel" [(ngModel)]="email" id="email" name="email" type="text"
+                                placeholder="Email" class="email-input" required
+                                [ngClass]="{'error-input': (!loginEmail.valid && loginEmail.touched) || (this.authenticationService.errorOccoursIn == 'email') || (this.authenticationService.errorOccoursIn == 'email-pw')}"
+                                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+                            <img class="email-icon" src="./assets/img/icons/mail.png" alt="E-mail symbol">
+                        </div>
+                        <div class="errorMessageContainer">
+                            @if (!loginEmail.valid && loginEmail.touched) {
+                            <p class="errorMessage">Please enter a valid Email</p>
+                            }
+                            @if (this.authenticationService.errorOccoursIn == 'email') {
+                            <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}
+                            </p>
+                            }
+                            @if (this.authenticationService.errorOccoursIn == 'email-pw') {
+                            <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}
+                            </p>
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <div class="password-input-container">
+                            <input #pw="ngModel" [(ngModel)]="password" id="pw" name="pw"
+                                [type]="isPasswordVisible? 'text' : 'password'" placeholder="Password"
+                                class="password-input" required
+                                [ngClass]="{'error-input': (!pw.valid && pw.touched)|| ( this.authenticationService.errorOccoursIn == 'pw') || (this.authenticationService.errorOccoursIn == 'email-pw') }">
+                            <div class="inputIconContainer" [ngClass]="{'pointer':pw.value!=''}"
+                                (click)="toggleIsPasswordVisible()">
+                                @if(pw.value == ""){
+                                <img class="inputIcon" src="./assets/img/icons/lock.png" alt="Lock symbol">
+                                }@else {
+                                @if (isPasswordVisible) {
+                                <img class="inputIcon" src="./assets/img/icons/visibility.svg" alt="visibility">
+                                }@else {
+                                <img class="inputIcon" src="./assets/img/icons/visibility_off.svg" alt="visibility_off">
+                                }
+                                }
+                            </div>
+
+                        </div>
+                        <div class="errorMessageContainer">
+                            @if(!pw.valid && pw.touched) {
+                            <p class="errorMessage">Please enter a valid Password</p>
+                            }
+                            @if (this.authenticationService.errorOccoursIn == 'pw') {
+                            <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}
+                            </p>
+                            }
+                            @if (this.authenticationService.errorOccoursIn == 'email-pw') {
+                            <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}
+                            </p>
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div class="password-input-container">
-                    <input class="password-input" type="text" placeholder="Password" #loginPW>
-                    <img class="password-icon" src="./assets/img/icons/lock.png" alt="Lock symbol">
+                <div class="button-container">
+                    <button class="login-btn" type="submit" value="Send">Log in</button>
+                    <button class="guest-login-btn"
+                        (click)="this.authenticationService.resetFirebaseError(); loginAsGuest()">Guest Log in</button>
                 </div>
-            </div>
-            <div class="button-container">
-                <button class="login-btn"
-                    (click)="this.authenticationService.resetFirebaseError();  login(loginEmail.value, loginPW.value)">Log
-                    in</button>
-                <button class="guest-login-btn"
-                    (click)="this.authenticationService.resetFirebaseError(); loginAsGuest()">Guest Log in</button>
-            </div>
+            </form>
         </div>
     </div>
 </section>
