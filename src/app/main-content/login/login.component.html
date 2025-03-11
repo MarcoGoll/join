@@ -1,8 +1,10 @@
 <header>
-    <img src="./../../../assets/img/Join-logo-blue.png" alt="Join Logo">
+    <img src="./assets/img/Join-logo-blue.png" alt="Join Logo">
     <div class="signup-container">
         <span>Not a Join user?</span>
-        <button class="signup-btn" (click)="authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign up</button>
+        <button class="signup-btn"
+            (click)="this.authenticationService.resetFirebaseError(); authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign
+            up</button>
     </div>
 </header>
 <section>
@@ -11,23 +13,46 @@
             <h1>Log in</h1>
             <div class="horizontal-seperator"></div>
         </div>
-        <div class="input-container">
-            <div class="email-input-container">
-                <input class="email-input" type="text" placeholder="Email" #loginEmail>
-                <img class="email-icon" src="./../../../assets/img/icons/mail.png" alt="E-mail symbol">
+        <div class="inputAndErrorContainer">
+            @if (this.authenticationService.errorOccoursIn == 'global') {
+            <div class="serverError">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#CCDAF5">
+                    <path
+                        d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                </svg>
+                <div class="errorMessageContainer">
+                    <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}</p>
+                </div>
             </div>
-            <div class="password-input-container">
-                <input class="password-input" type="text" placeholder="Password" #loginPW>
-                <img class="password-icon" src="./../../../assets/img/icons/lock.png" alt="Lock symbol">
+            }
+            <div class="input-container">
+                <div class="email-input-container">
+                    <input class="email-input" type="text" placeholder="Email" #loginEmail>
+                    <img class="email-icon" src="./assets/img/icons/mail.png" alt="E-mail symbol">
+                </div>
+                <div class="password-input-container">
+                    <input class="password-input" type="text" placeholder="Password" #loginPW>
+                    <img class="password-icon" src="./assets/img/icons/lock.png" alt="Lock symbol">
+                </div>
             </div>
-        </div>
-        <div class="button-container">
-            <button class="login-btn" (click)="login(loginEmail.value, loginPW.value)">Log in</button>
-            <button class="guest-login-btn" (click)="loginAsGuest()">Guest Log in</button>
+            <div class="button-container">
+                <button class="login-btn"
+                    (click)="this.authenticationService.resetFirebaseError();  login(loginEmail.value, loginPW.value)">Log
+                    in</button>
+                <button class="guest-login-btn"
+                    (click)="this.authenticationService.resetFirebaseError(); loginAsGuest()">Guest Log in</button>
+            </div>
         </div>
     </div>
 </section>
+<div class="signup-container-mobile">
+    <span>Not a Join user?</span>
+    <button class="signup-btn"
+        (click)="this.authenticationService.resetFirebaseError(); authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign
+        up</button>
+</div>
 <footer>
-        <a routerLink="privacyPolicy">Privacy Policy</a>
-        <a routerLink="legalNotice">Legal notice</a>
+    <a routerLink="privacyPolicy">Privacy Policy</a>
+    <a routerLink="legalNotice">Legal notice</a>
 </footer>

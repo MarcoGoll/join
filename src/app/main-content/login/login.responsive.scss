@@ -1,3 +1,60 @@
 @import "./../../../styles.scss";
 
+@media (max-width: 750px){
+    section{
+        height: calc(100vh - 200px - 276px);
+    }
+    .login-container{
+        margin: 10px;
+    }
+    .signup-container{
+        display: none;
+    }
+    .signup-container-mobile{
+        @include setFlex();
+        padding-bottom: 128px;
+        gap: 35px;
+        display: flex;
+    }
+}
+
+@media (max-width: 500px){
+    header{
+        >img{
+            width: 80px;
+        }
+    }
+    .title-container{
+        >h1{
+            font-size: 48px;
+        }
+    }
+    .email-input-container{
+        width: 80vw;
+    }
+    .email-input{
+        width: 100%;
+    }
+    .password-input-container{
+        width: 80vw;
+    }
+    .password-input{
+        width: 100%;
+    }
+    .button-container{
+        flex-direction: column;
+        gap: 16px;
+    }
+    .login-btn{
+        width: 177px;
+    }
+    footer{
+        >a{
+            font-size: 16px;
+            &:hover{
+                transform: scale(1);
+            }
+        }
+    }
+}
 

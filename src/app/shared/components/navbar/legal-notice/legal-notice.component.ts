@@ -6,7 +6,7 @@ import { NavbarComponent } from '../navbar.component';
   standalone: true,
   imports: [NavbarComponent],
   templateUrl: './legal-notice.component.html',
-  styleUrl: './legal-notice.component.scss'
+  styleUrls: ['./legal-notice.component.scss', './legal-notice.responsive.scss'],
 })
 export class LegalNoticeComponent {
 

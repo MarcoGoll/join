@@ -26,7 +26,12 @@ export class AppComponent implements OnInit {
   title = 'join';
 
   async ngOnInit() {
-    if (await this.authenticationService.checkLogin()) {
+    await this.authenticationService.checkLogin(); // bei Initial Load: wird ausgeführt
+    console.log(
+      'APP COMPONENT: isUserLoggedIn',
+      this.authenticationService.isUserLoggedIn
+    ); // bei Initial Load: wird nicht ausgeführt
+    if (this.authenticationService.isUserLoggedIn) {
       this.authenticationService.isLoginDisplayed = false;
       this.authenticationService.isSignupDisplayed = false;
       this.authenticationService.isMainContentDisplayed = true;

@@ -1,21 +1,22 @@
 @import "./../../../styles.scss";
 
 section{
-    @include setFlex($ai: flex-start);
+    @include setFlex();
     width: 100vw;
-    height: calc(100vh - 344px);
+    min-height: 500px;
+    height: calc(100vh - 200px - 100px);
     background-color: $clrBackground;
-    padding-top: 64px;
 }
 
 header{
     @include setFlex($jc: space-between, $ai: flex-start);
-    margin: 64px;
+    padding: 64px;
+    height: 200px;
 }
 
 footer{
     @include setFlex();
-    padding-bottom: 64px;
+    height: 100px;
     gap: 35px;
     >a{
         color: rgb(190, 189, 189);
@@ -42,6 +43,7 @@ footer{
 .horizontal-seperator{
     width: 120px;
     border-top: 3px solid $clrHighlight2;
+    margin-bottom: 30px;
 }
 
 .title-container{
@@ -56,6 +58,12 @@ footer{
 .signup-container{
     @include setFlex();
     gap: 35px; 
+}
+
+.signup-container-mobile{
+    @include setFlex();
+    gap: 35px;
+    display: none;
 }
 
 .signup-btn{
@@ -119,7 +127,6 @@ footer{
     @include setFlex();
     flex-direction: column;
     gap: 32px;
-    margin-top: 30px;
     margin-bottom: 48px;
 }
 
@@ -170,4 +177,37 @@ input::placeholder {
     position: absolute;
     right: 20px;
     top: 10px;
+}
+
+//======== Error =========================================
+
+.inputAndErrorContainer{
+    @include setFlex($fd: column, $jc:flex-start, $ai: stretch);
+}
+
+.serverError{
+    @include setFlex($jc: flex-start);
+    align-self: stretch;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: $clrErrorMessageBackground;
+    margin-bottom: 8px;
+
+    svg{
+        path{
+            fill: $clrErrorMessageText;
+        }
+    }
+
+}
+
+.errorMessageContainer {
+    @include setFlex($jc: flex-start);
+    height: 16px;
+}
+
+.errorMessage {
+    color: $clrErrorMessageText;
+    padding-left: 8px;
+    font-size: 12px;
 }

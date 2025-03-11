@@ -7,6 +7,7 @@ import {
   updateProfile,
   User,
   signOut,
+  beforeAuthStateChanged,
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
@@ -29,13 +30,17 @@ const auth = getAuth(app);
   providedIn: 'root',
 })
 export class AuthenticationService {
-  isLoginDisplayed: boolean = true;
+  isLoginDisplayed: boolean = false;
   isSignupDisplayed: boolean = false;
   isMainContentDisplayed: boolean = false;
   GUESTUSER: { email: string; pw: string } = {
     email: 'guest@user.de',
     pw: '123456',
   };
+
+  errorMessageForFailedFirebaseRequest: string = '';
+  errorOccoursIn: 'fullname' | 'email' | 'pw' | 'pwConfirm' | 'global' | null =
+    null;
 
   isUserLoggedIn: boolean = false;
   currentLoggedInUser: User | null = null;
@@ -51,15 +56,12 @@ export class AuthenticationService {
         // Signed up
         const user = userCredential.user;
         console.log('Erstellter User: ', user);
+        this.resetFirebaseError();
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Fehler beim Erstellen:', errorCode, errorMessage);
-        // ..
+        this.setFirebaseError(error);
       });
-    await this.logout();
   }
 
   // Sign in existing users
@@ -71,11 +73,10 @@ export class AuthenticationService {
         this.isLoginDisplayed = false;
         this.isSignupDisplayed = false;
         this.isMainContentDisplayed = true;
+        this.resetFirebaseError();
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Error durring Login: ', errorCode, errorMessage);
+        this.setFirebaseError(error);
       });
   }
 
@@ -88,12 +89,11 @@ export class AuthenticationService {
         this.isLoginDisplayed = true;
         this.isSignupDisplayed = false;
         this.isMainContentDisplayed = false;
+        this.resetFirebaseError();
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Error durring Logout: ', errorCode, errorMessage);
+        this.setFirebaseError(error);
       });
   }
 
@@ -106,11 +106,15 @@ export class AuthenticationService {
           this.currentLoggedInUser = user;
           this.isUserLoggedIn = true;
           resolve(true);
-          console.log('This User changed State: ', user);
+          console.log('SERVICE: This User is logged in: ', user);
+          console.log('SERVICE: isUserLoggedIn', this.isUserLoggedIn);
         } else {
           // User is signed out
           this.currentLoggedInUser = null;
           this.isUserLoggedIn = false;
+          console.log('SERVICE: No User is logged in');
+          console.log('SERVICE: isUserLoggedIn', this.isUserLoggedIn);
+          resolve(false);
         }
       });
     });
@@ -127,11 +131,38 @@ export class AuthenticationService {
         .then(() => {
           // Profile updated!
           console.log('Update Erfolgreich: ', user);
+          this.errorOccoursIn = null;
         })
         .catch((error) => {
           // An error occurred
-          console.error('Fehler beim Update: ', error);
+          this.setFirebaseError(error);
         });
     }
+  }
+
+  setFirebaseError(error: any) {
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        console.log('Email is already in use');
+        this.errorOccoursIn = 'email';
+        this.errorMessageForFailedFirebaseRequest = 'Email is already in use';
+        break;
+      case 'auth/weak-password':
+        console.log('Weak-password');
+        this.errorOccoursIn = 'pw';
+        this.errorMessageForFailedFirebaseRequest =
+          'Weak password. Use at least 6 characters';
+        break;
+      default:
+        console.log('error.code:', error.code);
+        this.errorOccoursIn = 'global';
+        this.errorMessageForFailedFirebaseRequest =
+          'Technical Error, please try again later';
+    }
+  }
+
+  resetFirebaseError() {
+    this.errorOccoursIn = null;
+    this.errorMessageForFailedFirebaseRequest = '';
   }
 }

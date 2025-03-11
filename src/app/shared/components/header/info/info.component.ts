@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './info.component.html',
-  styleUrl: './info.component.scss'
+  styleUrls: ['./info.component.scss', './info.responsive.scss'],
 })
 export class InfoComponent {
 
