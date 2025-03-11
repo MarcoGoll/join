@@ -1,5 +1,6 @@
 <section>
     <img class="logoContainer" src="./assets/img/join_logo.png" alt="Join Logo">
+    @if (this.authenticationService.isUserLoggedIn) {
     <nav>
         <a routerLink="" [ngClass]="{'isSelected':navbarService.isSummarySelected}"
             (click)="navbarService.setSelection('summary')">
@@ -30,6 +31,16 @@
             </div>
         </a>
     </nav>
+    }@else {
+    <nav>
+        <a routerLink="/login">
+            <div>
+                <img src="./assets/img/navbar/summary_icon.png" alt="">
+                <p>Login</p>
+            </div>
+        </a>
+    </nav>
+    }
     <div class="legalContainer">
         <div class="legalLinkContainer" [ngClass]="{'isSelected':navbarService.isPrivacyPolicySelected}"
             (click)="navbarService.setSelection('privacyPolicy')">

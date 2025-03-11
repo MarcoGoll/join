@@ -2,8 +2,7 @@
     <img src="./assets/img/Join-logo-blue.png" alt="Join Logo">
     <div class="signup-container">
         <span>Not a Join user?</span>
-        <button class="signup-btn"
-            (click)="this.authenticationService.resetFirebaseError(); authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign
+        <button class="signup-btn" routerLink="/signUp" (click)="this.authenticationService.resetFirebaseError()">Sign
             up</button>
     </div>
 </header>
@@ -87,7 +86,7 @@
                 </div>
                 <div class="button-container">
                     <button class="login-btn" type="submit" value="Send">Log in</button>
-                    <button class="guest-login-btn"
+                    <button class="guest-login-btn" type="button"
                         (click)="this.authenticationService.resetFirebaseError(); loginAsGuest()">Guest Log in</button>
                 </div>
             </form>
@@ -96,11 +95,10 @@
 </section>
 <div class="signup-container-mobile">
     <span>Not a Join user?</span>
-    <button class="signup-btn"
-        (click)="this.authenticationService.resetFirebaseError(); authenticationService.isSignupDisplayed=true; authenticationService.isLoginDisplayed=false; authenticationService.isMainContentDisplayed=false ">Sign
-        up</button>
+    <a class="signup-btn" routerLink="/signUp" (click)="this.authenticationService.resetFirebaseError()">Sign
+        up</a>
 </div>
 <footer>
-    <a routerLink="privacyPolicy">Privacy Policy</a>
-    <a routerLink="legalNotice">Legal notice</a>
+    <a routerLink="/privacyPolicy">Privacy Policy</a>
+    <a routerLink="/legalNotice">Legal notice</a>
 </footer>

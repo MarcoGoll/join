@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TasksService } from '../../services/firebase/tasks.service';
 import { NavbarService } from '../../services/navbar.service';
+import { AuthenticationService } from '../../services/firebase/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,4 +15,5 @@ import { NavbarService } from '../../services/navbar.service';
 export class NavbarComponent {
   taskService = inject(TasksService);
   navbarService = inject(NavbarService);
+  authenticationService = inject(AuthenticationService);
 }
