@@ -13,4 +13,17 @@ export class HeaderComponent {
   authenticationService = inject(AuthenticationService);
 
   navVisible = false;
+
+  getShortcut(fullname: string | null | undefined) {
+    let shortcut: string = '';
+    if (fullname != null && fullname != undefined) {
+      let words = fullname.split(' ');
+      for (let word of words) {
+        if (word.length > 0) {
+          shortcut += word.charAt(0).toUpperCase();
+        }
+      }
+    }
+    return shortcut;
+  }
 }

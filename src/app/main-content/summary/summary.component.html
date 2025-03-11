@@ -4,79 +4,87 @@
         <span class="separatorVertical">|</span>
         <div class="subtitle">Key Metrics at a Glance</div>
     </div>
-    
+
     <div class="main-content-wrapper">
         <div class="metrics-column">
             <div class="metrics-section">
-                <div class="top-cards-container"> 
-                    
-                    <div class="metric-card">
-                        <div class="icon-container">
-                            <img src="./assets/img/icons/black-circle-pen.svg" alt="To-do icon">
-                            <img class="hover-icon" src="./assets/img/icons/white-circle-pen.svg" alt="To-do icon"> 
+                <div class="top-cards-container">
+                    <a class="metrics-link" routerLink="/board" (click)="navbarService.setSelection('board')">
+                        <div class="metric-card">
+                            <div class="icon-container">
+                                <img src="./assets/img/icons/black-circle-pen.svg" alt="To-do icon">
+                                <img class="hover-icon" src="./assets/img/icons/white-circle-pen.svg" alt="To-do icon">
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-value">{{this.taskService.getAmountOfTasksByStatus('toDo')}}</span>
+                                <span class="metric-label nowrap">To-do</span>
+                            </div>
                         </div>
-                        <div class="metric-content">
-                            <span class="metric-value">1</span>
-                            <span class="metric-label">To-do</span>
+                    </a>
+                    <a class="metrics-link" routerLink="/board" (click)="navbarService.setSelection('board')">
+                        <div class="metric-card">
+                            <div class="icon-container">
+                                <img src="./assets/img/icons/black-circle-check.svg" alt="Done icon">
+                                <img class="hover-icon" src="./assets/img/icons/white-circle-check.svg" alt="Done icon">
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-value">{{this.taskService.getAmountOfTasksByStatus('done')}}</span>
+                                <span class="metric-label">Done</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="metric-card">
-                        <div class="icon-container">
-                            <img src="./assets/img/icons/black-circle-check.svg" alt="Done icon">
-                            <img class="hover-icon" src="./assets/img/icons/white-circle-check.svg" alt="Done icon">
-                        </div>
-                        <div class="metric-content">
-                            <span class="metric-value">1</span>
-                            <span class="metric-label">Done</span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                
-                <div class="metric-card urgent-card">
-                    <div class="urgent-left-section">
-                        <div class="icon-container urgent-icon">
-                            <img src="./assets/img/icons/red-circle-urgent.svg" alt="Urgent icon">
+                <a routerLink="/board" class="metrics-link" (click)="navbarService.setSelection('board')">
+                    <div class="metric-card urgent-card">
+                        <div class="urgent-left-section">
+                            <div class="icon-container urgent-icon">
+                                <img src="./assets/img/icons/red-circle-urgent.svg" alt="Urgent icon">
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-value">{{this.taskService.getAmountOfTasksByPrio()}}</span>
+                                <span class="metric-label">Urgent</span>
+                            </div>
                         </div>
-                        <div class="metric-content">
-                            <span class="metric-value">1</span>
-                            <span class="metric-label">Urgent</span>
+
+                        <div class="vertical-separator"></div>
+
+                        <div class="urgent-right-section">
+                            <span class="deadline-date">October 16, 2026</span>
+                            <span class="deadline-label">Upcoming Deadline</span>
                         </div>
                     </div>
-                    
-                    <div class="vertical-separator"></div>
-                    
-                    <div class="urgent-right-section">
-                        <span class="deadline-date">October 16, 2026</span>
-                        <span class="deadline-label">Upcoming Deadline</span>
-                    </div>
-                </div>
-                
+                </a>
                 <div class="small-cards-container">
-                    <div class="metric-card small-card">
-                        <div class="metric-content centered-content">
-                            <span class="metric-value">5</span>
-                            <span class="metric-label">Tasks in Board</span>
+                    <a routerLink="/board" class="metrics-link" (click)="navbarService.setSelection('board')">
+                        <div class="metric-card small-card">
+                            <div class="metric-content centered-content">
+                                <span class="metric-value">{{this.taskService.getAmountOfAllTasks()}}</span>
+                                <span class="metric-label">Tasks in<br> Board</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="metric-card small-card">
-                        <div class="metric-content centered-content">
-                            <span class="metric-value">2</span>
-                            <span class="metric-label">Tasks in Progress</span>
+                    </a>
+                    <a routerLink="/board" class="metrics-link" (click)="navbarService.setSelection('board')">
+                        <div class="metric-card small-card">
+                            <div class="metric-content centered-content">
+                                <span
+                                    class="metric-value">{{this.taskService.getAmountOfTasksByStatus('inProgress')}}</span>
+                                <span class="metric-label">Tasks in<br> Progress</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="metric-card small-card">
-                        <div class="metric-content centered-content">
-                            <span class="metric-value">2</span>
-                            <span class="metric-label">Awaiting Feedback</span>
+                    </a>
+                    <a routerLink="/board" class="metrics-link" (click)="navbarService.setSelection('board')">
+                        <div class="metric-card small-card">
+                            <div class="metric-content centered-content">
+                                <span
+                                    class="metric-value">{{this.taskService.getAmountOfTasksByStatus('awaitFeedback')}}</span>
+                                <span class="metric-label">Awaiting<br> Feedback</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="greeting-column">
             <div class="greeting-section">
                 <h2 class="greeting-title">Good morning,</h2>

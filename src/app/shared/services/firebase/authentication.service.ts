@@ -11,6 +11,8 @@ import {
 } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { NavbarService } from '../navbar.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBmPjsLf9R76U3csMNtLgAhffJOZeh9Rvc',
@@ -30,17 +32,25 @@ const auth = getAuth(app);
   providedIn: 'root',
 })
 export class AuthenticationService {
-  isLoginDisplayed: boolean = false;
-  isSignupDisplayed: boolean = false;
-  isMainContentDisplayed: boolean = false;
+  router = inject(Router);
+  navbarService = inject(NavbarService);
+
+  isLoginSignUpView: boolean = true;
+
   GUESTUSER: { email: string; pw: string } = {
     email: 'guest@user.de',
     pw: '123456',
   };
 
   errorMessageForFailedFirebaseRequest: string = '';
-  errorOccoursIn: 'fullname' | 'email' | 'pw' | 'pwConfirm' | 'global' | null =
-    null;
+  errorOccoursIn:
+    | 'fullname'
+    | 'email'
+    | 'pw'
+    | 'pwConfirm'
+    | 'email-pw'
+    | 'global'
+    | null = null;
 
   isUserLoggedIn: boolean = false;
   currentLoggedInUser: User | null = null;
@@ -70,9 +80,9 @@ export class AuthenticationService {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        this.isLoginDisplayed = false;
-        this.isSignupDisplayed = false;
-        this.isMainContentDisplayed = true;
+        this.router.navigate(['/summary']);
+        this.navbarService.setSelection('summary');
+        this.isLoginSignUpView = false;
         this.resetFirebaseError();
       })
       .catch((error) => {
@@ -86,9 +96,8 @@ export class AuthenticationService {
       .then(() => {
         // Signed out
         console.log('User was logged out right now');
-        this.isLoginDisplayed = true;
-        this.isSignupDisplayed = false;
-        this.isMainContentDisplayed = false;
+        this.router.navigate(['/login']);
+        this.isLoginSignUpView = true;
         this.resetFirebaseError();
         // ...
       })
@@ -153,6 +162,12 @@ export class AuthenticationService {
         this.errorMessageForFailedFirebaseRequest =
           'Weak password. Use at least 6 characters';
         break;
+      case 'auth/invalid-credential':
+        this.errorOccoursIn = 'email-pw';
+        this.errorMessageForFailedFirebaseRequest =
+          'Check your email and password. Please try again.';
+        break;
+
       default:
         console.log('error.code:', error.code);
         this.errorOccoursIn = 'global';

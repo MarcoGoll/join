@@ -111,7 +111,14 @@
     width: 100%;
 }
 
+.metrics-link{
+    flex: 1;
+    padding: 0;
+    height: 140px;
+}
+
 .metric-card {
+    height: 100%;
     background: white;
     border-radius: 30px;
     padding: 24px;
@@ -121,7 +128,6 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     flex: 1;
     width: 100%;
-    margin-bottom: 24px;
     transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
     cursor: pointer;
     text-align: center; 
@@ -159,6 +165,7 @@
 .top-cards-container .metric-card {
     margin-bottom: 0;
     flex: 1; 
+
 }
 
 .icon-container {
@@ -214,7 +221,7 @@
 .urgent-card {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     position: relative;
     padding: 24px 32px;
 }
@@ -222,6 +229,8 @@
 .urgent-left-section {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex: 1;
     
     .icon-container {
         width: 60px;
@@ -259,19 +268,19 @@
 }
 
 .vertical-separator {
-    height: calc(100% - 25px); 
+    height: 100px; 
     width: 2px;
     background-color: $clrBaseGray;
-    margin: 0 auto;
-
 }
 
 .urgent-right-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    
+    justify-content: center;
+    // text-align: center;
+    flex: 1;
+
     .deadline-date {
         font-size: $fSSec;
         font-weight: 700;
@@ -312,7 +321,6 @@
     display: flex;
     gap: 24px;
     width: 100%;
-    margin-bottom: 16px;
 }
 
 .small-card {
@@ -339,4 +347,8 @@
             text-align: center;
         }
     }
+}
+
+.nowrap{
+    white-space: nowrap;
 }

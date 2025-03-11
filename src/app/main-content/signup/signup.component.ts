@@ -3,11 +3,12 @@ import { AuthenticationService } from '../../shared/services/firebase/authentica
 import { FormsModule, NgForm } from '@angular/forms';
 import { User } from '../../shared/interfaces/user';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
@@ -53,9 +54,6 @@ export class SignupComponent {
           await this.authenticationService.updateUser(this.newUser.fullName);
         }
         if (this.authenticationService.errorOccoursIn == null) {
-          this.authenticationService.isSignupDisplayed = false;
-          this.authenticationService.isLoginDisplayed = true;
-          this.authenticationService.isMainContentDisplayed = false;
           this.isPWDifferent = false;
           await this.authenticationService.logout();
         }

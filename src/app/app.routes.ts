@@ -7,14 +7,21 @@ import { InfoComponent } from './shared/components/header/info/info.component';
 import { BoardComponent } from './main-content/board/board.component';
 import { AddTaskComponent } from './main-content/add-task/add-task.component';
 import { SummaryComponent } from './main-content/summary/summary.component';
+import { authGuard } from './auth.guard';
+import { LoginComponent } from './main-content/login/login.component';
+import { SignupComponent } from './main-content/signup/signup.component';
 
 export const routes: Routes = [
-  // { path: '', component: MainContentComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signUp', component: SignupComponent },
   { path: 'legalNotice', component: LegalNoticeComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },
-  { path: 'contact', component: ContactsComponent },
-  { path: 'board', component: BoardComponent },
-  { path: 'addTask', component: AddTaskComponent },
-  { path: 'info', component: InfoComponent },
-  { path: '', component: SummaryComponent },
+  { path: 'contact', component: ContactsComponent, canActivate: [authGuard] },
+  { path: 'board', component: BoardComponent, canActivate: [authGuard] },
+  { path: 'addTask', component: AddTaskComponent, canActivate: [authGuard] },
+  { path: 'info', component: InfoComponent, canActivate: [authGuard] },
+  { path: '', component: SummaryComponent, canActivate: [authGuard] },
+
+  // Wildcard route für alle unbekannten Routen
+  { path: '**', redirectTo: '/' },
 ];

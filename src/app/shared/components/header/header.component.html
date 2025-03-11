@@ -5,6 +5,7 @@
             <img class="logo" src="./assets/img/icons/header_logo.svg" alt="Info button">
         </div>
     </a>
+    @if (this.authenticationService.isUserLoggedIn) {
     <div>
         <div>
             <a class="infoLink" routerLink="info">
@@ -14,15 +15,16 @@
             </a>
         </div>
         <div (click)="navVisible = !navVisible" class="profil">
-            <span>SM</span> 
+            <span>{{getShortcut(authenticationService.currentLoggedInUser?.displayName)}}</span>
         </div>
     </div>
-    <nav class="profil-btn-dropdown" [class.visible]="navVisible" (click)="navVisible = !navVisible">  
+    <nav class="profil-btn-dropdown" [class.visible]="navVisible" (click)="navVisible = !navVisible">
         <div class="dropdown-menu">
             <a class="dropdown-menu-help" routerLink="info">Help</a>
             <a routerLink="legalNotice">Legal Notice</a>
             <a routerLink="privacyPolicy">Privacy Policy</a>
-            <a routerLink="" (click)="authenticationService.logout()">Log out</a> 
+            <a routerLink="" (click)="authenticationService.logout()">Log out</a>
         </div>
     </nav>
-</header>   
+    }
+</header>
