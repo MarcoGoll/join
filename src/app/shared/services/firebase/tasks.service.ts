@@ -424,6 +424,32 @@ export class TasksService {
     return this.tasksAll;
   }
 
+  getAmountOfTasksByStatus(
+    status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done'
+  ) {
+    let amount = 0;
+    this.getAllTasks().forEach((task) => {
+      if (task.status === status) {
+        amount++;
+      }
+    });
+    return amount;
+  }
+
+  getAmountOfTasksByPrio() {
+    let amount = 0;
+    this.getAllTasks().forEach((task) => {
+      if (task.prio === 'Urgent') {
+        amount++;
+      }
+    });
+    return amount;
+  }
+
+  getAmountOfAllTasks() {
+    return this.getAllTasks().length;
+  }
+
   /**
    * Creates a Task object from the given data, ensuring all fields have default values. With an specific ID.
    *
