@@ -1,5 +1,10 @@
 <section id="signupSection">
   <div class="signupSectionContent contentLimit">
+    <div class="confirmationMessageContainer" [ngClass]="{'d_none':!displayConfirmation}">
+      <div class="confirmationMessage">
+        <p>You Signed Up successfully</p>
+      </div>
+    </div>
     <div class="logoContainer">
       <img src="./assets/img/Join-logo-blue.png" alt="Join Logo">
     </div>
@@ -131,8 +136,10 @@
           Sign up
         </button>
       </form>
-
     </div>
-
+    <div class="footerContainer">
+      <a routerLink="/privacyPolicy">Privacy Policy</a>
+      <a routerLink="/legalNotice">Legal notice</a>
+    </div>
   </div>
 </section>

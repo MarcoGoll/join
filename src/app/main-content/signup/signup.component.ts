@@ -19,6 +19,7 @@ export class SignupComponent {
   isPasswordVisible: boolean = false;
   isPasswordConfirmVisible: boolean = false;
   isPWDifferent = false;
+  displayConfirmation = false;
 
   newUser: User = {
     firstName: '',
@@ -55,7 +56,10 @@ export class SignupComponent {
         }
         if (this.authenticationService.errorOccoursIn == null) {
           this.isPWDifferent = false;
-          await this.authenticationService.logout();
+          this.displayConfirmation = true;
+          setTimeout(async () => {
+            await this.authenticationService.logout();
+          }, 1025);
         }
       } else {
       }
