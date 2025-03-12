@@ -82,7 +82,7 @@
     }
 
     .metric-card {
-        padding: 16px;
+        padding: 16px; 
     }
 }
 
@@ -177,4 +177,18 @@
     }
 
     
+}
+
+//greeting page
+
+@media (max-width: 900px) {
+    .mobile-greeting-screen {
+        padding-top: 72px; 
+    }
+}
+
+@media (max-width: 600px) {
+    .mobile-greeting-screen {
+        padding-bottom: 60px; 
+    }
 }

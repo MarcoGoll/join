@@ -1,3 +1,10 @@
+<div class="mobile-greeting-screen" *ngIf="showGreeting" [class.fade-out]="greetingFadeOut">
+    <div class="greeting-content">
+        <h2 class="greeting-title">Good morning,</h2>
+        <h2 class="user-name">{{authenticationService.currentLoggedInUser?.displayName}}</h2>
+    </div>
+</div>
+
 <div class="summary-container">
     <div class="header-section">
         <h1>Join 360</h1>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../shared/services/firebase/authentication.service';
 import { TasksService } from '../../shared/services/firebase/tasks.service';
 import { RouterLink } from '@angular/router';
@@ -16,8 +16,21 @@ import { NavbarService } from '../../shared/services/navbar.service';
     'summary.landscape.scss',
   ],
 })
-export class SummaryComponent {
+export class SummaryComponent implements OnInit {
   authenticationService = inject(AuthenticationService);
   taskService = inject(TasksService);
   navbarService = inject(NavbarService);
+
+  showGreeting: boolean = true;
+  greetingFadeOut: boolean = false;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.greetingFadeOut = true;
+      
+      setTimeout(() => {
+        this.showGreeting = false;
+      }, 1000);
+    }, 2000);
+  }
 }

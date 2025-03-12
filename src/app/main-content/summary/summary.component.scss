@@ -270,7 +270,7 @@
 .vertical-separator {
     height: 100px; 
     width: 2px;
-    background-color: $clrBaseGray;
+    background-color: $clrBaseGray; 
 }
 
 .urgent-right-section {
@@ -352,3 +352,54 @@
 .nowrap{
     white-space: nowrap;
 }
+
+// Greeting Page
+
+.mobile-greeting-screen {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0; 
+    background-color: white;
+    z-index: 98; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    padding-top: 96px;
+    
+    &.fade-out {
+        opacity: 0;
+    }
+}
+
+
+.greeting-content {
+    text-align: center;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .greeting-title {
+        font-size: $fsH2;
+        font-weight: 500;
+        color: $clrBaseDark;
+        margin: 0;
+        margin-bottom: 8px;
+    }
+    
+    .user-name {
+        font-size: $fsH6;
+        font-weight: 700;
+        color: $clrHighlight2;
+        margin: 0;
+    }
+}
+
+
+
