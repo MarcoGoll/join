@@ -2,28 +2,28 @@
     <img class="logoContainer" src="./assets/img/join_logo.png" alt="Join Logo">
     @if (this.authenticationService.isUserLoggedIn) {
     <nav>
-        <a routerLink="" [ngClass]="{'isSelected':navbarService.isSummarySelected}"
+        <a routerLink="/summary" [ngClass]="{'isSelected':navbarService.isSummarySelected}"
             (click)="navbarService.setSelection('summary')">
             <div>
                 <img src="./assets/img/navbar/summary_icon.png" alt="">
                 <p>Summary</p>
             </div>
         </a>
-        <a routerLink="addTask" [ngClass]="{'isSelected':navbarService.isAddTaskSelected}"
+        <a routerLink="/addTask" [ngClass]="{'isSelected':navbarService.isAddTaskSelected}"
             (click)="navbarService.setSelection('addTask'); taskService.setStatusToBeUsed('toDo')">
             <div>
                 <img src="./assets/img/navbar/add_task_icon.png" alt="">
                 <p>Add Task</p>
             </div>
         </a>
-        <a routerLink="board" [ngClass]="{'isSelected':navbarService.isBoardSelected}"
+        <a routerLink="/board" [ngClass]="{'isSelected':navbarService.isBoardSelected}"
             (click)="navbarService.setSelection('board')">
             <div>
                 <img src="./assets/img/navbar/board_icon.png" alt="">
                 <p>Board</p>
             </div>
         </a>
-        <a routerLink="contact" [ngClass]="{'isSelected':navbarService.isContactSelected}"
+        <a routerLink="/contact" [ngClass]="{'isSelected':navbarService.isContactSelected}"
             (click)="navbarService.setSelection('contact')">
             <div>
                 <img src="./assets/img/navbar/contacts_icon.png" alt="">
@@ -33,7 +33,7 @@
     </nav>
     }@else {
     <nav>
-        <a routerLink="/login">
+        <a routerLink="/">
             <div>
                 <img src="./assets/img/navbar/summary_icon.png" alt="">
                 <p>Login</p>

@@ -98,7 +98,7 @@ export class AuthenticationService {
       .then(() => {
         // Signed out
         console.log('User was logged out right now');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         this.isLoginSignUpView = true;
         this.resetFirebaseError();
         // ...

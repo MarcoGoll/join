@@ -12,7 +12,7 @@ import { LoginComponent } from './main-content/login/login.component';
 import { SignupComponent } from './main-content/signup/signup.component';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'signUp', component: SignupComponent },
   { path: 'legalNotice', component: LegalNoticeComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },
@@ -20,7 +20,7 @@ export const routes: Routes = [
   { path: 'board', component: BoardComponent, canActivate: [authGuard] },
   { path: 'addTask', component: AddTaskComponent, canActivate: [authGuard] },
   { path: 'info', component: InfoComponent, canActivate: [authGuard] },
-  { path: '', component: SummaryComponent, canActivate: [authGuard] },
+  { path: 'summary', component: SummaryComponent, canActivate: [authGuard] },
 
   // Wildcard route für alle unbekannten Routen
   { path: '**', redirectTo: '/' },

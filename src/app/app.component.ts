@@ -35,10 +35,11 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-        if (event.url === '/board') {
-          // Hier kannst du beliebige Aktionen ausführen
-        }
         switch (event.url) {
+          case '/':
+            console.log('Startseite wurde angeklickt! Navigation startet...');
+            this.authenticationService.isLoginSignUpView = true;
+            break;
           case '/login':
             console.log('Login wurde angeklickt! Navigation startet...');
             this.authenticationService.isLoginSignUpView = true;

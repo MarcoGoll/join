@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../shared/services/firebase/authentication.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
+import { NavbarService } from '../../shared/services/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,9 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss', './login.responsive.scss'],
 })
 export class LoginComponent {
+  router = inject(Router);
   authenticationService = inject(AuthenticationService);
+  navbarService = inject(NavbarService);
 
   email: string = '';
   password: string = '';
@@ -20,7 +23,17 @@ export class LoginComponent {
   showAnimation: boolean = false;
 
   constructor() {
+    this.checklogin();
     this.checkFirstVisit();
+    console.log('Loginview: ', this.authenticationService.isLoginSignUpView);
+  }
+
+  async checklogin() {
+    await this.authenticationService.checkLogin();
+    if (this.authenticationService.isUserLoggedIn) {
+      this.router.navigate(['/summary']);
+      this.navbarService.setSelection('summary');
+    }
   }
 
   checkFirstVisit() {
