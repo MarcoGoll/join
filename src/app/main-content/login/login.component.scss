@@ -235,16 +235,10 @@ input::placeholder {
 //=====================================================================
 
 .logo-animation-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: shrinkAndMove 2s ease-in-out forwards;
+    position: fixed; /* Bleibt über dem statischen Logo */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .logo-animation-overlay{
@@ -273,14 +267,10 @@ input::placeholder {
 
 @keyframes shrinkAndMove {
     0% {
-        transform: translate(0, 0) scale(3);
-    }
-    50% {
-        transform: translate(-40vw, -40vh) scale(1);
+        transform: translate(-50%, -50%) scale(3); /* Start in der Mitte */
     }
     100% {
-        transform: translate(-50vw, -50vh) scale(1);
-       
+        transform: translate(calc(-50vw + 50%), calc(-50vh + 50%)) scale(1); /* Exakte Bewegung zur Endposition */
     }
 }
 
