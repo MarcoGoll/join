@@ -4,7 +4,7 @@
 @media (max-width: 1200px) {
     .summary-container {
         margin-top: 96px;
-        padding-top: 32px;
+        padding-top: 48px;
         padding-left: 40px;
         padding-right: 40px;
         max-width: 100%;
@@ -17,6 +17,7 @@
         align-items: flex-start;
         gap: 8px;
         margin-bottom: 32px;
+        margin-top: 80px;
 
         h1 {
             font-size: 36px; 
@@ -66,7 +67,7 @@
     }
 
     .header-section {
-        margin-bottom: 24px;
+        margin-bottom: 32px;
     }
 
     .metrics-section {
@@ -164,14 +165,14 @@
 
     .header-section {
         h1 {
-            font-size: 24px;
+            font-size: 24px; 
         }
 
         .subtitle {
             font-size: 18px;
         }
 
-        .subtitle:after {
+        .subtitle:after { 
             width: 60px; 
         }
     }

@@ -27,7 +27,7 @@ export class SummaryComponent implements OnInit {
 
   constructor() {
     this.checkScreenWidth();
-    window.addEventListener('resize', this.checkScreenWidth.bind(this));
+    window.addEventListener('resize', this.checkScreenWidth.bind(this));  
   }
 
   ngOnInit() {

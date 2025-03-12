@@ -317,7 +317,7 @@
 }
 
 
-.small-cards-container {
+.small-cards-container { 
     display: flex;
     gap: 24px;
     width: 100%;
@@ -370,7 +370,7 @@
     align-items: center;
     padding: 20px;
     opacity: 1;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out; 
     
     &.fade-out {
         opacity: 0;
