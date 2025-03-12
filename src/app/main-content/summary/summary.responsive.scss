@@ -143,7 +143,7 @@
     }
 
     .urgent-card {
-        flex-direction: column;
+        flex-direction: column; 
         gap: 12px;
         padding: 16px;
     }
@@ -183,12 +183,24 @@
 
 @media (max-width: 900px) {
     .mobile-greeting-screen {
-        padding-top: 72px; 
+        top: 72px; 
+        padding-top: 0;
     }
 }
 
-@media (max-width: 600px) {
+@media (orientation: landscape) and (max-height: 600px) {
     .mobile-greeting-screen {
-        padding-bottom: 60px; 
+        top: 60px; 
+        bottom: 70px; 
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 450px) {
+    .mobile-greeting-screen {
+        top: 50px;
+        bottom: 60px;
+        padding-top: 0;
     }
 }

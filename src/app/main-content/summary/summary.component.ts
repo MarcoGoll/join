@@ -26,7 +26,7 @@ export class SummaryComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.greetingFadeOut = true;
+      this.greetingFadeOut = true; 
       
       setTimeout(() => {
         this.showGreeting = false;

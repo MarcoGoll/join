@@ -344,7 +344,7 @@
         
         .metric-label {
             font-size: $fSTer;
-            text-align: center;
+            text-align: center; 
         }
     }
 }
@@ -355,12 +355,13 @@
 
 // Greeting Page
 
+
 .mobile-greeting-screen {
     position: fixed;
-    top: 0; 
+    top: 96px; 
     left: 0;
     right: 0;
-    bottom: 0; 
+    bottom: 62px; 
     background-color: white;
     z-index: 98; 
     display: flex;
@@ -370,7 +371,6 @@
     padding: 20px;
     opacity: 1;
     transition: opacity 1s ease-in-out;
-    padding-top: 96px;
     
     &.fade-out {
         opacity: 0;
