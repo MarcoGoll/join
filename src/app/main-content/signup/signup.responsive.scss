@@ -1,0 +1,36 @@
+@import "./../../../styles.scss";
+
+// @media (max-width: 750px){
+
+// }
+@media (max-width: 1023px) {
+    h1{
+        font-size: $fsMobileH1;
+    }
+    
+    .signUpContainer{
+        padding: 44px 44px;
+    }
+
+    .backLink{
+        top: 70px;
+        left: 48px;
+    }
+}
+
+@media (max-width: 500px){
+    .signUpContainer{
+        padding: 44px 16px;
+    }
+
+    #signupBTN{
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .backLink{
+        top: 30px;
+        left: 16px;
+    }
+    
+}

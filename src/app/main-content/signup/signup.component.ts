@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss',
+  styleUrls: ['./signup.component.scss', 'signup.responsive.scss'],
 })
 export class SignupComponent {
   authenticationService = inject(AuthenticationService);

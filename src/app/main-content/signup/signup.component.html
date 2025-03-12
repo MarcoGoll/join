@@ -1,10 +1,12 @@
-<div class="contorlBtns-DELETETHIS">
-  <button routerLink="/login">login</button>
-</div>
 <section id="signupSection">
   <div class="signupSectionContent contentLimit">
+    <div class="logoContainer">
+      <img src="./assets/img/Join-logo-blue.png" alt="Join Logo">
+    </div>
     <div class="signUpContainer">
+      <a class="backLink" routerLink="/login"><img src="./assets/img/icons/arrow-left-line.svg" alt="back"></a>
       <h1>Sign up</h1>
+      <div class="horizontal-seperator"></div>
       <form id="signUpForm" class="signUpForm" (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
         @if (this.authenticationService.errorOccoursIn == 'global') {
         <div class="serverError">
