@@ -235,13 +235,14 @@ input::placeholder {
 //=====================================================================
 
 .logo-animation-container {
-    position: fixed; /* Bleibt über dem statischen Logo */
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation: shrinkAndMove 2s ease-in-out forwards; /* Die Animation bleibt nach Abschluss */
 }
 
-.logo-animation-overlay{
+.logo-animation-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -249,39 +250,38 @@ input::placeholder {
     bottom: 0;
     z-index: 1000;
     background-color: $clrBaseBright;
-    animation: opacityAnimation 2s ease-in-out forwards;
+    animation: opacityAnimation 2s  forwards ease-in-out;
 }
 
 .animated-logo {
-    width: 200px;/* Startgröße */
+    width: 200px;  /* Startgröße */
     height: auto;
+    position: relative;
+    z-index: 1100; /* Höher als 1000 von .logo-animation-overlay */
 }
 
 .static-logo {
     height: 100%;
 }
 
-.invisible{
+.invisible {
     visibility: hidden;
 }
 
 @keyframes shrinkAndMove {
     0% {
-        transform: translate(-50%, -50%) scale(3); /* Start in der Mitte */
+        transform: translate(-50%, -50%) scale(1);
     }
     100% {
-        transform: translate(calc(-50vw + 50%), calc(-50vh + 50%)) scale(1); /* Exakte Bewegung zur Endposition */
+        transform: translate(calc(-60.5vw + 50%), calc(-67.5vh + 50%)) scale(0.41);
     }
 }
 
 @keyframes opacityAnimation {
     0% {
-        opacity: 1;
-    }
-    25% {
-        opacity: 1;
+        background-color: $clrBaseBright;
     }
     100% {
-        opacity: 0;
+        background-color: rgba(255, 255, 255, 0); /* Oder transparent */
     }
 }
