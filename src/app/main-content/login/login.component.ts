@@ -17,22 +17,21 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   isPasswordVisible: boolean = false;
-  showAnimation: boolean = true;
+  showAnimation: boolean = false;
 
   constructor() {
     this.checkFirstVisit();
   }
 
   checkFirstVisit() {
-    if (!localStorage.getItem('visited')) {
+    if (!this.authenticationService.isLoginAnnimationPlayedOnce) {
       this.showAnimation = true;
       setTimeout(() => {
         this.showAnimation = false;
-        localStorage.setItem('visited', 'true');
+        this.authenticationService.isLoginAnnimationPlayedOnce = true;
       }, 2000);
     }
   }
-
 
   login(email: string, pw: string) {
     this.authenticationService.login(email, pw);

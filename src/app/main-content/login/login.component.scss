@@ -9,9 +9,9 @@ section{
 }
 
 header{
-    @include setFlex($jc: flex-end, $ai: flex-start);
-    padding: 48px;
-    height: 200px;
+    @include setFlex($jc: space-between, $ai: flex-start);
+    padding: 24px;
+    height: 150px;
 }
 
 footer{
@@ -240,38 +240,58 @@ input::placeholder {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: shrinkAndMove 2s ease-in-out forwards;
+}
+
+.logo-animation-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1000;
-    animation: shrinkAndMove 2s forwards ease-in-out;
+    background-color: $clrBaseBright;
+    animation: opacityAnimation 2s ease-in-out forwards;
 }
 
 .animated-logo {
-    width: 200px; /* Startgröße */
+    width: 200px;/* Startgröße */
     height: auto;
 }
 
 .static-logo {
-    width: 100px; /* Endgröße */
-    height: auto;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    // margin: 24px;
+    height: 100%;
+}
+
+.invisible{
+    visibility: hidden;
 }
 
 @keyframes shrinkAndMove {
     0% {
         transform: translate(0, 0) scale(3);
-        opacity: 1;
     }
-    80% {
+    50% {
         transform: translate(-40vw, -40vh) scale(1);
     }
     100% {
         transform: translate(-50vw, -50vh) scale(1);
+       
+    }
+}
+
+@keyframes opacityAnimation {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
         opacity: 0;
     }
 }

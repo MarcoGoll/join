@@ -36,6 +36,8 @@ export class AuthenticationService {
   navbarService = inject(NavbarService);
 
   isLoginSignUpView: boolean = true;
+  isSummaryAnnimationPlayedOnce: boolean = false;
+  isLoginAnnimationPlayedOnce: boolean = false;
 
   GUESTUSER: { email: string; pw: string } = {
     email: 'guest@user.de',

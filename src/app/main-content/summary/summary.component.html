@@ -1,4 +1,5 @@
-<div class="mobile-greeting-screen" *ngIf="showGreeting" [class.fade-out]="greetingFadeOut">
+<div class="mobile-greeting-screen" *ngIf="showGreeting" [class.fade-out]="greetingFadeOut"
+    [ngClass]="{'d_none':!isSmallScreen || this.authenticationService.isSummaryAnnimationPlayedOnce}">
     <div class="greeting-content">
         <h2 class="greeting-title">Good morning,</h2>
         <h2 class="user-name">{{authenticationService.currentLoggedInUser?.displayName}}</h2>
@@ -9,7 +10,7 @@
     <div class="header-section">
         <h1>Join 360</h1>
         <span class="separatorVertical">|</span>
-        <div class="subtitle">Key Metrics at a Glance</div> 
+        <div class="subtitle">Key Metrics at a Glance</div>
     </div>
 
     <div class="main-content-wrapper">

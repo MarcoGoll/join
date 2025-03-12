@@ -20,17 +20,27 @@ export class SummaryComponent implements OnInit {
   authenticationService = inject(AuthenticationService);
   taskService = inject(TasksService);
   navbarService = inject(NavbarService);
+  isSmallScreen: boolean = window.innerWidth < 1024;
 
   showGreeting: boolean = true;
   greetingFadeOut: boolean = false;
 
+  constructor() {
+    this.checkScreenWidth();
+    window.addEventListener('resize', this.checkScreenWidth.bind(this));
+  }
+
   ngOnInit() {
     setTimeout(() => {
-      this.greetingFadeOut = true; 
-      
+      this.greetingFadeOut = true;
       setTimeout(() => {
         this.showGreeting = false;
+        this.authenticationService.isSummaryAnnimationPlayedOnce = true;
       }, 1000);
     }, 2000);
+  }
+
+  checkScreenWidth(): void {
+    this.isSmallScreen = window.innerWidth < 1024;
   }
 }

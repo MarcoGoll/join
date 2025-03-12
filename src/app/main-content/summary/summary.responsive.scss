@@ -180,27 +180,9 @@
 }
 
 //greeting page
-
-@media (max-width: 900px) {
-    .mobile-greeting-screen {
-        top: 72px; 
-        padding-top: 0;
-    }
-}
-
 @media (orientation: landscape) and (max-height: 600px) {
     .mobile-greeting-screen {
-        top: 60px; 
-        bottom: 70px; 
         padding-top: 0;
         padding-bottom: 0;
-    }
-}
-
-@media (orientation: landscape) and (max-height: 450px) {
-    .mobile-greeting-screen {
-        top: 50px;
-        bottom: 60px;
-        padding-top: 0;
     }
 }

@@ -1,8 +1,11 @@
 <header>
-    <div class="logo-animation-container" *ngIf="showAnimation">
-        <img src="./assets/img/Join-logo-blue.png" alt="Join Logo" class="animated-logo">
+    <div class="logo-animation-overlay" *ngIf="showAnimation">
+        <div class="logo-animation-container">
+            <img src="./assets/img/icons/header_logo.svg" alt="Join Logo" class="animated-logo">
+        </div>
     </div>
-    <img src="./assets/img/Join-logo-blue.png" alt="Join Logo" class="static-logo" *ngIf="!showAnimation">
+    <img src="./assets/img/icons/header_logo.svg" alt="Join Logo" class="static-logo"
+        [ngClass]="{'invisible':showAnimation}">
     <div class="signup-container">
         <span>Not a Join user?</span>
         <button class="signup-btn" routerLink="/signUp" (click)="this.authenticationService.resetFirebaseError()">Sign
