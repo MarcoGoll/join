@@ -41,7 +41,7 @@ export class NavbarService {
         this.isLegalNoticeSelected = true;
         break;
       default:
-        console.log('Identifier is not known');
+        console.error('Identifier is not known');
     }
   }
 }

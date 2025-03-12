@@ -64,7 +64,7 @@ export class AddTaskComponent implements OnInit {
         this.currentPrioSelection = 'Low';
         break;
       default:
-        console.log('Identifier is not known');
+        console.error('Identifier is not known');
     }
   }
 
@@ -142,7 +142,6 @@ export class AddTaskComponent implements OnInit {
         this.categoryValue == 'User Story')
     ) {
       this.showErrorCategory = false;
-      console.log('formValide');
       if (
         this.currentPrioSelection == 'Urgent' ||
         this.currentPrioSelection == 'Medium' ||
@@ -186,7 +185,6 @@ export class AddTaskComponent implements OnInit {
         }, 1025);
       }
     } else {
-      console.log('formInValide');
       ngForm.form.markAllAsTouched();
       if (
         this.categoryValue == 'Technical Task' ||

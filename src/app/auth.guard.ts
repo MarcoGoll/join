@@ -9,16 +9,8 @@ export const authGuard: CanActivateFn = async (route, state) => {
   await authenticationService.checkLogin();
 
   if (authenticationService.isUserLoggedIn) {
-    console.log(
-      'Guard USER LOGIN STATUS: ',
-      authenticationService.isUserLoggedIn
-    );
     return true; // Erlaubt den Zugriff
   } else {
-    console.log(
-      'Guard USER LOGIN STATUS: ',
-      authenticationService.isUserLoggedIn
-    );
     return router.createUrlTree(['/']); // Weiterleitung zum Login
   }
 };

@@ -40,7 +40,7 @@ export class BoardoverlayComponent {
         this.taskService.currentTaskToBeUpdated.prio = 'Low';
         break;
       default:
-        console.log('Identifier is not known');
+        console.error('Identifier is not known');
     }
   }
 
@@ -107,11 +107,7 @@ export class BoardoverlayComponent {
 
   updateFromEditMode(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid) {
-      console.log('formValide');
-      //TODO: Prüfung eventuell früher. Direkt nach oder vor ngForm.form.valid
-
       let subtasksToUpdate: Subtask[] = [];
-
       this.taskService.subtasksToAdd.forEach((subtask, index) => {
         subtasksToUpdate.push({
           checked: subtask.checked,
@@ -130,9 +126,7 @@ export class BoardoverlayComponent {
         subTasks: subtasksToUpdate,
       };
       this.taskService.updateTask(taskToUpdate);
-      // this.resetUpdateTaskComponent();
     } else {
-      console.log('formInValide');
     }
   }
 

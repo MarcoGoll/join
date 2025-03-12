@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../shared/services/firebase/authentication.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { User } from '../../shared/interfaces/user';
@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss', 'signup.responsive.scss'],
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   authenticationService = inject(AuthenticationService);
   pwConfirmation: string = '';
   isPrivacyPolicyChecked: boolean = false;
@@ -28,6 +28,12 @@ export class SignupComponent {
     email: '',
     pw: '',
   };
+
+  ngOnInit(): void {
+    this.authenticationService.isLoginSignUpView = true;
+    this.authenticationService.errorOccoursIn = null;
+    this.authenticationService.errorMessageForFailedFirebaseRequest = '';
+  }
 
   toggleIsPasswordVisible() {
     this.isPasswordVisible = !this.isPasswordVisible;

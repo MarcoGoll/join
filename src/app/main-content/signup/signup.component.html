@@ -9,7 +9,7 @@
       <img src="./assets/img/Join-logo-blue.png" alt="Join Logo">
     </div>
     <div class="signUpContainer">
-      <a class="backLink" routerLink="/login"><img src="./assets/img/icons/arrow-left-line.svg" alt="back"></a>
+      <a class="backLink" routerLink="/"><img src="./assets/img/icons/arrow-left-line.svg" alt="back"></a>
       <h1>Sign up</h1>
       <div class="horizontal-seperator"></div>
       <form id="signUpForm" class="signUpForm" (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
@@ -52,9 +52,10 @@
           <div class="errorMessageContainer">
             @if (!email.valid && email.touched) {
             <p class="errorMessage">Please enter a valid Email</p>
-            }
+            }@else {
             @if (this.authenticationService.errorOccoursIn == 'email') {
             <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}</p>
+            }
             }
           </div>
         </div>
@@ -78,12 +79,14 @@
           <div class="errorMessageContainer">
             @if(!pw.valid && pw.touched) {
             <p class="errorMessage">Please enter a valid Password</p>
-            }
+            }@else {
             @if (isPWDifferent && (pwConfirm.touched && pw.touched)) {
             <p class="errorMessage">Your passwords don't match. Please try again.</p>
-            }
+            }@else {
             @if (this.authenticationService.errorOccoursIn == 'pw') {
             <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}</p>
+            }
+            }
             }
           </div>
         </div>
@@ -109,12 +112,14 @@
           <div class="errorMessageContainer">
             @if(!pwConfirm.valid && pwConfirm.touched) {
             <p class="errorMessage">Please enter a valid Password</p>
-            }
+            }@else {
             @if (isPWDifferent && (pwConfirm.touched && pw.touched)) {
             <p class="errorMessage">Your passwords don't match. Please try again.</p>
-            }
+            }@else {
             @if (this.authenticationService.errorOccoursIn == 'pw') {
             <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}</p>
+            }
+            }
             }
           </div>
         </div>
@@ -123,7 +128,8 @@
             <div class="checkPPContainer">
               <input #checkPP="ngModel" [(ngModel)]="isPrivacyPolicyChecked" id="privacyPolicy" name="privacyPolicy"
                 type="checkbox" required>
-              <label for="privacyPolicy" class="checkPPText">I accept the <a href="">Privacy Policy</a></label>
+              <label for="privacyPolicy" class="checkPPText">I accept the <a routerLink="/privacyPolicy">Privacy
+                  Policy</a></label>
             </div>
           </div>
           <div class="errorMessageContainer">

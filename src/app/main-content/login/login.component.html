@@ -44,14 +44,16 @@
                         <div class="errorMessageContainer">
                             @if (!loginEmail.valid && loginEmail.touched) {
                             <p class="errorMessage">Please enter a valid Email</p>
-                            }
+                            }@else {
                             @if (this.authenticationService.errorOccoursIn == 'email') {
                             <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}
                             </p>
-                            }
+                            }@else {
                             @if (this.authenticationService.errorOccoursIn == 'email-pw') {
                             <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}
                             </p>
+                            }
+                            }
                             }
                         </div>
                     </div>
@@ -78,14 +80,16 @@
                         <div class="errorMessageContainer">
                             @if(!pw.valid && pw.touched) {
                             <p class="errorMessage">Please enter a valid Password</p>
-                            }
+                            }@else {
                             @if (this.authenticationService.errorOccoursIn == 'pw') {
                             <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}
                             </p>
-                            }
+                            }@else {
                             @if (this.authenticationService.errorOccoursIn == 'email-pw') {
                             <p class="errorMessage">{{this.authenticationService.errorMessageForFailedFirebaseRequest}}
                             </p>
+                            }
+                            }
                             }
                         </div>
                     </div>

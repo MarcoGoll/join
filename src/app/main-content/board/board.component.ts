@@ -80,13 +80,10 @@ export class BoardComponent implements OnInit {
     } else {
       //Drag&Drop between different Columns
       const task = event.previousContainer.data[event.previousIndex];
-
       if (!task) {
         console.error('Task nicht gefunden');
         return;
       }
-
-      console.log('Container ID: ', event.container.id);
       switch (event.container.id) {
         case 'toDoList':
           task.status = 'toDo';
@@ -104,7 +101,6 @@ export class BoardComponent implements OnInit {
           console.error('Unbekannte Container-ID:', event.container.id);
           return;
       }
-      console.log('Task wird upgetadet zu: ', task);
       this.taskService.updateTask(task);
       event.previousContainer.data.splice(event.previousIndex, 1);
     }
@@ -112,12 +108,10 @@ export class BoardComponent implements OnInit {
 
   searchTask() {
     if (this.searchString.length < 3) {
-      console.log('du darfst nicht suchen');
       this.isSearchActive = false;
     } else {
       this.allSearchResults = this.taskService.searchTasks(this.searchString);
       this.isSearchActive = true;
-      console.log('Ergebnisse: ', this.allSearchResults);
     }
   }
 

@@ -67,7 +67,6 @@ export class AuthenticationService {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
-        console.log('Erstellter User: ', user);
         this.resetFirebaseError();
         // ...
       })
@@ -97,7 +96,6 @@ export class AuthenticationService {
     await signOut(auth)
       .then(() => {
         // Signed out
-        console.log('User was logged out right now');
         this.router.navigate(['/']);
         this.isLoginSignUpView = true;
         this.resetFirebaseError();
@@ -117,14 +115,10 @@ export class AuthenticationService {
           this.currentLoggedInUser = user;
           this.isUserLoggedIn = true;
           resolve(true);
-          console.log('SERVICE: This User is logged in: ', user);
-          console.log('SERVICE: isUserLoggedIn', this.isUserLoggedIn);
         } else {
           // User is signed out
           this.currentLoggedInUser = null;
           this.isUserLoggedIn = false;
-          console.log('SERVICE: No User is logged in');
-          console.log('SERVICE: isUserLoggedIn', this.isUserLoggedIn);
           resolve(false);
         }
       });
@@ -141,7 +135,6 @@ export class AuthenticationService {
       })
         .then(() => {
           // Profile updated!
-          console.log('Update Erfolgreich: ', user);
           this.errorOccoursIn = null;
         })
         .catch((error) => {
@@ -154,12 +147,10 @@ export class AuthenticationService {
   setFirebaseError(error: any) {
     switch (error.code) {
       case 'auth/email-already-in-use':
-        console.log('Email is already in use');
         this.errorOccoursIn = 'email';
         this.errorMessageForFailedFirebaseRequest = 'Email is already in use';
         break;
       case 'auth/weak-password':
-        console.log('Weak-password');
         this.errorOccoursIn = 'pw';
         this.errorMessageForFailedFirebaseRequest =
           'Weak password. Use at least 6 characters';
@@ -171,7 +162,6 @@ export class AuthenticationService {
         break;
 
       default:
-        console.log('error.code:', error.code);
         this.errorOccoursIn = 'global';
         this.errorMessageForFailedFirebaseRequest =
           'Technical Error, please try again later';

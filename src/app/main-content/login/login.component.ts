@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../shared/services/firebase/authentication.service';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { NavbarService } from '../../shared/services/navbar.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss', './login.responsive.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   router = inject(Router);
   authenticationService = inject(AuthenticationService);
   navbarService = inject(NavbarService);
@@ -22,10 +22,15 @@ export class LoginComponent {
   isPasswordVisible: boolean = false;
   showAnimation: boolean = false;
 
+  ngOnInit(): void {
+    this.authenticationService.isLoginSignUpView = true;
+    this.authenticationService.errorOccoursIn = null;
+    this.authenticationService.errorMessageForFailedFirebaseRequest = '';
+  }
+
   constructor() {
     this.checklogin();
     this.checkFirstVisit();
-    console.log('Loginview: ', this.authenticationService.isLoginSignUpView);
   }
 
   async checklogin() {
