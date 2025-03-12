@@ -1,5 +1,8 @@
 <header>
-    <img src="./assets/img/Join-logo-blue.png" alt="Join Logo">
+    <div class="logo-animation-container" *ngIf="showAnimation">
+        <img src="./assets/img/Join-logo-blue.png" alt="Join Logo" class="animated-logo">
+    </div>
+    <img src="./assets/img/Join-logo-blue.png" alt="Join Logo" class="static-logo" *ngIf="!showAnimation">
     <div class="signup-container">
         <span>Not a Join user?</span>
         <button class="signup-btn" routerLink="/signUp" (click)="this.authenticationService.resetFirebaseError()">Sign

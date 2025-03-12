@@ -9,8 +9,8 @@ section{
 }
 
 header{
-    @include setFlex($jc: space-between, $ai: flex-start);
-    padding: 64px;
+    @include setFlex($jc: flex-end, $ai: flex-start);
+    padding: 48px;
     height: 200px;
 }
 
@@ -227,4 +227,51 @@ input::placeholder {
 .inputIinputIconcon{
    width: 24px;
    height: 24px;
+}
+
+
+//=====================================================================
+//========== ANIMATION ================================================
+//=====================================================================
+
+.logo-animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: shrinkAndMove 2s forwards ease-in-out;
+}
+
+.animated-logo {
+    width: 200px; /* Startgröße */
+    height: auto;
+}
+
+.static-logo {
+    width: 100px; /* Endgröße */
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    // margin: 24px;
+}
+
+@keyframes shrinkAndMove {
+    0% {
+        transform: translate(0, 0) scale(3);
+        opacity: 1;
+    }
+    80% {
+        transform: translate(-40vw, -40vh) scale(1);
+    }
+    100% {
+        transform: translate(-50vw, -50vh) scale(1);
+        opacity: 0;
+    }
 }
