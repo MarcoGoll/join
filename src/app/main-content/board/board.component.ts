@@ -20,6 +20,7 @@ import { Task } from '../../shared/interfaces/task';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { NavbarService } from '../../shared/services/navbar.service';
 
 @Component({
   selector: 'app-board',
@@ -42,6 +43,7 @@ import { RouterLink } from '@angular/router';
 })
 export class BoardComponent implements OnInit {
   taskService = inject(TasksService);
+  navbarService = inject(NavbarService);
   isTaskinEditMode: boolean = false;
   searchString: string = '';
   allSearchResults: Task[] = [];
