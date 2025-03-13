@@ -169,10 +169,15 @@
     display: block;
 }
   
+.subtasks {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .subtask {
     display: flex;
-    align-items: center;
-    margin-bottom: 8px;
 }
   
 .subtask-text {
