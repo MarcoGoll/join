@@ -25,11 +25,17 @@ export class SummaryComponent implements OnInit {
   showGreeting: boolean = true;
   greetingFadeOut: boolean = false;
 
+  /**
+   * Konstruktor, der die Bildschirmgröße überprüft und einen Event-Listener für die Größenänderung hinzufügt.
+   */
   constructor() {
     this.checkScreenWidth();
     window.addEventListener('resize', this.checkScreenWidth.bind(this));  
   }
 
+  /**
+   * Wird beim Initialisieren der Komponente aufgerufen. Setzt eine Begrüßung nach einer Verzögerung zurück.
+   */
   ngOnInit() {
     setTimeout(() => {
       this.greetingFadeOut = true;
@@ -40,6 +46,9 @@ export class SummaryComponent implements OnInit {
     }, 2000);
   }
 
+  /**
+   * Überprüft die Bildschirmbreite und setzt `isSmallScreen` auf `true`, wenn der Bildschirm kleiner als 1024px ist.
+   */
   checkScreenWidth(): void {
     this.isSmallScreen = window.innerWidth < 1024;
   }
