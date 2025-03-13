@@ -1,5 +1,11 @@
 @import "./../../../../../styles.scss";
 
+@media (max-width: 1200px) {
+    section{
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+}
 
 @media (max-width: 500px){
     h2{

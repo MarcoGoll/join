@@ -236,8 +236,8 @@ input::placeholder {
 
 .logo-animation-container {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 16px;
+    left: 16px;
     transform: translate(-50%, -50%);
     animation: shrinkAndMove 2s ease-in-out forwards; /* Die Animation bleibt nach Abschluss */
 }
@@ -254,14 +254,15 @@ input::placeholder {
 }
 
 .animated-logo {
-    width: 200px;  /* Startgröße */
-    height: auto;
+    width: 100px;  /* Startgröße */
+    height: 100px;
     position: relative;
     z-index: 1100; /* Höher als 1000 von .logo-animation-overlay */
 }
 
 .static-logo {
-    height: 100%;
+    width: 100px;  /* Startgröße */
+    height: 100px;
 }
 
 .invisible {
@@ -270,10 +271,10 @@ input::placeholder {
 
 @keyframes shrinkAndMove {
     0% {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(50vw, 50vh) scale(3.6);
     }
     100% {
-        transform: translate(calc(-60.5vw + 50%), calc(-67.5vh + 50%)) scale(0.41);
+        transform: translate(0,0) scale(1);
     }
 }
 

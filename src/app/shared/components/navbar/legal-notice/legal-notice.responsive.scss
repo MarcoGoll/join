@@ -3,7 +3,7 @@
 @media (max-width: 1200px){
     section{
         overflow-y: auto;
-        max-height: 92vh;
+        max-height: 90vh;
     }
 }
 
@@ -12,7 +12,7 @@
         padding-left: 16px;
         padding-right: 16px;
     }
-    h2{
+    h1{
         font-size: 48px;
     }
     h3{
@@ -27,5 +27,14 @@
     }
     h1{
         font-size: 32px;
+    }
+    h3{
+        font-size: 20px;  
+    }
+    p{
+        font-size: 16px;
+    }
+    .e-mail{
+        font-size: 16px;
     }
 }
