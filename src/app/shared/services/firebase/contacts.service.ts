@@ -1,4 +1,4 @@
-import { HostListener, inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
 import {
   addDoc,
@@ -6,14 +6,11 @@ import {
   deleteDoc,
   doc,
   Firestore,
-  getDocs,
-  limit,
   onSnapshot,
   orderBy,
   query,
   updateDoc,
 } from '@angular/fire/firestore';
-import { IfStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',

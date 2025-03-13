@@ -27,24 +27,40 @@ export class ContactslistComponent {
     img: ""
   }
 
-  constructor(public contactService: ContactsService) {
-  }
+  /**
+   * Konstruktor der Klasse, der den ContactService injiziert.
+   * @param contactService - Der Service, der Kontaktoperationen verwaltet.
+   */
+  constructor(public contactService: ContactsService) { }
 
+  /**
+   * Fügt einen neuen Kontakt hinzu.
+   * @param contact - Der Kontakt, der hinzugefügt werden soll.
+   */
   addContact(contact: Contact) {
     this.contactService.addContact(contact);
   }
 
+  /**
+   * Löscht einen bestehenden Kontakt.
+   * @param contact - Der Kontakt, der gelöscht werden soll.
+   */
   deleteContact(contact: Contact) {
     this.contactService.deleteContact(contact);
   }
 
+  /**
+   * Setzt die Datenbank zurück.
+   * Löscht alle gespeicherten Kontakte.
+   */
   resetDatabase() {
     this.contactService.resetDatabase();
   }
 
+  /**
+   * Zeigt das Formular zum Hinzufügen eines neuen Kontakts an.
+   */
   showAddContact() {
     this.contactService.isAddContactViewed = true;
   }
-
-
 }

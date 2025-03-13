@@ -13,7 +13,11 @@ import { AuthenticationService } from '../../services/firebase/authentication.se
   styleUrls: ['./navbar.component.scss', './navbar.responsive.scss'],
 })
 export class NavbarComponent {
+
   taskService = inject(TasksService);
+
   navbarService = inject(NavbarService);
+
   authenticationService = inject(AuthenticationService);
+  
 }

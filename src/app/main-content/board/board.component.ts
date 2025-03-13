@@ -52,31 +52,54 @@ export class BoardComponent implements OnInit {
   isDragDisabled = window.innerWidth >= 1200;
   clicked: boolean = false;
 
+  /**
+   * Lifecycle-Hook, der beim Initialisieren der Komponente aufgerufen wird.
+   * Führt eine Prüfung der Bildschirmgröße durch.
+   */
   ngOnInit() {
     this.checkScreenSize();
   }
 
+
+  /**
+   * Ändert den Zustand `clicked` auf `true` und setzt ihn nach 3 Sekunden zurück.
+   * Kann genutzt werden, um eine temporäre Bildänderung zu steuern.
+   */
   changeImage() {
     this.clicked = true;
     setTimeout(() => {
       this.clicked = false;
-    }, 3000); // Das Bild nach 300ms zurücksetzen (anpassbar)
+    }, 3000); // Das Bild nach 3000ms zurücksetzen (anpassbar)
   }
 
+  /**
+   * Reagiert auf das Ändern der Fenstergröße.
+   * Aktualisiert die Bildschirmgröße und deaktiviert das Ziehen bei großen Displays.
+   */
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.checkScreenSize();
     this.isDragDisabled = window.innerWidth >= 1200;
   }
 
+  /**
+   * Überprüft die Bildschirmgröße und setzt `isMobileView`.
+   * Erkennt mobile Ansicht bei einer Breite von ≤ 1200px.
+   */
   private checkScreenSize(): void {
     this.isMobileView = window.innerWidth <= 1200;
   }
 
+  /**
+    * Behandelt das Drag-and-Drop-Ereignis für Aufgaben.
+    * @param event - Das CdkDragDrop-Ereignis mit den verschobenen Aufgaben.
+    * 
+    * Aktualisiert den Status der Aufgabe, wenn sie zwischen Spalten verschoben wird.
+    * Ruft den Task-Service auf, um die Änderungen zu speichern.
+  */
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       // TODO: Drag&Drop within same Column
-      // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex); // brauchen wir erstmal nicht, weil wir nicht mit prios arbeiten
     } else {
       //Drag&Drop between different Columns
       const task = event.previousContainer.data[event.previousIndex];
@@ -106,6 +129,10 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  /**
+   * Sucht nach Aufgaben basierend auf dem Suchstring.
+   * Aktiviert die Suche nur, wenn der Suchstring mindestens 3 Zeichen lang ist.
+   */
   searchTask() {
     if (this.searchString.length < 3) {
       this.isSearchActive = false;
@@ -115,41 +142,14 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  isTaskInSearchResult(task: Task) {
-    let allSearchResultsIDs: string[] = [];
-
-    this.allSearchResults.forEach((searchResult) => {
-      if (searchResult.id) {
-        allSearchResultsIDs.push(searchResult.id);
-      }
-    });
-
-    if (task.id) {
-      if (allSearchResultsIDs.includes(task.id)) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
+  /**
+   * Prüft, ob eine gegebene Aufgabe in den Suchergebnissen enthalten ist.
+   * @param task - Die zu überprüfende Aufgabe.
+   * @returns `true`, wenn die Aufgabe in den Suchergebnissen enthalten ist, sonst `false`.
+   */
+  isTaskInSearchResult(task: Task): boolean {
+    return task.id 
+      ? this.allSearchResults.some(searchResult => searchResult.id === task.id) 
+      : false;
   }
-
-  // toggleBoard(){
-  //   let searchBoard = document.querySelector('.search-board');
-  //   let taskBoard = document.querySelector('.task-board');
-  //   let searchInput = document.querySelector('.search-input');
-
-  //   if (searchInput && searchBoard && taskBoard) {
-  //     searchInput.addEventListener('input', () => {
-  //         if (searchInput.value.length > 3) {
-  //             searchBoard.style.display = 'block';
-  //             taskBoard.style.display = 'none';
-  //         } else {
-  //             searchBoard.style.display = 'none';
-  //             taskBoard.style.display = 'block';
-  //         }
-  //     });
-  // }
-  // }
 }

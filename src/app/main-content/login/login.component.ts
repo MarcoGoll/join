@@ -22,17 +22,29 @@ export class LoginComponent implements OnInit {
   isPasswordVisible: boolean = false;
   showAnimation: boolean = false;
 
+  /**
+   * ngOnInit - Initialisiert den Login-Status und Fehlerbehandlung.
+   * Setzt die Anzeige für Login und eventuelle Fehlermeldungen zurück.
+   */
   ngOnInit(): void {
     this.authenticationService.isLoginSignUpView = true;
     this.authenticationService.errorOccoursIn = null;
     this.authenticationService.errorMessageForFailedFirebaseRequest = '';
   }
 
+  /**
+   * Konstruktor - Führt Überprüfungen für Login und den ersten Besuch durch.
+   * Ruft `checklogin` und `checkFirstVisit` beim Erstellen der Komponente auf.
+   */
   constructor() {
     this.checklogin();
     this.checkFirstVisit();
   }
 
+  /**
+   * checklogin - Überprüft den Login-Status des Benutzers.
+   * Leitet den Benutzer zur Zusammenfassungsseite weiter, wenn er eingeloggt ist.
+   */
   async checklogin() {
     await this.authenticationService.checkLogin();
     if (this.authenticationService.isUserLoggedIn) {
@@ -41,6 +53,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**
+   * checkFirstVisit - Überprüft, ob der Benutzer zum ersten Mal die Login-Seite besucht.
+   * Zeigt eine Animation beim ersten Besuch an und setzt einen Marker, wenn sie gespielt wurde.
+   */
   checkFirstVisit() {
     if (!this.authenticationService.isLoginAnnimationPlayedOnce) {
       this.showAnimation = true;
@@ -51,10 +67,18 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**
+   * login - Meldet den Benutzer mit einer E-Mail und einem Passwort an.
+   * Ruft die Login-Funktion des Authentifizierungsservices auf.
+   */
   login(email: string, pw: string) {
     this.authenticationService.login(email, pw);
   }
 
+  /**
+   * loginAsGuest - Meldet den Benutzer als Gast an.
+   * Verwendet vordefinierte Gast-Benutzerdaten aus dem Authentifizierungsservice.
+   */
   loginAsGuest() {
     this.authenticationService.login(
       this.authenticationService.GUESTUSER.email,
@@ -62,10 +86,18 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  /**
+   * toggleIsPasswordVisible - Schaltet die Sichtbarkeit des Passworts um.
+   * Ändert den Zustand der Passwortsichtbarkeit.
+   */
   toggleIsPasswordVisible() {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
 
+  /**
+   * onSubmit - Wird bei der Formularübermittlung aufgerufen.
+   * Markiert alle Formulareingaben als berührt und führt den Login-Prozess durch, wenn das Formular gültig ist.
+   */
   onSubmit(ngForm: NgForm) {
     ngForm.control.markAllAsTouched();
     if (ngForm.submitted && ngForm.form.valid) {

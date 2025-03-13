@@ -6,8 +6,6 @@ import {
   deleteDoc,
   doc,
   Firestore,
-  getDocs,
-  limit,
   onSnapshot,
   orderBy,
   query,
@@ -300,6 +298,7 @@ export class TasksService {
       ],
     },
   ];
+
   firestore: Firestore = inject(Firestore);
   tasksAll: Task[] = [];
   tasksToDo: Task[] = [];
@@ -316,7 +315,9 @@ export class TasksService {
     checked: boolean;
     description: string;
   }[] = [];
+  
   unsubTasks;
+
   currentlySelectedTask: Task = {
     title: 'Create JSDoc',
     description: 'Create a JSDoc description for each method',
@@ -330,6 +331,7 @@ export class TasksService {
       { checked: false, description: 'Component Contactlist' },
     ],
   };
+
   currentTaskToBeUpdated: Task = {
     title: 'Create JSDoc',
     description: 'Create a JSDoc description for each method',

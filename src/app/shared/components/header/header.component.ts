@@ -10,10 +10,18 @@ import { AuthenticationService } from '../../services/firebase/authentication.se
   styleUrls: ['./header.component.scss', './header.responsive.scss'],
 })
 export class HeaderComponent {
+  
   authenticationService = inject(AuthenticationService);
 
   navVisible = false;
 
+  /**
+   * Generates a shortcut from a given full name by extracting the first letter of each word.
+   * If the fullname is null or undefined, an empty string is returned.
+   * 
+   * @param fullname The full name from which to generate the shortcut.
+   * @returns A string containing the first letter of each word in the fullname, all in uppercase.
+   */
   getShortcut(fullname: string | null | undefined) {
     let shortcut: string = '';
     if (fullname != null && fullname != undefined) {

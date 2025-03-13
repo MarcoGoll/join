@@ -7,10 +7,9 @@ import {
   updateProfile,
   User,
   signOut,
-  beforeAuthStateChanged,
-} from 'firebase/auth';
+} 
+from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
-import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { NavbarService } from '../navbar.service';
 
@@ -56,6 +55,7 @@ export class AuthenticationService {
   // ##########################################################################################################
   // Authentication
   // ##########################################################################################################
+  
   /**
    * Creates a new user with the given email and password using Firebase authentication.
    *

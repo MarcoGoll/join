@@ -7,7 +7,6 @@ import { ContactsService } from '../../shared/services/firebase/contacts.service
 import { Contact } from '../../shared/interfaces/contact';
 import { Subtask } from '../../shared/interfaces/subtask';
 import { Router } from '@angular/router';
-import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-add-task',

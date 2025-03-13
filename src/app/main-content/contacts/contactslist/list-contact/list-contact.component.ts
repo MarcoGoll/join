@@ -25,6 +25,11 @@ export class ListContactComponent {
     img: ""
   };
 
-  constructor(public contactService: ContactsService) {
-  }
+  /**
+   * Konstruktor für die Klasse, der den ContactService injiziert.
+   * Dient zur Bereitstellung des ContactService für die Klasse.
+   * 
+   * @param contactService - Eine Instanz des ContactService, die für die Klasse verfügbar gemacht wird.
+  */
+  constructor(public contactService: ContactsService) {}
 }

@@ -17,17 +17,20 @@ import { Task } from '../../../shared/interfaces/task';
     './boardoverlay.responsive.scss',
   ],
 })
+
 export class BoardoverlayComponent {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
-  // currentSelectedAssignedTo: Contact[] = [];
 
   isVisible: boolean = true;
   isEditMode: boolean = false;
   isSubtaskinFocus: boolean = false;
   subtaskValue: string = '';
-  // subtasksToAdd: { inEditMode: boolean; description: string }[] = [];
 
+  /**
+   * Setzt die Priorität der aktuellen Aufgabe.
+   * @param prio - Die Priorität als String ('Urgent', 'Medium' oder 'Low').
+   */
   setPrio(prio: string) {
     switch (prio) {
       case 'Urgent':
@@ -44,6 +47,10 @@ export class BoardoverlayComponent {
     }
   }
 
+  /**
+   * Fügt einen Kontakt zur aktuellen Aufgabe hinzu oder entfernt ihn.
+   * @param contact - Der Kontakt, der hinzugefügt oder entfernt werden soll.
+   */
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
     if (contact.id) {
       if (
@@ -56,10 +63,18 @@ export class BoardoverlayComponent {
     }
   }
 
+  /**
+   * Fügt einen Kontakt zur Liste der zugewiesenen Personen hinzu.
+   * @param id - Die ID des Kontakts.
+   */
   addContactToCurrentSelectedAssignedTo(id: string) {
     this.taskService.currentTaskToBeUpdated.assignedTo.push(id);
   }
 
+  /**
+   * Entfernt einen Kontakt aus der Liste der zugewiesenen Personen.
+   * @param id - Die ID des zu entfernenden Kontakts.
+   */
   deleteContactFromCurrentSelectedAssignedTo(id: string) {
     const index =
       this.taskService.currentTaskToBeUpdated.assignedTo.indexOf(id);
@@ -68,43 +83,65 @@ export class BoardoverlayComponent {
     }
   }
 
-  isContactCurrentlySelected(contact: Contact) {
+  /**
+   * Prüft, ob ein Kontakt derzeit zugewiesen ist.
+   * @param contact - Der zu prüfende Kontakt.
+   * @returns true, wenn der Kontakt zugewiesen ist, sonst false.
+   */
+  isContactCurrentlySelected(contact: Contact): boolean {
     if (contact.id) {
-      if (
-        this.taskService.currentTaskToBeUpdated.assignedTo.includes(contact.id)
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
+      return this.taskService.currentTaskToBeUpdated.assignedTo.includes(contact.id);
     }
+    return false;
   }
 
+  /**
+   * Setzt den Fokusstatus einer Unteraufgabe.
+   * @param myBool - Der neue Fokusstatus (true oder false).
+   */
   setIsSubtaskinFocus(myBool: boolean) {
     this.isSubtaskinFocus = myBool;
   }
 
+  /**
+   * Setzt den Wert einer Unteraufgabe.
+   * @param value - Der neue Wert der Unteraufgabe als String.
+   */
   setSubtaskValue(value: string) {
     this.subtaskValue = value;
   }
 
-  confirmSubtask() {
+  /**
+   * Bestätigt das Hinzufügen einer Unteraufgabe, wenn der Textwert nicht leer ist.
+   * Fügt die Unteraufgabe der Liste hinzu und setzt das Eingabefeld zurück.
+   */
+  confirmSubtask(): void {
     if (this.subtaskValue != '') {
       this.taskService.subtasksToAdd.push({
         inEditMode: false,
-        checked: false, //TODO: Ein Abgeschlossener Task der bearbeitet wird, wird hier wieder auf unbearbeitet gesetzt.
+        checked: false, 
         description: this.subtaskValue,
       });
       this.setSubtaskValue('');
     }
   }
 
+  /**
+   * Löscht eine Unteraufgabe aus der Liste der hinzuzufügenden Unteraufgaben.
+   * Entfernt das Element an der angegebenen Indexposition.
+   * 
+   * @param index - Der Index der zu löschenden Unteraufgabe.
+   */
   deleteSubtask(index: number) {
     this.taskService.subtasksToAdd.splice(index, 1);
   }
 
+  /**
+   * Updates the current task with data from the form if it is valid and submitted.
+   * Collects subtasks to update and creates a new task object, which is passed to the task service for updating.
+   *
+   * @param ngForm The Angular form containing the task data.
+   */
   updateFromEditMode(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid) {
       let subtasksToUpdate: Subtask[] = [];
@@ -130,6 +167,10 @@ export class BoardoverlayComponent {
     }
   }
 
+  /**
+   * Aktualisiert die aktuelle Aufgabe basierend auf dem angezeigten Modus.
+   * Setzt die Aufgabe zur Aktualisierung und ruft die Update-Methode auf.
+   */
   updateFromDisplayMode() {
     this.taskService.currentTaskToBeUpdated =
       this.taskService.currentlySelectedTask;

@@ -24,11 +24,13 @@ export class ContactsComponent {
   isMobileView = false;
 
   constructor(public contactService: ContactsService) {
-
   }
 
-  ngOnInit() {
-    // oder screen.width => einmal testen
+  /**
+   * Wird beim Initialisieren der Komponente aufgerufen.
+   * Setzt die Ansicht basierend auf der Fensterbreite auf Mobil- oder Desktopansicht.
+   */
+  ngOnInit(): void {
     if (window.innerWidth <= 1023) {
       this.isMobileView = true;
     } else {
@@ -36,8 +38,12 @@ export class ContactsComponent {
     }
   }
 
+  /**
+   * Wird ausgelöst, wenn das Fenster in der Größe verändert wird.
+   * Aktualisiert den Ansichtsmodus (mobil oder Desktop) basierend auf der Fensterbreite.
+   */
   @HostListener('window:resize', ['$event'])
-  onResize() {
+  onResize(): void {
     if (window.innerWidth <= 1023) {
       this.isMobileView = true;
     } else {
