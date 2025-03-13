@@ -416,6 +416,40 @@ export class TasksService {
   }
 
   /**
+   * Creates a Task object from the given data, ensuring all fields have default values. With an specific ID.
+   *
+   * @param {any} obj - The source object containing task details.
+   * @param {string} id - The unique identifier for the task.
+   * @returns {Task} A task object with the provided ID and default values for missing properties.
+   */
+  setTaskObjectWithExtraId(obj: any, id: string): Task {
+    return {
+      id: id,
+      title: obj.title || '',
+      description: obj.description || '',
+      assignedTo: obj.assignedTo || [],
+      status: obj.status || '',
+      dueDate: obj.dueDate || '',
+      prio: obj.prio || '',
+      category: obj.category || [],
+      subTasks: obj.subTasks || '',
+    };
+  }
+
+  /**
+   * Creates a Task object from the given data, ensuring all fields have default values. Without an specific ID.
+   *
+   * @param {any} obj - The source object containing task details.
+   * @returns {Task} A task object with default values for missing properties.
+   */
+  ngonDestroy() {
+    this.unsubTasks();
+  }
+
+  // ##########################################################################################################
+  // GET TASK INFOS
+  // ##########################################################################################################
+  /**
    * Retrieves the list of all tasks.
    *
    * @returns {Array} An array containing all tasks.
@@ -450,35 +484,24 @@ export class TasksService {
     return this.getAllTasks().length;
   }
 
-  /**
-   * Creates a Task object from the given data, ensuring all fields have default values. With an specific ID.
-   *
-   * @param {any} obj - The source object containing task details.
-   * @param {string} id - The unique identifier for the task.
-   * @returns {Task} A task object with the provided ID and default values for missing properties.
-   */
-  setTaskObjectWithExtraId(obj: any, id: string): Task {
-    return {
-      id: id,
-      title: obj.title || '',
-      description: obj.description || '',
-      assignedTo: obj.assignedTo || [],
-      status: obj.status || '',
-      dueDate: obj.dueDate || '',
-      prio: obj.prio || '',
-      category: obj.category || [],
-      subTasks: obj.subTasks || '',
-    };
+  getUpcomingDeadline() {
+    let dates: string[] = this.getAllTasksDueDates();
+    const upcommingDeadline = new Date(
+      Math.min(...dates.map((date) => new Date(date).getTime()))
+    );
+    return upcommingDeadline.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: '2-digit',
+    });
   }
 
-  /**
-   * Creates a Task object from the given data, ensuring all fields have default values. Without an specific ID.
-   *
-   * @param {any} obj - The source object containing task details.
-   * @returns {Task} A task object with default values for missing properties.
-   */
-  ngonDestroy() {
-    this.unsubTasks();
+  getAllTasksDueDates() {
+    let dueDates: string[] = [];
+    this.getAllTasks().forEach((task) => {
+      dueDates.push(task.dueDate);
+    });
+    return dueDates;
   }
 
   // ##########################################################################################################
