@@ -1,12 +1,12 @@
 <section id="addTaskSection">
     <div class="addTaskSectionContent">
-        <!-- <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button>
+        <!-- <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button> -->
         <div class="confirmationMessageContainer" [ngClass]="{'d_none':!displayConfirmation}">
             <div class="confirmationMessage">
                 <p>Task added to board</p>
-                <img src="./assets/img/icons/board.svg" alt="Board"> 
+                <img src="./assets/img/icons/board.svg" alt="Board">
             </div>
-        </div> -->
+        </div>
         <div class="assignedToBackgroundContainer" [ngClass]="{'d_none':!isAssignedToOpen}"
             (click)="isAssignedToOpen = !isAssignedToOpen"></div>
         <div class="categoryBackgroundContainer" [ngClass]="{'d_none':!isCategoryOpen}"

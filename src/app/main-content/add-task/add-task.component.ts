@@ -206,8 +206,7 @@ export class AddTaskComponent implements OnInit {
    */
   onSubmit(ngForm: NgForm) {
     if (
-      ngForm.submitted &&
-      ngForm.form.valid &&
+      this.isFormValideAndSubmitted() &&
       (this.categoryValue == 'Technical Task' ||
         this.categoryValue == 'User Story')
     ) {
@@ -265,6 +264,10 @@ export class AddTaskComponent implements OnInit {
         this.showErrorCategory = true;
       }
     }
+  }
+
+  isFormValideAndSubmitted() {
+    return `ngForm.submitted && ngForm.form.valid`;
   }
 
   /**
