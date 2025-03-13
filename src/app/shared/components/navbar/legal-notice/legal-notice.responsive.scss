@@ -3,7 +3,7 @@
 @media (max-width: 1200px){
     section{
         overflow-y: auto;
-        max-height: 90vh;
+        max-height: calc(100vh - 96px - 68px);
     }
 }
 
