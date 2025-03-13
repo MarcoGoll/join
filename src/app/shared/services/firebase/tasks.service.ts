@@ -300,7 +300,6 @@ export class TasksService {
       ],
     },
   ];
-
   firestore: Firestore = inject(Firestore);
   tasksAll: Task[] = [];
   tasksToDo: Task[] = [];
@@ -318,7 +317,6 @@ export class TasksService {
     description: string;
   }[] = [];
   unsubTasks;
-
   currentlySelectedTask: Task = {
     title: 'Create JSDoc',
     description: 'Create a JSDoc description for each method',
@@ -332,7 +330,6 @@ export class TasksService {
       { checked: false, description: 'Component Contactlist' },
     ],
   };
-
   currentTaskToBeUpdated: Task = {
     title: 'Create JSDoc',
     description: 'Create a JSDoc description for each method',
@@ -458,6 +455,13 @@ export class TasksService {
     return this.tasksAll;
   }
 
+  /**
+   * Returns the number of tasks with a specific status.
+   * This function filters through all tasks and counts how many match the given status.
+   *
+   * @param {'toDo' | 'inProgress' | 'awaitFeedback' | 'done'} status - The status of the tasks to count.
+   * @returns {number} The number of tasks that match the specified status.
+   */
   getAmountOfTasksByStatus(
     status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done'
   ) {
@@ -470,6 +474,12 @@ export class TasksService {
     return amount;
   }
 
+  /**
+   * Returns the number of tasks with the priority set to 'Urgent'.
+   * This function filters through all tasks and counts how many have the 'Urgent' priority.
+   *
+   * @returns {number} The number of tasks that have the 'Urgent' priority.
+   */
   getAmountOfTasksByPrio() {
     let amount = 0;
     this.getAllTasks().forEach((task) => {
@@ -480,12 +490,24 @@ export class TasksService {
     return amount;
   }
 
+  /**
+   * Returns the total number of tasks.
+   * This function counts all tasks retrieved by the `getAllTasks()` method.
+   *
+   * @returns {number} The total number of tasks.
+   */
   getAmountOfAllTasks() {
     return this.getAllTasks().length;
   }
 
+  /**
+   * Returns the upcoming deadline date for the urgent tasks.
+   * This function finds the earliest due date from all urgent tasks and formats it into a human-readable string.
+   *
+   * @returns {string} The formatted date of the upcoming deadline in 'en-US' locale (e.g., 'March 13, 2025').
+   */
   getUpcomingDeadline() {
-    let dates: string[] = this.getAllTasksDueDates();
+    let dates: string[] = this.getAllUrgentTasksDueDates();
     const upcommingDeadline = new Date(
       Math.min(...dates.map((date) => new Date(date).getTime()))
     );
@@ -496,10 +518,18 @@ export class TasksService {
     });
   }
 
-  getAllTasksDueDates() {
+  /**
+   * Retrieves the due dates of all tasks with 'Urgent' priority.
+   * This function filters through all tasks and returns a list of due dates for those marked as 'Urgent'.
+   *
+   * @returns {string[]} An array of due dates for all urgent tasks.
+   */
+  getAllUrgentTasksDueDates() {
     let dueDates: string[] = [];
     this.getAllTasks().forEach((task) => {
-      dueDates.push(task.dueDate);
+      if (task.prio == 'Urgent') {
+        dueDates.push(task.dueDate);
+      }
     });
     return dueDates;
   }
@@ -588,6 +618,13 @@ export class TasksService {
     };
   }
 
+  /**
+   * Sets the status to be used for tasks.
+   * This function updates the status that is to be applied to tasks. The status can be one of: 'toDo', 'inProgress', 'awaitFeedback', or 'done'.
+   *
+   * @param {'toDo' | 'inProgress' | 'awaitFeedback' | 'done'} status - The status to be set for tasks.
+   * @returns {void} This function does not return a value. It simply updates the `statusToBeUsed` property.
+   */
   setStatusToBeUsed(status: 'toDo' | 'inProgress' | 'awaitFeedback' | 'done') {
     this.statusToBeUsed = status;
   }
@@ -609,6 +646,12 @@ export class TasksService {
     }
   }
 
+  /**
+   * Sets the subtasks to be added for a given task.
+   *
+   * @param {Task} task - The task object whose subtasks are to be added.
+   * @returns {void} This function does not return a value. It updates the `subtasksToAdd` array.
+   */
   setSubtasksToAdd(task: Task) {
     task.subTasks.forEach((subtask) => {
       this.subtasksToAdd.push({
@@ -622,6 +665,12 @@ export class TasksService {
   // ##########################################################################################################
   // Search Tasks
   // ##########################################################################################################
+  /**
+   * Searches for tasks based on the provided search string.
+   *
+   * @param {string} searchString - The string to search for within task titles and descriptions.
+   * @returns {Task[]} An array of tasks that match the search criteria.
+   */
   searchTasks(searchString: string) {
     let searchResults: Task[] = [];
 
@@ -643,15 +692,24 @@ export class TasksService {
   // ##########################################################################################################
   // Overlays
   // ##########################################################################################################
+  /**
+   * Toggles the visibility of the "Add Task" overlay.
+   */
   toggleIsAddTaskOverlayDisplayed() {
     this.isAddTaskOverlayDisplayed = !this.isAddTaskOverlayDisplayed;
   }
 
+  /**
+   * Toggles the visibility of the "Details Task" overlay.
+   */
   toggleIsTaskOverlayDisplayed() {
     this.isTaskOverlayDisplayed = !this.isTaskOverlayDisplayed;
     this.isTaskinEditMode = false;
   }
 
+  /**
+   * Toggles the visibility of the "AssignedTo" list.
+   */
   toggleIsAssignedToOpen() {
     this.isAssignedToOpen = !this.isAssignedToOpen;
   }
@@ -664,7 +722,6 @@ export class TasksService {
    *
    * @returns {Promise<void>} A promise that resolves once the reset is complete.
    */
-
   async resetDatabase() {
     //DELETE ALL EXISTING DOCUMENTS
     let allTasksToDelete: Task[] = this.getAllTasks();

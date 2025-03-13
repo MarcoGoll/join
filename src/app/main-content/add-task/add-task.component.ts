@@ -20,7 +20,6 @@ export class AddTaskComponent implements OnInit {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
   @Input('overlayMode') overlayMode: boolean = false;
-
   isAssignedToOpen = false;
   isCategoryOpen = false;
   isSubtaskinFocus = false;
@@ -29,7 +28,6 @@ export class AddTaskComponent implements OnInit {
   showErrorCategory: boolean = false;
   subtaskValue: string = '';
   subtasksToAdd: { inEditMode: boolean; description: string }[] = [];
-
   newTask: Task = {
     title: '',
     description: '',
@@ -40,18 +38,31 @@ export class AddTaskComponent implements OnInit {
     category: 'User Story',
     subTasks: [],
   };
-
   currentPrioSelection: string = 'Medium';
   currentSelectedAssignedTo: Contact[] = [];
-
   today: string = '';
 
+  /**
+   * Initializes a new instance of the class and injects the Router service.
+   *
+   * @param {Router} router - The Angular Router service used for navigating between views.
+   */
   constructor(private router: Router) {}
 
+  /**
+   * Lifecycle hook that is called after Angular has initialized the component's input properties.
+   * This function sets the `today` property to the current date in the format 'YYYY-MM-DD'.
+   */
   ngOnInit() {
     this.today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
   }
 
+  /**
+   * Sets the priority level based on the provided string.
+   * This function updates the `currentPrioSelection` property to reflect the chosen priority.
+   *
+   * @param {string} prio - The priority to set. It can be one of: 'Urgent', 'Medium', or 'Low'.
+   */
   setPrio(prio: string) {
     switch (prio) {
       case 'Urgent':
@@ -68,10 +79,18 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
+  /**
+   * Sets the value for the subtask.
+   *
+   * @param {string} value - The value to set for the subtask.
+   */
   setSubtaskValue(value: string) {
     this.subtaskValue = value;
   }
 
+  /**
+   * Confirms the addition of a new subtask.
+   */
   confirmSubtask() {
     if (this.subtaskValue != '') {
       this.subtasksToAdd.push({
@@ -82,26 +101,52 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
+  /**
+   * Deletes a subtask from the `subtasksToAdd` array based on the provided index.
+   *
+   * @param {number} index - The index of the subtask to delete.
+   */
   deleteSubtask(index: number) {
     this.subtasksToAdd.splice(index, 1);
   }
 
+  /**
+   * Toggles the visibility of the "Assigned To" list.
+   */
   toggleIsAssignedToOpen() {
     this.isAssignedToOpen = !this.isAssignedToOpen;
   }
 
+  /**
+   * Toggles the visibility of the "Category" list.
+   */
   toggleIsCategoryOpen() {
     this.isCategoryOpen = !this.isCategoryOpen;
   }
 
+  /**
+   * Sets the focus state for a subtask.
+   *
+   * @param {boolean} myBool - The boolean value to set for the `isSubtaskinFocus` property.
+   */
   setIsSubtaskinFocus(myBool: boolean) {
     this.isSubtaskinFocus = myBool;
   }
 
+  /**
+   * Stops the propagation of the event to parent elements.
+   *
+   * @param {Event} event - The event whose propagation should be stopped.
+   */
   stopPropagation(event: Event) {
     event.stopPropagation();
   }
 
+  /**
+   * Toggles the presence of a contact in the `currentSelectedAssignedTo` array.
+   *
+   * @param {Contact} contact - The contact to toggle in the `currentSelectedAssignedTo` array.
+   */
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
     if (this.currentSelectedAssignedTo.includes(contact)) {
       this.deleteContactFromCurrentSelectedAssignedTo(contact);
@@ -110,10 +155,20 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
+  /**
+   * Adds a contact to the `currentSelectedAssignedTo` array.
+   *
+   * @param {Contact} contact - The contact to add to the `currentSelectedAssignedTo` array.
+   */
   addContactToCurrentSelectedAssignedTo(contact: Contact) {
     this.currentSelectedAssignedTo.push(contact);
   }
 
+  /**
+   * Deletes a contact from the `currentSelectedAssignedTo` array.
+   *
+   * @param {Contact} contact - The contact to remove from the `currentSelectedAssignedTo` array.
+   */
   deleteContactFromCurrentSelectedAssignedTo(contact: Contact) {
     const index = this.currentSelectedAssignedTo.indexOf(contact);
     if (index > -1) {
@@ -121,6 +176,12 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
+  /**
+   * Checks if a contact is currently selected in the `currentSelectedAssignedTo` array.
+   *
+   * @param {Contact} contact - The contact to check if it is currently selected.
+   * @returns {boolean} `true` if the contact is selected, otherwise `false`.
+   */
   isContactCurrentlySelected(contact: Contact) {
     if (this.currentSelectedAssignedTo.includes(contact)) {
       return true;
@@ -129,11 +190,21 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
-  setContact(category: string) {
+  /**
+   * Sets the category value and closes the category selection.
+   *
+   * @param {string} category - The category to set as the current selected category.
+   */
+  setCategory(category: string) {
     this.isCategoryOpen = false;
     this.categoryValue = category;
   }
 
+  /**
+   * Handles the form submission and task creation process.
+   *
+   * @param {NgForm} ngForm - The form object that contains the task data to be submitted.
+   */
   onSubmit(ngForm: NgForm) {
     if (
       ngForm.submitted &&
@@ -197,6 +268,9 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
+  /**
+   * Resets the task variables to their initial values.
+   */
   resetAddTaskComponent() {
     this.setPrio('Medium');
     this.categoryValue = 'Select task category';
@@ -209,6 +283,11 @@ export class AddTaskComponent implements OnInit {
     this.displayConfirmation = false;
   }
 
+  /**
+   * Resets the provided form to its initial state.
+   *
+   * @param {NgForm} ngForm - The form object to reset.
+   */
   myResetForm(ngForm: NgForm) {
     ngForm.resetForm();
   }

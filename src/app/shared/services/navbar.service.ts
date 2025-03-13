@@ -11,8 +11,11 @@ export class NavbarService {
   isPrivacyPolicySelected: boolean = false;
   isLegalNoticeSelected: boolean = false;
 
-  constructor() {}
-
+  /**
+   * Sets the selected state for a specific section based on the provided identifier.
+   *
+   * @param {string} id - The identifier of the section to select.
+   */
   setSelection(id: string) {
     this.isSummarySelected = false;
     this.isAddTaskSelected = false;

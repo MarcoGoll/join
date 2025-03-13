@@ -24,7 +24,6 @@ export class ContactsService {
   isContactDetailsViewed: boolean = false;
   isAddContactViewed: boolean = false;
   isEditContactViewed: boolean = false;
-
   DUMMYCONTACTS: Contact[] = [
     {
       firstName: 'Lukas',
@@ -227,11 +226,8 @@ export class ContactsService {
       img: '',
     },
   ];
-
   firestore: Firestore = inject(Firestore);
-
   contacts: Contact[] = [];
-
   unsubContacts;
   currentlySelectedContact: Contact = {
     firstName: 'i_firstName',
@@ -243,7 +239,6 @@ export class ContactsService {
     phone: '+4915234567890',
     img: '',
   };
-
   currentContactToBeUpdated: Contact = {
     firstName: 'u_firstName',
     lastName: 'u_lastName',
@@ -254,7 +249,6 @@ export class ContactsService {
     phone: '+4915234567890',
     img: '',
   };
-
   currentColorCode = 0;
 
   /**
@@ -315,6 +309,12 @@ export class ContactsService {
     return this.contacts;
   }
 
+  /**
+   * Retrieves an array of contacts based on the provided list of contact IDs.
+   *
+   * @param {string[]} ids - An array of contact IDs to search for.
+   * @returns {Contact[]} An array of Contact objects that match the provided IDs.
+   */
   getContactsViaIds(ids: string[]) {
     let foundContacs: Contact[] = [];
     ids.forEach((id) => {
@@ -327,6 +327,12 @@ export class ContactsService {
     return foundContacs;
   }
 
+  /**
+   * Retrieves an array of contacts based on a provided contact ID.
+   *
+   * @param {string} id - A contact ID to search for.
+   * @returns {Contact} A contact object that match the provided ID.
+   */
   getContactViaId(id: string) {
     let foundContac: Contact = {
       id: '', // ? optional
