@@ -1,8 +1,5 @@
 @import "./../../../styles.scss";
 
-// @media (max-width: 750px){
-
-// }
 @media (max-width: 1023px) {
     h1{
         font-size: $fsMobileH1;
@@ -15,6 +12,12 @@
     .backLink{
         top: 70px;
         left: 48px;
+    }
+}
+
+@media (max-width: 700px){
+    .signUpContainer{
+        margin-top: 130px;
     }
 }
 

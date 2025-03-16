@@ -12,17 +12,18 @@
 }
 
 .logoContainer{
-    align-self: flex-start;
-    @include setFlex($ai:center);
-    padding: 8px;
-    height: 100px;
+    position: fixed;
+    top: 16px;
+    left: 16px;
     img{
-        height: 100%;
-        width: auto;        
+        height: 100px;
+        width: 100px;        
+        object-fit: contain;
     };
 }
 
 .signUpContainer{
+    margin-top: 100px;
     position: relative;
     padding: 44px 88px;
     border-radius: 30px;
@@ -115,9 +116,12 @@
     font-size: 12px;
 }
 
-.signupBTN{
+#signupBTN{
+    padding: 8px 32px;
     &:disabled{
         pointer-events: none;
+        background-color: $clrDisabled;  
+        color: $clrBaseGray; 
     }
 }
 

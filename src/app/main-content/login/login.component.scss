@@ -9,7 +9,7 @@ section{
 }
 
 header{
-    @include setFlex($jc: space-between, $ai: flex-start);
+    @include setFlex($jc: flex-end, $ai: flex-start);
     padding: 24px;
     height: 150px;
 }
@@ -233,11 +233,14 @@ input::placeholder {
 //=====================================================================
 //========== ANIMATION ================================================
 //=====================================================================
-
 .logo-animation-container {
     position: fixed;
     top: 16px;
     left: 16px;
+    z-index: 1001;
+}
+
+.logo-Animation{
     transform: translate(-50%, -50%);
     animation: shrinkAndMove 2s ease-in-out forwards; /* Die Animation bleibt nach Abschluss */
 }
@@ -256,13 +259,7 @@ input::placeholder {
 .animated-logo {
     width: 100px;  /* Startgröße */
     height: 100px;
-    position: relative;
-    z-index: 1100; /* Höher als 1000 von .logo-animation-overlay */
-}
-
-.static-logo {
-    width: 100px;  /* Startgröße */
-    height: 100px;
+    object-fit: contain;
 }
 
 .invisible {
