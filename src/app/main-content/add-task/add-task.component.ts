@@ -7,6 +7,7 @@ import { ContactsService } from '../../shared/services/firebase/contacts.service
 import { Contact } from '../../shared/interfaces/contact';
 import { Subtask } from '../../shared/interfaces/subtask';
 import { Router } from '@angular/router';
+import { NavbarService } from '../../shared/services/navbar.service';
 
 @Component({
   selector: 'app-add-task',
@@ -18,6 +19,8 @@ import { Router } from '@angular/router';
 export class AddTaskComponent implements OnInit {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
+  navbarService = inject(NavbarService);
+
   @Input('overlayMode') overlayMode: boolean = false;
   isAssignedToOpen = false;
   isCategoryOpen = false;
@@ -216,20 +219,8 @@ export class AddTaskComponent implements OnInit {
         this.currentPrioSelection == 'Medium' ||
         this.currentPrioSelection == 'Low'
       ) {
-        let assignedToIds: string[] = [];
-        let subtasksToCreate: Subtask[] = [];
-
-        this.currentSelectedAssignedTo.forEach((assignee) => {
-          if (assignee.id) {
-            assignedToIds.push(assignee.id);
-          }
-        });
-        this.subtasksToAdd.forEach((subtask) => {
-          subtasksToCreate.push({
-            checked: false,
-            description: subtask.description,
-          });
-        });
+        let assignedToIds: string[] = this.getAssignedToIdsForAddTask();
+        let subtasksToCreate: Subtask[] = this.getSubtasksToCreateForAddTask();
         let taskToCreate: Task = {
           title: this.newTask.title,
           description: this.newTask.description,
@@ -241,39 +232,94 @@ export class AddTaskComponent implements OnInit {
           subTasks: subtasksToCreate,
         };
         this.taskService.addTask(taskToCreate);
-        ngForm.resetForm();
-        this.resetAddTaskComponent();
-        this.displayConfirmation = true;
-        setTimeout(() => {
-          if (this.overlayMode) {
-            this.taskService.toggleIsAddTaskOverlayDisplayed();
-            this.displayConfirmation = false;
-          } else {
-            this.router.navigate(['/board']);
-          }
-        }, 1025);
+        this.resetAddTaskComponent(ngForm);
+        this.confirmAddTask();
       }
     } else {
-      ngForm.form.markAllAsTouched();
-      if (
-        this.categoryValue == 'Technical Task' ||
-        this.categoryValue == 'User Story'
-      ) {
-        this.showErrorCategory = false;
-      } else {
-        this.showErrorCategory = true;
-      }
+      this.displayFormErrors(ngForm);
     }
   }
 
+  /**
+   * Checks if the form has been submitted and is valid.
+   *
+   * @returns {string} A string representing the condition of form submission and validity.
+   */
   isFormValideAndSubmitted() {
     return `ngForm.submitted && ngForm.form.valid`;
   }
 
   /**
-   * Resets the task variables to their initial values.
+   * Retrieves an array of IDs for the assigned users when adding a task.
+   *
+   * @returns {string[]} An array of user IDs assigned to the task.
    */
-  resetAddTaskComponent() {
+  getAssignedToIdsForAddTask(): string[] {
+    let assignedToIds: string[] = [];
+    this.currentSelectedAssignedTo.forEach((assignee) => {
+      if (assignee.id) {
+        assignedToIds.push(assignee.id);
+      }
+    });
+    return assignedToIds;
+  }
+
+  /**
+   * Creates an array of subtasks to be added to a new task.
+   *
+   * @returns {Subtask[]} An array of subtasks with default unchecked state and descriptions.
+   */
+  getSubtasksToCreateForAddTask(): Subtask[] {
+    let subtasksToCreate: Subtask[] = [];
+    this.subtasksToAdd.forEach((subtask) => {
+      subtasksToCreate.push({
+        checked: false,
+        description: subtask.description,
+      });
+    });
+    return subtasksToCreate;
+  }
+
+  /**
+   * Confirms the addition of a new task by displaying a confirmation message
+   * and handling navigation or overlay behavior after a short delay.
+   */
+  confirmAddTask() {
+    this.displayConfirmation = true;
+    setTimeout(() => {
+      if (this.overlayMode) {
+        this.taskService.toggleIsAddTaskOverlayDisplayed();
+        this.displayConfirmation = false;
+      } else {
+        this.navbarService.setSelection('board');
+        this.router.navigate(['/board']);
+      }
+    }, 1025);
+  }
+
+  /**
+   * Displays form validation errors by marking all fields as touched.
+   * Additionally, it sets the category error visibility based on the selected category.
+   *
+   * @param {NgForm} ngForm - The Angular form to validate.
+   */
+  displayFormErrors(ngForm: NgForm) {
+    ngForm.form.markAllAsTouched();
+    if (
+      this.categoryValue == 'Technical Task' ||
+      this.categoryValue == 'User Story'
+    ) {
+      this.showErrorCategory = false;
+    } else {
+      this.showErrorCategory = true;
+    }
+  }
+
+  /**
+   * Resets the task component to their initial values.
+   */
+  resetAddTaskComponent(ngForm: NgForm) {
+    ngForm.resetForm();
     this.setPrio('Medium');
     this.categoryValue = 'Select task category';
     this.subtasksToAdd = [];
@@ -283,14 +329,5 @@ export class AddTaskComponent implements OnInit {
     this.showErrorCategory = false;
     this.isSubtaskinFocus = false;
     this.displayConfirmation = false;
-  }
-
-  /**
-   * Resets the provided form to its initial state.
-   *
-   * @param {NgForm} ngForm - The form object to reset.
-   */
-  myResetForm(ngForm: NgForm) {
-    ngForm.resetForm();
   }
 }

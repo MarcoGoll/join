@@ -1,64 +1,66 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from '../../../shared/interfaces/contact';
 import { ContactsService } from '../../../shared/services/firebase/contacts.service';
-import { ListContactComponent } from "./list-contact/list-contact.component";
+import { ListContactComponent } from './list-contact/list-contact.component';
 import { timeout } from 'rxjs';
 import { CommonModule } from '@angular/common';
-
 
 @Component({
   selector: 'app-contactslist',
   standalone: true,
   imports: [ListContactComponent, CommonModule],
   templateUrl: './contactslist.component.html',
-  styleUrls: ['./contactslist.component.scss', './contactslist.responsive.scss']
+  styleUrls: [
+    './contactslist.component.scss',
+    './contactslist.responsive.scss',
+  ],
 })
 export class ContactslistComponent {
-  @Input("isMobileView") isMobileView: boolean = false;
+  @Input('isMobileView') isMobileView: boolean = false;
 
   testContact: Contact = {
-    firstName: "test_firstName",
-    lastName: "test_lastName",
-    fullName: "test_fullName",
-    nameShortcut: "TT",
+    firstName: 'test_firstName',
+    lastName: 'test_lastName',
+    fullName: 'test_fullName',
+    nameShortcut: 'TT',
     nameShortcutColorCode: 1,
-    email: "test@email.de",
-    phone: "123456789",
-    img: ""
-  }
+    email: 'test@email.de',
+    phone: '123456789',
+    img: '',
+  };
 
   /**
-   * Konstruktor der Klasse, der den ContactService injiziert.
-   * @param contactService - Der Service, der Kontaktoperationen verwaltet.
+   * Constructor of the class that injects the ContactService.
+   * @param {ContactService} contactService - The service that manages contact operations.
    */
-  constructor(public contactService: ContactsService) { }
+  constructor(public contactService: ContactsService) {}
 
   /**
-   * Fügt einen neuen Kontakt hinzu.
-   * @param contact - Der Kontakt, der hinzugefügt werden soll.
+   * Adds a new contact.
+   * @param {Contact} contact - The contact to be added.
    */
   addContact(contact: Contact) {
     this.contactService.addContact(contact);
   }
 
   /**
-   * Löscht einen bestehenden Kontakt.
-   * @param contact - Der Kontakt, der gelöscht werden soll.
+   * Deletes an existing contact.
+   * @param {Contact} contact - The contact to be deleted.
    */
   deleteContact(contact: Contact) {
     this.contactService.deleteContact(contact);
   }
 
   /**
-   * Setzt die Datenbank zurück.
-   * Löscht alle gespeicherten Kontakte.
+   * Resets the database.
+   * Deletes all saved contacts.
    */
   resetDatabase() {
     this.contactService.resetDatabase();
   }
 
   /**
-   * Zeigt das Formular zum Hinzufügen eines neuen Kontakts an.
+   * Displays the form to add a new contact.
    */
   showAddContact() {
     this.contactService.isAddContactViewed = true;

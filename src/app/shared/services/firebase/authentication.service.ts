@@ -7,31 +7,19 @@ import {
   updateProfile,
   User,
   signOut,
-} 
-from 'firebase/auth';
+} from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { Router } from '@angular/router';
 import { NavbarService } from '../navbar.service';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyBmPjsLf9R76U3csMNtLgAhffJOZeh9Rvc',
-  authDomain: 'join-82c5c.firebaseapp.com',
-  projectId: 'join-82c5c',
-  storageBucket: 'join-82c5c.firebasestorage.app',
-  messagingSenderId: '27899760680',
-  appId: '1:27899760680:web:a69a8cecc0f0971858a51d',
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
+import { Auth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   router = inject(Router);
+  auth = inject(Auth);
+
   navbarService = inject(NavbarService);
   isLoginSignUpView: boolean = true;
   isSummaryAnnimationPlayedOnce: boolean = false;
@@ -55,7 +43,7 @@ export class AuthenticationService {
   // ##########################################################################################################
   // Authentication
   // ##########################################################################################################
-  
+
   /**
    * Creates a new user with the given email and password using Firebase authentication.
    *
@@ -64,7 +52,7 @@ export class AuthenticationService {
    * @returns {Promise<void>} A promise that resolves when the user is created or rejects if an error occurs.
    */
   async createUser(email: string, password: string) {
-    await createUserWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
@@ -84,7 +72,7 @@ export class AuthenticationService {
    * @returns {Promise<void>} A promise that resolves when the user is logged in or rejects if an error occurs.
    */
   async login(email: string, password: string) {
-    await signInWithEmailAndPassword(auth, email, password)
+    await signInWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
         // Signed in
         this.router.navigate(['/summary']);
@@ -104,7 +92,7 @@ export class AuthenticationService {
    * @returns {Promise<void>} A promise that resolves when the user is logged out or rejects if an error occurs.
    */
   async logout() {
-    await signOut(auth)
+    await signOut(this.auth)
       .then(() => {
         // Signed out
         this.router.navigate(['/']);
@@ -125,7 +113,7 @@ export class AuthenticationService {
    *                             and `false` if the user is not logged in.
    */ async checkLogin(): Promise<boolean> {
     return new Promise((resolve) => {
-      onAuthStateChanged(auth, (user) => {
+      onAuthStateChanged(this.auth, (user) => {
         if (user) {
           // User is signed in
           this.currentLoggedInUser = user;
@@ -149,7 +137,7 @@ export class AuthenticationService {
    * @returns {Promise<void>} A promise that resolves when the profile is successfully updated or rejects if an error occurs.
    */
   async updateUser(fullName: string) {
-    const user: User | null = auth.currentUser;
+    const user: User | null = this.auth.currentUser;
     if (user) {
       await updateProfile(user, {
         displayName: fullName,

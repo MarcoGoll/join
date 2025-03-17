@@ -7,22 +7,25 @@ import { ContactsService } from '../../../shared/services/firebase/contacts.serv
   standalone: true,
   imports: [CommonModule],
   templateUrl: './contactsdetails.component.html',
-  styleUrls: ['./contactsdetails.component.scss', './contactsdetails.responsive.scss']
+  styleUrls: [
+    './contactsdetails.component.scss',
+    './contactsdetails.responsive.scss',
+  ],
 })
 export class ContactsdetailsComponent {
-  @Input("isMobileView") isMobileView: boolean = false;
-  isMoreControlOverviewShown: boolean = false
+  @Input('isMobileView') isMobileView: boolean = false;
+  isMoreControlOverviewShown: boolean = false;
   isInitialLoad: boolean = true;
 
   /**
-   * Konstruktor, der den ContactsService initialisiert.
-   * @param contactService Der Service zur Verwaltung von Kontakten.
+   * Constructor that initializes the ContactsService.
+   * @param {ContactService} contactService - The service for managing contacts.
    */
-  constructor(public contactService: ContactsService) { }
+  constructor(public contactService: ContactsService) {}
 
   /**
-   * Schaltet die Anzeige von mehr Steuerungsoptionen um.
-   * Setzt auch den Initialisierungsstatus auf false.
+   * Toggles the display of additional control options.
+   * Also sets the initialization status to false.
    */
   toggleMoreControlOverview() {
     this.isMoreControlOverviewShown = !this.isMoreControlOverviewShown;
@@ -30,8 +33,8 @@ export class ContactsdetailsComponent {
   }
 
   /**
-   * Setzt die Initialwerte zurück.
-   * Setzt den Initialisierungsstatus und blendet die erweiterten Steuerungen aus.
+   * Resets the initial values.
+   * Resets the initialization status and hides the advanced controls.
    */
   setInitialValues() {
     this.isInitialLoad = true;
@@ -39,12 +42,10 @@ export class ContactsdetailsComponent {
   }
 
   /**
-   * Setzt die Bearbeitung des Kontakts auf "sichtbar".
-   * Ändert den Zustand des Services, dass der Bearbeitungsmodus aktiv ist.
+   * Sets the contact editing to "visible".
+   * Changes the service state to indicate that the edit mode is active.
    */
   showEditContact() {
     this.contactService.isEditContactViewed = true;
   }
 }
-
-

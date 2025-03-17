@@ -4,7 +4,7 @@ import { ContactsdetailsComponent } from './contactsdetails/contactsdetails.comp
 import { AddcontactComponent } from './addcontact/addcontact.component';
 import { CommonModule } from '@angular/common';
 import { ContactsService } from '../../shared/services/firebase/contacts.service';
-import { EditcontactComponent } from "./editcontact/editcontact.component";
+import { EditcontactComponent } from './editcontact/editcontact.component';
 
 @Component({
   selector: 'app-contacts',
@@ -14,21 +14,19 @@ import { EditcontactComponent } from "./editcontact/editcontact.component";
     ContactsdetailsComponent,
     AddcontactComponent,
     CommonModule,
-    EditcontactComponent
+    EditcontactComponent,
   ],
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.scss', './contacts.responsive.scss']
+  styleUrls: ['./contacts.component.scss', './contacts.responsive.scss'],
 })
 export class ContactsComponent {
-
   isMobileView = false;
 
-  constructor(public contactService: ContactsService) {
-  }
+  constructor(public contactService: ContactsService) {}
 
   /**
-   * Wird beim Initialisieren der Komponente aufgerufen.
-   * Setzt die Ansicht basierend auf der Fensterbreite auf Mobil- oder Desktopansicht.
+   * Called when the component is initialized.
+   * Sets the view to mobile or desktop based on the window width.
    */
   ngOnInit(): void {
     if (window.innerWidth <= 1023) {
@@ -39,8 +37,8 @@ export class ContactsComponent {
   }
 
   /**
-   * Wird ausgelöst, wenn das Fenster in der Größe verändert wird.
-   * Aktualisiert den Ansichtsmodus (mobil oder Desktop) basierend auf der Fensterbreite.
+   * Triggered when the window is resized.
+   * Updates the view mode (mobile or desktop) based on the window width.
    */
   @HostListener('window:resize', ['$event'])
   onResize(): void {

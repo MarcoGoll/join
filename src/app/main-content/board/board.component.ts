@@ -53,28 +53,27 @@ export class BoardComponent implements OnInit {
   clicked: boolean = false;
 
   /**
-   * Lifecycle-Hook, der beim Initialisieren der Komponente aufgerufen wird.
-   * Führt eine Prüfung der Bildschirmgröße durch.
+   * Lifecycle hook that is called when the component is initialized.
+   * Performs a check of the screen size.
    */
   ngOnInit() {
     this.checkScreenSize();
   }
 
-
   /**
-   * Ändert den Zustand `clicked` auf `true` und setzt ihn nach 3 Sekunden zurück.
-   * Kann genutzt werden, um eine temporäre Bildänderung zu steuern.
+   * Changes the `clicked` state to `true` and resets it after 3 seconds.
+   * Can be used to control a temporary image change.
    */
   changeImage() {
     this.clicked = true;
     setTimeout(() => {
       this.clicked = false;
-    }, 3000); // Das Bild nach 3000ms zurücksetzen (anpassbar)
+    }, 3000);
   }
 
   /**
-   * Reagiert auf das Ändern der Fenstergröße.
-   * Aktualisiert die Bildschirmgröße und deaktiviert das Ziehen bei großen Displays.
+   * Responds to window resize events.
+   * Updates the screen size and disables dragging on large displays.
    */
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -83,20 +82,19 @@ export class BoardComponent implements OnInit {
   }
 
   /**
-   * Überprüft die Bildschirmgröße und setzt `isMobileView`.
-   * Erkennt mobile Ansicht bei einer Breite von ≤ 1200px.
+   * Checks the screen size and sets `isMobileView`.
    */
   private checkScreenSize(): void {
     this.isMobileView = window.innerWidth <= 1200;
   }
 
   /**
-    * Behandelt das Drag-and-Drop-Ereignis für Aufgaben.
-    * @param event - Das CdkDragDrop-Ereignis mit den verschobenen Aufgaben.
-    * 
-    * Aktualisiert den Status der Aufgabe, wenn sie zwischen Spalten verschoben wird.
-    * Ruft den Task-Service auf, um die Änderungen zu speichern.
-  */
+   * Handles the drag-and-drop event for tasks.
+   * @param {CdkDragDrop} event - The CdkDragDrop event with the moved tasks.
+   *
+   * Updates the task status when it is moved between columns.
+   * Calls the task service to save the changes.
+   */
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       // TODO: Drag&Drop within same Column
@@ -130,8 +128,8 @@ export class BoardComponent implements OnInit {
   }
 
   /**
-   * Sucht nach Aufgaben basierend auf dem Suchstring.
-   * Aktiviert die Suche nur, wenn der Suchstring mindestens 3 Zeichen lang ist.
+   * Searches for tasks based on the search string.
+   * Activates the search only if the search string is at least 3 characters long.
    */
   searchTask() {
     if (this.searchString.length < 3) {
@@ -143,13 +141,15 @@ export class BoardComponent implements OnInit {
   }
 
   /**
-   * Prüft, ob eine gegebene Aufgabe in den Suchergebnissen enthalten ist.
-   * @param task - Die zu überprüfende Aufgabe.
-   * @returns `true`, wenn die Aufgabe in den Suchergebnissen enthalten ist, sonst `false`.
+   * Checks if a given task is included in the search results.
+   * @param {Task} task - The task to check.
+   * @returns {boolean} `true` if the task is in the search results, otherwise `false`.
    */
   isTaskInSearchResult(task: Task): boolean {
-    return task.id 
-      ? this.allSearchResults.some(searchResult => searchResult.id === task.id) 
+    return task.id
+      ? this.allSearchResults.some(
+          (searchResult) => searchResult.id === task.id
+        )
       : false;
   }
 }

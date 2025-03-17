@@ -9,22 +9,12 @@ import {
   Event,
   RouterOutlet,
 } from '@angular/router';
-
-import { LoginComponent } from './main-content/login/login.component';
-import { SignupComponent } from './main-content/signup/signup.component';
 import { AuthenticationService } from './shared/services/firebase/authentication.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    HeaderComponent,
-    NavbarComponent,
-    RouterOutlet,
-    LoginComponent,
-    SignupComponent,
-  ],
+  imports: [CommonModule, HeaderComponent, NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -32,6 +22,12 @@ export class AppComponent implements OnInit {
   authenticationService = inject(AuthenticationService);
   title = 'join';
 
+  /**
+   * Constructor that initializes the component and listens for route changes.
+   * Updates the `isLoginSignUpView` property based on the current route.
+   *
+   * @param {Router} router - The Angular Router service for navigation.
+   */
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
@@ -73,7 +69,11 @@ export class AppComponent implements OnInit {
     });
   }
 
+  /**
+   * Lifecycle hook that is called when the component is initialized.
+   * Checks the user's login status by calling the authentication service.
+   */
   async ngOnInit() {
-    await this.authenticationService.checkLogin(); // bei Initial Load: wird ausgeführt
+    await this.authenticationService.checkLogin();
   }
 }

@@ -22,6 +22,6 @@ export const routes: Routes = [
   { path: 'info', component: InfoComponent, canActivate: [authGuard] },
   { path: 'summary', component: SummaryComponent, canActivate: [authGuard] },
 
-  // Wildcard route für alle unbekannten Routen
+  // Wildcard route for unknown routes
   { path: '**', redirectTo: '/' },
 ];

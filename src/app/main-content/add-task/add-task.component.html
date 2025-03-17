@@ -264,8 +264,7 @@
     </div>
     <div class="addTaskControlBtns">
         @if (!overlayMode) {
-        <div class="secundaryBtnTall btnWithIcon clearBTN"
-            (click)="myResetForm(addTaskForm); this.resetAddTaskComponent();">
+        <div class="secundaryBtnTall btnWithIcon clearBTN" (click)="this.resetAddTaskComponent(addTaskForm);">
             <p>Clear</p>
             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_75601_14760" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25"
@@ -282,7 +281,7 @@
         </div>
         }@else {
         <div class="secundaryBtnTall btnWithIcon clearBTN"
-            (click)="taskService.toggleIsAddTaskOverlayDisplayed(); myResetForm(addTaskForm); this.resetAddTaskComponent();">
+            (click)="taskService.toggleIsAddTaskOverlayDisplayed(); this.resetAddTaskComponent(addTaskForm);">
             <p>Cancel</p>
             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_75601_14760" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25"

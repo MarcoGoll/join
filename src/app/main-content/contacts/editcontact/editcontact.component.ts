@@ -9,35 +9,34 @@ import { Contact } from '../../../shared/interfaces/contact';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './editcontact.component.html',
-  styleUrls: ['./editcontact.component.scss', './editcontact.responsive.scss']
+  styleUrls: ['./editcontact.component.scss', './editcontact.responsive.scss'],
 })
 export class EditcontactComponent {
-
-    @Input("isMobileView") isMobileView: boolean = false;
+  @Input('isMobileView') isMobileView: boolean = false;
 
   /**
-   * Konstruktor der Klasse, der den ContactService injiziert.
-   * @param contactService Der Service, der die Kontaktlogik enthält.
+   * Constructor of the class that injects the ContactService.
+   * @param {ContactService} contactService - The service that contains the contact logic.
    */
-  constructor(public contactService: ContactsService) { }
+  constructor(public contactService: ContactsService) {}
 
   /**
-   * Zeigt das Hinzufügen-Kontakt-Modal an, indem der Status auf 'true' gesetzt wird.
+   * Displays the add contact modal by setting the status to 'true'.
    */
   show() {
-    this.contactService.isAddContactViewed = true; 
+    this.contactService.isAddContactViewed = true;
   }
 
   /**
-   * Schließt das Bearbeiten-Kontakt-Modal, indem der Status auf 'false' gesetzt wird.
+   * Closes the edit contact modal by setting the status to 'false'.
    */
   close() {
     this.contactService.isEditContactViewed = false;
   }
 
   /**
-   * Schließt das Modal, wenn auf den Overlay-Bereich geklickt wird.
-   * @param event Das MouseEvent, das den Klick auf den Overlay-Bereich darstellt.
+   * Closes the modal when the overlay area is clicked.
+   * @param {MouseEvent} event - The MouseEvent representing the click on the overlay area.
    */
   closeModal(event: MouseEvent) {
     if ((event.target as HTMLElement).classList.contains('overlay')) {
@@ -46,14 +45,14 @@ export class EditcontactComponent {
   }
 
   /**
-   * Verarbeitet das Absenden des Formulars und aktualisiert den Kontakt, wenn die Eingaben gültig sind.
-   * @param ngForm Das Formular, das die eingegebenen Kontaktinformationen enthält.
+   * Processes the form submission and updates the contact if the inputs are valid.
+   * @param {NgForm} ngForm - The form containing the entered contact information.
    */
   onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid) {
-      let newFirstName: string = "";
-      let newLastName: string = "";
-      let newNameAsArray: string[] = ngForm.value.name.split(" ");
+      let newFirstName: string = '';
+      let newLastName: string = '';
+      let newNameAsArray: string[] = ngForm.value.name.split(' ');
       if (newNameAsArray.length == 2) {
         newFirstName = newNameAsArray[0];
         newLastName = newNameAsArray[1];
@@ -62,20 +61,23 @@ export class EditcontactComponent {
       }
 
       let updatedContact: Contact = {
-        "id": this.contactService.currentContactToBeUpdated.id,
-        "firstName": newFirstName,
-        "lastName": newLastName,
-        "fullName": ngForm.value.name,
-        "nameShortcut": this.contactService.getNameShortcut(newFirstName, newLastName),
-        "nameShortcutColorCode": this.contactService.currentContactToBeUpdated.nameShortcutColorCode,
-        "email": ngForm.value.email,
-        "phone": ngForm.value.phone,
-        "img": ""
-      }
+        id: this.contactService.currentContactToBeUpdated.id,
+        firstName: newFirstName,
+        lastName: newLastName,
+        fullName: ngForm.value.name,
+        nameShortcut: this.contactService.getNameShortcut(
+          newFirstName,
+          newLastName
+        ),
+        nameShortcutColorCode:
+          this.contactService.currentContactToBeUpdated.nameShortcutColorCode,
+        email: ngForm.value.email,
+        phone: ngForm.value.phone,
+        img: '',
+      };
       this.contactService.updateContact(updatedContact);
       this.contactService.setCurrentContacts(updatedContact);
       this.close();
     }
   }
 }
-

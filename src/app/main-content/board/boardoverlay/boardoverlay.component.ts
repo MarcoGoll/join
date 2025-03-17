@@ -17,7 +17,6 @@ import { Task } from '../../../shared/interfaces/task';
     './boardoverlay.responsive.scss',
   ],
 })
-
 export class BoardoverlayComponent {
   taskService = inject(TasksService);
   contactService = inject(ContactsService);
@@ -28,8 +27,8 @@ export class BoardoverlayComponent {
   subtaskValue: string = '';
 
   /**
-   * Setzt die Priorität der aktuellen Aufgabe.
-   * @param prio - Die Priorität als String ('Urgent', 'Medium' oder 'Low').
+   * Sets the priority of the current task.
+   * @param {string} prio - The priority as a string ('Urgent', 'Medium', or 'Low').
    */
   setPrio(prio: string) {
     switch (prio) {
@@ -48,8 +47,8 @@ export class BoardoverlayComponent {
   }
 
   /**
-   * Fügt einen Kontakt zur aktuellen Aufgabe hinzu oder entfernt ihn.
-   * @param contact - Der Kontakt, der hinzugefügt oder entfernt werden soll.
+   * Adds or removes a contact to the current task.
+   * @param {Contact} contact - The contact to be added or removed.
    */
   toggleContactInCurrentSelectedAssignedTo(contact: Contact) {
     if (contact.id) {
@@ -64,16 +63,16 @@ export class BoardoverlayComponent {
   }
 
   /**
-   * Fügt einen Kontakt zur Liste der zugewiesenen Personen hinzu.
-   * @param id - Die ID des Kontakts.
+   * Adds a contact to the list of assigned people.
+   * @param {string} id - The ID of the contact.
    */
   addContactToCurrentSelectedAssignedTo(id: string) {
     this.taskService.currentTaskToBeUpdated.assignedTo.push(id);
   }
 
   /**
-   * Entfernt einen Kontakt aus der Liste der zugewiesenen Personen.
-   * @param id - Die ID des zu entfernenden Kontakts.
+   * Removes a contact from the list of assigned people.
+   * @param {string} id - The ID of the contact to be removed.
    */
   deleteContactFromCurrentSelectedAssignedTo(id: string) {
     const index =
@@ -84,42 +83,44 @@ export class BoardoverlayComponent {
   }
 
   /**
-   * Prüft, ob ein Kontakt derzeit zugewiesen ist.
-   * @param contact - Der zu prüfende Kontakt.
-   * @returns true, wenn der Kontakt zugewiesen ist, sonst false.
+   * Checks if a contact is currently assigned.
+   * @param {Contact} contact - The contact to check.
+   * @returns {boolean} true if the contact is assigned, otherwise false.
    */
   isContactCurrentlySelected(contact: Contact): boolean {
     if (contact.id) {
-      return this.taskService.currentTaskToBeUpdated.assignedTo.includes(contact.id);
+      return this.taskService.currentTaskToBeUpdated.assignedTo.includes(
+        contact.id
+      );
     }
     return false;
   }
 
   /**
-   * Setzt den Fokusstatus einer Unteraufgabe.
-   * @param myBool - Der neue Fokusstatus (true oder false).
+   * Sets the focus status of a subtask.
+   * @param {boolean} myBool - The new focus status (true or false).
    */
   setIsSubtaskinFocus(myBool: boolean) {
     this.isSubtaskinFocus = myBool;
   }
 
   /**
-   * Setzt den Wert einer Unteraufgabe.
-   * @param value - Der neue Wert der Unteraufgabe als String.
+   * Sets the value of a subtask.
+   * @param {string} value - The new value of the subtask as a string.
    */
   setSubtaskValue(value: string) {
     this.subtaskValue = value;
   }
 
   /**
-   * Bestätigt das Hinzufügen einer Unteraufgabe, wenn der Textwert nicht leer ist.
-   * Fügt die Unteraufgabe der Liste hinzu und setzt das Eingabefeld zurück.
+   * Confirms the addition of a subtask if the text value is not empty.
+   * Adds the subtask to the list and resets the input field.
    */
   confirmSubtask(): void {
     if (this.subtaskValue != '') {
       this.taskService.subtasksToAdd.push({
         inEditMode: false,
-        checked: false, 
+        checked: false,
         description: this.subtaskValue,
       });
       this.setSubtaskValue('');
@@ -127,10 +128,10 @@ export class BoardoverlayComponent {
   }
 
   /**
-   * Löscht eine Unteraufgabe aus der Liste der hinzuzufügenden Unteraufgaben.
-   * Entfernt das Element an der angegebenen Indexposition.
-   * 
-   * @param index - Der Index der zu löschenden Unteraufgabe.
+   * Deletes a subtask from the list of subtasks to be added.
+   * Removes the element at the specified index position.
+   *
+   * @param {number} index - The index of the subtask to be deleted.
    */
   deleteSubtask(index: number) {
     this.taskService.subtasksToAdd.splice(index, 1);
@@ -168,8 +169,8 @@ export class BoardoverlayComponent {
   }
 
   /**
-   * Aktualisiert die aktuelle Aufgabe basierend auf dem angezeigten Modus.
-   * Setzt die Aufgabe zur Aktualisierung und ruft die Update-Methode auf.
+   * Updates the current task based on the displayed mode.
+   * Sets the task for update and calls the update method.
    */
   updateFromDisplayMode() {
     this.taskService.currentTaskToBeUpdated =

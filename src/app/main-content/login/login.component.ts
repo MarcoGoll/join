@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   showAnimation: boolean = false;
 
   /**
-   * ngOnInit - Initialisiert den Login-Status und Fehlerbehandlung.
-   * Setzt die Anzeige für Login und eventuelle Fehlermeldungen zurück.
+   * ngOnInit - Initializes the login status and error handling.
+   * Resets the display for login and any error messages.
    */
   ngOnInit(): void {
     this.authenticationService.isLoginSignUpView = true;
@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Konstruktor - Führt Überprüfungen für Login und den ersten Besuch durch.
-   * Ruft `checklogin` und `checkFirstVisit` beim Erstellen der Komponente auf.
+   * Constructor - Performs checks for login and first visit.
+   * Calls `checklogin` and `checkFirstVisit` when the component is created.
    */
   constructor() {
     this.checklogin();
@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * checklogin - Überprüft den Login-Status des Benutzers.
-   * Leitet den Benutzer zur Zusammenfassungsseite weiter, wenn er eingeloggt ist.
+   * checklogin - Checks the user's login status.
+   * Redirects the user to the summary page if they are logged in.
    */
   async checklogin() {
     await this.authenticationService.checkLogin();
@@ -54,8 +54,8 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * checkFirstVisit - Überprüft, ob der Benutzer zum ersten Mal die Login-Seite besucht.
-   * Zeigt eine Animation beim ersten Besuch an und setzt einen Marker, wenn sie gespielt wurde.
+   * checkFirstVisit - Checks if the user is visiting the login page for the first time.
+   * Displays an animation on the first visit and sets a marker once it has been played.
    */
   checkFirstVisit() {
     if (!this.authenticationService.isLoginAnnimationPlayedOnce) {
@@ -68,16 +68,16 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * login - Meldet den Benutzer mit einer E-Mail und einem Passwort an.
-   * Ruft die Login-Funktion des Authentifizierungsservices auf.
+   * login - Logs the user in with an email and password.
+   * Calls the login function of the authentication service.
    */
   login(email: string, pw: string) {
     this.authenticationService.login(email, pw);
   }
 
   /**
-   * loginAsGuest - Meldet den Benutzer als Gast an.
-   * Verwendet vordefinierte Gast-Benutzerdaten aus dem Authentifizierungsservice.
+   * loginAsGuest - Logs the user in as a guest.
+   * Uses predefined guest user data from the authentication service.
    */
   loginAsGuest() {
     this.authenticationService.login(
@@ -87,16 +87,16 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * toggleIsPasswordVisible - Schaltet die Sichtbarkeit des Passworts um.
-   * Ändert den Zustand der Passwortsichtbarkeit.
+   * toggleIsPasswordVisible - Toggles the visibility of the password.
+   * Changes the state of password visibility.
    */
   toggleIsPasswordVisible() {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
 
   /**
-   * onSubmit - Wird bei der Formularübermittlung aufgerufen.
-   * Markiert alle Formulareingaben als berührt und führt den Login-Prozess durch, wenn das Formular gültig ist.
+   * onSubmit - Called upon form submission.
+   * Marks all form inputs as touched and performs the login process if the form is valid.
    */
   onSubmit(ngForm: NgForm) {
     ngForm.control.markAllAsTouched();
