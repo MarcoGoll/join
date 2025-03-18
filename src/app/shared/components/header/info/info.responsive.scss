@@ -8,22 +8,25 @@
     }
 }
 
+@media (max-width: 1023px) {
+    h1{
+        font-size: $fsMobileH1;
+    }
+    h2{
+        font-size: $fsMobileH2;
+    }
+    h3{
+        font-size: $fsMobileH3;
+    }
+}
+
 @media (max-width: 600px){
     section{
         padding-bottom: 84px;
         padding-right: 24px;
         padding-left: 24px;
     }
-    h2{
-        margin-bottom: 24px;
-    }
-    h3{
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-    h4{
-        font-size: 16px;
-    }
+
     .list{
         gap: 12px;
         margin-bottom: 18px;
