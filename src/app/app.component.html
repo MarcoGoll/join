@@ -6,8 +6,8 @@
         <div class="flex1">
             <router-outlet></router-outlet>
         </div>
-        @if (!authenticationService.isLoginSignUpView) {
-        <app-header></app-header>
-        }
     </div>
+    @if (!authenticationService.isLoginSignUpView) {
+    <app-header></app-header>
+    }
 </div>

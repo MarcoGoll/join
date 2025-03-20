@@ -1,9 +1,13 @@
 @import './../../../../styles.scss';
 
 @media (max-width: 1200px) {
-    header {
+    header{
         left: 0;
+    }
+
+    .headerContent {
         justify-content: space-between;
+        max-width: 1920px;
 
         >p {
             display: none;

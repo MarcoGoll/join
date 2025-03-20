@@ -1,30 +1,32 @@
 <header>
-    <p>Kanban Project Management Tool</p>
-    <a class="logoLink" routerLink="/">
-        <div class="logoContainer">
-            <img class="logo" src="./assets/img/icons/header_logo.svg" alt="Info button">
-        </div>
-    </a>
-    @if (this.authenticationService.isUserLoggedIn) {
-    <div>
+    <div class="headerContent">
+        <p>Kanban Project Management Tool</p>
+        <a class="logoLink" routerLink="/">
+            <div class="logoContainer">
+                <img class="logo" src="./assets/img/icons/header_logo.svg" alt="Info button">
+            </div>
+        </a>
+        @if (this.authenticationService.isUserLoggedIn) {
         <div>
-            <a class="infoLink" routerLink="info">
-                <div class="info-icon-container">
-                    <img class="info-icon" src="./assets/img/icons/help.png" alt="info icon">
-                </div>
-            </a>
+            <div>
+                <a class="infoLink" routerLink="info">
+                    <div class="info-icon-container">
+                        <img class="info-icon" src="./assets/img/icons/help.png" alt="info icon">
+                    </div>
+                </a>
+            </div>
+            <div (click)="navVisible = !navVisible" class="profil">
+                <span>{{getShortcut(authenticationService.currentLoggedInUser?.displayName)}}</span>
+            </div>
         </div>
-        <div (click)="navVisible = !navVisible" class="profil">
-            <span>{{getShortcut(authenticationService.currentLoggedInUser?.displayName)}}</span>
-        </div>
+        <nav class="profil-btn-dropdown" [class.visible]="navVisible" (click)="navVisible = !navVisible">
+            <div class="dropdown-menu">
+                <a class="dropdown-menu-help" routerLink="info">Help</a>
+                <a routerLink="legalNotice">Legal Notice</a>
+                <a routerLink="privacyPolicy">Privacy Policy</a>
+                <a routerLink="" (click)="authenticationService.logout()">Log out</a>
+            </div>
+        </nav>
+        }
     </div>
-    <nav class="profil-btn-dropdown" [class.visible]="navVisible" (click)="navVisible = !navVisible">
-        <div class="dropdown-menu">
-            <a class="dropdown-menu-help" routerLink="info">Help</a>
-            <a routerLink="legalNotice">Legal Notice</a>
-            <a routerLink="privacyPolicy">Privacy Policy</a>
-            <a routerLink="" (click)="authenticationService.logout()">Log out</a>
-        </div>
-    </nav>
-    }
 </header>
