@@ -2,41 +2,41 @@
     <img class="logoContainer" src="./assets/img/join_logo.png" alt="Join Logo">
     @if (this.authenticationService.isUserLoggedIn) {
     <nav>
-        <a routerLink="/summary" [ngClass]="{'isSelected':navbarService.isSummarySelected}"
+        <a routerLink="/summary" class="navigationLink" [ngClass]="{'isSelected':navbarService.isSummarySelected}"
             (click)="navbarService.setSelection('summary')">
-            <div>
+            <div class="navigationLinkContent">
                 <img src="./assets/img/navbar/summary_icon.png" alt="">
-                <p>Summary</p>
+                <p class="navigationLinkText">Summary</p>
             </div>
         </a>
-        <a routerLink="/addTask" [ngClass]="{'isSelected':navbarService.isAddTaskSelected}"
+        <a routerLink="/addTask" class="navigationLink" [ngClass]="{'isSelected':navbarService.isAddTaskSelected}"
             (click)="navbarService.setSelection('addTask'); taskService.setStatusToBeUsed('toDo')">
-            <div>
+            <div class="navigationLinkContent">
                 <img src="./assets/img/navbar/add_task_icon.png" alt="">
-                <p>Add Task</p>
+                <p class="navigationLinkText">Add Task</p>
             </div>
         </a>
-        <a routerLink="/board" [ngClass]="{'isSelected':navbarService.isBoardSelected}"
+        <a routerLink="/board" class="navigationLink" [ngClass]="{'isSelected':navbarService.isBoardSelected}"
             (click)="navbarService.setSelection('board')">
-            <div>
+            <div class="navigationLinkContent">
                 <img src="./assets/img/navbar/board_icon.png" alt="">
-                <p>Board</p>
+                <p class="navigationLinkText">Board</p>
             </div>
         </a>
-        <a routerLink="/contact" [ngClass]="{'isSelected':navbarService.isContactSelected}"
+        <a routerLink="/contact" class="navigationLink" [ngClass]="{'isSelected':navbarService.isContactSelected}"
             (click)="navbarService.setSelection('contact')">
-            <div>
+            <div class="navigationLinkContent">
                 <img src="./assets/img/navbar/contacts_icon.png" alt="">
-                <p>Contacts</p>
+                <p class="navigationLinkText">Contacts</p>
             </div>
         </a>
     </nav>
     }@else {
     <nav>
-        <a routerLink="/">
-            <div>
+        <a routerLink="/" class="navigationLink">
+            <div class="navigationLinkContent">
                 <img src="./assets/img/navbar/summary_icon.png" alt="">
-                <p>Login</p>
+                <p class="navigationLinkText">Login</p>
             </div>
         </a>
     </nav>
@@ -44,11 +44,11 @@
     <div class="legalContainer">
         <div class="legalLinkContainer" [ngClass]="{'isSelected':navbarService.isPrivacyPolicySelected}"
             (click)="navbarService.setSelection('privacyPolicy')">
-            <a routerLink="privacyPolicy">Privacy Policy</a>
+            <a class="legalLink" routerLink="privacyPolicy">Privacy Policy</a>
         </div>
         <div class="legalLinkContainer" [ngClass]="{'isSelected':navbarService.isLegalNoticeSelected}"
             (click)="navbarService.setSelection('legal')">
-            <a routerLink="legalNotice">Legal notice</a>
+            <a class="legalLink" routerLink="legalNotice">Legal notice</a>
         </div>
     </div>
 </section>

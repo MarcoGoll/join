@@ -11,76 +11,75 @@ section {
     align-items: center;
     justify-content: space-between;
     padding-top: 64px;
+    padding-bottom: 32px;
     gap: 64px;
+}
 
-    >nav {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: strech;
+nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: strech;
+}
 
-        >a { 
-            padding-left: 50px; 
-            border-radius: 0;
+.navigationLink { 
+    padding-left: 50px; 
+    border-radius: 0;
 
+    &:hover {
+        cursor: pointer; 
+        background-color: #2A3D59; 
+    }
+}
 
-            &:hover {
-                cursor: pointer; 
-                background-color: #2A3D59; 
-            }
+.navigationLinkContent {
+    width: 130px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 
-            >div {
-                width: 130px;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-
-                >img {
-                    width: 20px;
-                    height: 20px;   
-                }
-
-                >p {
-                    font-family: Inter;
-                    font-weight: 400;
-                    font-size: 16px;
-                    color: #CDCDCD;
-                    margin: 16px;
-                    ;
-                }
-            }
-        }
+    >img {
+        width: 20px;
+        height: 20px;   
     }
 
-    >div {
+    .navigationLinkText {
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 16px;
+        color: #CDCDCD;
+        padding: 16px;
+        ;
+    }
+}
+
+
+.legalContainer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.legalLinkContainer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+
+    .legalLink {
         width: 100%;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-        padding-bottom: 32px;
+        border-radius: 0;
+        padding-left: 50px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #A8A8A8;
 
-        >div {
-            width: 100%;
-            height: 50px;
-            display: flex;
-
-
-            >a {
-                width: 100%;
-                border-radius: 0;
-                padding-left: 50px;
-                font-weight: 400;
-                font-size: 16px;
-                color: #A8A8A8;
-
-                &:hover {
-                    color: #29ABE2;
-                    transform: scale(1.05);
-                }
-            }
+        &:hover {
+            color: #29ABE2;
+            transform: scale(1.05);
         }
     }
 }

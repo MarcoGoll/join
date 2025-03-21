@@ -10,38 +10,38 @@
         right: 0;
         width: auto;
         min-height: 0;
+        padding: 0;    
+    }
+
+    nav {
+        flex-direction: row;
+        width: 100%;
+        padding: 0px;
+        justify-content: space-evenly;
+        gap: 16px;
+    }
+
+    .navigationLink {
         padding: 0;
+        border-radius: 8px;  
+        width: 120px;
+    }
 
-        >div {
-            display: none;
-        }
+    .navigationLinkContent {
+        flex-direction: column; 
+        padding: 8px 8px;
+        justify-content: center;
+        width: auto;
+        gap: 8px;
 
-        >nav {
-            flex-direction: row;
-            width: 100%;
+        .navigationLinkText {
             padding: 0px;
-            justify-content: space-evenly;
-            gap: 16px;
-
-            >a {
-                padding: 0;
-                border-radius: 8px;  
-                width: 120px;
-
-                >div {
-                    flex-direction: column; 
-                    padding: 8px 8px;
-                    justify-content: center;
-                    width: auto;
-                    gap: 8px;
-
-                    >p {
-                        margin: 0;
-                    }
-
-                }
-            }
         }
+
+    }
+
+    .legalContainer {
+        display: none;
     }
 
     .logoContainer {
@@ -50,26 +50,21 @@
 }
 
 @media (max-width: 450px) {
-    section {
-        >nav {
-            >a {
-                width: 75px;
+    .navigationLink {
+        width: 75px;
+    }
+    .navigationLinkContent {
+        padding: 8px 4px;
 
-                >div {
-                    padding: 8px 4px;
+        >img {
+            width: 20px;
+            height: 20px;
+        }
 
-                    >img {
-                        width: 20px;
-                        height: 20px;
-                    }
-
-                    >p {
-                        font-weight: 400;
-                        font-size: 12px;
-                        margin: 0px;
-                    }
-                }
-            }
+        .navigationLinkText {
+            font-weight: 400;
+            font-size: 12px;
+            margin: 0px;
         }
     }
 }
