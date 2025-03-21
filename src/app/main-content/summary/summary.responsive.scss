@@ -1,60 +1,57 @@
 @import './../../../styles.scss';
 
-
 @media (max-width: 1200px) {
-    .summary-container {
+    .summaryContainer {
         height: calc(100vh - 96px - 68px);
         padding: 28px;
     }
 
-    .greeting-column {
+    .greetingColumn {
         display: none; 
     }
 
-    .metrics-column {
+    .metricsColumn {
         max-width: 100%;
         width: 100%;
     }
 }
 
 @media (max-width: 1023px) {
-    .header-section {
-        h1{
+    .headerSection {
+        h1 {
             font-size: $fsMobileH1;
         }
     }
 }
 
-
 @media (max-width: 900px) {
-    .metrics-section {
+    .metricsSection {
         gap: 20px;
     }
 
-    .top-cards-container {
+    .topCardsContainer {
         gap: 20px;
     }
 
-    .small-cards-container {
+    .smallCardsContainer {
         gap: 20px;
     }
 
-    .metric-card {
+    .metricCard {
         padding: 16px; 
     }
 }
 
 @media (max-width: 600px) {
-    .summary-container{
+    .summaryContainer {
         padding: 24px;
     }
     
-    .header-section {
+    .headerSection {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
 
-    
         .subtitle {
             font-size: 22px; 
             position: relative;
@@ -75,18 +72,29 @@
     .separatorVertical {
         display: none;
     }
+
+    // Icons 
+    .iconContainer {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .urgentLeftSection {
+        .iconContainer {
+            width: 50px;
+            height: 50px;
+        }
+    }
 }
 
-
 @media (max-width: 450px) {
-    .summary-container {
+    .summaryContainer {
         padding-left: 12px;
         padding-right: 12px;
         overflow-y: auto; 
     }
 
-    
-    .header-section {
+    .headerSection {
         gap: 8px;
 
         .subtitle:after {
@@ -94,42 +102,42 @@
         }
     }
 
-    .top-cards-container {
+    .topCardsContainer {
         flex-direction: column;
         gap: 20px;
     }
 
-    .small-cards-container {
+    .smallCardsContainer {
         flex-direction: column;
         gap: 20px;
     }
 
-    .metric-card {
+    .metricCard {
         padding: 12px;
         width: 100%; 
     }
 
-    .urgent-card {
+    .urgentCard {
         flex-direction: column; 
         gap: 12px;
         padding: 16px;
     }
 
-    .urgent-left-section {
+    .urgentLeftSection {
         width: 100%;
         justify-content: center;
     }
 
-    .vertical-separator {
+    .verticalSeparator {
         width: 80%;
         height: 2px;
     }
 
-    .urgent-right-section {
+    .urgentRightSection {
         width: 100%;
     }
 
-    .header-section {
+    .headerSection {
         .subtitle {
             font-size: 18px;
         }
@@ -141,7 +149,7 @@
 }
 
 @media (orientation: landscape) and (max-height: 600px) {
-    .mobile-greeting-screen {
+    .mobileGreetingScreen {
         padding-top: 0;
         padding-bottom: 0;
     }

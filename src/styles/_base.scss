@@ -32,9 +32,13 @@ a {
 
     &:active {}
 
-    &:link {}
+    &:link {
+        color: $clrBaseDark;
+    }
 
-    &:visited {}
+    &:visited {
+        color: $clrBaseDark;
+    }
 
     &:disabled {
         cursor: default;

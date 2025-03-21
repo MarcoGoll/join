@@ -1,6 +1,6 @@
 @import './../../../styles.scss';
 
-.summary-container {
+.summaryContainer {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -16,13 +16,12 @@
     gap: 8px;
 }
 
-.header-section {
+.headerSection {
     @include setFlex($jc: flex-start, $gap: 16px); 
     h1 {
         font-size: $fsH1;
         color: $clrBaseDark;
     }
-
 
     .subtitle {
         color: $clrBaseDark;
@@ -35,17 +34,16 @@
     font-size: $fsH2;
 }
 
-.main-content-wrapper {
+.mainContentWrapper {
     display: flex;
     width: 100%;
     gap: 32px;
     max-height: none;
     overflow-y: visible;
     scrollbar-width: thin;
-    padding: 10px;
 }
 
-.metrics-column {
+.metricsColumn {
     flex: 2; 
     display: flex;
     flex-direction: column;
@@ -54,59 +52,51 @@
     box-sizing: border-box;
 }
 
-.greeting-column {
+.greetingColumn {
     flex: 2; 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
-    padding-top: 150px;
-    padding-left: 50px;
 }
 
-.greeting-section {
-    margin-top: 0;
-    
-    .greeting-title {
-        font-size: $fsH2;
+.greetingSection {   
+    .greetingTitle {
+        font-size: 32px;
         font-weight: 500;
-        color: $clrBaseDark;
-        margin: 0;
     }
     
-    .user-name {
-        font-size: $fsH6;
+    .userName {
+        font-size: 52px;
         font-weight: 700;
         color: $clrHighlight2;
-        margin: 0;
     }
 }
 
-.top-cards-container {
+.topCardsContainer {
     display: flex;
     gap: 24px;
     width: 100%;
 }
 
-.top-cards-container .metric-card {
+.topCardsContainer .metricCard {
     flex: 1;
-    margin-bottom: 0;
 }
 
-.metrics-section {
+.metricsSection {
     display: flex;
     flex-direction: column;
     gap: 24px;
     width: 100%;
 }
 
-.metrics-link{
+.metricsLink {
     flex: 1;
     padding: 0;
-    height: 140px;
+    height: 150px;
 }
 
-.metric-card {
+.metricCard {
     height: 100%;
     background: white;
     border-radius: 30px;
@@ -114,50 +104,56 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     flex: 1;
     width: 100%;
     transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
     cursor: pointer;
     text-align: center; 
+
+    .metricLabel{
+        font-size: $fSSec;
+    }
     
     &:hover {
         transform: scale(1.02);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         background-color: $clrHighlight1; 
 
-        .metric-content {
-            .metric-value, .metric-label {
+        .metricContent {
+            .metricValue, .metricLabel {
                 color: white; 
+            }
+
+            .metricLabel{
+                font-size: $fSSec;
             }
         }
 
-        .icon-container {
-            .default-icon {
+        .iconContainer {
+            .defaultIcon {
                 opacity: 0;
             }
 
-            .hover-icon {
+            .hoverIcon {
                 opacity: 1;
             }
         }
     }
 }
 
-
-.top-cards-container {
+.topCardsContainer {
     display: flex;
     gap: 24px;
     width: 100%;
 }
 
-.top-cards-container .metric-card {
-    margin-bottom: 0;
+.topCardsContainer .metricCard {
     flex: 1; 
-
 }
 
-.icon-container {
+.iconContainer {
     width: 60px;
     height: 60px;
     border-radius: 100%;
@@ -165,63 +161,56 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
     transition: background-color 0.2s;
     position: relative;
 
-
     img {
-        width: 60px;
-        height: 60px;
+        width: 100%;
+        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
     }
 
-    .default-icon {
+    .defaultIcon {
         opacity: 1;
         transition: opacity 0.2s;
     }
 
-    .hover-icon {
+    .hoverIcon {
         opacity: 0;
         transition: opacity 0.2s;
     }
 }
 
-.metric-content {
+.metricContent {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     
-    .metric-value {
-        font-size: $fsH6;
+    .metricValue {
+        font-size: 48px;
         font-weight: 600;
-        color: $clrBaseDark;
-    }
-    
-    .metric-label {
-        font-size: $fSDefault;
-        color: $clrBaseDark;
     }
 }
 
-.urgent-card {
+.urgentCard {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     position: relative;
-    padding: 24px 32px;
+    padding: 24px;
 }
 
-.urgent-left-section {
+.urgentLeftSection {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     flex: 1;
     
-    .icon-container {
+    .iconContainer {
         width: 60px;
         height: 60px;
         border-radius: 100%;
@@ -229,54 +218,53 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: 20px;
         
         img {
-            width: 60px;
-            height: 60px;
+            width: 100%;
+            height: 100%;
         }
     }
     
-    .metric-content {
+    .metricContent {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         
-        .metric-value {
-            font-size: $fsH6;
+        .metricValue {
+            font-size: 48px;
             font-weight: 600;
             color: $clrBaseDark;
         }
         
-        .metric-label {
-            font-size: $fSDefault;
+        .metricLabel {
+            font-size: $fSSec;
             color: $clrBaseDark;
         }
     }
 }
 
-.vertical-separator {
+.verticalSeparator {
     height: 100px; 
     width: 2px;
     background-color: $clrBaseGray; 
 }
 
-.urgent-right-section {
+.urgentRightSection {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     flex: 1;
 
-    .deadline-date {
+    .deadlineDate {
         font-size: $fSSec;
         font-weight: 700;
         color: $clrBaseDark;
         transition: color 0.2s;
     }
     
-    .deadline-label {
+    .deadlineLabel {
         font-size: $fSTer;
         color: $clrBaseDark; 
         opacity: 0.8;
@@ -284,64 +272,61 @@
     }
 }
 
-
-.metric-card.urgent-card:hover {
-    .urgent-left-section .metric-content {
-        .metric-value, .metric-label {
+.metricCard.urgentCard:hover {
+    .urgentLeftSection .metricContent {
+        .metricValue, .metricLabel {
             color: white;
         }
     }
     
-    .vertical-separator {
+    .verticalSeparator {
         background-color: white;
     }
     
-    .urgent-right-section {
-        .deadline-date, .deadline-label {
+    .urgentRightSection {
+        .deadlineDate, .deadlineLabel {
             color: white;
             opacity: 1;
         }
     }
 }
 
-
-.small-cards-container { 
+.smallCardsContainer { 
     display: flex;
     gap: 24px;
     width: 100%;
 }
 
-.small-card {
+.smallCard {
     flex: 1;
-    padding: 24px 16px;
+    padding: 20px;
     min-height: 120px;
-    margin-bottom: 0;
     
-    .centered-content {
+    .centeredContent {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
         
-        .metric-value {
-            font-size: $fsH6;
+        .metricValue {
+            font-size: 48px;
             font-weight: 600;
-            margin-bottom: 8px;
         }
         
-        .metric-label {
-            font-size: $fSTer;
+        .metricLabel {
+            font-size: $fSSec;
             text-align: center; 
+            line-height: 1;
         }
     }
 }
 
-.nowrap{
+.nowrap {
     white-space: nowrap;
 }
 
-.mobile-greeting-screen {
+.mobileGreetingScreen {
     position: fixed;
     top: 96px; 
     left: 0;
@@ -357,34 +342,27 @@
     opacity: 1;
     transition: opacity 1s ease-in-out; 
     
-    &.fade-out {
+    &.fadeOut {
         opacity: 0;
     }
 }
 
-
-.greeting-content {
+.greetingContent {
     text-align: center;
     max-width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     
-    .greeting-title {
+    .greetingTitle {
         font-size: $fsH2;
         font-weight: 500;
         color: $clrBaseDark;
-        margin: 0;
-        margin-bottom: 8px;
     }
     
-    .user-name {
-        font-size: $fsH6;
+    .userName {
+        font-size: 52px;
         font-weight: 700;
         color: $clrHighlight2;
-        margin: 0;
     }
 }
-
-
-
