@@ -4,7 +4,7 @@
 section{
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 96px);
+    height: calc(100dvh - 96px);
     background-color: $clrBackground;
     margin-top: 96px;
     padding: 32px;
@@ -144,7 +144,7 @@ section{
   .example-list {
     padding: 5px;
     min-height: 60px;
-    height:  calc(100vh - 310px);
+    height:  calc(100dvh - 310px);
     min-width: 290px;
     background: $clrBackground;
     overflow-y: auto;

@@ -2,13 +2,13 @@
 
 @media (max-width: 1200px) {
     .addTaskSectionContent {
-        height: calc(100vh - 96px - 68px);
+        height: calc(100dvh - 96px - 68px);
     }
 
     .forFieldsContainer{
         flex-direction: column;
         justify-content: flex-start;
-        max-height: calc(100vh - 96px - 320px);
+        max-height: calc(100dvh - 96px - 320px);
         gap: 0;
     }
 
@@ -33,7 +33,7 @@
     }
     
     .forFieldsContainer{
-        max-height: calc(100vh - 96px - 300px);
+        max-height: calc(100dvh - 96px - 300px);
     }
 
 }

@@ -24,7 +24,7 @@
 .contactlist {
     @include setFlex($fd: column, $jc: flex-start, $ai: stretch, $gap: 16px);
     margin-top: 96px;
-    height: calc(100vh - 96px);
+    height: calc(100dvh - 96px);
     background-color: $clrBaseBright;
     filter: drop-shadow(4px 0px 4px rgba(0, 0, 0, 0.2));
 }

@@ -11,7 +11,7 @@
   }
   
   .modal-content {
-    max-height: 85vh;
+    max-height: 85dvh;
     overflow-y: auto;
     
     @include mobile {
@@ -24,7 +24,7 @@
     }
     
     @include rotation {
-      max-height: 90vh;
+      max-height: 90dvh;
       padding: 15px 20px;
     }
   }

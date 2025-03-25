@@ -8,7 +8,7 @@
 
 .signupSectionContent {
     @include setFlex($fd: column, $jc:space-between, $gap: 8px);
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .logoContainer{

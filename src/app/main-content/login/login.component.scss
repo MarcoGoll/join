@@ -4,7 +4,7 @@ section{
     @include setFlex();
     width: calc(100vw - 16px);
     min-height: 500px;
-    height: calc(100vh - 200px - 100px);
+    height: calc(100dvh - 200px - 100px);
     background-color: $clrBackground;
 }
 
