@@ -1,23 +1,23 @@
 <header>
-    <div class="logo-animation-container">
-        <img src="./assets/img/icons/header_logo.svg" alt="Join Logo" class="animated-logo"
-            [ngClass]="{'logo-Animation':showAnimation}">
+    <div class="logoAnimationContainer">
+        <img src="./assets/img/icons/header_logo.svg" alt="Join Logo" class="animatedLogo"
+            [ngClass]="{'logoAnimation':showAnimation}">
     </div>
     @if (showAnimation) {
-    <div class="logo-animation-overlay">
+    <div class="logoAnimationOverlay">
     </div>
     }
-    <div class="signup-container">
+    <div class="signupContainer">
         <span>Not a Join user?</span>
-        <button class="signup-btn" routerLink="/signUp" (click)="this.authenticationService.resetFirebaseError()">Sign
+        <button class="signupBtn" routerLink="/signUp" (click)="this.authenticationService.resetFirebaseError()">Sign
             up</button>
     </div>
 </header>
 <section>
-    <div class="login-container">
-        <div class="title-container">
+    <div class="loginContainer">
+        <div class="titleContainer">
             <h1>Log in</h1>
-            <div class="horizontal-seperator"></div>
+            <div class="horizontalSeperator"></div>
         </div>
         <div class="inputAndErrorContainer">
             @if (this.authenticationService.errorOccoursIn == 'global') {
@@ -33,14 +33,14 @@
             </div>
             }
             <form id="signUpForm" class="signUpForm" (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
-                <div class="input-container">
+                <div class="inputContainer">
                     <div>
-                        <div class="email-input-container">
+                        <div class="emailInputContainer">
                             <input #loginEmail="ngModel" [(ngModel)]="email" id="email" name="email" type="text"
-                                placeholder="Email" class="email-input" required
-                                [ngClass]="{'error-input': (!loginEmail.valid && loginEmail.touched) || (this.authenticationService.errorOccoursIn == 'email') || (this.authenticationService.errorOccoursIn == 'email-pw')}"
+                                placeholder="Email" class="emailInput" required
+                                [ngClass]="{'errorInput': (!loginEmail.valid && loginEmail.touched) || (this.authenticationService.errorOccoursIn == 'email') || (this.authenticationService.errorOccoursIn == 'email-pw')}"
                                 pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
-                            <img class="email-icon" src="./assets/img/icons/mail.png" alt="E-mail symbol">
+                            <img class="emailIcon" src="./assets/img/icons/mail.png" alt="E-mail symbol">
                         </div>
                         <div class="errorMessageContainer">
                             @if (!loginEmail.valid && loginEmail.touched) {
@@ -59,11 +59,11 @@
                         </div>
                     </div>
                     <div>
-                        <div class="password-input-container">
+                        <div class="passwordInputContainer">
                             <input #pw="ngModel" [(ngModel)]="password" id="pw" name="pw"
                                 [type]="isPasswordVisible? 'text' : 'password'" placeholder="Password"
-                                class="password-input" required
-                                [ngClass]="{'error-input': (!pw.valid && pw.touched)|| ( this.authenticationService.errorOccoursIn == 'pw') || (this.authenticationService.errorOccoursIn == 'email-pw') }">
+                                class="passwordInput" required
+                                [ngClass]="{'errorInput': (!pw.valid && pw.touched)|| ( this.authenticationService.errorOccoursIn == 'pw') || (this.authenticationService.errorOccoursIn == 'email-pw') }">
                             <div class="inputIconContainer" [ngClass]="{'pointer':pw.value!=''}"
                                 (click)="toggleIsPasswordVisible()">
                                 @if(pw.value == ""){
@@ -76,7 +76,6 @@
                                 }
                                 }
                             </div>
-
                         </div>
                         <div class="errorMessageContainer">
                             @if(!pw.valid && pw.touched) {
@@ -95,19 +94,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="button-container">
-                    <button class="login-btn" type="submit" value="Send">Log in</button>
-                    <button class="guest-login-btn" type="button"
+                <div class="buttonContainer">
+                    <button class="loginBtn" type="submit" value="Send">Log in</button>
+                    <button class="guestLoginBtn" type="button"
                         (click)="this.authenticationService.resetFirebaseError(); loginAsGuest()">Guest Log in</button>
                 </div>
             </form>
         </div>
     </div>
 </section>
-<div class="signup-container-mobile">
+<div class="signupContainerMobile">
     <span>Not a Join user?</span>
-    <a class="signup-btn" routerLink="/signUp" (click)="this.authenticationService.resetFirebaseError()">Sign
-        up</a>
+    <button class="signupBtn" routerLink="/signUp" (click)="this.authenticationService.resetFirebaseError()">Sign
+        up</button>
 </div>
 <footer>
     <a routerLink="/privacyPolicy">Privacy Policy</a>

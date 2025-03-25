@@ -30,7 +30,7 @@ footer{
     }
 }
 
-.login-container{
+.loginContainer{
     @include setFlex();
     flex-direction: column;
     background-color: white;
@@ -40,33 +40,29 @@ footer{
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
-.horizontal-seperator{
+.horizontalSeperator{
     width: 120px;
     border-top: 3px solid $clrHighlight2;
     margin-bottom: 30px;
 }
 
-.title-container{
+.titleContainer{
     @include setFlex();
     flex-direction: column;
 }
 
-//===============================================================
-//========= All Button ==========================================
-//===============================================================
-
-.signup-container{
+.signupContainer{
     @include setFlex();
     gap: 35px; 
 }
 
-.signup-container-mobile{
+.signupContainerMobile{
     @include setFlex();
     gap: 35px;
     display: none;
 }
 
-.signup-btn{
+.signupBtn{
     color: white;
     background-color: $clrHighlight1;
     border: unset;
@@ -83,12 +79,12 @@ footer{
     }   
 }
 
-.button-container{
+.buttonContainer{
     @include setFlex();
     gap: 35px;
 }
 
-.login-btn{
+.loginBtn{
     color: white;
     background-color: $clrHighlight1;
     border: unset;
@@ -104,7 +100,7 @@ footer{
     }   
 }
 
-.guest-login-btn{
+.guestLoginBtn{
     background-color: white;
     border: 1px solid black;
     border-radius: 8px;
@@ -118,26 +114,21 @@ footer{
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     }  
 }
-//===============================================================
-//======== Input fields =========================================
-//===============================================================
 
-.input-container{
+.inputContainer{
     @include setFlex();
     flex-direction: column;
     gap: 8px;
     margin-bottom: 48px;
 }
 
-//======== E-Mail Input =========================================
-
-.email-input-container{
+.emailInputContainer{
     position: relative;
     width: 422px;
     height: 48px;
 }
 
-.email-input{
+.emailInput{
     position: absolute;
     left: 0;
     top: 0;
@@ -147,24 +138,22 @@ footer{
 
 input::placeholder {
     color: rgb(200, 198, 198);
-    opacity: 1; // Stellt sicher, dass er nicht transparent ist
-  }
+    opacity: 1;
+}
 
-.email-icon{
+.emailIcon{
     position: absolute;
     right: 20px;
     top: 10px;
 }
 
-//======== Password Input =========================================
-
-.password-input-container{
+.passwordInputContainer{
     position: relative;
     width: 422px;
     height: 48px;
 }
 
-.password-input{
+.passwordInput{
     position: absolute;
     left: 0;
     top: 0;
@@ -172,13 +161,11 @@ input::placeholder {
     height: 48px;
 }
 
-.password-icon{
+.passwordIcon{
     position: absolute;
     right: 20px;
     top: 10px;
 }
-
-//======== Error =========================================
 
 .inputAndErrorContainer{
     @include setFlex($fd: column, $jc:flex-start, $ai: stretch);
@@ -197,7 +184,6 @@ input::placeholder {
             fill: $clrErrorMessageText;
         }
     }
-
 }
 
 .errorMessageContainer {
@@ -224,28 +210,24 @@ input::placeholder {
     cursor: pointer;
 }
 
-.inputIinputIconcon{
+.inputIcon{
    width: 24px;
    height: 24px;
 }
 
-
-//=====================================================================
-//========== ANIMATION ================================================
-//=====================================================================
-.logo-animation-container {
+.logoAnimationContainer {
     position: absolute;
     top: 16px;
     left: 16px;
     z-index: 1001;
 }
 
-.logo-Animation{
+.logoAnimation{
     transform: translate(-50%, -50%);
-    animation: shrinkAndMove 2s ease-in-out forwards; /* Die Animation bleibt nach Abschluss */
+    animation: shrinkAndMove 2s ease-in-out forwards;
 }
 
-.logo-animation-overlay {
+.logoAnimationOverlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -253,11 +235,11 @@ input::placeholder {
     bottom: 0;
     z-index: 1000;
     background-color: $clrBaseBright;
-    animation: opacityAnimation 2s  forwards ease-in-out;
+    animation: opacityAnimation 2s forwards ease-in-out;
 }
 
-.animated-logo {
-    width: 100px;  /* Startgröße */
+.animatedLogo {
+    width: 100px;
     height: 100px;
     object-fit: contain;
 }
@@ -280,6 +262,6 @@ input::placeholder {
         background-color: $clrBaseBright;
     }
     100% {
-        background-color: rgba(255, 255, 255, 0); /* Oder transparent */
+        background-color: rgba(255, 255, 255, 0);
     }
 }

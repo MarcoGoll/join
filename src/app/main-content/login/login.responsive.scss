@@ -4,13 +4,13 @@
     section{
         height: calc(100vh - 150px - 100px);
     }
-    .login-container{
+    .loginContainer{
         margin: 10px;
     }
-    .signup-container{
+    .signupContainer{
         display: none;
     }
-    .signup-container-mobile{
+    .signupContainerMobile{
         @include setFlex();
         padding-bottom: 128px;
         gap: 35px;
@@ -24,28 +24,28 @@
             width: 80px;
         }
     }
-    .title-container{
+    .titleContainer{
         >h1{
             font-size: 48px;
         }
     }
-    .email-input-container{
+    .emailInputContainer{
         width: 80vw;
     }
-    .email-input{
+    .emailInput{
         width: 100%;
     }
-    .password-input-container{
+    .passwordInputContainer{
         width: 80vw;
     }
-    .password-input{
+    .passwordInput{
         width: 100%;
     }
-    .button-container{
+    .buttonContainer{
         flex-direction: column;
         gap: 16px;
     }
-    .login-btn{
+    .loginBtn{
         width: 177px;
     }
     footer{
@@ -57,4 +57,3 @@
         }
     }
 }
-
