@@ -1,66 +1,68 @@
-
 <div>
     <div class="modal-content" [ngClass]="{'d_none':taskService.isTaskinEditMode}">
-     <div class="modal-scrollable-content-display">  
-        <div class="task-tag"
-            [ngClass]="{'technical-task-tag':taskService.currentlySelectedTask.category == 'Technical Task', 'user-story-tag':taskService.currentlySelectedTask.category == 'User Story' }">
-            {{taskService.currentlySelectedTask.category}}</div>
+        <div class="modal-scrollable-content-display">
+            <div class="task-tag"
+                [ngClass]="{'technical-task-tag':taskService.currentlySelectedTask.category == 'Technical Task', 'user-story-tag':taskService.currentlySelectedTask.category == 'User Story' }">
+                {{taskService.currentlySelectedTask.category}}</div>
 
-        <h1 class="task-title">{{taskService.currentlySelectedTask.title}}</h1>
+            <h1 class="task-title">{{taskService.currentlySelectedTask.title}}</h1>
 
-        <p class="task-description">{{taskService.currentlySelectedTask.description}}</p>
+            <p class="task-description">{{taskService.currentlySelectedTask.description}}</p>
 
-        <div class="info-row horizontal">
-            <span class="label">Due date:</span>
-            <span class="value">{{taskService.currentlySelectedTask.dueDate}}</span>
-        </div>
-
-        <div class="info-row horizontal"> 
-            <span class="label">Priority:</span> 
-            <div class="priority-badge medium">
-                {{taskService.currentlySelectedTask.prio}}
-                @if(taskService.currentlySelectedTask.prio == 'Urgent'){
-                <img src="./assets/img/icons/Prio alta.svg" alt="Urgent"> 
-                }
-                @if(taskService.currentlySelectedTask.prio == 'Medium'){
-                <img src="./assets/img/icons/Capa 1.svg" alt="Medium">
-                }
-                @if(taskService.currentlySelectedTask.prio == 'Low'){
-                <img src="./assets/img/icons/Prio baja.svg" alt="Low">
-                }
-
-
+            <div class="info-row horizontal">
+                <span class="label">Due date:</span>
+                <span class="value">{{taskService.currentlySelectedTask.dueDate}}</span>
             </div>
-        </div>
 
-        <div class="info-row">
-            <span class="label">Assigned To:</span>
-            <div class="assigned-users">
-                @for (idOfAssigne of taskService.currentlySelectedTask.assignedTo; track $index) {
-                    @if (contactService.getContactViaId(idOfAssigne).id !="") {
-                        <div class="user-avatar backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">{{contactService.getContactViaId(idOfAssigne).nameShortcut}}
-                        </div>
-                        <div class="user-name">{{contactService.getContactViaId(idOfAssigne).fullName}}</div>
+            <div class="info-row horizontal">
+                <span class="label">Priority:</span>
+                <div class="priority-badge medium">
+                    {{taskService.currentlySelectedTask.prio}}
+                    @if(taskService.currentlySelectedTask.prio == 'Urgent'){
+                    <img src="./assets/img/icons/Prio alta.svg" alt="Urgent">
                     }
-                }
-            </div>
-        </div>
+                    @if(taskService.currentlySelectedTask.prio == 'Medium'){
+                    <img src="./assets/img/icons/Capa 1.svg" alt="Medium">
+                    }
+                    @if(taskService.currentlySelectedTask.prio == 'Low'){
+                    <img src="./assets/img/icons/Prio baja.svg" alt="Low">
+                    }
 
-        <div class="info-row">
-            <span class="label">Subtasks</span>   
-            <div class="subtasks">
-                @for (subtask of taskService.currentlySelectedTask.subTasks; track $index) { 
+
+                </div>
+            </div>
+
+            <div class="info-row">
+                <span class="label">Assigned To:</span>
+                <div class="assigned-users">
+                    @for (idOfAssigne of taskService.currentlySelectedTask.assignedTo; track $index) {
+                    @if (contactService.getContactViaId(idOfAssigne).id !="") {
+                    <div
+                        class="user-avatar backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">
+                        {{contactService.getContactViaId(idOfAssigne).nameShortcut}}
+                    </div>
+                    <div class="user-name">{{contactService.getContactViaId(idOfAssigne).fullName}}</div>
+                    }
+                    }
+                </div>
+            </div>
+
+            <div class="info-row">
+                <span class="label">Subtasks</span>
+                <div class="subtasks">
+                    @for (subtask of taskService.currentlySelectedTask.subTasks; track $index) {
                     <div class="subtask">
-                        <div class="custom-checkbox" [ngClass]="{'checked': subtask.checked}" (click)="subtask.checked=!subtask.checked; updateFromDisplayMode()">
+                        <div class="custom-checkbox" [ngClass]="{'checked': subtask.checked}"
+                            (click)="subtask.checked=!subtask.checked; updateFromDisplayMode()">
                             <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
                             <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
                         </div>
                         <label class="subtask-text">{{subtask.description}}</label>
                     </div>
-                }
+                    }
+                </div>
             </div>
         </div>
-     </div>  
 
         <div class="modal-actions">
             <button class="action-btn delete"
@@ -75,15 +77,16 @@
         </div>
     </div>
     <div class="modal-content edit-modal" [ngClass]="{'d_none':!taskService.isTaskinEditMode}">
-        <div class="assignedToBackgroundContainer" [ngClass]="{'d_none':!taskService.isAssignedToOpen}" (click)="taskService.isAssignedToOpen = !taskService.isAssignedToOpen"></div>
+        <div class="assignedToBackgroundContainer" [ngClass]="{'d_none':!taskService.isAssignedToOpen}"
+            (click)="taskService.isAssignedToOpen = !taskService.isAssignedToOpen"></div>
         <div class="modal-scrollable-content">
             <form id="edit-form" class="edit-form" (ngSubmit)="updateFromEditMode(editTaskForm)" #editTaskForm="ngForm">
                 <div class="inputAndErrorContainer">
                     <label for="title">Title<span class="clrRed">*</span></label>
                     <div class="inputContainer">
-                        <input #title="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.title" id="title" name="title" type="text"
-                            placeholder="Enter a title" class="input-field" required
-                            [ngClass]="{'error-input': !title.valid && title.touched}">
+                        <input #title="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.title" id="title"
+                            name="title" type="text" placeholder="Enter a title" class="input-field" required
+                            [ngClass]="{'errorInput': !title.valid && title.touched}">
                     </div>
                     <div class="errorMessageContainer">
                         @if (!title.valid && title.touched) {
@@ -95,9 +98,10 @@
                 <div class="inputAndErrorContainer">
                     <label for="description">Description</label>
                     <div class="inputContainer">
-                        <textarea #description="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.description" id="description" 
-                            name="description" type="text" placeholder="Enter a Description"
-                            class="input-field" [ngClass]="{'error-input': !description.valid && description.touched}"></textarea>
+                        <textarea #description="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.description"
+                            id="description" name="description" type="text" placeholder="Enter a Description"
+                            class="input-field"
+                            [ngClass]="{'errorInput': !description.valid && description.touched}"></textarea>
                     </div>
                     <div class="errorMessageContainer">
                         @if (!description.valid && description.touched) {
@@ -109,9 +113,9 @@
                 <div class="inputAndErrorContainer">
                     <label for="duDate">Due date<span class="clrRed">*</span></label>
                     <div class="inputContainer">
-                        <input #duDate="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.dueDate" id="duDate" name="duDate" type="date"
-                            placeholder="dd/mm/yyyy" class="input-field" required
-                            [ngClass]="{'error-input': !duDate.valid && duDate.touched}">
+                        <input #duDate="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.dueDate" id="duDate"
+                            name="duDate" type="date" placeholder="dd/mm/yyyy" class="input-field" required
+                            [ngClass]="{'errorInput': !duDate.valid && duDate.touched}">
                     </div>
                     <div class="errorMessageContainer">
                         @if (!duDate.valid && duDate.touched) {
@@ -127,11 +131,14 @@
                             [ngClass]="{'clrBackgroundUrgent':taskService.currentTaskToBeUpdated.prio ==='Urgent', 'shadow':!(taskService.currentTaskToBeUpdated.prio==='Urgent')}"
                             (click)="setPrio('Urgent')">
                             <p>Urgent</p>
-                            <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path [ngClass]="{'clrFillUrgent':!(taskService.currentTaskToBeUpdated.prio==='Urgent')}"
+                            <svg width="21" height="15" viewBox="0 0 21 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    [ngClass]="{'clrFillUrgent':!(taskService.currentTaskToBeUpdated.prio==='Urgent')}"
                                     d="M19.5708 14.755C19.3361 14.7554 19.1076 14.6805 18.9187 14.5414L10.6666 8.45824L2.4146 14.5414C2.29874 14.627 2.16716 14.6889 2.02736 14.7237C1.88756 14.7584 1.74228 14.7653 1.59981 14.7439C1.45734 14.7226 1.32048 14.6734 1.19703 14.5992C1.07359 14.525 0.965978 14.4272 0.880349 14.3114C0.79472 14.1957 0.732748 14.0642 0.697971 13.9245C0.663194 13.7848 0.656294 13.6396 0.677664 13.4973C0.720823 13.2097 0.876514 12.9511 1.11049 12.7783L10.0146 6.20786C10.2033 6.06826 10.4319 5.99292 10.6666 5.99292C10.9014 5.99292 11.13 6.06826 11.3187 6.20786L20.2228 12.7783C20.4087 12.9153 20.5466 13.1074 20.6168 13.3272C20.6869 13.5471 20.6858 13.7835 20.6135 14.0027C20.5411 14.2219 20.4014 14.4126 20.2141 14.5477C20.0269 14.6828 19.8017 14.7554 19.5708 14.755Z"
                                     fill="white" />
-                                <path [ngClass]="{'clrFillUrgent':!(taskService.currentTaskToBeUpdated.prio==='Urgent')}"
+                                <path
+                                    [ngClass]="{'clrFillUrgent':!(taskService.currentTaskToBeUpdated.prio==='Urgent')}"
                                     d="M19.5708 9.00581C19.3361 9.00621 19.1076 8.93136 18.9187 8.79226L10.6667 2.7091L2.4146 8.79226C2.18063 8.96507 1.88754 9.03793 1.59981 8.9948C1.31209 8.95167 1.05329 8.7961 0.880353 8.5623C0.707418 8.3285 0.63451 8.03563 0.677669 7.74811C0.720828 7.4606 0.876518 7.20199 1.11049 7.02919L10.0146 0.45871C10.2033 0.319119 10.4319 0.243774 10.6667 0.243774C10.9014 0.243774 11.13 0.319119 11.3187 0.45871L20.2228 7.02919C20.4087 7.1661 20.5466 7.35822 20.6168 7.5781C20.6869 7.79797 20.6858 8.03438 20.6135 8.25356C20.5412 8.47274 20.4014 8.6635 20.2141 8.79859C20.0269 8.93368 19.8017 9.0062 19.5708 9.00581Z"
                                     fill="white" />
                             </svg>
@@ -140,21 +147,25 @@
                             [ngClass]="{'clrBackgroundMedium':taskService.currentTaskToBeUpdated.prio==='Medium', 'shadow':!(taskService.currentTaskToBeUpdated.prio==='Medium')}"
                             (click)="setPrio('Medium')">
                             <p>Medium</p>
-                            <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path [ngClass]="{'clrFillMedium':!(taskService.currentTaskToBeUpdated.prio==='Medium')}"
+                            <svg width="21" height="8" viewBox="0 0 21 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    [ngClass]="{'clrFillMedium':!(taskService.currentTaskToBeUpdated.prio==='Medium')}"
                                     d="M19.1526 7.72528H1.34443C1.05378 7.72528 0.775033 7.60898 0.569514 7.40197C0.363995 7.19495 0.248535 6.91419 0.248535 6.62143C0.248535 6.32867 0.363995 6.0479 0.569514 5.84089C0.775033 5.63388 1.05378 5.51758 1.34443 5.51758H19.1526C19.4433 5.51758 19.722 5.63388 19.9276 5.84089C20.1331 6.0479 20.2485 6.32867 20.2485 6.62143C20.2485 6.91419 20.1331 7.19495 19.9276 7.40197C19.722 7.60898 19.4433 7.72528 19.1526 7.72528Z"
                                     fill="white" />
-                                <path [ngClass]="{'clrFillMedium':!(taskService.currentTaskToBeUpdated.prio==='Medium')}"
+                                <path
+                                    [ngClass]="{'clrFillMedium':!(taskService.currentTaskToBeUpdated.prio==='Medium')}"
                                     d="M19.1526 2.48211H1.34443C1.05378 2.48211 0.775033 2.36581 0.569514 2.1588C0.363995 1.95179 0.248535 1.67102 0.248535 1.37826C0.248535 1.0855 0.363995 0.804736 0.569514 0.597724C0.775033 0.390712 1.05378 0.274414 1.34443 0.274414L19.1526 0.274414C19.4433 0.274414 19.722 0.390712 19.9276 0.597724C20.1331 0.804736 20.2485 1.0855 20.2485 1.37826C20.2485 1.67102 20.1331 1.95179 19.9276 2.1588C19.722 2.36581 19.4433 2.48211 19.1526 2.48211Z"
                                     fill="white" />
                             </svg>
-        
+
                         </div>
                         <div class="prioChoice"
                             [ngClass]="{'clrBackgroundLow':taskService.currentTaskToBeUpdated.prio==='Low', 'shadow':!(taskService.currentTaskToBeUpdated.prio==='Low')}"
                             (click)="setPrio('Low')">
                             <p>Low</p>
-                            <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="21" height="15" viewBox="0 0 21 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path [ngClass]="{'clrFillLow':!(taskService.currentTaskToBeUpdated.prio==='Low')}"
                                     d="M10.833 9.00614C10.5984 9.00654 10.3699 8.9317 10.181 8.79262L1.27792 2.22288C1.16208 2.13733 1.06424 2.02981 0.989988 1.90647C0.915732 1.78313 0.866516 1.64638 0.845148 1.50404C0.801994 1.21655 0.874893 0.923717 1.04781 0.689945C1.22073 0.456173 1.47949 0.300615 1.76719 0.257493C2.05488 0.21437 2.34794 0.287216 2.58188 0.460004L10.833 6.54248L19.0841 0.460004C19.2 0.374448 19.3315 0.312529 19.4713 0.277782C19.6111 0.243035 19.7564 0.236141 19.8988 0.257493C20.0413 0.278844 20.1781 0.328025 20.3016 0.402225C20.425 0.476425 20.5326 0.574193 20.6182 0.689945C20.7038 0.805697 20.7658 0.937168 20.8006 1.07685C20.8353 1.21653 20.8422 1.36169 20.8209 1.50404C20.7995 1.64638 20.7503 1.78313 20.676 1.90647C20.6018 2.02981 20.5039 2.13733 20.3881 2.22288L11.485 8.79262C11.2961 8.9317 11.0676 9.00654 10.833 9.00614Z"
                                     fill="white" />
@@ -171,7 +182,8 @@
                 <div class="inputAndErrorContainer">
                     <label>Assigned to</label>
                     <div class="inputContainer">
-                        <div class=selectionInput [ngClass]="{'active': taskService.isAssignedToOpen}" (click)="taskService.toggleIsAssignedToOpen()">
+                        <div class=selectionInput [ngClass]="{'active': taskService.isAssignedToOpen}"
+                            (click)="taskService.toggleIsAssignedToOpen()">
                             <p>Select contacts to assign</p>
                             <div class="selectionInputImgContainer">
                                 @if (taskService.isAssignedToOpen) {
@@ -189,7 +201,9 @@
                                     {{contact.nameShortcut}}</div>
                                 <div class="contactFullname">{{contact.fullName}}</div>
                                 <div class="contactSelection">
-                                    <div class="custom-checkbox" [ngClass]="{'checked': isContactCurrentlySelected(contact)}" (click)="toggleContactInCurrentSelectedAssignedTo(contact); $event.stopPropagation()">
+                                    <div class="custom-checkbox"
+                                        [ngClass]="{'checked': isContactCurrentlySelected(contact)}"
+                                        (click)="toggleContactInCurrentSelectedAssignedTo(contact); $event.stopPropagation()">
                                         <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
                                         <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
                                     </div>
@@ -199,98 +213,99 @@
                         </div>
                     </div>
                     <div class="selectedContaktList" [ngClass]="{'d_none':taskService.isAssignedToOpen}">
-                        @for (contact of contactService.getContactsViaIds(taskService.currentTaskToBeUpdated.assignedTo); track $index) {
-                            @if ($index<3) { 
-                                <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
-                                    {{contact.nameShortcut}}
-                                </div>
-                            }
-                        }
-                        @if (contactService.getContactsViaIds(taskService.currentTaskToBeUpdated.assignedTo).length>=3) {
-                            <div class="contactShortcut backgroundColorBaseGray">
-                                +{{contactService.getContactsViaIds(taskService.currentTaskToBeUpdated.assignedTo).length-3}}
-                            </div>
-                        }
+                        @for (contact of
+                        contactService.getContactsViaIds(taskService.currentTaskToBeUpdated.assignedTo); track $index) {
+                        @if ($index<3) { <div class="contactShortcut backgroundColor{{contact.nameShortcutColorCode}}">
+                            {{contact.nameShortcut}}
                     </div>
-                    <div class="errorMessageContainer">
+                    }
+                    }
+                    @if (contactService.getContactsViaIds(taskService.currentTaskToBeUpdated.assignedTo).length>=3) {
+                    <div class="contactShortcut backgroundColorBaseGray">
+                        +{{contactService.getContactsViaIds(taskService.currentTaskToBeUpdated.assignedTo).length-3}}
                     </div>
+                    }
                 </div>
+                <div class="errorMessageContainer">
+                </div>
+        </div>
 
-                <div class="inputAndErrorContainer">
-                    <label for="subTask">Subtask</label>
-                    <div class="inputContainer">
-                        <div class="subtaskInputContainer" (click)="setIsSubtaskinFocus(true)">
-                            <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field"
-                                [(ngModel)]="subtaskValue">
-                            @if (isSubtaskinFocus) {
-                            <div class="inputBtns">
-                                <div class="inputBtn">
-                                    <img src="./assets/img/icons/close.svg" alt="Cancel" (click)="
+        <div class="inputAndErrorContainer">
+            <label for="subTask">Subtask</label>
+            <div class="inputContainer">
+                <div class="subtaskInputContainer" (click)="setIsSubtaskinFocus(true)">
+                    <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field"
+                        [(ngModel)]="subtaskValue">
+                    @if (isSubtaskinFocus) {
+                    <div class="inputBtns">
+                        <div class="inputBtn">
+                            <img src="./assets/img/icons/close.svg" alt="Cancel" (click)="
                                     $event.stopPropagation();
                                     setIsSubtaskinFocus(false);
                                     setSubtaskValue('')">
-                                </div>
-                                <p>|</p>
-                                <div class="inputBtn">
-                                    <img src="./assets/img/icons/check.svg" alt="Confirm" (click)="
+                        </div>
+                        <p>|</p>
+                        <div class="inputBtn">
+                            <img src="./assets/img/icons/check.svg" alt="Confirm" (click)="
                                     $event.stopPropagation();
                                     setIsSubtaskinFocus(false);
                                     confirmSubtask()">
+                        </div>
+                    </div>
+                    }
+                    @if (!isSubtaskinFocus) {
+                    <div class="inputBtns">
+                        <div class="inputBtn">
+                            <img src="./assets/img/icons/plus.svg" alt="Plus">
+                        </div>
+                    </div>
+                    }
+                </div>
+                @if (taskService.subtasksToAdd.length>0) {
+                <div class="currentSubtasksList">
+                    @for (subtask of taskService.subtasksToAdd; track $index) {
+                    <div class="currentSubtask">
+                        <div class="currentSubtaskDisplayView" [ngClass]="{'d_none': subtask.inEditMode}"
+                            (dblclick)="subtask.inEditMode=true">
+                            <div class="currentSubtaskDisplayViewText">• {{subtask.description}}</div>
+                            <div class="currentSubtaskDisplayViewBtns">
+                                <div class="inputBtn" (click)="subtask.inEditMode=true">
+                                    <img src="./assets/img/icons/edit.svg" alt="Edit">
+                                </div>
+                                <p>|</p>
+                                <div class="inputBtn" (click)="deleteSubtask($index)">
+                                    <img src="./assets/img/icons/delete.svg" alt="Delete">
                                 </div>
                             </div>
-                            }
-                            @if (!isSubtaskinFocus) {
-                            <div class="inputBtns">
+                        </div>
+                        <div class="currentSubtaskEditView" [ngClass]="{'d_none': !subtask.inEditMode}">
+                            <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription{{$index}}"
+                                [(ngModel)]="subtask.description">
+                            <div class="currentSubtaskDisplayViewBtns">
+                                <div class="inputBtn" (click)="deleteSubtask($index)">
+                                    <img src="./assets/img/icons/delete.svg" alt="Delete">
+                                </div>
+                                <p>|</p>
                                 <div class="inputBtn">
-                                    <img src="./assets/img/icons/plus.svg" alt="Plus">
+                                    <img src="./assets/img/icons/check.svg" alt="Confirm"
+                                        (click)="subtask.inEditMode=false">
                                 </div>
                             </div>
-                            }
                         </div>
-                        @if (taskService.subtasksToAdd.length>0) {
-                        <div class="currentSubtasksList">
-                            @for (subtask of taskService.subtasksToAdd; track $index) {
-                            <div class="currentSubtask">
-                                <div class="currentSubtaskDisplayView" [ngClass]="{'d_none': subtask.inEditMode}"
-                                    (dblclick)="subtask.inEditMode=true">
-                                    <div class="currentSubtaskDisplayViewText">• {{subtask.description}}</div>
-                                    <div class="currentSubtaskDisplayViewBtns">
-                                        <div class="inputBtn"  (click)="subtask.inEditMode=true">
-                                            <img src="./assets/img/icons/edit.svg" alt="Edit">
-                                        </div>
-                                        <p>|</p>
-                                        <div class="inputBtn" (click)="deleteSubtask($index)">
-                                            <img src="./assets/img/icons/delete.svg" alt="Delete">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="currentSubtaskEditView" [ngClass]="{'d_none': !subtask.inEditMode}">
-                                    <input class="currentSubtaskEditViewInput" type="text" name="subtaskDescription{{$index}}" [(ngModel)]="subtask.description">
-                                    <div class="currentSubtaskDisplayViewBtns">
-                                        <div class="inputBtn" (click)="deleteSubtask($index)">
-                                            <img src="./assets/img/icons/delete.svg" alt="Delete">
-                                        </div>
-                                        <p>|</p>
-                                        <div class="inputBtn">
-                                            <img src="./assets/img/icons/check.svg" alt="Confirm"
-                                                (click)="subtask.inEditMode=false">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            }
-                        </div>
-                        }
                     </div>
-                    <div class="errorMessageContainer">
-                    </div>
+                    }
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="ok-btn" type="submit" value="Send" (click)="taskService.toggleIsTaskOverlayDisplayed()">
-                        Ok<img src="./assets/img/icons/check.svg" alt="checkmark">
-                    </button>
-                </div>
-            </form>
+                }
+            </div>
+            <div class="errorMessageContainer">
+            </div>
         </div>
+        <div class="modal-footer">
+            <button type="button" class="ok-btn" type="submit" value="Send"
+                (click)="taskService.toggleIsTaskOverlayDisplayed()">
+                Ok<img src="./assets/img/icons/check.svg" alt="checkmark">
+            </button>
+        </div>
+        </form>
+    </div>
 </div>
-

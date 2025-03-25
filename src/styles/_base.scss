@@ -95,7 +95,7 @@ textarea {
         outline: none;
     }
 
-    &.error-input {
+    &.errorInput {
         border: 1px solid $clrErrorMessageText; 
     }
 
@@ -117,7 +117,7 @@ textarea {
     }
 }
 
-.error-input {
+.errorInput {
     border: 1px solid $clrErrorMessageText !important;
 }
 

@@ -22,7 +22,7 @@
                         <div class="inputContainer">
                             <input #title="ngModel" [(ngModel)]="newTask.title" id="title" name="title" type="text"
                                 placeholder="Enter a title" class="input-field" required
-                                [ngClass]="{'error-input': !title.valid && title.touched}">
+                                [ngClass]="{'errorInput': !title.valid && title.touched}">
                         </div>
                         <div class="errorMessageContainer">
                             @if (!title.valid && title.touched) {
@@ -35,7 +35,7 @@
                         <div class="inputContainer">
                             <textarea #description="ngModel" [(ngModel)]="newTask.description" id="description"
                                 name="description" type="text" placeholder="Enter a Description" class="input-field"
-                                [ngClass]="{'error-input': !description.valid && description.touched}"></textarea>
+                                [ngClass]="{'errorInput': !description.valid && description.touched}"></textarea>
                         </div>
                         <div class="errorMessageContainer">
                             @if (!description.valid && description.touched) {
@@ -48,7 +48,7 @@
                         <div class="inputContainer">
                             <input #duDate="ngModel" [(ngModel)]="newTask.dueDate" id="duDate" name="duDate" type="date"
                                 placeholder="dd/mm/yyyy" class="input-field" required [min]="today"
-                                [ngClass]="{'error-input': (!duDate.valid || !newTask.dueDate) && duDate.touched}">
+                                [ngClass]="{'errorInput': (!duDate.valid || !newTask.dueDate) && duDate.touched}">
                         </div>
                         <div class="errorMessageContainer">
                             @if ((!duDate.valid || !newTask.dueDate) && duDate.touched) {
@@ -164,7 +164,7 @@
                     <label for="description">Category<span class="clrRed">*</span></label>
                     <div class="inputContainer">
                         <div class=selectionInput
-                            [ngClass]="{'error-input': showErrorCategory, 'active': isCategoryOpen}"
+                            [ngClass]="{'errorInput': showErrorCategory, 'active': isCategoryOpen}"
                             (click)="toggleIsCategoryOpen()">
                             <p>{{categoryValue}}</p>
                             <div class="selectionInputImgContainer">
