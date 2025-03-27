@@ -20,30 +20,30 @@
         </div>
     </div>
 
-    <div class="title-container">
+    <div class="titleContainer">
         <h1>Board</h1>
-        <div class="input-task-container">
-            <div class="search-bar">
-                <input class="search-input" type="text" name="query" placeholder="Find Task" [(ngModel)]="searchString"
+        <div class="inputTaskContainer">
+            <div class="searchBar">
+                <input class="searchInput" type="text" name="query" placeholder="Find Task" [(ngModel)]="searchString"
                     (input)="searchTask()">
                 <div class="seperator"></div>
                 <img src="./assets/img/icons/search-icon.png" alt="search icon">
             </div>
             @if(isMobileView){
-            <a class="add-task-button" routerLink="/addTask"
+            <a class="addTaskButton" routerLink="/addTask"
                 (click)="taskService.setStatusToBeUsed('toDo'); changeImage(); navbarService.setSelection('addTask')"><img
                     [src]="clicked?'./assets/img/icons/add-task-clicked-icon.png' : './assets/img/icons/add-task-mobile-icon.png'"
                     alt="Add Task"></a>
             }@else {
-            <button class="add-task-button"
+            <button class="addTaskButton"
                 (click)="taskService.toggleIsAddTaskOverlayDisplayed(); taskService.setStatusToBeUsed('toDo')">Add
                 task</button>
             }
         </div>
     </div>
-    <div class="board-container">
-        <div class="example-container">
-            <div class="column-title">
+    <div class="boardContainer">
+        <div class="exampleContainer">
+            <div class="columnTitle">
                 <h2>To do</h2>
                 @if(isMobileView){
                 <a class="iconLink" routerLink="/addTask"
@@ -65,32 +65,30 @@
                 </svg>
                 }
             </div>
-            @if (taskService.tasksToDo.length <=1){ <div class="no-tasks">
-                <p class="no-task-msg">No tasks</p>
+            @if (taskService.tasksToDo.length <=1){ <div class="noTasks">
+                <p class="noTaskMsg">No tasks</p>
         </div>
         }
         <div cdkDropList id="toDoList" #todoList="cdkDropList" [cdkDropListData]="taskService.tasksToDo"
-            [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="example-list"
+            [cdkDropListConnectedTo]="[doneList, inProgressList, awaitingFeedbackList]" class="exampleList"
             (cdkDropListDropped)="drop($event)">
-
-
-            <!-- Keine Suche -->
+            <!-- No Search -->
             @if (this.isSearchActive ==false) {
             @for (task of taskService.tasksToDo; track task) {
-            <div class="example-box" cdkDrag
+            <div class="exampleBox" cdkDrag
                 (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                     [task]="task"></app-single-card></div>
             }
             }
-            <!-- Suche ohne Ergebnisse -->
+            <!-- Search without results -->
             @if (this.isSearchActive == true && this.allSearchResults == []) {
-            <!-- irgendwas leeres -->
+            <!-- empty result -->
             }
-            <!--Suche mit Ergebnissen -->
+            <!--Search with results-->
             @if (this.isSearchActive == true && this.allSearchResults != []) {
             @for (task of taskService.tasksToDo; track task) {
             @if(isTaskInSearchResult(task)){
-            <div class="example-box" cdkDrag [cdkDragDisabled]="isDragDisabled"
+            <div class="exampleBox" cdkDrag [cdkDragDisabled]="isDragDisabled"
                 (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                     [task]="task"></app-single-card></div>
             }
@@ -98,8 +96,8 @@
             }
         </div>
     </div>
-    <div class="example-container">
-        <div class="column-title">
+    <div class="exampleContainer">
+        <div class="columnTitle">
             <h2>In progress</h2>
             @if(isMobileView){
             <a class="iconLink" routerLink="/addTask"
@@ -121,32 +119,30 @@
             </svg>
             }
         </div>
-        @if (taskService.tasksInProgress.length <=1){ <div class="no-tasks">
-            <p class="no-task-msg">No tasks</p>
+        @if (taskService.tasksInProgress.length <=1){ <div class="noTasks">
+            <p class="noTaskMsg">No tasks</p>
     </div>
     }
     <div cdkDropList id="inProgressList" #inProgressList="cdkDropList" [cdkDropListData]="taskService.tasksInProgress"
-        [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="example-list"
+        [cdkDropListConnectedTo]="[todoList, doneList, awaitingFeedbackList]" class="exampleList"
         (cdkDropListDropped)="drop($event)">
-
-
-        <!-- Keine Suche -->
+        <!-- No Search -->
         @if (this.isSearchActive ==false) {
         @for (task of taskService.tasksInProgress; track task) {
-        <div class="example-box" cdkDrag
+        <div class="exampleBox" cdkDrag
             (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                 [task]="task"></app-single-card></div>
         }
         }
-        <!-- Suche ohne Ergebnisse -->
+        <!-- Search without results -->
         @if (this.isSearchActive == true && this.allSearchResults == []) {
-        <!-- irgendwas leeres -->
+        <!-- empty results -->
         }
-        <!--Suche mit Ergebnissen -->
+        <!-- Search with results -->
         @if (this.isSearchActive == true && this.allSearchResults != []) {
         @for (task of taskService.tasksInProgress; track task) {
         @if(isTaskInSearchResult(task)){
-        <div class="example-box" cdkDrag
+        <div class="exampleBox" cdkDrag
             (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                 [task]="task"></app-single-card></div>
         }
@@ -154,8 +150,8 @@
         }
     </div>
     </div>
-    <div class="example-container">
-        <div class="column-title">
+    <div class="exampleContainer">
+        <div class="columnTitle">
             <h2>Awaiting feedback</h2>
             @if(isMobileView){
             <a class="iconLink" routerLink="/addTask"
@@ -177,33 +173,31 @@
             </svg>
             }
         </div>
-        @if (taskService.tasksAwaitFeedback.length <=1){ <div class="no-tasks">
-            <p class="no-task-msg">No tasks</p>
+        @if (taskService.tasksAwaitFeedback.length <=1){ <div class="noTasks">
+            <p class="noTaskMsg">No tasks</p>
     </div>
     }
     <div cdkDropList id="awaitFeedbackList" #awaitingFeedbackList="cdkDropList"
         [cdkDropListData]="taskService.tasksAwaitFeedback"
-        [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]" class="example-list"
+        [cdkDropListConnectedTo]="[todoList, doneList, inProgressList]" class="exampleList"
         (cdkDropListDropped)="drop($event)">
-
-
-        <!-- Keine Suche -->
+        <!-- No Search -->
         @if (this.isSearchActive ==false) {
         @for (task of taskService.tasksAwaitFeedback; track task) {
-        <div class="example-box" cdkDrag
+        <div class="exampleBox" cdkDrag
             (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                 [task]="task"></app-single-card></div>
         }
         }
-        <!-- Suche ohne Ergebnisse -->
+        <!-- Search without results -->
         @if (this.isSearchActive == true && this.allSearchResults == []) {
-        <!-- irgendwas leeres -->
+        <!-- empty results -->
         }
-        <!--Suche mit Ergebnissen -->
+        <!-- Search with results -->
         @if (this.isSearchActive == true && this.allSearchResults != []) {
         @for (task of taskService.tasksAwaitFeedback; track task) {
         @if(isTaskInSearchResult(task)){
-        <div class="example-box" cdkDrag
+        <div class="exampleBox" cdkDrag
             (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                 [task]="task"></app-single-card></div>
         }
@@ -211,34 +205,34 @@
         }
     </div>
     </div>
-    <div class="example-container">
-        <div class="column-title">
+    <div class="exampleContainer">
+        <div class="columnTitle">
             <h2>Done</h2>
         </div>
-        @if (taskService.tasksDone.length <=1){ <div class="no-tasks">
-            <p class="no-task-msg">No tasks</p>
+        @if (taskService.tasksDone.length <=1){ <div class="noTasks">
+            <p class="noTaskMsg">No tasks</p>
     </div>
     }
     <div cdkDropList id="doneList" #doneList="cdkDropList" [cdkDropListData]="taskService.tasksDone"
-        [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="example-list"
+        [cdkDropListConnectedTo]="[todoList, inProgressList, awaitingFeedbackList]" class="exampleList"
         (cdkDropListDropped)="drop($event)">
-        <!-- Keine Suche -->
+        <!-- No Search -->
         @if (this.isSearchActive ==false) {
         @for (task of taskService.tasksDone; track task) {
-        <div class="example-box" cdkDrag
+        <div class="exampleBox" cdkDrag
             (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                 [task]="task"></app-single-card></div>
         }
         }
-        <!-- Suche ohne Ergebnisse -->
+        <!-- Search without results -->
         @if (this.isSearchActive == true && this.allSearchResults == []) {
-        <!-- irgendwas leeres -->
+        <!-- empty search -->
         }
-        <!--Suche mit Ergebnissen -->
+        <!-- Search with results -->
         @if (this.isSearchActive == true && this.allSearchResults != []) {
         @for (task of taskService.tasksDone; track task) {
         @if(isTaskInSearchResult(task)){
-        <div class="example-box" cdkDrag
+        <div class="exampleBox" cdkDrag
             (click)="taskService.setCurrentTask(task); taskService.toggleIsTaskOverlayDisplayed()"><app-single-card
                 [task]="task"></app-single-card></div>
         }

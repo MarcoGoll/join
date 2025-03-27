@@ -8,16 +8,15 @@
         <p class="description">{{task.description}}</p>
     </div>
     @if(task.subTasks.length > 0){
-    <div class="progressbar-container">
+    <div class="progressbarContainer">
         <div class="progressbar">
             <div class="progress" [style.width]="getProgress(task)"></div>
         </div>
-        <!-- <p>0/{{task.subTasks.length}} Subtasks</p> -->
         <p>{{getAllDoneSubTasks(task)}}/{{task.subTasks.length}} Subtasks</p>
     </div>
     }
-    <div class="profil-prio-container">
-        <div class="profil-container">
+    <div class="profilPrioContainer">
+        <div class="profilContainer">
             @for (idOfAssigne of task.assignedTo; track $index) {
             @if ($index<3) { <div
                 class="profil backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">
@@ -25,14 +24,14 @@
         </div>
         }
         }
-        @if (task.assignedTo.length>=3) {
+        @if (task.assignedTo.length>3) {
         <div class="profil backgroundColorBaseGray">
             +{{task.assignedTo.length-3}}
         </div>
         }
     </div>
     <div class="prio"
-        [ngClass]="{'prio-low':task.prio == 'Low', 'prio-medium':task.prio == 'Medium', 'prio-urgent': task.prio == 'Urgent'}">
+        [ngClass]="{'prioLow':task.prio == 'Low', 'prioMedium':task.prio == 'Medium', 'prioUrgent': task.prio == 'Urgent'}">
     </div>
     </div>
 </section>

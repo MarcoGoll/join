@@ -1,50 +1,50 @@
 @media (max-width: 1400px) {
-    .category{
-        font-size: 12px;
-        margin-bottom: 7px;
+  .category {
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+  .progressbarContainer {
+    margin-bottom: 0;
+    > p {
+      font-size: 12px;
     }
-    .progressbar-container{
-        margin-bottom: 0;
-        >p{
-            font-size: 12px;
-        }
-    }
-    .prio{
-        width: 20px;
-    }
-    .description{
-        margin-bottom: 2px;
-        font-size: 14px;
-    }
-    .title{
-        font-size: 15px;
-    }
+  }
+  .prio {
+    width: 20px;
+  }
+  .description {
+    margin-bottom: 2px;
+    font-size: 14px;
+  }
+  .title {
+    font-size: 15px;
+  }
 }
 
-@media (max-width: 1200px){
-    .description{
-        margin-bottom: 16px;
-        font-size: 10px;
+@media (max-width: 1200px) {
+  .description {
+    margin-bottom: 16px;
+    font-size: 10px;
+  }
+  .profil {
+    width: 20px;
+    height: 20px;
+    > p {
+      font-size: 10px;
     }
-    .profil{
-        width: 20px;
-        height: 20px;
-        >p{
-            font-size: 10px;
-        }
-    }
-    .profil:nth-child(2) {
-        position: absolute;
-        left: 14px; /* Bewegt das Element nach links */
-      }
-    
-    .profil:nth-child(3) {
-        position: absolute;
-        left: 28px; /* Bewegt das Element nach links */
-      }
-    
-    .profil:nth-child(4) {
-        position: absolute;
-        left: 42px; /* Bewegt das Element nach links */
-      }
+  }
+  .profil:nth-child(2) {
+    position: absolute;
+    left: 14px; /* Bewegt das Element nach links */
+  }
+
+  .profil:nth-child(3) {
+    position: absolute;
+    left: 28px; /* Bewegt das Element nach links */
+  }
+
+  .profil:nth-child(4) {
+    position: absolute;
+    left: 42px; /* Bewegt das Element nach links */
+  }
 }

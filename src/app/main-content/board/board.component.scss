@@ -10,24 +10,24 @@ section{
     padding: 32px;
 }
 
-.board-container{
+.boardContainer{
   display: flex;
   justify-content: space-evenly;
   flex-wrap: nowrap;
 }
 
-.title-container{
+.titleContainer{
     @include setFlex($jc: space-between);
     margin-right: 40px;
 }
 
-.input-task-container{
+.inputTaskContainer{
     @include setFlex();
     margin-bottom: 16px;
     gap: 36px;
 }
 
-.search-bar {
+.searchBar {
   position: relative;
   @include setFlex($jc: flex-start);
   width: 250px;
@@ -73,7 +73,7 @@ section{
   }
 }
 
-.add-task-button{
+.addTaskButton{
     color: white;
     background-color: $clrHighlight1;
     border: unset;
@@ -92,12 +92,12 @@ section{
     display: block;
 }
 
-.column-title-container{
+.columnTitleContainer{
   @include setFlex($jc: flex-start);
   flex: 1;
 }
 
-.column-title{
+.columnTitle{
     @include setFlex($jc: space-between);
     margin-top: 50px;
     width: 95%;
@@ -110,11 +110,11 @@ section{
     }
 }
 
-.task-board-container{
+.task-boardContainer{
   @include setFlex();
 }
 
-.no-tasks{
+.noTasks{
   @include setFlex();
   position: absolute;
   top: 150px;
@@ -133,7 +133,7 @@ section{
 //========ANGULAR IMPORT=================================
 //=======================================================
 
-.example-container {
+.exampleContainer {
     position: relative;
     width: 260px;
     max-width: 100%;
@@ -141,7 +141,7 @@ section{
     vertical-align: top;
   }
   
-  .example-list {
+  .exampleList {
     padding: 5px;
     min-height: 60px;
     height:  calc(100dvh - 310px);
@@ -153,7 +153,7 @@ section{
     scrollbar-color: #888 transparent;
 }
   
-  .example-box {
+  .exampleBox {
     width: 260px;
     position: relative;
     padding: 20px 10px;
@@ -188,11 +188,11 @@ section{
   //   // transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   // }
   
-  .example-box:last-child {
+  .exampleBox:last-child {
     border: none;
   }
   
-  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  .exampleList.cdk-drop-list-dragging .exampleBox:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
   

@@ -1,137 +1,134 @@
 @import "./../../../../styles.scss";
 
-
-
-section{
-    border-radius: 10px;
-    z-index: 10;
-   
+section {
+  border-radius: 10px;
+  z-index: 10;
 }
 
-.technicalTask{
-    background-color: $clrContact7!important;
+.technicalTask {
+  background-color: $clrContact7 !important;
 }
 
-.user-story{
-    background-color: $clrContact1!important;
+.user-story {
+  background-color: $clrContact1 !important;
 }
 
-.title{
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 8px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.prio{
-    @include setFlex($ai: center); 
-    width: 30px;
-    height: 30px;
-    margin-right: 16px;
+.prio {
+  @include setFlex($ai: center);
+  width: 30px;
+  height: 30px;
+  margin-right: 16px;
 }
 
-.prio-low{
-    background-image: url('./../../../../assets/img/icons/Prio baja.svg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+.prioLow {
+  background-image: url("./../../../../assets/img/icons/Prio baja.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.prio-medium{
-    background-image: url('./../../../../assets/img/icons/Capa 1.svg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+.prioMedium {
+  background-image: url("./../../../../assets/img/icons/Capa 1.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.prio-urgent{
-    background-image: url('./../../../../assets/img/icons/Prio alta.svg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+.prioUrgent {
+  background-image: url("./../../../../assets/img/icons/Prio alta.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.profil-prio-container{
-    @include setFlex($jc: space-between);
+.profilPrioContainer {
+  @include setFlex($jc: space-between);
 }
 
-.profil-container{
-    @include setFlex($jc: flex-start, $ai:center);
-    flex: 1;
-    position: relative;
+.profilContainer {
+  @include setFlex($jc: flex-start, $ai: center);
+  flex: 1;
+  position: relative;
 }
 
-.profil{
-    @include setFlex();
-    color: white;
-    border: 1px solid white;
-    border-radius: 16px;
-    width: 30px;
-    height: 30px;
+.profil {
+  @include setFlex();
+  color: white;
+  border: 1px solid white;
+  border-radius: 16px;
+  width: 30px;
+  height: 30px;
 }
 
 .profil:nth-child(2) {
-    position: absolute;
-    left: 21px; /* Bewegt das Element nach links */
-    z-index: 2;
-  }
+  position: absolute;
+  left: 21px; /* Bewegt das Element nach links */
+  z-index: 2;
+}
 
 .profil:nth-child(3) {
-    position: absolute;
-    left: 42px; /* Bewegt das Element nach links */
-    z-index: 3;
-  }
+  position: absolute;
+  left: 42px; /* Bewegt das Element nach links */
+  z-index: 3;
+}
 
 .profil:nth-child(4) {
-    position: absolute;
-    left: 63px; /* Bewegt das Element nach links */
-    z-index: 4;
-  }
-
-.description{
-    word-wrap: break-word;
-    overflow-wrap: break-word; 
-    color: $clrHoverIcon;
-    font-weight: 400;
-    font-size: 16px;
-    margin-bottom: 16px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  position: absolute;
+  left: 63px; /* Bewegt das Element nach links */
+  z-index: 4;
 }
 
-.progressbar-container{
-    @include setFlex($jc: space-between);
-    margin-bottom: 16px;
+.description {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: $clrHoverIcon;
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.progressbar{
-    width: 55%;
-    height: 10px;
-    background-color: $clrProgressbarBackground;
-    border-radius: 10px;
-    overflow: hidden;
+.progressbarContainer {
+  @include setFlex($jc: space-between);
+  margin-bottom: 16px;
+}
+
+.progressbar {
+  width: 55%;
+  height: 10px;
+  background-color: $clrProgressbarBackground;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .progress {
-    height: 100%;
-    width: 50%; /* Dynamisch ändern */
-    border-radius: 8px;
-    background-color: $clrProgressbar;
-    transition: width 0.3s ease-in-out;
-  }
-
-.category{
-    @include setFlex();
-    background-color: $clrContact1;
-    border-radius: 8px;
-    width: 52%;
-    height: 27px;
-    text-align: center;
-    color: white;
-    margin-bottom: 24px;
+  height: 100%;
+  width: 50%; /* Dynamisch ändern */
+  border-radius: 8px;
+  background-color: $clrProgressbar;
+  transition: width 0.3s ease-in-out;
 }
 
-.subtask-progressbar{
-    @include setFlex($jc: space-between);
+.category {
+  @include setFlex();
+  background-color: $clrContact1;
+  border-radius: 8px;
+  width: 52%;
+  height: 27px;
+  text-align: center;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.subtask-progressbar {
+  @include setFlex($jc: space-between);
 }
