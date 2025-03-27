@@ -72,7 +72,7 @@ header{
     padding: 0;
 }
 
-.info-icon{
+.infoIcon{
     width: 20px;
     transition: all 0.1s ease-in-out;
     &:hover{
@@ -80,7 +80,7 @@ header{
     }
 }
 
-.info-icon-container{
+.infoIconContainer{
     @include setFlex();
     width: 60px;
     height: 60px;
@@ -90,7 +90,7 @@ header{
     display: none;
 }
 
-.profil-btn-dropdown {
+.profilBtnDropdown {
     position: absolute;
     top: 0;
     left: 0;
@@ -99,11 +99,11 @@ header{
     display: none;
 }
 
-.profil-btn-dropdown.visible {
+.profilBtnDropdown.visible {
     display: block;
 }
 
-.dropdown-menu {
+.dropdownMenu {
     position: absolute;
     top: 96px;
     right: 24px;
@@ -126,6 +126,6 @@ header{
     }
 }
 
-.dropdown-menu-help {
+.dropdownMenuHelp {
     display: none;
 }

@@ -1,4 +1,4 @@
-<section class="section-details-content">
+<section class="sectionDetailsContent">
     <div class="backBtn" (click)="contactService.changeMobileContactView(isMobileView); setInitialValues()">
         <img src="./assets/img/icons/arrow-left-line.svg" alt="back">
     </div>
@@ -21,9 +21,9 @@
             </div>
         </div>
     </div>
-    <div class="details-content"> 
+    <div class="detailsContent">
         <div class="headline">
-            <div class="headline-content">
+            <div class="headlineContent">
                 <h1>Contacts</h1>
                 <span class="separatorVertical">|</span>
                 <span class="subtitle">Better with a team</span>
@@ -32,14 +32,14 @@
         </div>
 
 
-        <div class="contact-info" [ngClass]="{'d_none': !contactService.isContactSelected}">
-            <div class="contact-maininfo">
+        <div class="contactInfo" [ngClass]="{'d_none': !contactService.isContactSelected}">
+            <div class="contactMaininfo">
                 <div
-                    class="avatar-wrapper backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
-                    <p class="avatar-text"> {{contactService.currentlySelectedContact.nameShortcut}}</p>
+                    class="avatarWrapper backgroundColor{{contactService.currentlySelectedContact.nameShortcutColorCode}}">
+                    <p class="avatarText"> {{contactService.currentlySelectedContact.nameShortcut}}</p>
                 </div>
-                <div class="contact-actions">
-                    <p class="contact-name">{{contactService.currentlySelectedContact.firstName}}
+                <div class="contactActions">
+                    <p class="contactName">{{contactService.currentlySelectedContact.firstName}}
                         {{contactService.currentlySelectedContact.lastName}}</p>
                     <div class="actions">
                         <button class="edit" (click)="showEditContact()">
@@ -54,13 +54,13 @@
                     </div>
                 </div>
             </div>
-            <div class="contact-details">
-                <p class="contact-information-text">Contact Information</p>
-                <div class="info-item">
+            <div class="contactDetails">
+                <p class="contactInformationText">Contact Information</p>
+                <div class="infoItem">
                     <label>Email</label>
                     <span class="email">{{contactService.currentlySelectedContact.email}}</span>
                 </div>
-                <div class="info-item">
+                <div class="infoItem">
                     <label>Phone</label>
                     <span class="phone">{{contactService.currentlySelectedContact.phone}}</span>
                 </div>

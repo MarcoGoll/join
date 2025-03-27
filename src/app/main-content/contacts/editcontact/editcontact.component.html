@@ -1,21 +1,21 @@
-<div class="modal-overlay overlay" [class.show]="contactService.isEditContactViewed" (click)="closeModal($event)">
+<div class="modalOverlay overlay" [class.show]="contactService.isEditContactViewed" (click)="closeModal($event)">
     <div class="modalContent">
-        <div class="modal-header">
+        <div class="modalHeader">
             <img src="./assets/img/join_logo.png" alt="Join Logo" class="logo">
             <div class="titleContainer">
                 <h1>Edit contact</h1>
-                <div class="blue-line"></div>
+                <div class="blueLine"></div>
             </div>
         </div>
 
-        <form id="myForm" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="form-content">
-            <div class="avatar-container">
-                <img src="./assets/img/icons/Group 13.svg" alt="Person Icon" class="person-icon">
+        <form id="myForm" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="formContent">
+            <div class="avatarContainer">
+                <img src="./assets/img/icons/Group 13.svg" alt="Person Icon" class="personIcon">
             </div>
 
-            <div class="form-fields">
-                <div class="inputanderror-container">
-                    <div class="input-container">
+            <div class="formFields">
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
                         <input #name="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.fullName"
                             type="text" id="name" name="name" placeholder="Name" class="inputField" required
                             pattern="[a-zA-Z]{3,}.*">
@@ -26,12 +26,12 @@
                         }
                     </div>
 
-                    <div class="inputanderror-container">
-                        <div class="input-container">
+                    <div class="inputAndErrorContainer">
+                        <div class="inputContainer">
                             <input #email="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.email"
                                 id="email" name="email" type="email" placeholder="Email" class="inputField" required
                                 pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
-                            <img src="./assets/img/icons/mail.svg" alt="Email" class="input-icon">
+                            <img src="./assets/img/icons/mail.svg" alt="Email" class="inputIcon">
                         </div>
                         <div class="errorMessageContainer">
                             @if (!email.valid && email.touched) {
@@ -40,12 +40,12 @@
                         </div>
                     </div>
 
-                    <div class="inputanderror-container">
-                        <div class="input-container">
+                    <div class="inputAndErrorContainer">
+                        <div class="inputContainer">
                             <input #phone="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.phone"
                                 id="phone" name="phone" type="phone" placeholder="Phone" class="inputField" required
                                 pattern="^\+?[0-9 ]{7,15}$">
-                            <img src="./assets/img/icons/call.svg" alt="Phone" class="input-icon">
+                            <img src="./assets/img/icons/call.svg" alt="Phone" class="inputIcon">
                         </div>
                         <div class="errorMessageContainer">
                             @if (!phone.valid && phone.touched) {
@@ -54,13 +54,13 @@
                         </div>
                     </div>
 
-                    <div class="button-container">
-                        <button type="button" class="cancel-btn"
+                    <div class="buttonContainer">
+                        <button type="button" class="cancelBtn"
                             (click)="close(); contactService.deleteContact(contactService.currentContactToBeUpdated); contactService.changeMobileContactView(isMobileView)">
                             Delete
                             <img src="./assets/img/icons/close.svg" alt="Cancel">
                         </button>
-                        <button type="submit" class="create-btn">
+                        <button type="submit" class="createBtn">
                             Save
                             <img src="./assets/img/icons/check.svg" alt="Create">
                         </button>
@@ -69,7 +69,7 @@
             </div>
         </form>
 
-        <button class="close-btn" (click)="close()">
+        <button class="closeBtn" (click)="close()">
             <img src="./assets/img/icons/close.svg" alt="Close">
         </button>
     </div>

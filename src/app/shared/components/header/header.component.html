@@ -10,8 +10,8 @@
         <div>
             <div>
                 <a class="infoLink" routerLink="info">
-                    <div class="info-icon-container">
-                        <img class="info-icon" src="./assets/img/icons/help.png" alt="info icon">
+                    <div class="infoIconContainer">
+                        <img class="infoIcon" src="./assets/img/icons/help.png" alt="info icon">
                     </div>
                 </a>
             </div>
@@ -19,9 +19,9 @@
                 <span>{{getShortcut(authenticationService.currentLoggedInUser?.displayName)}}</span>
             </div>
         </div>
-        <nav class="profil-btn-dropdown" [class.visible]="navVisible" (click)="navVisible = !navVisible">
-            <div class="dropdown-menu">
-                <a class="dropdown-menu-help" routerLink="info">Help</a>
+        <nav class="profilBtnDropdown" [class.visible]="navVisible" (click)="navVisible = !navVisible">
+            <div class="dropdownMenu">
+                <a class="dropdownMenuHelp" routerLink="info">Help</a>
                 <a routerLink="legalNotice">Legal Notice</a>
                 <a routerLink="privacyPolicy">Privacy Policy</a>
                 <a routerLink="" (click)="authenticationService.logout()">Log out</a>

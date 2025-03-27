@@ -1,16 +1,16 @@
 @import './../../../../styles.scss';
 
 @media (max-width: 1200px) {
-    .section-details-content {
+    .sectionDetailsContent {
         height: calc(100dvh - 96px - 68px);
     }
 }
 
 
 @media (max-width: 1400px) {
-    .contact-maininfo {
-        .contact-actions {
-            .contact-name {
+    .contactMaininfo {
+        .contactActions {
+            .contactName {
                 max-width: 300px;
             }
         }
@@ -19,7 +19,7 @@
 
 @media (max-width: 1023px) {
 
-    .section-details-content {
+    .sectionDetailsContent {
         padding-top: 0px;
         padding-left: 8px;
         padding-right: 8px;
@@ -47,7 +47,7 @@
         z-index: 1;
     }
 
-    .headline-content {
+    .headlineContent {
         flex-direction: column;
         align-items: flex-start
     }
@@ -60,7 +60,7 @@
         display: block;
     }
 
-    .headline-content {
+    .headlineContent {
         h1 {
             font-size: $fsMobileH1;
         }
@@ -70,25 +70,25 @@
         }
     }
 
-    .contact-maininfo {
+    .contactMaininfo {
         gap: 20px;
 
-        .avatar-wrapper {
+        .avatarWrapper {
             height: 80px;
             width: 80px;
             border-radius: 50%;
             @include setFlex();
             border: 3px solid white;
 
-            .avatar-text {
+            .avatarText {
                 color: white;
                 font-size: 27px;
                 font-weight: 400;
             }
         }
 
-        .contact-actions {
-            .contact-name {
+        .contactActions {
+            .contactName {
                 font-size: 36px;
                 font-weight: 700;
                 overflow: hidden;
@@ -103,9 +103,9 @@
 }
 
 @media (max-width: 500px) {
-    .contact-maininfo {
-        .contact-actions {
-            .contact-name {
+    .contactMaininfo {
+        .contactActions {
+            .contactName {
                 max-width: 280px;
             }
         }
@@ -113,9 +113,9 @@
 }
 
 @media (max-width: 400px) {
-    .contact-maininfo {
-        .contact-actions {
-            .contact-name {
+    .contactMaininfo {
+        .contactActions {
+            .contactName {
                 max-width: 195px;
                 white-space: normal;
             }

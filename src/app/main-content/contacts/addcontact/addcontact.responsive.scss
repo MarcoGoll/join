@@ -1,6 +1,6 @@
 @import './../../../../styles.scss';
 @media screen and (max-width: 450px) {
-    .form-content {
+    .formContent {
         padding: 40px 16px;
     }
 
@@ -8,7 +8,7 @@
 
 
 @media screen and (max-width: 1000px) {
-    .button-container {
+    .buttonContainer {
         button {
             font-size: 14px;
         }
@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 960px) { 
-    .modal-overlay {
+    .modalOverlay {
         padding: 20px;
     }
 
@@ -28,7 +28,7 @@
         margin: 10px auto;
     }
 
-    .modal-header {
+    .modalHeader {
         width: 100%;
         padding: 25px 20px;
         border-radius: 20px 20px 0 0;
@@ -53,13 +53,13 @@
                 font-size: 16px;
             }
 
-            .blue-line {
+            .blueLine {
                 margin-top: 4px;
             }
         }
     }
 
-    .form-content {
+    .formContent {
         width: 100%;
         padding: 0 px 40px;
         margin-top: 0;
@@ -68,24 +68,24 @@
         gap: 8px;
     }
 
-    .avatar-container {
+    .avatarContainer {
         margin: -100px 0 0 0;
         width: 120px;
         height: 120px;
         background: #F5F5F5;
 
-        .person-icon {
+        .personIcon {
             width: 120px;
             height: 120px;
         }
     }
 
-    .form-fields {
+    .formFields {
         width: 100%;
         max-width: none;
     }
 
-    .input-container {
+    .inputContainer {
         max-width: 100%;
 
         .inputField {
@@ -93,7 +93,7 @@
             height: 40px;
         }
 
-        .input-icon {
+        .inputIcon {
             right: 12px;
             width: 20px;
             height: 20px;
@@ -101,18 +101,18 @@
         }
     }
 
-    .button-container {
+    .buttonContainer {
         width: 100%;
         margin-top: 20px;
         margin-bottom: 30px;
         display: flex;
         justify-content: center;
 
-        .cancel-btn {
+        .cancelBtn {
             display: none;
         }
 
-        .create-btn {
+        .createBtn {
             width: auto;
             justify-content: center;
             padding: 10px 18px;
@@ -127,7 +127,7 @@
 
     }
 
-    .close-btn {
+    .closeBtn {
         top: 24px;
         right: 24px;
         padding: 4px;
@@ -148,7 +148,7 @@
 }
 
 @media screen and (max-width: 380px) {
-    .modal-overlay {
+    .modalOverlay {
         padding: 5px;
     }
 
@@ -156,27 +156,27 @@
         overflow-y: auto;
     }
 
-    .form-content {
+    .formContent {
         padding: 20px 10px;
     }
 
-    .modal-header {
+    .modalHeader {
         padding: 20px 15px;
         min-height: 200px;
     }
 
-    .button-container {
+    .buttonContainer {
         margin-top: 15px;
         margin-bottom: 20px;
     }
 
-    .avatar-container {
+    .avatarContainer {
         margin: -80px 0 0 0;
     }
 }
 
 @media screen and (max-height: 660px) {
-    .modal-overlay {
+    .modalOverlay {
         align-items: flex-start;
     }
 }

@@ -1,24 +1,24 @@
-<div class="modal-overlay overlay" [class.show]="contactService.isAddContactViewed" (click)="closeModal($event)">
+<div class="modalOverlay overlay" [class.show]="contactService.isAddContactViewed" (click)="closeModal($event)">
     <div class="modalContent">
-        <div class="modal-header">
+        <div class="modalHeader">
             <img src="./assets/img/join_logo.png" alt="Join Logo" class="logo">
             <div class="titleContainer">
                 <h1>Add contact</h1>
                 <span class="subtitle">Tasks are better with a team!</span>
-                <div class="blue-line"></div>
+                <div class="blueLine"></div>
             </div>
         </div>
 
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-content">
-            <div class="avatar-container">
-                <img src="./assets/img/icons/Group 13.svg" alt="Person Icon" class="person-icon">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="formContent">
+            <div class="avatarContainer">
+                <img src="./assets/img/icons/Group 13.svg" alt="Person Icon" class="personIcon">
             </div>
 
-            <div class="form-fields">
-                <div class="inputanderror-container">
-                    <div class="input-container">
+            <div class="formFields">
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
                         <input type="text" formControlName="name" placeholder="Name" class="inputField">
-                        <img src="./assets/img/icons/person.svg" alt="Person" class="input-icon">
+                        <img src="./assets/img/icons/person.svg" alt="Person" class="inputIcon">
                     </div>
                     <div class="errorMessageContainer">
                         @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
@@ -27,10 +27,10 @@
                     </div>
                 </div>
 
-                <div class="inputanderror-container">
-                    <div class="input-container">
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
                         <input type="email" formControlName="email" placeholder="Email" class="inputField">
-                        <img src="./assets/img/icons/mail.svg" alt="Email" class="input-icon">
+                        <img src="./assets/img/icons/mail.svg" alt="Email" class="inputIcon">
                     </div>
                     <div class="errorMessageContainer">
                         @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
@@ -39,10 +39,10 @@
                     </div>
                 </div>
 
-                <div class="inputanderror-container">
-                    <div class="input-container">
+                <div class="inputAndErrorContainer">
+                    <div class="inputContainer">
                         <input type="tel" formControlName="phone" placeholder="Phone" class="inputField">
-                        <img src="./assets/img/icons/call.svg" alt="Phone" class="input-icon">
+                        <img src="./assets/img/icons/call.svg" alt="Phone" class="inputIcon">
                     </div>
                     <div class="errorMessageContainer">
                         @if (contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched) {
@@ -51,12 +51,12 @@
                     </div>
                 </div>
 
-                <div class="button-container">
-                    <button type="button" class="cancel-btn" (click)="close()">
+                <div class="buttonContainer">
+                    <button type="button" class="cancelBtn" (click)="close()">
                         Cancel
                         <img src="./assets/img/icons/close.svg" alt="Cancel">
                     </button>
-                    <button type="submit" class="create-btn">
+                    <button type="submit" class="createBtn">
                         Create contact
                         <img src="./assets/img/icons/check.svg" alt="Create">
                     </button>
@@ -64,7 +64,7 @@
             </div>
         </form>
 
-        <button class="close-btn" (click)="close()">
+        <button class="closeBtn" (click)="close()">
             <img src="./assets/img/icons/close.svg" alt="Close">
         </button>
     </div>

@@ -1,6 +1,6 @@
 @import './../../../../styles.scss';
 
-.modal-overlay {
+.modalOverlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,7 +39,7 @@
     border-radius: 30px;
 }
 
-.modal-header {
+.modalHeader {
     width: 35%;
     padding: 40px;
     background: $clrHighlight1;
@@ -72,7 +72,7 @@
             color: white;
         }
 
-        .blue-line {
+        .blueLine {
             width: 68px;
             height: 3px;
             background: $clrHighlight2;
@@ -81,7 +81,7 @@
     }
 }
 
-.form-content {
+.formContent {
     width: 60%;
     padding: 40px 50px;
     display: flex;
@@ -93,20 +93,20 @@
 }
 
 @media screen and (max-width: 450px) {
-    .form-content {
+    .formContent {
         padding: 40px 16px;
     }
 
 }
 
-.form-fields {
+.formFields {
     display: flex;
     flex-direction: column;
     gap: 8px;
     flex-grow: 1;
 }
 
-.avatar-container {
+.avatarContainer {
     background: $clrBackground;
     border-radius: 50%;
     display: flex;
@@ -114,13 +114,13 @@
     justify-content: center;
     margin-top: 90px;
 
-    .person-icon {
+    .personIcon {
         width: 100%;
         height: 100%;
     }
 }
 
-.input-container {
+.inputContainer {
     position: relative;
     width: 100%;
     max-width: 350px;
@@ -142,7 +142,7 @@
         }
     }
 
-    .input-icon {
+    .inputIcon {
         position: absolute;
         right: 16px;
         top: 50%;
@@ -152,7 +152,7 @@
     }
 }
 
-.button-container {
+.buttonContainer {
     width: 100%;
     max-width: 380px;
     display: flex;
@@ -182,7 +182,7 @@
         }
     }
 
-    .cancel-btn {
+    .cancelBtn {
         border: 1px solid $clrSeparatingLines;
         background: white;
         border-color: $clrBaseDark;
@@ -198,7 +198,7 @@
         }
     }
 
-    .create-btn {
+    .createBtn {
         background: $clrHighlight1;
         color: white;
         border: none;
@@ -214,7 +214,7 @@
     }
 }
 
-.close-btn {
+.closeBtn {
     position: absolute;
     top: 30px;
     right: 50px;
@@ -235,7 +235,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-    .button-container {
+    .buttonContainer {
         button {
             font-size: 14px;
         }
@@ -244,7 +244,7 @@
 
 
 @media screen and (max-width: 960px) {
-    .modal-overlay {
+    .modalOverlay {
         align-items: flex-start;
         padding: 20px;
     }
@@ -258,7 +258,7 @@
         margin: 0;
     }
 
-    .modal-header {
+    .modalHeader {
         width: 100%;
         padding: 25px 20px;
         border-radius: 20px 20px 0 0;
@@ -283,13 +283,13 @@
                 font-size: 16px;
             }
 
-            .blue-line {
+            .blueLine {
                 margin-top: 4px;
             }
         }
     }
 
-    .form-content {
+    .formContent {
         width: 100%;
         padding: 0 px 40px;
         margin-top: 0;
@@ -297,25 +297,25 @@
         align-items: center;
     }
 
-    .avatar-container {
+    .avatarContainer {
         margin: -100px 0 24px 0;
         width: 120px;
         height: 120px;
         background: #F5F5F5;
 
-        .person-icon {
+        .personIcon {
             width: 120px;
             height: 120px;
         }
     }
 
-    .form-fields {
+    .formFields {
         width: 100%;
         gap: 16px;
         max-width: none;
     }
 
-    .input-container {
+    .inputContainer {
         max-width: 100%;
 
         .inputField {
@@ -323,7 +323,7 @@
             height: 40px;
         }
 
-        .input-icon {
+        .inputIcon {
             right: 12px;
             width: 20px;
             height: 20px;
@@ -331,14 +331,14 @@
         }
     }
 
-    .button-container {
+    .buttonContainer {
         width: 100%;
         margin-top: 20px;
         margin-bottom: 30px;
         display: flex;
         justify-content: center;
 
-        .create-btn {
+        .createBtn {
             width: auto;
             justify-content: center;
             padding: 10px 18px;
@@ -353,7 +353,7 @@
 
     }
 
-    .close-btn {
+    .closeBtn {
         top: 24px;
         right: 24px;
         padding: 4px;

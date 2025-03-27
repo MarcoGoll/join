@@ -1,6 +1,6 @@
 @import './../../../../styles.scss';
 
-.section-details-content {
+.sectionDetailsContent {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -15,13 +15,13 @@
     overflow: hidden;
 }
 
-.details-content {
+.detailsContent {
 
     overflow-y: auto;
     scrollbar-width: thin;
 
 
-    .contact-info {
+    .contactInfo {
         @include setFlex($fd: column, $ai: flex-start, $gap: 21px);
         width: 100%;
         transform: translateX(1300px);
@@ -29,17 +29,17 @@
         margin-top: 16px;
 
 
-        .contact-details {
+        .contactDetails {
             width: 100%;
             @include setFlex($fd: column, $ai: stretch, $gap: 21px);
 
-            .contact-information-text {
+            .contactInformationText {
                 font-size: 20px;
                 font-weight: 400;
                 padding: 20px 0px;
             }
 
-            .info-item {
+            .infoItem {
                 @include setFlex($fd: column, $ai: flex-start, $gap: 8px);
 
                 label {
@@ -60,7 +60,7 @@
     }
 }
 
-.headline-content {
+.headlineContent {
     @include setFlex($jc: flex-start, $gap: 16px);
 
     h1 {
@@ -86,26 +86,26 @@
 
 }
 
-.contact-maininfo {
+.contactMaininfo {
     width: 100%;
     @include setFlex($jc: flex-start, $ai: center, $gap: 54px);
 
-    .avatar-wrapper {
+    .avatarWrapper {
         height: 120px;
         width: 120px;
         border-radius: 50%;
         @include setFlex();
         border: 3px solid white;
 
-        .avatar-text {
+        .avatarText {
             color: white;
             font-size: 47px;
             font-weight: 500;
         }
     }
 
-    .contact-actions {
-        .contact-name {
+    .contactActions {
+        .contactName {
             font-size: 47px;
             font-weight: 500;
             max-width: 800px;
