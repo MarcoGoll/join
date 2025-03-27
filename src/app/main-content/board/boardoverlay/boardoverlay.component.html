@@ -1,22 +1,22 @@
 <div>
-    <div class="modal-content" [ngClass]="{'d_none':taskService.isTaskinEditMode}">
-        <div class="modal-scrollable-content-display">
-            <div class="task-tag"
-                [ngClass]="{'technical-task-tag':taskService.currentlySelectedTask.category == 'Technical Task', 'user-story-tag':taskService.currentlySelectedTask.category == 'User Story' }">
+    <div class="modalContent" [ngClass]="{'d_none':taskService.isTaskinEditMode}">
+        <div class="modalScrollableContentDisplay">
+            <div class="taskTag"
+                [ngClass]="{'technicalTaskTag':taskService.currentlySelectedTask.category == 'Technical Task', 'user-story-tag':taskService.currentlySelectedTask.category == 'User Story' }">
                 {{taskService.currentlySelectedTask.category}}</div>
 
-            <h1 class="task-title">{{taskService.currentlySelectedTask.title}}</h1>
+            <h1 class="taskTitle">{{taskService.currentlySelectedTask.title}}</h1>
 
-            <p class="task-description">{{taskService.currentlySelectedTask.description}}</p>
+            <p class="taskDescription">{{taskService.currentlySelectedTask.description}}</p>
 
-            <div class="info-row horizontal">
+            <div class="infoRow horizontal">
                 <span class="label">Due date:</span>
                 <span class="value">{{taskService.currentlySelectedTask.dueDate}}</span>
             </div>
 
-            <div class="info-row horizontal">
+            <div class="infoRow horizontal">
                 <span class="label">Priority:</span>
-                <div class="priority-badge medium">
+                <div class="priorityBadge medium">
                     {{taskService.currentlySelectedTask.prio}}
                     @if(taskService.currentlySelectedTask.prio == 'Urgent'){
                     <img src="./assets/img/icons/Prio alta.svg" alt="Urgent">
@@ -32,60 +32,60 @@
                 </div>
             </div>
 
-            <div class="info-row">
+            <div class="infoRow">
                 <span class="label">Assigned To:</span>
-                <div class="assigned-users">
+                <div class="assignedUsers">
                     @for (idOfAssigne of taskService.currentlySelectedTask.assignedTo; track $index) {
                     @if (contactService.getContactViaId(idOfAssigne).id !="") {
                     <div
-                        class="user-avatar backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">
+                        class="userAvatar backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">
                         {{contactService.getContactViaId(idOfAssigne).nameShortcut}}
                     </div>
-                    <div class="user-name">{{contactService.getContactViaId(idOfAssigne).fullName}}</div>
+                    <div class="userName">{{contactService.getContactViaId(idOfAssigne).fullName}}</div>
                     }
                     }
                 </div>
             </div>
 
-            <div class="info-row">
+            <div class="infoRow">
                 <span class="label">Subtasks</span>
                 <div class="subtasks">
                     @for (subtask of taskService.currentlySelectedTask.subTasks; track $index) {
                     <div class="subtask">
-                        <div class="custom-checkbox" [ngClass]="{'checked': subtask.checked}"
+                        <div class="customCheckbox" [ngClass]="{'checked': subtask.checked}"
                             (click)="subtask.checked=!subtask.checked; updateFromDisplayMode()">
-                            <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
-                            <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
+                            <img src="./assets/img/icons/Rectangle 5.svg" class="checkboxEmpty">
+                            <img src="./assets/img/icons/Group 19.svg" class="checkboxChecked">
                         </div>
-                        <label class="subtask-text">{{subtask.description}}</label>
+                        <label class="subtaskText">{{subtask.description}}</label>
                     </div>
                     }
                 </div>
             </div>
         </div>
 
-        <div class="modal-actions">
-            <button class="action-btn delete"
+        <div class="modalActions">
+            <button class="actionBtn delete"
                 (click)="taskService.deleteTask(taskService.currentlySelectedTask); taskService.toggleIsTaskOverlayDisplayed()">
                 <img src="./assets/img/icons/delete.svg" alt="Delete">
                 Delete
             </button>
-            <button class="action-btn edit" (click)="taskService.isTaskinEditMode=true">
+            <button class="actionBtn edit" (click)="taskService.isTaskinEditMode=true">
                 <img src="./assets/img/icons/edit.svg" alt="Edit">
                 Edit
             </button>
         </div>
     </div>
-    <div class="modal-content edit-modal" [ngClass]="{'d_none':!taskService.isTaskinEditMode}">
+    <div class="modalContent editModal" [ngClass]="{'d_none':!taskService.isTaskinEditMode}">
         <div class="assignedToBackgroundContainer" [ngClass]="{'d_none':!taskService.isAssignedToOpen}"
             (click)="taskService.isAssignedToOpen = !taskService.isAssignedToOpen"></div>
-        <div class="modal-scrollable-content">
-            <form id="edit-form" class="edit-form" (ngSubmit)="updateFromEditMode(editTaskForm)" #editTaskForm="ngForm">
+        <div class="modalScrollableContent">
+            <form id="editForm" class="editForm" (ngSubmit)="updateFromEditMode(editTaskForm)" #editTaskForm="ngForm">
                 <div class="inputAndErrorContainer">
                     <label for="title">Title<span class="clrRed">*</span></label>
                     <div class="inputContainer">
                         <input #title="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.title" id="title"
-                            name="title" type="text" placeholder="Enter a title" class="input-field" required
+                            name="title" type="text" placeholder="Enter a title" class="inputField" required
                             [ngClass]="{'errorInput': !title.valid && title.touched}">
                     </div>
                     <div class="errorMessageContainer">
@@ -100,7 +100,7 @@
                     <div class="inputContainer">
                         <textarea #description="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.description"
                             id="description" name="description" type="text" placeholder="Enter a Description"
-                            class="input-field"
+                            class="inputField"
                             [ngClass]="{'errorInput': !description.valid && description.touched}"></textarea>
                     </div>
                     <div class="errorMessageContainer">
@@ -114,7 +114,7 @@
                     <label for="duDate">Due date<span class="clrRed">*</span></label>
                     <div class="inputContainer">
                         <input #duDate="ngModel" [(ngModel)]="taskService.currentTaskToBeUpdated.dueDate" id="duDate"
-                            name="duDate" type="date" placeholder="dd/mm/yyyy" class="input-field" required
+                            name="duDate" type="date" placeholder="dd/mm/yyyy" class="inputField" required
                             [ngClass]="{'errorInput': !duDate.valid && duDate.touched}">
                     </div>
                     <div class="errorMessageContainer">
@@ -201,11 +201,11 @@
                                     {{contact.nameShortcut}}</div>
                                 <div class="contactFullname">{{contact.fullName}}</div>
                                 <div class="contactSelection">
-                                    <div class="custom-checkbox"
+                                    <div class="customCheckbox"
                                         [ngClass]="{'checked': isContactCurrentlySelected(contact)}"
                                         (click)="toggleContactInCurrentSelectedAssignedTo(contact); $event.stopPropagation()">
-                                        <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
-                                        <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
+                                        <img src="./assets/img/icons/Rectangle 5.svg" class="checkboxEmpty">
+                                        <img src="./assets/img/icons/Group 19.svg" class="checkboxChecked">
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
             <label for="subTask">Subtask</label>
             <div class="inputContainer">
                 <div class="subtaskInputContainer" (click)="setIsSubtaskinFocus(true)">
-                    <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="input-field"
+                    <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks" class="inputField"
                         [(ngModel)]="subtaskValue">
                     @if (isSubtaskinFocus) {
                     <div class="inputBtns">
@@ -300,8 +300,8 @@
             <div class="errorMessageContainer">
             </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="ok-btn" type="submit" value="Send"
+        <div class="modalFooter">
+            <button type="button" class="okBtn" type="submit" value="Send"
                 (click)="taskService.toggleIsTaskOverlayDisplayed()">
                 Ok<img src="./assets/img/icons/check.svg" alt="checkmark">
             </button>

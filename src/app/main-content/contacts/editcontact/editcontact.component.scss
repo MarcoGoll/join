@@ -21,13 +21,13 @@
         visibility: visible;
         opacity: 1;
 
-        .modal-content {
+        .modalContent {
             transform: translateY(0);
         }
     }
 }
 
-.modal-content {
+.modalContent {
     width: 1000px;
     height: 500px;
     background: white;
@@ -125,7 +125,7 @@
     width: 100%;
     max-width: 350px;
 
-    .input-field {
+    .inputField {
         width: 100%;
         padding: 12px 45px 12px 20px;
         border: 1px solid $clrSeparatingLines;
@@ -249,7 +249,7 @@
         padding: 20px;
     }
 
-    .modal-content {
+    .modalContent {
         width: 100%;
         height: auto;
         max-width: 380px;
@@ -318,7 +318,7 @@
     .input-container {
         max-width: 100%;
 
-        .input-field {
+        .inputField {
             padding: 8px 40px 8px 16px;
             height: 40px;
         }

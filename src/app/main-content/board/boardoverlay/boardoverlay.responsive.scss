@@ -10,7 +10,7 @@
     @media (orientation: landscape) and (max-height: 600px) { @content; }
   }
   
-  .modal-content {
+  .modalContent {
     max-height: 85dvh;
     overflow-y: auto;
     
@@ -29,14 +29,14 @@
     }
   }
   
-  .task-tag {
+  .taskTag {
     @include mobile {
       font-size: 12px;
       padding: 3px 12px;
     }
   }
   
-  .task-title {
+  .taskTitle {
     @include mobile {
       font-size: 24px;
       margin-bottom: 12px;
@@ -47,14 +47,14 @@
     }
   }
   
-  .task-description {
+  .taskDescription {
     @include mobile {
       font-size: 14px;
       margin-bottom: 24px;
     }
   }
   
-  .info-row {
+  .infoRow {
     @include mobile {
       margin-bottom: 16px;
     }
@@ -78,7 +78,7 @@
     }
   }
   
-  .priority-badge {
+  .priorityBadge {
     @include mobile {
       font-size: 12px;
       
@@ -89,12 +89,12 @@
     }
   }
   
-  .assigned-users {
+  .assignedUsers {
     @include mobile {
       gap: 12px 10px;
     }
     
-    .user-avatar {
+    .userAvatar {
       @include mobile {
         width: 35px;
         height: 35px;
@@ -102,20 +102,20 @@
       }
     }
     
-    .user-name {
+    .userName {
       @include mobile {
         font-size: 13px;
       }
     }
   }
   
-  .modal-actions {
+  .modalActions {
     @include mobile {
       bottom: 15px;
       right: 15px;
     }
     
-    .action-btn {
+    .actionBtn {
       @include mobile {
         font-size: 14px;
         
@@ -128,11 +128,11 @@
   }
   
   
-  .modal-content::-webkit-scrollbar {
+  .modalContent::-webkit-scrollbar {
     width: 5px;
   }
   
-  .modal-content::-webkit-scrollbar-thumb {
+  .modalContent::-webkit-scrollbar-thumb {
     background-color: #ccc;
     border-radius: 5px;
   }

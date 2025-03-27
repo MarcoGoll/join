@@ -1,7 +1,7 @@
 <div class="modal-overlay overlay" [class.show]="contactService.isAddContactViewed" (click)="closeModal($event)">
-    <div class="modal-content">
+    <div class="modalContent">
         <div class="modal-header">
-            <img src="./assets/img/join_logo.png" alt="Join Logo" class="logo"> 
+            <img src="./assets/img/join_logo.png" alt="Join Logo" class="logo">
             <div class="title-container">
                 <h1>Add contact</h1>
                 <span class="subtitle">Tasks are better with a team!</span>
@@ -17,19 +17,19 @@
             <div class="form-fields">
                 <div class="inputanderror-container">
                     <div class="input-container">
-                        <input type="text" formControlName="name" placeholder="Name" class="input-field">
+                        <input type="text" formControlName="name" placeholder="Name" class="inputField">
                         <img src="./assets/img/icons/person.svg" alt="Person" class="input-icon">
                     </div>
                     <div class="errorMessageContainer">
                         @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
                         <p class="errorMessage">Please enter a name</p>
                         }
-                    </div> 
+                    </div>
                 </div>
 
                 <div class="inputanderror-container">
                     <div class="input-container">
-                        <input type="email" formControlName="email" placeholder="Email" class="input-field">
+                        <input type="email" formControlName="email" placeholder="Email" class="inputField">
                         <img src="./assets/img/icons/mail.svg" alt="Email" class="input-icon">
                     </div>
                     <div class="errorMessageContainer">
@@ -41,7 +41,7 @@
 
                 <div class="inputanderror-container">
                     <div class="input-container">
-                        <input type="tel" formControlName="phone" placeholder="Phone" class="input-field">
+                        <input type="tel" formControlName="phone" placeholder="Phone" class="inputField">
                         <img src="./assets/img/icons/call.svg" alt="Phone" class="input-icon">
                     </div>
                     <div class="errorMessageContainer">

@@ -1,6 +1,6 @@
 <section>
     <div class="category"
-        [ngClass]="{'technical-task':task.category == 'Technical Task', 'user-story':task.category == 'User Story'}">
+        [ngClass]="{'technicalTask':task.category == 'Technical Task', 'user-story':task.category == 'User Story'}">
         <p>{{task.category}}</p>
     </div>
     <div>
@@ -10,28 +10,29 @@
     @if(task.subTasks.length > 0){
     <div class="progressbar-container">
         <div class="progressbar">
-            <div class="progress" [style.width]="getProgress(task)"></div> 
+            <div class="progress" [style.width]="getProgress(task)"></div>
         </div>
         <!-- <p>0/{{task.subTasks.length}} Subtasks</p> -->
-        <p>{{getAllDoneSubTasks(task)}}/{{task.subTasks.length}} Subtasks</p> 
+        <p>{{getAllDoneSubTasks(task)}}/{{task.subTasks.length}} Subtasks</p>
     </div>
-    }   
+    }
     <div class="profil-prio-container">
         <div class="profil-container">
             @for (idOfAssigne of task.assignedTo; track $index) {
-                @if ($index<3) { 
-                    <div class="profil backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">
-                        <p>{{contactService.getContactViaId(idOfAssigne).nameShortcut}}</p>
-                    </div>
-                }
-            }
-            @if (task.assignedTo.length>=3) {
-                <div class="profil backgroundColorBaseGray">
-                    +{{task.assignedTo.length-3}}
-                </div>
-            }
+            @if ($index<3) { <div
+                class="profil backgroundColor{{contactService.getContactViaId(idOfAssigne).nameShortcutColorCode}}">
+                <p>{{contactService.getContactViaId(idOfAssigne).nameShortcut}}</p>
         </div>
-        <div class="prio" [ngClass]="{'prio-low':task.prio == 'Low', 'prio-medium':task.prio == 'Medium', 'prio-urgent': task.prio == 'Urgent'}">
+        }
+        }
+        @if (task.assignedTo.length>=3) {
+        <div class="profil backgroundColorBaseGray">
+            +{{task.assignedTo.length-3}}
         </div>
+        }
+    </div>
+    <div class="prio"
+        [ngClass]="{'prio-low':task.prio == 'Low', 'prio-medium':task.prio == 'Medium', 'prio-urgent': task.prio == 'Urgent'}">
+    </div>
     </div>
 </section>

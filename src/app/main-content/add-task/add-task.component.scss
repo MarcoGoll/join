@@ -193,7 +193,7 @@
     }
 }
 
-.custom-checkbox {
+.customCheckbox {
     position: relative;
     width: 15px;
     height: 15px;
@@ -203,7 +203,7 @@
 }
 
   
-.checkbox-empty, .checkbox-checked {
+.checkboxEmpty, .checkboxChecked {
     position: absolute;
     top: 0;
     left: 0;
@@ -211,15 +211,15 @@
     height: 20px;
 }
   
-.checkbox-checked {
+.checkboxChecked {
     display: none;
 }
   
-.custom-checkbox.checked .checkbox-empty {
+.customCheckbox.checked .checkboxEmpty {
     display: none;
 }
   
-.custom-checkbox.checked .checkbox-checked { 
+.customCheckbox.checked .checkboxChecked { 
     display: block;
     filter: brightness(0) invert(1);
 }
@@ -374,7 +374,7 @@
     width: 400px;
 }
 
-.input-field {
+.inputField {
     width: 100%;
 }
 

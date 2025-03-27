@@ -1,5 +1,5 @@
 <div class="modal-overlay overlay" [class.show]="contactService.isEditContactViewed" (click)="closeModal($event)">
-    <div class="modal-content">
+    <div class="modalContent">
         <div class="modal-header">
             <img src="./assets/img/join_logo.png" alt="Join Logo" class="logo">
             <div class="title-container">
@@ -13,11 +13,11 @@
                 <img src="./assets/img/icons/Group 13.svg" alt="Person Icon" class="person-icon">
             </div>
 
-            <div class="form-fields"> 
+            <div class="form-fields">
                 <div class="inputanderror-container">
                     <div class="input-container">
                         <input #name="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.fullName"
-                            type="text" id="name" name="name" placeholder="Name" class="input-field" required
+                            type="text" id="name" name="name" placeholder="Name" class="inputField" required
                             pattern="[a-zA-Z]{3,}.*">
                     </div>
                     <div class="errorMessageContainer">
@@ -29,7 +29,7 @@
                     <div class="inputanderror-container">
                         <div class="input-container">
                             <input #email="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.email"
-                                id="email" name="email" type="email" placeholder="Email" class="input-field" required
+                                id="email" name="email" type="email" placeholder="Email" class="inputField" required
                                 pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
                             <img src="./assets/img/icons/mail.svg" alt="Email" class="input-icon">
                         </div>
@@ -43,7 +43,7 @@
                     <div class="inputanderror-container">
                         <div class="input-container">
                             <input #phone="ngModel" [(ngModel)]="contactService.currentContactToBeUpdated.phone"
-                                id="phone" name="phone" type="phone" placeholder="Phone" class="input-field" required
+                                id="phone" name="phone" type="phone" placeholder="Phone" class="inputField" required
                                 pattern="^\+?[0-9 ]{7,15}$">
                             <img src="./assets/img/icons/call.svg" alt="Phone" class="input-icon">
                         </div>

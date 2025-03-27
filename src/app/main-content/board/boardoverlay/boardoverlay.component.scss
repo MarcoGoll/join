@@ -14,7 +14,7 @@
 }
 
 
-.modal-content {
+.modalContent {
     background: white;
     border-radius: 30px;
     padding: 48px;
@@ -28,7 +28,7 @@
     flex-direction: column; 
 }
 
-.modal-scrollable-content-display {
+.modalScrollableContentDisplay {
     flex: 1;
     overflow-y: auto;
     margin-bottom: 60px; 
@@ -54,7 +54,7 @@
 }
 
 
-.task-tag {
+.taskTag {
     display: inline-block;
     color: white;
     padding: 4px 16px;
@@ -63,7 +63,7 @@
     font-size: 14px;
 }
 
-.technical-task-tag {
+.technicalTaskTag {
     background-color: $clrContact7; 
 }
 
@@ -71,18 +71,18 @@
     background-color: $clrContact1; 
 }
 
-.task-title {
+.taskTitle {
     font-size: 32px;
     margin-bottom: 16px;
     color: $clrBaseDark;
 }
 
-.task-description {
+.taskDescription {
     color: $clrBaseDark;
     margin-bottom: 32px;
 }
 
-.info-row {
+.infoRow {
     margin-bottom: 24px;
 
     .label {
@@ -104,7 +104,7 @@
     }
 }
 
-.priority-badge {
+.priorityBadge {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -117,13 +117,13 @@
     }
 }
 
-.assigned-users {
+.assignedUsers {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 20px 16px;
     align-items: center;
 
-    .user-avatar {
+    .userAvatar {
         width: 42px;
         height: 42px;
         border-radius: 50%;
@@ -135,12 +135,12 @@
         color: white;
     }
 
-    .user-name {
+    .userName {
         font-size: 14px;
     }
 }
 
-.custom-checkbox {
+.customCheckbox {
     position: relative;
     width: 15px;
     height: 15px;
@@ -149,7 +149,7 @@
     display: inline-block;
 }
   
-.checkbox-empty, .checkbox-checked {
+.checkboxEmpty, .checkboxChecked {
     position: absolute;
     top: 0;
     left: 0;
@@ -157,15 +157,15 @@
     height: 20px;
 }
   
-.checkbox-checked {
+.checkboxChecked {
     display: none;
 }
   
-.custom-checkbox.checked .checkbox-empty {
+.customCheckbox.checked .checkboxEmpty {
     display: none;
 }
   
-.custom-checkbox.checked .checkbox-checked { 
+.customCheckbox.checked .checkboxChecked { 
     display: block;
 }
   
@@ -180,21 +180,21 @@
     display: flex;
 }
   
-.subtask-text {
+.subtaskText {
     cursor: pointer;
     margin-left: 4px;
     font-size: 14px;
 }
   
 
-.modal-actions {
+.modalActions {
     display: flex;
     gap: 8px;
     position: absolute;
     bottom: 24px;
     right: 24px;
 
-    .action-btn {
+    .actionBtn {
         display: flex;
         align-items: center;
         gap: 4px;
@@ -236,7 +236,7 @@
 
 // Edit Modal Styles
 
-.edit-modal {
+.editModal {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -248,7 +248,7 @@
 }
 
 
-.modal-scrollable-content {
+.modalScrollableContent {
     margin-top: 80px;
     padding: 0px 10px;
     padding-bottom: 50px;
@@ -285,7 +285,7 @@
     }
 }
 
-.edit-form {
+.editForm {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -377,7 +377,7 @@
     right: 0;
 }
 
-.input-field {
+.inputField {
     width: 100%;
 }
 
@@ -392,7 +392,7 @@
     font-size: 12px;
 }
 
-textarea.input-field {
+textarea.inputField {
     min-height: 100px;
     resize: vertical;
     border: 1px solid $clrBaseGray;
@@ -506,7 +506,7 @@ textarea.input-field {
     color: $clrBaseBright;
 }
 
-.custom-checkbox {
+.customCheckbox {
     position: relative;
     width: 15px;
     height: 15px;
@@ -515,7 +515,7 @@ textarea.input-field {
     display: inline-block;
 }
 
-.checkbox-empty, .checkbox-checked {
+.checkboxEmpty, .checkboxChecked {
     position: absolute;
     top: 0;
     left: 0;
@@ -523,23 +523,23 @@ textarea.input-field {
     height: 20px;
 }
 
-.checkbox-checked { 
+.checkboxChecked { 
     display: none;  
 }
 
-.custom-checkbox.checked .checkbox-empty {
+.customCheckbox.checked .checkboxEmpty {
     display: none;
 }
 
-.custom-checkbox.checked .checkbox-checked {
+.customCheckbox.checked .checkboxChecked {
     display: block;
 }
 
-.selectionContact .custom-checkbox.checked .checkbox-checked {
+.selectionContact .customCheckbox.checked .checkboxChecked {
     filter: brightness(0) invert(1);  
 }
 
-.subtasks .custom-checkbox.checked .checkbox-checked {
+.subtasks .customCheckbox.checked .checkboxChecked {
     filter: none; 
 }
 
@@ -568,7 +568,7 @@ textarea.input-field {
     width: 100%;
     margin-bottom: 16px;
 
-    .input-field {
+    .inputField {
         width: 100%;
         padding: 12px;
         border: 1px solid #D1D1D1;
@@ -581,7 +581,7 @@ textarea.input-field {
     }
 }
 
-.modal-footer {
+.modalFooter {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -593,7 +593,7 @@ textarea.input-field {
     display: flex;
     justify-content: flex-end;
 
-    .ok-btn {
+    .okBtn {
         background: $clrBaseDark;
         color: white;
         border: none;

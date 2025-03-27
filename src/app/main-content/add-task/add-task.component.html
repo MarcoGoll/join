@@ -1,7 +1,6 @@
 <section id="addTaskSection">
     <div class="addTaskSectionContent">
         <!-- <button class="controlBTN" (click)="taskService.resetDatabase()">reset Tasks DB</button> -->
-        <!-- TODO: refactor -->
         <div class="confirmationMessageContainer" [ngClass]="{'d_none':!displayConfirmation}">
             <div class="confirmationMessage">
                 <p>Task added to board</p>
@@ -22,7 +21,7 @@
                         <label for="title">Title<span class="clrRed">*</span></label>
                         <div class="inputContainer">
                             <input #title="ngModel" [(ngModel)]="newTask.title" id="title" name="title" type="text"
-                                placeholder="Enter a title" class="input-field" required
+                                placeholder="Enter a title" class="inputField" required
                                 [ngClass]="{'errorInput': !title.valid && title.touched}">
                         </div>
                         <div class="errorMessageContainer">
@@ -35,7 +34,7 @@
                         <label for="description">Description</label>
                         <div class="inputContainer">
                             <textarea #description="ngModel" [(ngModel)]="newTask.description" id="description"
-                                name="description" type="text" placeholder="Enter a Description" class="input-field"
+                                name="description" type="text" placeholder="Enter a Description" class="inputField"
                                 [ngClass]="{'errorInput': !description.valid && description.touched}"></textarea>
                         </div>
                         <div class="errorMessageContainer">
@@ -48,7 +47,7 @@
                         <label for="duDate">Due date<span class="clrRed">*</span></label>
                         <div class="inputContainer">
                             <input #duDate="ngModel" [(ngModel)]="newTask.dueDate" id="duDate" name="duDate" type="date"
-                                placeholder="dd/mm/yyyy" class="input-field" required [min]="today"
+                                placeholder="dd/mm/yyyy" class="inputField" required [min]="today"
                                 [ngClass]="{'errorInput': (!duDate.valid || !newTask.dueDate) && duDate.touched}">
                         </div>
                         <div class="errorMessageContainer">
@@ -133,11 +132,11 @@
                                         {{contact.nameShortcut}}</div>
                                     <div class="contactFullname">{{contact.fullName}}</div>
                                     <div class="contactSelection">
-                                        <div class="custom-checkbox"
+                                        <div class="customCheckbox"
                                             [ngClass]="{'checked': isContactCurrentlySelected(contact)}"
                                             (click)="toggleContactInCurrentSelectedAssignedTo(contact); $event.stopPropagation()">
-                                            <img src="./assets/img/icons/Rectangle 5.svg" class="checkbox-empty">
-                                            <img src="./assets/img/icons/Group 19.svg" class="checkbox-checked">
+                                            <img src="./assets/img/icons/Rectangle 5.svg" class="checkboxEmpty">
+                                            <img src="./assets/img/icons/Group 19.svg" class="checkboxChecked">
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +195,7 @@
                     <div class="inputContainer">
                         <div class="subtaskInputContainer" (click)="setIsSubtaskinFocus(true)">
                             <input id="subTask" name="subTask" type="text" placeholder="Add new subtasks"
-                                class="input-field" [(ngModel)]="subtaskValue">
+                                class="inputField" [(ngModel)]="subtaskValue">
                             @if (isSubtaskinFocus) {
                             <div class="inputBtns">
                                 <div class="inputBtn">
