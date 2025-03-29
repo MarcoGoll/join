@@ -144,7 +144,7 @@ export class AuthenticationService {
       })
         .then(() => {
           // Profile updated!
-          this.errorOccoursIn = null;
+          this.resetFirebaseError();
         })
         .catch((error) => {
           // An error occurred
