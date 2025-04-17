@@ -1,0 +1,7 @@
+{
+    "entryPoints": ["src/app"],
+    "out": "docs",
+    "exclude": ["**/*.spec.ts"],
+    "includeVersion": true,
+    "tsconfig": "tsconfig.app.json"
+  }
